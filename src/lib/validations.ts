@@ -4,9 +4,10 @@ export const biodataSchema = z.object({
   // Essential Personal Information
   fullName: z.string().min(2, "Full name is required").max(100),
   gender: z.enum(["Male", "Female"], { required_error: "Gender is required" }),
-  dateOfBirth: z.string().min(1, "Date of birth is required"),
+  lookingFor: z.string().min(1, "Please select what you are looking for"),
   maritalStatus: z.enum(["Never Married", "Divorced", "Widowed", "Separated", "Annulled"]),
   city: z.string().min(2, "City / State is required"),
+  dateOfBirth: z.string().optional(),
   height: z.string().optional(),
   state: z.string().optional(),
   country: z.string().optional(),
@@ -37,8 +38,8 @@ export const biodataSchema = z.object({
 
   // Contact Information
   phone: z.string().min(7, "Valid phone number is required"),
-  whatsapp: z.string().optional(),
-  email: z.string().email("Valid email address is required").or(z.literal("")).optional(),
+  whatsapp: z.string().min(7, "Valid WhatsApp number is required"),
+  email: z.string().email("Valid email address is required"),
   contactMethod: z.enum(["WhatsApp", "Phone Call", "Email"]).optional(),
 
   // Profile Image URL

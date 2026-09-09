@@ -10,17 +10,16 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  Calendar, 
   Heart, 
   GraduationCap, 
   Briefcase, 
   CheckCircle2, 
   FileText, 
   Sparkles, 
-  ShieldCheck, 
-  Zap,
   ArrowRight,
-  HelpCircle
+  Search,
+  MessageSquare,
+  Copy
 } from "lucide-react";
 
 export function BiodataForm() {
@@ -41,13 +40,27 @@ export function BiodataForm() {
     defaultValues: {
       maritalStatus: "Never Married",
       gender: "Male",
+      lookingFor: "Self",
       country: "India",
       contactMethod: "WhatsApp",
     },
   });
 
   const selectedGender = watch("gender");
-  const selectedMaritalStatus = watch("maritalStatus");
+  const lookingForValue = watch("lookingFor") || "";
+  const phoneValue = watch("phone");
+
+  const [otherSpecify, setOtherSpecify] = useState("");
+
+  const handleGenderSelect = (g: "Male" | "Female") => {
+    setValue("gender", g, { shouldValidate: true });
+  };
+
+  const copyPhoneToWhatsApp = () => {
+    if (phoneValue) {
+      setValue("whatsapp", phoneValue, { shouldValidate: true });
+    }
+  };
 
   const onUploadSuccess = (url: string, filename: string) => {
     setUploadedDocUrl(url);
@@ -108,7 +121,7 @@ export function BiodataForm() {
           Biodata Submitted Successfully!
         </h2>
         <p className="text-xs sm:text-base text-slate-500 mb-6 sm:mb-8 max-w-md mx-auto leading-relaxed">
-          JazakAllah Khair for trusting HumNikah. Our team will review your biodata carefully and connect with you shortly.
+          JazakAllah Khair for trusting HumNikah. Our team will review your biodata carefully and connect with you shortly on WhatsApp.
         </p>
 
         {uploadedDocName && (
@@ -137,14 +150,14 @@ export function BiodataForm() {
         <div>
           <h2 className="text-lg sm:text-xl font-playfair font-bold text-brand-charcoal flex items-center gap-2">
             <Sparkles size={18} className="text-brand-gold" />
-            Quick Matrimonial Registration
+            Quick Muslim Matrimonial Registration
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-1">
             Have a ready biodata? Simply upload it below and enter your contact details to get started!
           </p>
         </div>
         <span className="shrink-0 px-3 py-1 rounded-full bg-brand-gold/20 text-[#1D184C] font-semibold text-xs uppercase tracking-wider">
-          Fast &amp; Private
+          Fast &amp; Confidential
         </span>
       </div>
 
@@ -159,7 +172,7 @@ export function BiodataForm() {
         </div>
 
         <p className="text-xs text-slate-500 font-light">
-          If you have a ready-made bio-data or CV, upload it here. You won&apos;t need to type lengthy details!
+          If you have a ready-made bio-data, photo or CV, upload it here. You won&apos;t need to type lengthy details!
         </p>
 
         <BiodataUploadDropzone
@@ -197,52 +210,89 @@ export function BiodataForm() {
             )}
           </div>
 
-          {/* Gender Selector (Pills) */}
+          {/* Gender Selector: Male (Blue) / Female (Pink) */}
           <div>
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
               Gender <span className="text-red-500">*</span>
             </label>
             <div className="grid grid-cols-2 gap-3">
-              {(["Male", "Female"] as const).map((g) => (
-                <button
-                  key={g}
-                  type="button"
-                  onClick={() => setValue("gender", g)}
-                  className={`py-3 px-4 rounded-2xl font-semibold text-sm transition-all border flex items-center justify-center gap-2 cursor-pointer ${
-                    selectedGender === g
-                      ? "bg-[#1D184C] text-white border-[#1D184C] shadow-sm"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-brand-gold/50"
-                  }`}
-                >
-                  <span>{g === "Male" ? "Male (Groom)" : "Female (Bride)"}</span>
-                  {selectedGender === g && <CheckCircle2 size={16} className="text-brand-gold" />}
-                </button>
-              ))}
+              {/* Male Option (Blue Theme) */}
+              <button
+                type="button"
+                onClick={() => handleGenderSelect("Male")}
+                className={`py-3 px-4 rounded-2xl font-bold text-sm transition-all border flex items-center justify-center gap-2 cursor-pointer ${
+                  selectedGender === "Male"
+                    ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600 ring-2 ring-blue-400 shadow-md shadow-blue-500/25 scale-[1.02]"
+                    : "bg-blue-50/70 text-blue-900 border-blue-200 hover:border-blue-400 hover:bg-blue-100/60"
+                }`}
+              >
+                <span>Male</span>
+                {selectedGender === "Male" && <CheckCircle2 size={16} className="text-white" />}
+              </button>
+
+              {/* Female Option (Pink Theme) */}
+              <button
+                type="button"
+                onClick={() => handleGenderSelect("Female")}
+                className={`py-3 px-4 rounded-2xl font-bold text-sm transition-all border flex items-center justify-center gap-2 cursor-pointer ${
+                  selectedGender === "Female"
+                    ? "bg-pink-600 hover:bg-pink-700 text-white border-pink-600 ring-2 ring-pink-400 shadow-md shadow-pink-500/25 scale-[1.02]"
+                    : "bg-pink-50/70 text-pink-900 border-pink-200 hover:border-pink-400 hover:bg-pink-100/60"
+                }`}
+              >
+                <span>Female</span>
+                {selectedGender === "Female" && <CheckCircle2 size={16} className="text-white" />}
+              </button>
             </div>
             {errors.gender && (
               <p className="mt-1 text-xs text-red-500">{errors.gender.message}</p>
             )}
           </div>
 
-          {/* Date of Birth */}
+          {/* Looking For Field (Self, Son, Daughter, Brother, Sister, Others) */}
           <div>
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
-              Date of Birth <span className="text-red-500">*</span>
+              Looking For <span className="text-red-500">*</span>
             </label>
             <div className="relative flex items-center">
-              <Calendar size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
-              <input
-                type="date"
-                className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
-                {...register("dateOfBirth")}
-              />
+              <Search size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
+              <select
+                className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs cursor-pointer appearance-none"
+                value={lookingForValue.startsWith("Others") ? "Others (Specify)" : lookingForValue}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setValue("lookingFor", val, { shouldValidate: true });
+                }}
+              >
+                <option value="Self">Self</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Brother">Brother</option>
+                <option value="Sister">Sister</option>
+                <option value="Others (Specify)">Others (Specify)</option>
+              </select>
             </div>
-            {errors.dateOfBirth && (
-              <p className="mt-1 text-xs text-red-500">{errors.dateOfBirth.message}</p>
+            {lookingForValue.startsWith("Others") && (
+              <div className="mt-2">
+                <input
+                  type="text"
+                  placeholder="Please specify relationship (e.g. Relative, Friend, Ward)"
+                  value={otherSpecify}
+                  onChange={(e) => {
+                    const text = e.target.value;
+                    setOtherSpecify(text);
+                    setValue("lookingFor", text ? `Others: ${text}` : "Others (Specify)", { shouldValidate: true });
+                  }}
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm outline-none focus:border-brand-gold"
+                />
+              </div>
+            )}
+            {errors.lookingFor && (
+              <p className="mt-1 text-xs text-red-500">{errors.lookingFor.message}</p>
             )}
           </div>
 
-          {/* Marital Status */}
+          {/* Marital Status (Kept as requested) */}
           <div>
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
               Marital Status <span className="text-red-500">*</span>
@@ -260,6 +310,9 @@ export function BiodataForm() {
                 <option value="Annulled">Annulled</option>
               </select>
             </div>
+            {errors.maritalStatus && (
+              <p className="mt-1 text-xs text-red-500">{errors.maritalStatus.message}</p>
+            )}
           </div>
 
           {/* City / Location */}
@@ -271,7 +324,7 @@ export function BiodataForm() {
               <MapPin size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
               <input
                 type="text"
-                placeholder="e.g. Bangalore, Karnataka or Mumbai, Maharashtra"
+                placeholder="e.g. Bangalore, Karnataka or Hyderabad, Telangana"
                 className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
                 {...register("city")}
               />
@@ -283,7 +336,7 @@ export function BiodataForm() {
         </div>
       </div>
 
-      {/* STEP 3: CONTACT INFORMATION */}
+      {/* STEP 3: CONTACT INFORMATION (Phone, WhatsApp No. & Email) */}
       <div className="pt-4 border-t border-slate-100 space-y-6">
         <h3 className="text-base sm:text-lg font-playfair font-bold text-brand-charcoal flex items-center gap-2">
           <Phone size={18} className="text-brand-gold" />
@@ -291,10 +344,10 @@ export function BiodataForm() {
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {/* Phone / WhatsApp */}
+          {/* 1. Calling Phone Number */}
           <div>
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
-              Phone / WhatsApp Number <span className="text-red-500">*</span>
+              Phone / Calling Number <span className="text-red-500">*</span>
             </label>
             <div className="relative flex items-center">
               <Phone size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
@@ -310,10 +363,42 @@ export function BiodataForm() {
             )}
           </div>
 
-          {/* Email Address */}
+          {/* 2. WhatsApp Number (Added as dedicated field) */}
           <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-xs sm:text-sm font-semibold text-slate-700">
+                WhatsApp No. <span className="text-red-500">*</span>
+              </label>
+              {phoneValue && (
+                <button
+                  type="button"
+                  onClick={copyPhoneToWhatsApp}
+                  className="text-[11px] text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1 cursor-pointer bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200"
+                >
+                  <Copy size={11} /> Same as Phone
+                </button>
+              )}
+            </div>
+            <div className="relative flex items-center">
+              <div className="absolute left-3.5 flex items-center justify-center text-emerald-600 pointer-events-none">
+                <MessageSquare size={18} />
+              </div>
+              <input
+                type="tel"
+                placeholder="e.g. +91 9876543210"
+                className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
+                {...register("whatsapp")}
+              />
+            </div>
+            {errors.whatsapp && (
+              <p className="mt-1 text-xs text-red-500">{errors.whatsapp.message}</p>
+            )}
+          </div>
+
+          {/* 3. Email Address (Added as required field) */}
+          <div className="sm:col-span-2">
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
-              Email Address <span className="text-slate-400 font-normal">(Optional)</span>
+              Email Address <span className="text-red-500">*</span>
             </label>
             <div className="relative flex items-center">
               <Mail size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
@@ -381,7 +466,7 @@ export function BiodataForm() {
               </label>
               <textarea
                 rows={3}
-                placeholder="Share a few words about yourself, religious outlook, or preferences..."
+                placeholder="Share a few words about yourself, family expectations, or preferences..."
                 className="w-full p-3 rounded-xl bg-white border border-slate-200 text-sm outline-none resize-none"
                 {...register("shortIntro")}
               />

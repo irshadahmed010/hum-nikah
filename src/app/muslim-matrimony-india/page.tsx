@@ -24,7 +24,7 @@ const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
 export const metadata: Metadata = {
   title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
   description:
-    "HumNikah is a trusted Muslim matrimony service in India offering 100% verified, Shariah-compliant Nikah matchmaking across Karnataka, Kerala, Tamil Nadu, Telangana, Andhra Pradesh and Maharashtra, and for NRIs in the Gulf, UK, USA and Canada.",
+    "HumNikah is a trusted Muslim matrimony service in India offering 100% verified, Shariah-compliant Nikah matchmaking across Karnataka, Kerala, Tamil Nadu, Telangana, Andhra Pradesh, Maharashtra and all over India.",
   keywords: [
     "Muslim matrimony",
     "Muslim matrimony India",
@@ -32,20 +32,19 @@ export const metadata: Metadata = {
     "Nikah matrimony",
     "Muslim marriage bureau",
     "Muslim marriage bureau Bangalore",
-    "Shia matrimony",
     "Sunni matrimony",
     "Muslim brides in India",
     "Muslim grooms in India",
-    "halal matchmaking",
+    "trusted muslim matchmaking",
     "Shariah compliant matrimony",
     "Muslim shaadi",
-    "NRI Muslim matrimony",
+    "Muslim matrimony across India",
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
     description:
-      "Trusted, 100% verified and Shariah-compliant Muslim matchmaking across India and for the global Muslim diaspora.",
+      "Trusted, 100% verified and Shariah-compliant Muslim matchmaking across India.",
     url: PAGE_URL,
     siteName: "HumNikah",
     type: "website",
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Muslim Matrimony in India – HumNikah",
     description:
-      "Trusted, verified and Shariah-compliant Muslim matchmaking across India and worldwide.",
+      "Trusted, verified and Shariah-compliant Muslim matchmaking across all over India.",
   },
 };
 
@@ -66,7 +65,7 @@ const regions = [
   },
   {
     name: "Kerala",
-    body: "Dedicated matchmaking for the Mappila Muslim community and families across Malappuram, Kozhikode (Calicut), Kannur, Thrissur, Kochi, Kollam and Thiruvananthapuram, including Malayali NRIs settled in the Gulf.",
+    body: "Dedicated matchmaking for the Mappila Muslim community and families across Malappuram, Kozhikode (Calicut), Kannur, Thrissur, Kochi, Kollam and Thiruvananthapuram.",
   },
   {
     name: "Tamil Nadu",
@@ -105,7 +104,7 @@ const whyChoose = [
   {
     icon: HeartHandshake,
     title: "Rooted in Shariah",
-    body: "We treat Nikah as a sacred covenant, encourage Wali involvement, and keep every introduction halal, respectful and purposeful.",
+    body: "We treat Nikah as a sacred covenant, encourage Wali involvement, and keep every introduction sacred, respectful and purposeful.",
   },
   {
     icon: Building2,
@@ -149,19 +148,19 @@ const faqs = [
   },
   {
     q: "Which cities in India does HumNikah cover?",
-    a: "We serve Muslim families across Karnataka (Bangalore, Mangaluru, Mysuru), Kerala, Tamil Nadu, Telangana (Hyderabad), Andhra Pradesh and Maharashtra (Mumbai, Pune), and coordinate matches nationwide and with NRIs abroad.",
+    a: "We serve Muslim families across Karnataka (Bangalore, Mangaluru, Mysuru), Kerala, Tamil Nadu, Telangana (Hyderabad), Andhra Pradesh, Maharashtra (Mumbai, Pune), and coordinate verified matches nationwide across all states in India.",
   },
   {
     q: "Do you match within specific communities and schools of thought?",
-    a: "Yes. You can specify Sunni (Hanafi, Shafi'i), Shia, biradari or community (Syed, Sheikh, Pathan, Ansari, Qureshi, Memon and others), language and regional preferences, and we respect them in the matches we share.",
+    a: "Yes. You can specify Sunni (Hanafi, Shafi'i), Ahle Hadees, biradari or community (Syed, Sheikh, Memon, Mappila, and others), and regional preferences, and we respect them in the matches we share.",
   },
   {
     q: "Are the profiles on HumNikah verified?",
     a: "Every profile undergoes manual verification of government ID, phone number, marital status and residence before activation. We do not run formal criminal-record checks, so families should still do their own due diligence before Nikah.",
   },
   {
-    q: "Does HumNikah help NRIs and Gulf-based Muslims?",
-    a: "Yes. A large number of our members are Indian Muslims living in the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman, the UK, USA and Canada. We regularly manage cross-border introductions.",
+    q: "Does HumNikah cover all of India?",
+    a: "Yes. HumNikah operates nationwide across all Indian states and major cities, providing verified regional matchmaking and dedicated family assistance.",
   },
   {
     q: "How do I get started?",
@@ -319,7 +318,7 @@ export default function MuslimMatrimonyIndiaPage() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-semibold tracking-wider uppercase mb-4">
               <Sparkles size={14} className="animate-pulse text-brand-gold" />
-              <span>100% Halal &amp; Verified</span>
+              <span>100% Verified Muslim Matrimony</span>
             </div>
 
             <h1 className="font-playfair font-bold text-white leading-[1.15]">
@@ -398,10 +397,9 @@ export default function MuslimMatrimonyIndiaPage() {
               home visits so that families can proceed with confidence.
             </p>
             <p>
-              From Bangalore and Hyderabad to Kerala, Tamil Nadu, Andhra Pradesh and
-              Maharashtra — and for Indian Muslims living across the Gulf, the UK,
-              the USA and Canada — HumNikah helps thousands of families begin their
-              journey to a blessed marriage.
+              From Bangalore and Hyderabad to Kerala, Tamil Nadu, Andhra Pradesh,
+              Maharashtra and all states across India — HumNikah helps thousands of
+              families begin their journey to a blessed marriage.
             </p>
           </div>
           </div>
@@ -438,7 +436,7 @@ export default function MuslimMatrimonyIndiaPage() {
           </div>
 
           <SectionCta
-            title="Ready to find your match the halal way?"
+            title="Ready to find your match with Muslim Matrimony?"
             subtitle="Create your verified profile in minutes — it's free to start."
           />
         </div>
@@ -475,7 +473,7 @@ export default function MuslimMatrimonyIndiaPage() {
         </div>
       </section>
 
-      {/* Halal process */}
+      {/* Muslim Matrimony values process */}
       <section className="py-12 sm:py-16 bg-gradient-to-b from-[#1D184C] to-[#141038] text-white border-b border-brand-gold/20">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -484,7 +482,7 @@ export default function MuslimMatrimonyIndiaPage() {
               Guided by Islamic Values
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-white mt-2">
-              100% Halal, Shariah-Compliant Matchmaking
+              100% Verified, Shariah-Compliant Muslim Matrimony
             </h2>
           </div>
           <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed text-center mb-8">
@@ -561,15 +559,15 @@ export default function MuslimMatrimonyIndiaPage() {
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-brand-gold uppercase tracking-widest">
-              Every Muslim Family
+              Inclusive &amp; Respectful
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-brand-charcoal mt-2">
-              Communities &amp; Languages We Serve
+              Communities &amp; Caste We Serve
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 border border-brand-border/80">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-6 border border-brand-border/80 shadow-xs">
               <h3 className="text-base font-playfair font-bold text-brand-charcoal mb-3">
                 Schools of Thought
               </h3>
@@ -577,13 +575,11 @@ export default function MuslimMatrimonyIndiaPage() {
                 {[
                   "Sunni – Hanafi",
                   "Sunni – Shafi'i",
-                  "Shia",
-                  "Dawoodi Bohra",
                   "Ahle Hadees",
                 ].map((c) => (
                   <span
                     key={c}
-                    className="text-xs font-medium text-brand-charcoal bg-brand-light-cream border border-brand-border rounded-full px-3 py-1"
+                    className="text-xs font-medium text-brand-charcoal bg-brand-light-cream border border-brand-border rounded-full px-3.5 py-1.5"
                   >
                     {c}
                   </span>
@@ -591,17 +587,14 @@ export default function MuslimMatrimonyIndiaPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 border border-brand-border/80">
+            <div className="bg-white rounded-2xl p-6 border border-brand-border/80 shadow-xs">
               <h3 className="text-base font-playfair font-bold text-brand-charcoal mb-3">
-                Communities &amp; Biradari
+                Communities &amp; Caste
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "Syed",
                   "Sheikh",
-                  "Pathan",
-                  "Ansari",
-                  "Qureshi",
                   "Memon",
                   "Mappila",
                   "Labbai",
@@ -612,34 +605,7 @@ export default function MuslimMatrimonyIndiaPage() {
                 ].map((c) => (
                   <span
                     key={c}
-                    className="text-xs font-medium text-brand-charcoal bg-brand-light-cream border border-brand-border rounded-full px-3 py-1"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-brand-border/80">
-              <h3 className="text-base font-playfair font-bold text-brand-charcoal mb-3">
-                Mother Tongues
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Urdu",
-                  "Hindi",
-                  "Malayalam",
-                  "Tamil",
-                  "Telugu",
-                  "Kannada",
-                  "Marathi",
-                  "Konkani",
-                  "Dakhni",
-                  "English",
-                ].map((c) => (
-                  <span
-                    key={c}
-                    className="text-xs font-medium text-brand-charcoal bg-brand-light-cream border border-brand-border rounded-full px-3 py-1"
+                    className="text-xs font-medium text-brand-charcoal bg-brand-light-cream border border-brand-border rounded-full px-3.5 py-1.5"
                   >
                     {c}
                   </span>
@@ -650,29 +616,30 @@ export default function MuslimMatrimonyIndiaPage() {
         </div>
       </section>
 
-      {/* NRI & Gulf */}
+      {/* Pan-India Coverage: Muslim Matrimony Across India */}
       <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto legal-prose">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-brand-charcoal mb-5">
-            NRI &amp; Gulf Muslim Matrimony
+            Muslim Matrimony Across India
           </h2>
           <div className="space-y-4 text-[15px] sm:text-base text-black leading-relaxed">
             <p>
-              A significant number of HumNikah members are Indian Muslims living
-              abroad. We regularly coordinate matches for professionals and families
-              in the <strong>UAE</strong> (Dubai, Abu Dhabi, Sharjah),{" "}
-              <strong>Saudi Arabia</strong> (Riyadh, Jeddah, Dammam),{" "}
-              <strong>Qatar</strong>, <strong>Kuwait</strong>,{" "}
-              <strong>Bahrain</strong> and <strong>Oman</strong>, as well as the{" "}
-              <strong>United Kingdom</strong>, <strong>United States</strong>,{" "}
-              <strong>Canada</strong>, Australia, Malaysia and Singapore.
+              HumNikah is committed to connecting practicing Muslim families from
+              every state and region across India. Whether you reside in major metros
+              or emerging towns, our extensive network of relationship managers ensures
+              that geographical distance never stands in the way of finding a righteous,
+              compatible partner for Nikah.
             </p>
             <p>
-              Our team is experienced in managing cross-border introductions —
-              handling time-zone differences, family meetings over video, travel
-              planning for the Nikah, and the practical questions that come with a
-              partner in another country.
+              From <strong>Karnataka</strong> (Bangalore, Mangalore, Mysore),{" "}
+              <strong>Tamil Nadu</strong> (Chennai, Coimbatore),{" "}
+              <strong>Telangana</strong> (Hyderabad),{" "}
+              <strong>Andhra Pradesh</strong> (Vijayawada, Visakhapatnam),{" "}
+              <strong>Kerala</strong> (Kochi, Calicut), and{" "}
+              <strong>Maharashtra</strong> (Mumbai, Pune) to North, Central and Eastern
+              India, our dedicated family matchmaking services are available all over India
+              with thorough physical verification and complete confidentiality.
             </p>
           </div>
           </div>
@@ -706,8 +673,8 @@ export default function MuslimMatrimonyIndiaPage() {
                 d: "Doctors, engineers, IT professionals, CAs, teachers and business owners with limited time to search.",
               },
               {
-                t: "NRI Families",
-                d: "Parents in India searching for a partner for a child settled abroad, and vice versa.",
+                t: "Pan-India Families",
+                d: "Muslim families across all states in India searching for compatible, verified matches with shared cultural and Islamic values.",
               },
             ].map((x) => (
               <div

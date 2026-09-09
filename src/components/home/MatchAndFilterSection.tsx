@@ -184,10 +184,10 @@ export function MatchAndFilterSection() {
                     </div>
                   </div>
 
-                  {/* Field 2: Phone / WhatsApp */}
+                  {/* Field 2: WhatsApp / Phone */}
                   <div>
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2 text-left">
-                      Phone / WhatsApp <span className="text-red-500">*</span>
+                      WhatsApp / Calling Number <span className="text-red-500">*</span>
                     </label>
                     <div className="relative flex items-center">
                       <Phone size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
@@ -197,13 +197,13 @@ export function MatchAndFilterSection() {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="e.g. +92 300 1234567"
+                        placeholder="e.g. +91 98765 43210"
                         className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white border border-slate-200/90 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm font-semibold placeholder:font-normal placeholder:text-slate-400 transition-all duration-200 outline-none shadow-xs"
                       />
                     </div>
                   </div>
 
-                  {/* Field 3: Email */}
+                  {/* Field 3: Email Address */}
                   <div>
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2 text-left">
                       Email Address
@@ -221,21 +221,37 @@ export function MatchAndFilterSection() {
                     </div>
                   </div>
 
-                  {/* Field 4: Gender */}
+                  {/* Field 4: Gender (Male -> Blue, Female -> Pink) */}
                   <div>
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2 text-left">
                       Gender
                     </label>
-                    <ModernSelect
-                      icon={<Users size={18} />}
-                      placeholder="Select Gender"
-                      value={formData.gender}
-                      onChange={(val) => setFormData({ ...formData, gender: val })}
-                      options={[
-                        { label: "Male (Groom)", value: "Male (Groom)" },
-                        { label: "Female (Bride)", value: "Female (Bride)" },
-                      ]}
-                    />
+                    <div className="grid grid-cols-2 gap-2 h-[52px]">
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, gender: "Male" })}
+                        className={`rounded-2xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                          formData.gender === "Male"
+                            ? "bg-blue-600 text-white border-blue-600 ring-2 ring-blue-400 shadow-md shadow-blue-500/20"
+                            : "bg-blue-50/70 text-blue-900 border-blue-200 hover:border-blue-400 hover:bg-blue-100/60"
+                        }`}
+                      >
+                        <span>Male </span>
+                        {formData.gender === "Male" && <CheckCircle size={14} className="text-white" />}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, gender: "Female" })}
+                        className={`rounded-2xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                          formData.gender === "Female"
+                            ? "bg-pink-600 text-white border-pink-600 ring-2 ring-pink-400 shadow-md shadow-pink-500/20"
+                            : "bg-pink-50/70 text-pink-900 border-pink-200 hover:border-pink-400 hover:bg-pink-100/60"
+                        }`}
+                      >
+                        <span>Female</span>
+                        {formData.gender === "Female" && <CheckCircle size={14} className="text-white" />}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Submit Button */}

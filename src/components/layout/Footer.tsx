@@ -12,12 +12,21 @@ export function Footer() {
           {/* Column 1: Brand & Logo (Header Matching Logo) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 sm:gap-4 group inline-flex">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 relative">
                 <img
                   src="/images/hum-nikah-logo.png"
                   alt="HumNikah Logo"
                   className="w-[68px] h-[68px] sm:w-[84px] sm:h-[84px] object-contain"
                 />
+                {/* Islamic Crescent & Star Element */}
+                <div 
+                  className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-gradient-to-br from-[#651514] to-[#1D184C] text-[#F3B979] border border-[#F3B979]/80 flex items-center justify-center shadow-md shadow-black/30"
+                  title="Islamic Matrimonial Service"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.3 0 4.41-.78 6.1-2.09-4.8-.46-8.6-4.51-8.6-9.41 0-4.9 3.8-8.95 8.6-9.41C16.41 2.78 14.3 2 12 2zm6.5 6.5l.88 1.8 1.98.29-1.43 1.4.34 1.98-1.77-.93-1.77.93.34-1.98-1.43-1.4 1.98-.29.88-1.8z" />
+                  </svg>
+                </div>
               </div>
               <div className="flex flex-col justify-center">
                 <div className="flex items-baseline tracking-tight leading-none font-outfit">
@@ -197,15 +206,15 @@ export function Footer() {
 
         </div>
 
-        {/* Our Office Locations Row (Multiple Locations Bar) */}
+        {/* Our Locations Row (Multiple Locations Bar) */}
         <div className="border-t border-white/10 pt-8 pb-4 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
             <div>
               <h5 className="text-sm font-playfair font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
-                <MapPin size={16} /> Our Office Locations &amp; Regional Hubs
+                <MapPin size={16} /> Our Locations &amp; Regional Hubs
               </h5>
               <p className="text-gray-300 text-xs font-light mt-0.5">
-                Walk-in family consultation &amp; physical verification centers.
+                Karnataka, Kerala, Tamil Nadu, Andhra Pradesh, Telangana &amp; Maharashtra
               </p>
             </div>
           </div>
@@ -229,8 +238,23 @@ export function Footer() {
                   </div>
                 </div>
                 {loc.phone && (
-                  <div className="mt-2 text-[10px] text-brand-gold/80 font-medium">
-                    {loc.phone}
+                  <div className="mt-3 pt-2.5 border-t border-white/10 flex flex-col gap-1.5 text-[11px]">
+                    <a 
+                      href={`tel:${loc.phone.replace(/\s/g, "")}`} 
+                      className="inline-flex items-center gap-1.5 text-brand-gold/95 hover:text-white hover:underline transition-colors font-medium"
+                    >
+                      <Phone size={12} className="text-brand-gold shrink-0" />
+                      <span className="tracking-wide">{loc.phone}</span>
+                    </a>
+                    {loc.phone2 && (
+                      <a 
+                        href={`tel:${loc.phone2.replace(/\s/g, "")}`} 
+                        className="inline-flex items-center gap-1.5 text-brand-gold/95 hover:text-white hover:underline transition-colors font-medium"
+                      >
+                        <Phone size={12} className="text-brand-gold shrink-0" />
+                        <span className="tracking-wide">{loc.phone2}</span>
+                      </a>
+                    )}
                   </div>
                 )}
               </div>

@@ -81,6 +81,15 @@ export function Navbar() {
                   alt="HumNikah Logo"
                   className="w-14 h-14 sm:w-[60px] sm:h-[60px] lg:w-[68px] lg:h-[68px] object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
                 />
+                {/* Islamic Crescent & Star Element */}
+                <div 
+                  className="absolute -top-1 -right-1 w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-gradient-to-br from-[#651514] via-[#1D184C] to-[#1D184C] text-[#F3B979] border border-[#F3B979]/80 flex items-center justify-center shadow-md shadow-black/20"
+                  title="Islamic Matrimonial Service"
+                >
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.3 0 4.41-.78 6.1-2.09-4.8-.46-8.6-4.51-8.6-9.41 0-4.9 3.8-8.95 8.6-9.41C16.41 2.78 14.3 2 12 2zm6.5 6.5l.88 1.8 1.98.29-1.43 1.4.34 1.98-1.77-.93-1.77.93.34-1.98-1.43-1.4 1.98-.29.88-1.8z" />
+                  </svg>
+                </div>
               </div>
               <div className="flex flex-col justify-center">
                 <div className="flex items-baseline tracking-tight leading-none font-outfit">

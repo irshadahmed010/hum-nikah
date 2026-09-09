@@ -3,8 +3,7 @@ import { UseFormRegister, UseFormSetValue, UseFormWatch, FieldErrors } from 'rea
 import { BiodataFormValues } from '@/lib/validations';
 import { Input } from '../ui/Input';
 import { ModernSelect } from '../ui/ModernSelect';
-import { ModernDatePicker } from '../ui/ModernDatePicker';
-import { Users, HeartHandshake, User } from 'lucide-react';
+import { HeartHandshake, User, Search, CheckCircle2 } from 'lucide-react';
 
 interface Props {
   register: UseFormRegister<BiodataFormValues>;
@@ -16,7 +15,11 @@ interface Props {
 export function PersonalDetails({ register, setValue, watch, errors }: Props) {
   const genderValue = watch('gender') || '';
   const maritalStatusValue = watch('maritalStatus') || '';
-  const dobValue = watch('dateOfBirth') || '';
+  const lookingForValue = watch('lookingFor') || '';
+
+  const handleGenderChange = (g: 'Male' | 'Female') => {
+    setValue('gender', g, { shouldValidate: true });
+  };
 
   return (
     <div className="space-y-5">
@@ -25,7 +28,7 @@ export function PersonalDetails({ register, setValue, watch, errors }: Props) {
           <User size={16} className="text-brand-gold" />
         </div>
         <h3 className="text-base sm:text-lg font-bold font-playfair text-brand-charcoal">
-          1. Personal Details
+          1. Candidate Details
         </h3>
       </div>
 
@@ -37,27 +40,73 @@ export function PersonalDetails({ register, setValue, watch, errors }: Props) {
           placeholder="Enter your full name" 
         />
 
-        <ModernSelect
-          label="Gender"
-          icon={<Users size={16} />}
-          placeholder="Select Gender"
-          value={genderValue}
-          onChange={(val) => setValue('gender', val as any, { shouldValidate: true })}
-          error={errors.gender?.message}
-          options={[
-            { value: 'Male', label: 'Male (Groom)' },
-            { value: 'Female', label: 'Female (Bride)' },
-          ]}
-        />
+        {/* Gender UI: Male -> Blue, Female -> Pink */}
+        <div>
+          <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
+            Gender <span className="text-red-500">*</span>
+          </label>
+          <div className="grid grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              onClick={() => handleGenderChange('Male')}
+              className={`py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                genderValue === 'Male'
+                  ? 'bg-blue-600 text-white border-blue-600 ring-2 ring-blue-400 shadow-md shadow-blue-500/20'
+                  : 'bg-blue-50/70 text-blue-900 border-blue-200 hover:border-blue-400 hover:bg-blue-100/60'
+              }`}
+            >
+              <span>Male</span>
+              {genderValue === 'Male' && <CheckCircle2 size={14} className="text-white" />}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleGenderChange('Female')}
+              className={`py-2.5 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                genderValue === 'Female'
+                  ? 'bg-pink-600 text-white border-pink-600 ring-2 ring-pink-400 shadow-md shadow-pink-500/20'
+                  : 'bg-pink-50/70 text-pink-900 border-pink-200 hover:border-pink-400 hover:bg-pink-100/60'
+              }`}
+            >
+              <span>Female</span>
+              {genderValue === 'Female' && <CheckCircle2 size={14} className="text-white" />}
+            </button>
+          </div>
+          {errors.gender && (
+            <p className="mt-1 text-xs text-red-500">{errors.gender.message}</p>
+          )}
+        </div>
 
-        <ModernDatePicker
-          label="Date of Birth"
-          value={dobValue}
-          onChange={(val) => setValue('dateOfBirth', val, { shouldValidate: true })}
-          placeholder="Select Date of Birth"
-          error={errors.dateOfBirth?.message}
-        />
+        {/* Looking For */}
+        <div>
+          <ModernSelect
+            label="Looking For"
+            icon={<Search size={16} />}
+            placeholder="Select Looking For"
+            value={lookingForValue.startsWith('Others') ? 'Others (Specify)' : lookingForValue}
+            onChange={(val) => setValue('lookingFor', val, { shouldValidate: true })}
+            error={errors.lookingFor?.message}
+            options={[
+              { value: 'Self', label: 'Self' },
+              { value: 'Son', label: 'Son' },
+              { value: 'Daughter', label: 'Daughter' },
+              { value: 'Brother', label: 'Brother' },
+              { value: 'Sister', label: 'Sister' },
+              { value: 'Others (Specify)', label: 'Others (Specify)' },
+            ]}
+          />
+          {lookingForValue.startsWith('Others') && (
+            <div className="mt-2">
+              <input
+                type="text"
+                placeholder="Please specify (e.g. Relative, Friend, Ward)"
+                onChange={(e) => setValue('lookingFor', e.target.value ? `Others: ${e.target.value}` : 'Others (Specify)', { shouldValidate: true })}
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm outline-none focus:border-brand-gold"
+              />
+            </div>
+          )}
+        </div>
 
+        {/* Marital Status (Kept) */}
         <ModernSelect
           label="Marital Status"
           icon={<HeartHandshake size={16} />}
@@ -70,6 +119,7 @@ export function PersonalDetails({ register, setValue, watch, errors }: Props) {
             { value: 'Divorced', label: 'Divorced' },
             { value: 'Widowed', label: 'Widowed' },
             { value: 'Separated', label: 'Separated' },
+            { value: 'Annulled', label: 'Annulled' },
           ]}
         />
 

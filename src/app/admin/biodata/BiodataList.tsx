@@ -16,6 +16,26 @@ function hasValue(val?: string | number | null): boolean {
   return true;
 }
 
+function extractLookingFor(biodata: BiodataRow): string | null {
+  if ((biodata as any).lookingFor && typeof (biodata as any).lookingFor === 'string' && (biodata as any).lookingFor.trim()) {
+    return (biodata as any).lookingFor.trim();
+  }
+  const intro = biodata.shortIntro || '';
+  const match = intro.match(/Looking For:\s*([^\n\r]+)/i);
+  if (match) {
+    return match[1].trim();
+  }
+  return null;
+}
+
+function cleanShortIntro(intro?: string | null): string {
+  if (!intro) return '';
+  return intro
+    .replace(/\[BIODATA_DOC:.*?\]/g, '')
+    .replace(/Looking For:\s*[^\n\r]+/gi, '')
+    .trim();
+}
+
 function extractDocInfo(biodata: BiodataRow) {
   const intro = biodata.shortIntro || '';
   const match = intro.match(/\[BIODATA_DOC:(.*?)\|NAME:(.*?)\]/);
@@ -102,12 +122,14 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
   const filteredBiodatas = biodatas.filter(b => {
     if (!searchQuery.trim()) return true;
     const q = searchQuery.toLowerCase().trim();
+    const lookingFor = extractLookingFor(b);
     return (
       (b.fullName && b.fullName.toLowerCase().includes(q)) ||
       (b.city && b.city.toLowerCase().includes(q)) ||
       (b.profession && b.profession.toLowerCase().includes(q)) ||
       (b.phone && b.phone.includes(q)) ||
-      (b.status && b.status.toLowerCase().includes(q))
+      (b.status && b.status.toLowerCase().includes(q)) ||
+      (lookingFor && lookingFor.toLowerCase().includes(q))
     );
   });
 
@@ -196,7 +218,16 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
                       </div>
                       <div className="flex flex-col">
                         <h3 className="font-playfair font-bold text-brand-charcoal text-base sm:text-lg truncate max-w-[150px] sm:max-w-[200px]">{biodata.fullName}</h3>
-                        <p className="text-xs text-slate-500 font-medium mt-0.5">{biodata.age} yrs • {biodata.gender}</p>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          {biodata.age ? <span className="text-xs text-slate-500 font-medium">{biodata.age} yrs •</span> : null}
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
+                            biodata.gender === 'Male'
+                              ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                              : 'bg-pink-50 text-pink-700 border border-pink-200'
+                          }`}>
+                            {biodata.gender === 'Male' ? 'Male (Islamic)' : biodata.gender}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     
@@ -343,9 +374,17 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
               {/* Overview Blocks */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
                 {hasValue(selectedBiodata.gender) && (
-                  <div className="bg-slate-50 rounded-xl sm:rounded-2xl p-3 sm:p-4 border border-slate-100/80 shadow-sm">
-                    <span className="block text-[9px] sm:text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Gender</span>
-                    <span className="block text-xs sm:text-sm font-semibold text-brand-charcoal">{selectedBiodata.gender}</span>
+                  <div className={`rounded-xl sm:rounded-2xl p-3 sm:p-4 border shadow-sm ${
+                    selectedBiodata.gender === 'Male'
+                      ? 'bg-blue-50/80 border-blue-200 text-blue-950'
+                      : 'bg-pink-50/80 border-pink-200 text-pink-950'
+                  }`}>
+                    <span className={`block text-[9px] sm:text-[10px] uppercase tracking-wider font-bold mb-1 ${
+                      selectedBiodata.gender === 'Male' ? 'text-blue-600' : 'text-pink-600'
+                    }`}>
+                      Gender
+                    </span>
+                    <span className="block text-xs sm:text-sm font-bold">{selectedBiodata.gender}</span>
                   </div>
                 )}
                 {hasValue(selectedBiodata.age) && (
@@ -405,47 +444,67 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
               )}
 
               {/* Detailed Sections */}
-              <div className="space-y-8 sm:space-y-10">
+              <div className="space-y-8 sm:space-y-12 mt-4">
                 
                 {/* About & Religious */}
-                {(hasValue(selectedBiodata.shortIntro?.replace(/\[BIODATA_DOC:.*?\]/g, '').trim()) ||
-                  (hasValue(selectedBiodata.religiousPractice) || hasValue(selectedBiodata.prayerPractice))) && (
-                  <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
-                    {/* About Them */}
-                    {hasValue(selectedBiodata.shortIntro?.replace(/\[BIODATA_DOC:.*?\]/g, '').trim()) && (
-                      <div className="space-y-4">
-                        <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal uppercase tracking-wider border-b border-brand-border/60 pb-2">About & Background</h4>
-                        <div>
-                          <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Introduction</span>
-                          <p className="text-xs sm:text-sm text-brand-charcoal leading-relaxed whitespace-pre-line">
-                            {selectedBiodata.shortIntro.replace(/\[BIODATA_DOC:.*?\]/g, '').trim()}
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                {(() => {
+                  const lookingForVal = extractLookingFor(selectedBiodata);
+                  const cleanIntroVal = cleanShortIntro(selectedBiodata.shortIntro);
+                  const hasAbout = hasValue(lookingForVal) || hasValue(cleanIntroVal);
+                  const hasReligious = hasValue(selectedBiodata.religiousPractice) || hasValue(selectedBiodata.prayerPractice);
 
-                    {/* Religious Practice */}
-                    {(hasValue(selectedBiodata.religiousPractice) || hasValue(selectedBiodata.prayerPractice)) && (
-                      <div className="space-y-4">
-                        <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal uppercase tracking-wider border-b border-brand-border/60 pb-2">Religious Practice</h4>
-                        <div className="grid grid-cols-2 gap-4">
-                          {hasValue(selectedBiodata.religiousPractice) && (
-                            <div>
-                              <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Practice</span>
-                              <p className="text-xs sm:text-sm font-semibold text-brand-charcoal">{selectedBiodata.religiousPractice}</p>
-                            </div>
-                          )}
-                          {hasValue(selectedBiodata.prayerPractice) && (
-                            <div>
-                              <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Prayer</span>
-                              <p className="text-xs sm:text-sm font-semibold text-brand-charcoal">{selectedBiodata.prayerPractice}</p>
-                            </div>
-                          )}
+                  if (!hasAbout && !hasReligious) return null;
+
+                  return (
+                    <div className="grid md:grid-cols-2 gap-8 sm:gap-10 ">
+                      {/* About Them */}
+                      {hasAbout && (
+                        <div className="space-y-4">
+                          <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal uppercase tracking-wider border-b border-brand-border/60 pb-2">About & Background</h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            {hasValue(lookingForVal) && (
+                              <div>
+                                <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Looking For</span>
+                                <p className="text-xs sm:text-sm font-semibold text-brand-charcoal">
+                                  {lookingForVal}
+                                </p>
+                              </div>
+                            )}
+                            {hasValue(cleanIntroVal) && (
+                              <div className={hasValue(lookingForVal) ? "" : "col-span-2"}>
+                                <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Introduction</span>
+                                <p className="text-xs sm:text-sm font-semibold text-brand-charcoal whitespace-pre-line leading-relaxed">
+                                  {cleanIntroVal}
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+                      )}
+
+                      {/* Religious Practice */}
+                      {hasReligious && (
+                        <div className="space-y-4">
+                          <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal uppercase tracking-wider border-b border-brand-border/60 pb-2">Religious Practice</h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            {hasValue(selectedBiodata.religiousPractice) && (
+                              <div>
+                                <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Practice</span>
+                                <p className="text-xs sm:text-sm font-semibold text-brand-charcoal">{selectedBiodata.religiousPractice}</p>
+                              </div>
+                            )}
+                            {hasValue(selectedBiodata.prayerPractice) && (
+                              <div>
+                                <span className="block text-[10px] text-slate-500 font-medium mb-0.5">Prayer</span>
+                                <p className="text-xs sm:text-sm font-semibold text-brand-charcoal">{selectedBiodata.prayerPractice}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
 
                 {/* Education, Profession & Family */}
                 {((hasValue(selectedBiodata.highestEducation) || hasValue(selectedBiodata.profession) || hasValue(selectedBiodata.incomeRange)) ||

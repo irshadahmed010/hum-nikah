@@ -20,7 +20,7 @@ const categories: Category[] = [
         q: "Is HumNikah only for arranged marriages?",
         a: (
           <>
-            Not at all. HumNikah supports every path to a halal marriage — whether
+            Not at all. HumNikah supports every path to a blessed Muslim marriage — whether
             your family leads the search, you take the initiative yourself, or it is
             a shared effort. What stays constant is a process that is respectful,
             transparent, and rooted in Islamic values, with Wali and family
@@ -297,11 +297,27 @@ const categories: Category[] = [
         ),
       },
       {
+        q: "How are the matchmaking charges and payments structured?",
+        a: (
+          <>
+            HumNikah follows a fair, transparent and success-aligned payment structure:
+            <span className="block mt-2 font-bold text-[#1D184C]">
+              &bull; &ldquo;Half in advance&rdquo; &mdash; upon registration and initiation of personalized matchmaking and verification.
+            </span>
+            <span className="block font-bold text-[#1D184C] mt-1">
+              &bull; &ldquo;Half after marriage&rdquo; &mdash; once your Nikah is successfully blessed and finalized.
+            </span>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600">
+              There are no hidden recurring monthly fees. This ensures our dedicated team works with sincere commitment alongside your family every step of the way.
+            </p>
+          </>
+        ),
+      },
+      {
         q: "Can I split my membership payment?",
         a: (
           <>
-            Some plans allow payment in instalments. Ask your relationship manager
-            what is available for the plan you are considering.
+            Yes. Our primary fee arrangement is split into two straightforward parts: <strong>Half in advance</strong> and <strong>Half after marriage</strong>. Speak to your relationship manager for custom family arrangements.
           </>
         ),
       },
@@ -309,11 +325,7 @@ const categories: Category[] = [
         q: "Are membership fees refundable?",
         a: (
           <>
-            Membership fees are paid in advance and are non-refundable, as they cover
-            the dedicated time and curation that begin as soon as you join — this
-            applies even if you meet someone outside HumNikah during your membership.
-            Your plan fee is the only charge; there is no separate success fee. Full
-            terms are in our <Link href="/terms">Terms &amp; Conditions</Link>.
+            The initial advance fee covers the dedicated matchmaking, background checks, and verification that begin immediately upon enrollment. Full details are outlined in our <Link href="/terms" className="text-brand-emerald underline">Terms &amp; Conditions</Link>.
           </>
         ),
       },

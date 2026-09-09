@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    question: "Is HumNikah free to use?",
-    answer: "Yes, registering your profile and browsing initial matches is completely free. We also offer premium packages for advanced communication features.",
+    question: "How does the matchmaking payment structure work?",
+    answer: "HumNikah follows a transparent and fair payment model: \"Half in advance\" upon registration to initiate personalized matchmaking and verification, and \"Half after marriage\" once your Nikah is successfully finalized.",
     col: "left",
   },
   {

@@ -64,7 +64,7 @@ export default function GalleryClient({ initialItems }: { initialItems: GalleryI
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mt-2 text-slate-300 text-xs sm:text-sm lg:text-base font-light max-w-md mx-auto leading-relaxed"
           >
-            Glimpses into sacred Nikah celebrations and heartwarming halal unions.
+            Glimpses into sacred Nikah celebrations and heartwarming Muslim matrimony unions.
           </motion.p>
         </div>
       </section>

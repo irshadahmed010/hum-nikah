@@ -159,9 +159,9 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight"
             >
-             #1 Matrimonial Site  <br className="hidden sm:inline" />
-              in <span className="text-brand-gold italic relative inline-block">
-                Bangalore
+              #1 Muslim Matrimony <br className="hidden sm:inline" />
+              <span className="text-brand-gold italic relative inline-block">
+                Across India
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -176,7 +176,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-slate-200 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed"
             >
-              HumNikah helps Muslims find their perfect life partner with trust, respect and complete privacy.
+              HumNikah helps Muslim families find their verified life partner across India with trust, respect and complete privacy.
             </motion.p>
 
             {/* Action Buttons */}

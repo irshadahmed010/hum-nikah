@@ -20,8 +20,12 @@ export async function POST(request: Request) {
       }
     }
 
-    // Format short intro to embed uploaded document link if present
+    // Format short intro to embed looking for and uploaded document link if present
     let finalIntro = validatedData.shortIntro || '';
+    if (validatedData.lookingFor) {
+      const lookingBadge = `Looking For: ${validatedData.lookingFor}`;
+      finalIntro = finalIntro ? `${lookingBadge}\n\n${finalIntro}` : lookingBadge;
+    }
     if (validatedData.biodataDocUrl) {
       const docBadge = `[BIODATA_DOC:${validatedData.biodataDocUrl}|NAME:${validatedData.biodataDocName || 'Attached Biodata'}]`;
       finalIntro = finalIntro ? `${finalIntro}\n\n${docBadge}` : docBadge;

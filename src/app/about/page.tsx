@@ -228,7 +228,7 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {/* Cards */}
                   {[
-                    { title: "100% Halal", desc: "Shariah-compliant matchmaking." },
+                    { title: "Muslim Matrimony", desc: "Trusted & Shariah-compliant matchmaking." },
                     { title: "Manual Verification", desc: "No fake profiles." },
                     { title: "Relationship Managers", desc: "Real human guidance." },
                     { title: "Walk-In Offices", desc: "Personal family meetings." }
@@ -547,7 +547,7 @@ export default function AboutPage() {
                     1
                   </div>
                   <h4 className="font-bold text-brand-charcoal text-base mb-1">Create Profile</h4>
-                  <p className="text-xs text-brand-secondary">Submit your details with halal preferences and privacy controls.</p>
+                  <p className="text-xs text-brand-secondary">Submit your details with matrimonial preferences and privacy controls.</p>
                 </div>
 
                 <div className="p-4 rounded-xl bg-brand-cream border border-brand-border/60">

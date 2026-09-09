@@ -237,20 +237,17 @@ const sections: Section[] = [
     ),
   },
   {
-    id: "refund-policy",
-    title: "8. Refund Policy",
+    id: "fee-and-refund-policy",
+    title: "8. Fee Structure & Payment Policy",
     body: (
       <>
         <p>
-          All fees are payable in advance, non-transferable, and strictly
-          non-refundable under all circumstances.
+          HumNikah matrimonial services follow a two-tier fee structure:
+          <strong> &ldquo;Half in advance&rdquo;</strong> upon registration and profile verification to initiate personalized matchmaking, and
+          <strong> &ldquo;Half after marriage&rdquo;</strong> upon the successful conclusion of the Nikah.
         </p>
         <p>
-          By making a payment, you confirm that you have read and accepted the
-          no-refund policy. You agree that dissatisfaction, perceived lack of
-          suitable introductions, periods without introductions, early termination,
-          or personal circumstances do not constitute grounds for refund, reversal,
-          or chargeback.
+          The initial advance fee covers immediate operational costs, background checks, relationship manager assignment, and active profile shortlisting. By making a payment, you confirm that you have read and accepted these terms.
         </p>
       </>
     ),
