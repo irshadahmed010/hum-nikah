@@ -179,7 +179,7 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
                 <span className="text-gray-200 text-sm sm:text-base font-normal leading-relaxed">
-                  Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bangalore 560005
+                  Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru 560005
                 </span>
               </li>
               <li className="flex items-center gap-2.5">

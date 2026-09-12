@@ -324,7 +324,7 @@ export function BiodataForm() {
               <MapPin size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
               <input
                 type="text"
-                placeholder="e.g. Bangalore, Karnataka or Hyderabad, Telangana"
+                placeholder="e.g. Bengaluru, Karnataka or Hyderabad, Telangana"
                 className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
                 {...register("city")}
               />

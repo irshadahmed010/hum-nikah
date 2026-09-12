@@ -15,8 +15,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
   {
     id: "loc-karnataka",
     state: "Karnataka",
-    city: "Bangalore",
-    address: "Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bangalore 560005",
+    city: "Bengaluru",
+    address: "Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru 560005",
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],

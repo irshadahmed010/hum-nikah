@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck,
@@ -20,9 +21,8 @@ import {
   Scale,
   Award,
   Check,
-  HelpCircle,
   PhoneCall,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
@@ -41,7 +41,7 @@ const verificationLayers = [
       "Physical address & neighborhood check",
       "Direct interaction with parents / guardians",
       "Verification of family background & authenticity",
-      "Ensures 0% fake or misleading profiles"
+      "Ensures 0% fake or misleading profiles",
     ],
     highlightBg: "from-emerald-950/5 via-emerald-500/5 to-transparent",
   },
@@ -58,7 +58,7 @@ const verificationLayers = [
       "Official CNIC / Passport identity cross-matching",
       "Age and marital status confirmation",
       "Strict data protection (IDs stored in encrypted vault)",
-      "Zero anonymous or fake names allowed"
+      "Zero anonymous or fake names allowed",
     ],
     highlightBg: "from-blue-950/5 via-blue-500/5 to-transparent",
   },
@@ -75,7 +75,7 @@ const verificationLayers = [
       "University degree & educational qualification check",
       "Employment status & workplace verification",
       "Financial stability transparency for families",
-      "Prevents exaggerated profile claims"
+      "Prevents exaggerated profile claims",
     ],
     highlightBg: "from-purple-950/5 via-purple-500/5 to-transparent",
   },
@@ -92,7 +92,7 @@ const verificationLayers = [
       "Cross-check with two independent family references",
       "Community standing & reputation check",
       "Guardian (Wali) approval & contact confirmation",
-      "Ensures serious, marriage-minded intentions"
+      "Ensures serious, marriage-minded intentions",
     ],
     highlightBg: "from-amber-950/5 via-amber-500/5 to-transparent",
   },
@@ -109,7 +109,7 @@ const verificationLayers = [
       "Local Masjid Imam & neighborhood reference check",
       "Confirmation of candidate's character & conduct",
       "Ensures clean family reputation in local area",
-      "Provides complete assurance to proposing family"
+      "Provides complete assurance to proposing family",
     ],
     highlightBg: "from-teal-950/5 via-teal-500/5 to-transparent",
   },
@@ -126,7 +126,7 @@ const verificationLayers = [
       "Official Nadra Single / Marital status audit",
       "Divorce Decree / Khula document verification (if applicable)",
       "Child custody transparency (if applicable)",
-      "Zero hidden marital history"
+      "Zero hidden marital history",
     ],
     highlightBg: "from-indigo-950/5 via-indigo-500/5 to-transparent",
   },
@@ -143,236 +143,400 @@ const verificationLayers = [
       "Watermarked & blur-protected photos",
       "Direct Wali involvement at every step",
       "Strict zero-tolerance policy against misconduct",
-      "Complete control over who views full details"
+      "Complete control over who views full details",
     ],
     highlightBg: "from-rose-950/5 via-rose-500/5 to-transparent",
-  }
+  },
 ];
 
 const processSteps = [
   {
     step: "01",
     title: "Submit Biodata & Photo",
-    desc: "Fill in candidate details along with recent photo and basic family background info."
+    desc: "Fill in candidate details along with recent photo and basic family background info.",
   },
   {
     step: "02",
     title: "Document & Reference Audit",
-    desc: "Our team cross-checks CNIC, educational credentials, and conducts preliminary phone audits."
+    desc: "Our team cross-checks CNIC, educational credentials, and conducts preliminary phone audits.",
   },
   {
     step: "03",
     title: "Scheduled Home Visit",
-    desc: "HumNikah representative schedules an in-person visit to candidate's residence to verify credentials."
+    desc: "HumNikah representative schedules an in-person visit to candidate's residence to verify credentials.",
   },
   {
     step: "04",
     title: "Earned Verified Seal",
-    desc: "Upon successful verification, candidate gets the prestigious 'Home Verified' badge on HumNikah."
-  }
-];
-
-const verificationFaqs = [
-  {
-    q: "How does the HumNikah field representative conduct the Home Visit?",
-    a: "Our trained verification representative coordinates with the candidate's family/Wali to schedule a convenient time. During the visit, we physically verify the residence, meet family members, and confirm living background with total respect and modesty."
+    desc: "Upon successful verification, candidate gets the prestigious 'Home Verified' badge on HumNikah.",
   },
-  {
-    q: "Is our exact home address or documents visible to other users?",
-    a: "No, absolutely not. Exact residential addresses and uploaded ID documents are kept strictly confidential in our secure vault. They are never published on the public website and are only accessible by our internal compliance team."
-  },
-  {
-    q: "What credentials are verified during the background check?",
-    a: "We audit government-issued CNIC/Passport, university degrees/employment proof, 2 family character references, local neighborhood reputation, and legal marital status documentation."
-  },
-  {
-    q: "Can parents / Guardians (Wali) directly talk with the verification team?",
-    a: "Yes! HumNikah encourages active Wali participation. Guardians can call or meet our verification team anytime to ask questions, check progress, or share specific matching preferences."
-  }
 ];
 
 export function TrustVerificationSection() {
   const [activeTab, setActiveTab] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <section className="py-12 sm:py-14 bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] relative overflow-hidden border-t border-brand-border/40">
+    <section className="py-12 sm:py-16 bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] relative overflow-hidden border-t border-brand-border/40">
       {/* Decorative Glow Elements */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-brand-gold/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#1D184C]/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1D184C]/10 border border-[#1D184C]/20 text-[#1D184C] text-xs font-bold uppercase tracking-widest shadow-xs">
-            <ShieldCheck size={16} className="text-brand-gold animate-pulse" />
-            <span>UNMATCHED SAFETY &amp; VERIFICATION</span>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-          <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-brand-charcoal leading-tight">
-            100% Genuine Profiles with <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D184C] via-[#651514] to-brand-gold">
-              Home Visit &amp; Background Verification
-            </span>
-          </h2>
-
-          <p className="text-slate-700 text-sm sm:text-base font-normal sm:font-light max-w-2xl mx-auto leading-relaxed mt-3">
-            We don&apos;t rely on online claims alone. Every profile undergoes rigorous multi-layer screening—including physical in-person home visits—so your family can proceed with absolute trust.
-          </p>
-        </ScrollReveal>
-
-        {/* Highlight Banner Card: HOME VISIT FEATURE */}
-        <ScrollReveal variant="fade-up" className="mb-16">
-          <div className="relative rounded-3xl bg-gradient-to-r from-[#1D184C] via-[#2A2364] to-[#1D184C] p-6 sm:p-10 lg:p-12 text-white shadow-2xl border border-brand-gold/30 overflow-hidden">
+        {/* ==================================================================== */}
+        {/* HERO BANNER SECTION (Laptop: home-visit-desktop.png | Mobile: home-visit-mobile.png) */}
+        {/* ==================================================================== */}
+        <ScrollReveal variant="fade-up" className="mb-16 lg:relative lg:left-1/2 lg:right-1/2 lg:mx-[-50vw] lg:w-screen">
+          <div className="relative lg:rounded-none rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-200/80 bg-[#FAF8F5]">
             
-            {/* Background Pattern Overlay */}
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C58D5F_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-gold/20 blur-[100px] rounded-full pointer-events-none" />
+            {/* ------------------------------------------------------------------ */}
+            {/* 1. LAPTOP / DESKTOP VIEW (hidden on mobile, visible on lg+) */}
+            {/* ------------------------------------------------------------------ */}
+            <div className="hidden lg:block relative w-full lg:aspect-[1868/816]">
+              {/* Background Desktop Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/images/trust/home-visit-desktop.png"
+                  alt="Home Visit Verification Desktop Background"
+                  fill
+                  className="object-cover object-center brightness-[0.98]"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/80 from-0% via-white/40 via-12% to-transparent to-24% pointer-events-none" />
+              </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              
-              {/* Left Column: Text Content */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                  <Home size={14} />
-                  <span>Physical Home Visit Guaranteed</span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold leading-tight">
-                  We Visit Candidate Homes <span className="text-brand-gold italic">Before</span> Matches Begin
-                </h3>
-
-                <p className="text-slate-200 text-sm sm:text-base font-normal sm:font-light leading-relaxed">
-                  To ensure complete safety for both families, our verification representative visits the candidate&apos;s residence in-person. We verify family details, address, living environment, and character references—eliminating fake profiles completely.
-                </p>
-
-                {/* Key Benefits Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="flex items-start gap-3 bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
-                    <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
-                      <MapPin size={18} />
+              {/* Desktop Overlay Content */}
+              <div className="absolute inset-0 z-10 p-8 xl:p-12 grid grid-cols-12 gap-6 items-center">
+                {/* Left Column */}
+                <div className="col-span-7 max-w-xl xl:max-w-2xl space-y-3.5">
+                  <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#E6F4F1] text-[#0D7A5F] border border-[#A2E6D5] text-xs font-bold uppercase tracking-wider shadow-xs w-fit">
+                    <div className="w-5 h-5 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center">
+                      <Home size={12} />
                     </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Residence Audit</h4>
-                      <p className="text-xs text-slate-200 font-medium sm:font-normal">Physical address &amp; family home check</p>
+                    <span>PHYSICAL HOME VISIT GUARANTEED</span>
+                  </div>
+
+                  <h3 className="text-3xl xl:text-4xl font-playfair font-bold text-[#1E293B] leading-[1.15]">
+                    We Visit Candidate Homes <br />
+                    <span className="text-[#C27803] font-serif italic font-bold">Before</span> Matches Begin
+                  </h3>
+
+                  <p className="text-black text-base leading-relaxed max-w-xl font-sans font-semibold">
+                    To ensure complete safety for both families, our verification representative visits the candidates residence in-person. We verify family details, address, living environment, and character references—eliminating fake profiles completely.
+                  </p>
+
+                  {/* 4 Feature Cards Grid */}
+                  <div className="grid grid-cols-2 gap-2.5 max-w-xl">
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-white/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex items-center gap-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-[#008767] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Home size={20} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-[#1E293B]">Residence Audit</h4>
+                        <p className="text-sm font-semibold text-slate-600">Physical address &amp; family home check</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-white/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex items-center gap-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-[#8A531E] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Users size={20} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-[#1E293B]">Guardian Meeting</h4>
+                        <p className="text-sm font-semibold text-slate-600">Direct dialogue with parents / Wali</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-white/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex items-center gap-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-[#008767] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <ShieldCheck size={20} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-[#1E293B]">Home Verified Badge</h4>
+                        <p className="text-sm font-semibold text-slate-600">Golden seal assigned after visit</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3 border border-white/80 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex items-center gap-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-[#C25E00] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <Shield size={20} />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-[#1E293B]">Zero Fake Profiles</h4>
+                        <p className="text-sm font-semibold text-slate-600">100% peace of mind for families</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
-                    <div className="p-2 rounded-lg bg-brand-gold/20 text-brand-gold">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-[2px] bg-[#C27803] rounded-full" />
+                    <p className="text-sm font-serif italic font-semibold text-slate-700 tracking-wide">
+                      Real People. Real Verification. Real Trust.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Floating Certificate Card */}
+                <div className="col-span-5 flex justify-end">
+                  <div className="w-full max-w-md bg-white text-[#1E293B] rounded-[28px] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-100 relative overflow-hidden">
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-[#008767] text-white flex items-center justify-center shadow-sm shrink-0">
+                          <Award size={24} />
+                        </div>
+                        <div>
+                          <h4 className="font-playfair font-bold text-lg text-[#1E293B]">
+                            Home Verification Certificate
+                          </h4>
+                          <p className="text-sm text-slate-500 font-semibold">
+                            HumNikah Field Audit Protocol
+                          </p>
+                        </div>
+                      </div>
+                      <span className="px-2.5 py-0.5 bg-[#E6F4F1] text-[#0D7A5F] text-xs font-bold rounded-full border border-[#A2E6D5] uppercase tracking-wider">
+                        OFFICIAL
+                      </span>
+                    </div>
+
+                    <div className="space-y-2.5 mb-4">
+                      <h5 className="text-sm font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                        <Sparkles size={13} className="text-[#C27803]" /> PHYSICAL INSPECTION CHECKLIST:
+                      </h5>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center justify-between p-2 rounded-xl bg-[#F0FBF7] border border-[#D2F3E8]">
+                          <div className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#008767] shrink-0" />
+                            <span className="font-semibold text-slate-800">1. Physical Home &amp; Address Audit</span>
+                          </div>
+                          <span className="text-xs font-bold text-[#0D7A5F] bg-[#D7F5ED] px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                            VERIFIED
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between p-2 rounded-xl bg-[#F0F9FF] border border-[#E0F2FE]">
+                          <div className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#0284C7] shrink-0" />
+                            <span className="font-semibold text-slate-800">2. In-Person Guardian / Wali Dialogue</span>
+                          </div>
+                          <span className="text-xs font-bold text-[#0369A1] bg-[#E0F2FE] px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                            PASSED
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between p-2 rounded-xl bg-[#FAF5FF] border border-[#F3E8FF]">
+                          <div className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#9333EA] shrink-0" />
+                            <span className="font-semibold text-slate-800">3. CNIC &amp; Degree Document Check</span>
+                          </div>
+                          <span className="text-xs font-bold text-[#6B21A8] bg-[#F3E8FF] px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                            AUDITED
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between p-2 rounded-xl bg-[#FFF7ED] border border-[#FFEDD5]">
+                          <div className="flex items-center gap-2.5">
+                            <CheckCircle2 size={16} className="text-[#EA580C] shrink-0" />
+                            <span className="font-semibold text-slate-800">4. Community &amp; Masjid References</span>
+                          </div>
+                          <span className="text-xs font-bold text-[#C2410C] bg-[#FFEDD5] px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                            CONFIRMED
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                      <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                        <div className="text-lg font-bold text-[#1E293B]">1,500+</div>
+                        <div className="text-xs text-slate-600 font-semibold">Homes Visited</div>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                        <div className="text-lg font-bold text-[#008767]">100%</div>
+                        <div className="text-xs text-slate-600 font-semibold">Address Proof</div>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                        <div className="text-lg font-bold text-[#C25E00]">0%</div>
+                        <div className="text-xs text-slate-600 font-semibold">Fake Profiles</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            {/* ------------------------------------------------------------------ */}
+            {/* 2. MOBILE VIEW (visible on mobile/tablet, hidden on lg+) */}
+            {/* ------------------------------------------------------------------ */}
+            <div className="block lg:hidden relative w-full">
+              {/* Photo Band (locked to the mobile photo's native 1024:1536 ratio so it's never stretched/over-zoomed) */}
+              <div className="relative w-full aspect-[1024/1536] overflow-hidden">
+                <Image
+                  src="/images/trust/home-visit-mobile.png"
+                  alt="Home Visit Verification Mobile Background"
+                  fill
+                  className="object-cover object-top brightness-[0.98]"
+                  priority
+                />
+                {/* Gradient overlay: top ~70% stays fully clear, fade starts after that */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent from-0% via-transparent via-70% to-white/85 to-90% pointer-events-none" />
+                {/* Bottom blend into content section below */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] to-transparent to-22% pointer-events-none" />
+
+                <div className="relative z-10 h-full px-5 sm:px-7 pb-5 sm:pb-7 pt-[105%] flex flex-col justify-start gap-3">
+                  {/* Top Badge */}
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F4F1] text-[#0D7A5F] border border-[#A2E6D5] text-[11px] font-bold uppercase tracking-wider shadow-xs w-fit">
+                    <div className="w-4.5 h-4.5 rounded-full bg-[#0D7A5F] text-white flex items-center justify-center">
+                      <Home size={11} />
+                    </div>
+                    <span>PHYSICAL HOME VISIT GUARANTEED</span>
+                  </div>
+
+                  {/* Main Heading */}
+                  <h3 className="text-3xl sm:text-4xl font-playfair font-bold text-[#1E293B] leading-[1.2] max-w-[85%] sm:max-w-none">
+                    We Visit Candidate Homes{" "}
+                    <span className="text-[#C27803] font-serif italic font-bold">Before</span>{" "}
+                    Matches Begin
+                  </h3>
+
+                  {/* Subtitle Paragraph */}
+                  <p className="text-black text-sm sm:text-base leading-relaxed font-sans font-semibold max-w-[80%] sm:max-w-[320px]">
+                    To ensure complete safety for both families, our verification representative visits the candidates residence in-person. We verify family details, address, living environment, and character references—eliminating fake profiles completely.
+                  </p>
+                </div>
+              </div>
+
+              {/* Content Below Photo Band */}
+              <div className="relative z-10 bg-[#FAF8F5] p-5 sm:p-7 space-y-5">
+                {/* 4 Feature Cards (1 column on small phones, 2x2 from sm: up) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="bg-[#E6F4F1]/95 backdrop-blur-md rounded-2xl p-3 border border-[#A2E6D5]/60 flex items-start gap-2.5 shadow-xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#008767] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                      <Home size={18} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-[#1E293B] leading-tight">Residence Audit</h4>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Physical address &amp; family home check</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#FAF0E6]/95 backdrop-blur-md rounded-2xl p-3 border border-[#E8D0B8]/60 flex items-start gap-2.5 shadow-xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#8A531E] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
                       <Users size={18} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Guardian Meeting</h4>
-                      <p className="text-xs text-slate-200 font-medium sm:font-normal">Direct dialogue with parents / Wali</p>
+                      <h4 className="text-sm font-bold text-[#1E293B] leading-tight">Guardian Meeting</h4>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Direct dialogue with parents / Wali</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
-                    <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
-                      <BadgeCheck size={18} />
+                  <div className="bg-[#E0F2FE]/95 backdrop-blur-md rounded-2xl p-3 border border-[#BAE6FD]/60 flex items-start gap-2.5 shadow-xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#0284C7] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                      <ShieldCheck size={18} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Home Verified Badge</h4>
-                      <p className="text-xs text-slate-200 font-medium sm:font-normal">Golden seal assigned after visit</p>
+                      <h4 className="text-sm font-bold text-[#1E293B] leading-tight">Home Verified Badge</h4>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Golden seal assigned after visit</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/10">
-                    <div className="p-2 rounded-lg bg-brand-gold/20 text-brand-gold">
+                  <div className="bg-[#FFF7ED]/95 backdrop-blur-md rounded-2xl p-3 border border-[#FFEDD5]/60 flex items-start gap-2.5 shadow-xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#EA580C] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
                       <Shield size={18} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Zero Fake Profiles</h4>
-                      <p className="text-xs text-slate-200 font-medium sm:font-normal">100% peace of mind for families</p>
+                      <h4 className="text-sm font-bold text-[#1E293B] leading-tight">Zero Fake Profiles</h4>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">100% peace of mind for families</p>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Column: Official Physical Verification Certificate & Live Protocol Card */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="w-full max-w-md bg-white text-brand-charcoal rounded-3xl p-6 sm:p-7 shadow-2xl border-2 border-brand-gold/50 relative overflow-hidden">
-                  
-                  {/* Header Badge */}
-                  <div className="flex items-center gap-3 border-b border-slate-100 pb-4 mb-5 relative z-10">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center shadow-md">
-                      <Award size={24} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="font-playfair font-bold text-base text-[#1D184C]">
+                {/* Mobile Certificate Card */}
+                <div className="bg-white rounded-3xl p-5 shadow-xl border border-slate-100 mt-2">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-[#008767] text-white flex items-center justify-center shadow-xs shrink-0">
+                        <Award size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-playfair font-bold text-base text-[#1E293B]">
                           Home Verification Certificate
                         </h4>
-                        <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-extrabold rounded-full border border-emerald-300">
-                          OFFICIAL
-                        </span>
+                        <p className="text-xs text-slate-500 font-semibold">
+                          HumNikah Field Audit Protocol
+                        </p>
                       </div>
-                      <p className="text-xs text-slate-600 font-normal sm:font-light">HumNikah Field Audit Protocol</p>
                     </div>
+                    <span className="px-2 py-0.5 bg-[#E6F4F1] text-[#0D7A5F] text-[11px] font-bold rounded-full border border-[#A2E6D5] uppercase tracking-wider">
+                      OFFICIAL
+                    </span>
                   </div>
 
-                  {/* Inspection Protocol Progress */}
-                  <div className="space-y-3 mb-5">
-                    <h5 className="text-xs font-bold uppercase tracking-wider text-[#1D184C] flex items-center gap-1.5">
-                      <Sparkles size={14} className="text-brand-gold" /> Physical Inspection Checklist:
+                  <div className="space-y-2 mb-4">
+                    <h5 className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                      <Sparkles size={12} className="text-[#C27803]" /> PHYSICAL INSPECTION CHECKLIST:
                     </h5>
-
-                    <div className="space-y-2 text-xs">
-                      <div className="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
-                        <div className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#F0FBF7] border border-[#D2F3E8]">
+                        <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
+                          <CheckCircle2 size={14} className="text-[#008767] shrink-0" />
                           <span className="font-semibold text-slate-800">1. Physical Home &amp; Address Audit</span>
                         </div>
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-200/60 px-2 py-0.5 rounded-md">VERIFIED</span>
+                        <span className="text-[11px] font-bold text-[#0D7A5F] bg-[#D7F5ED] px-2 py-0.5 rounded-md uppercase shrink-0">
+                          VERIFIED
+                        </span>
                       </div>
-
-                      <div className="flex items-center justify-between p-2.5 rounded-xl bg-blue-50/80 border border-blue-200/60">
-                        <div className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-blue-600 shrink-0" />
+                      <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#F0F9FF] border border-[#E0F2FE]">
+                        <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
+                          <CheckCircle2 size={14} className="text-[#0284C7] shrink-0" />
                           <span className="font-semibold text-slate-800">2. In-Person Guardian / Wali Dialogue</span>
                         </div>
-                        <span className="text-[10px] font-bold text-blue-700 bg-blue-200/60 px-2 py-0.5 rounded-md">PASSED</span>
+                        <span className="text-[11px] font-bold text-[#0369A1] bg-[#E0F2FE] px-2 py-0.5 rounded-md uppercase shrink-0">
+                          PASSED
+                        </span>
                       </div>
-
-                      <div className="flex items-center justify-between p-2.5 rounded-xl bg-purple-50/80 border border-purple-200/60">
-                        <div className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-purple-600 shrink-0" />
+                      <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#FAF5FF] border border-[#F3E8FF]">
+                        <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
+                          <CheckCircle2 size={14} className="text-[#9333EA] shrink-0" />
                           <span className="font-semibold text-slate-800">3. CNIC &amp; Degree Document Check</span>
                         </div>
-                        <span className="text-[10px] font-bold text-purple-700 bg-purple-200/60 px-2 py-0.5 rounded-md">AUDITED</span>
+                          <span className="text-[11px] font-bold text-[#6B21A8] bg-[#F3E8FF] px-2 py-0.5 rounded-md uppercase shrink-0">
+                          AUDITED
+                        </span>
                       </div>
-
-                      <div className="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/80 border border-amber-200/60">
-                        <div className="flex items-center gap-2.5">
-                          <CheckCircle2 size={16} className="text-amber-600 shrink-0" />
+                      <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#FFF7ED] border border-[#FFEDD5]">
+                        <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
+                          <CheckCircle2 size={14} className="text-[#EA580C] shrink-0" />
                           <span className="font-semibold text-slate-800">4. Community &amp; Masjid References</span>
                         </div>
-                        <span className="text-[10px] font-bold text-amber-700 bg-amber-200/60 px-2 py-0.5 rounded-md">CONFIRMED</span>
+                        <span className="text-[11px] font-bold text-[#C2410C] bg-[#FFEDD5] px-2 py-0.5 rounded-md uppercase shrink-0">
+                          CONFIRMED
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom Stats Footer */}
-                  <div className="pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
+                  {/* 3 Stats Row for Mobile */}
+                  <div className="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-[#1D184C]">1,500+</div>
-                      <div className="text-[10px] text-slate-600 font-medium">Homes Visited</div>
+                      <div className="text-base font-bold text-[#1E293B]">1,500+</div>
+                      <div className="text-xs text-slate-600 font-semibold">Homes Visited</div>
                     </div>
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-emerald-600">100%</div>
-                      <div className="text-[10px] text-slate-600 font-medium">Address Proof</div>
+                      <div className="text-base font-bold text-[#008767]">100%</div>
+                      <div className="text-xs text-slate-600 font-semibold">Address Proof</div>
                     </div>
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-brand-gold">0%</div>
-                      <div className="text-[10px] text-slate-600 font-medium">Fake Profiles</div>
+                      <div className="text-base font-bold text-[#C25E00]">0%</div>
+                      <div className="text-xs text-slate-600 font-semibold">Fake Profiles</div>
                     </div>
                   </div>
+                </div>
 
+                {/* Footer Quote for Mobile */}
+                <div className="pt-2 text-center flex flex-col items-center gap-1.5">
+                  <div className="w-8 h-[2px] bg-[#C27803] rounded-full" />
+                  <p className="text-sm font-serif italic font-semibold text-slate-700">
+                    Real People. Real Verification. Real Trust.
+                  </p>
                 </div>
               </div>
-
             </div>
 
           </div>
@@ -400,11 +564,10 @@ export function TrustVerificationSection() {
               return (
                 <div
                   key={layer.id}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isOpen
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
                       ? "bg-white shadow-lg border-brand-gold/60 ring-2 ring-brand-gold/20"
                       : "bg-white/80 border-slate-200/80"
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => setActiveTab(isOpen ? -1 : idx)}
@@ -412,18 +575,18 @@ export function TrustVerificationSection() {
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`p-2.5 rounded-xl transition-all duration-300 ${
-                          isOpen
+                        className={`p-2.5 rounded-xl transition-all duration-300 ${isOpen
                             ? "bg-[#1D184C] text-white shadow-md"
                             : "bg-slate-100 text-slate-600"
-                        }`}
+                          }`}
                       >
                         <Icon size={18} />
                       </div>
                       <div>
-                        <h4 className={`text-sm font-playfair font-bold ${
-                          isOpen ? "text-[#1D184C]" : "text-slate-800"
-                        }`}>
+                        <h4
+                          className={`text-sm font-playfair font-bold ${isOpen ? "text-[#1D184C]" : "text-slate-800"
+                            }`}
+                        >
                           {layer.title}
                         </h4>
                         <p className="text-xs text-slate-600 sm:text-slate-500 font-normal sm:font-light truncate max-w-[180px] xs:max-w-none">
@@ -436,7 +599,11 @@ export function TrustVerificationSection() {
                       <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold border ${layer.badgeColor}`}>
                         {layer.badge}
                       </span>
-                      <ChevronRight size={16} className={`transition-transform duration-300 ${isOpen ? "rotate-90 text-brand-gold" : "text-slate-400"}`} />
+                      <ChevronRight
+                        size={16}
+                        className={`transition-transform duration-300 ${isOpen ? "rotate-90 text-brand-gold" : "text-slate-400"
+                          }`}
+                      />
                     </div>
                   </button>
 
@@ -459,7 +626,10 @@ export function TrustVerificationSection() {
                           </h5>
                           <div className="space-y-1.5">
                             {layer.points.map((pt, pIdx) => (
-                              <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-800 sm:text-slate-700 font-medium sm:font-normal">
+                              <div
+                                key={pIdx}
+                                className="flex items-start gap-2 text-xs text-slate-800 sm:text-slate-700 font-medium sm:font-normal"
+                              >
                                 <CheckCircle2 size={14} className="text-emerald-600 shrink-0 mt-0.5" />
                                 <span>{pt}</span>
                               </div>
@@ -483,7 +653,6 @@ export function TrustVerificationSection() {
 
           {/* Desktop Layout (>= lg): 2-Column Side-by-Side Tabs */}
           <ScrollReveal variant="fade-up" className="hidden lg:grid grid-cols-12 gap-6 items-start">
-            
             {/* Left Selector List */}
             <div className="lg:col-span-5 space-y-3">
               {verificationLayers.map((layer, idx) => {
@@ -493,26 +662,25 @@ export function TrustVerificationSection() {
                   <button
                     key={layer.id}
                     onClick={() => setActiveTab(idx)}
-                    className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between group cursor-pointer ${
-                      isActive
+                    className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between group cursor-pointer ${isActive
                         ? "bg-white shadow-xl border-brand-gold/60 ring-2 ring-brand-gold/20"
                         : "bg-white/60 hover:bg-white border-slate-200/80 hover:border-brand-gold/30"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3.5">
                       <div
-                        className={`p-3 rounded-xl transition-all duration-300 ${
-                          isActive
+                        className={`p-3 rounded-xl transition-all duration-300 ${isActive
                             ? "bg-[#1D184C] text-white scale-110 shadow-md"
                             : "bg-slate-100 text-slate-600 group-hover:bg-[#1D184C]/10 group-hover:text-[#1D184C]"
-                        }`}
+                          }`}
                       >
                         <Icon size={20} />
                       </div>
                       <div>
-                        <h4 className={`text-sm font-playfair font-bold transition-colors ${
-                          isActive ? "text-[#1D184C]" : "text-slate-800 group-hover:text-[#1D184C]"
-                        }`}>
+                        <h4
+                          className={`text-sm font-playfair font-bold transition-colors ${isActive ? "text-[#1D184C]" : "text-slate-800 group-hover:text-[#1D184C]"
+                            }`}
+                        >
                           {layer.title}
                         </h4>
                         <p className="text-xs text-slate-500 font-light truncate max-w-[200px] sm:max-w-none">
@@ -525,7 +693,10 @@ export function TrustVerificationSection() {
                       <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold border ${layer.badgeColor}`}>
                         {layer.badge}
                       </span>
-                      <ChevronRight size={16} className={`transition-transform ${isActive ? "rotate-90 text-brand-gold" : "text-slate-400"}`} />
+                      <ChevronRight
+                        size={16}
+                        className={`transition-transform ${isActive ? "rotate-90 text-brand-gold" : "text-slate-400"}`}
+                      />
                     </div>
                   </button>
                 );
@@ -544,14 +715,17 @@ export function TrustVerificationSection() {
                   className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-brand-border/60 relative overflow-hidden"
                 >
                   {/* Subtle Background Accent */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${verificationLayers[activeTab < 0 ? 0 : activeTab].highlightBg} pointer-events-none`} />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${verificationLayers[activeTab < 0 ? 0 : activeTab].highlightBg
+                      } pointer-events-none`}
+                  />
 
                   <div className="relative z-10 space-y-6">
                     <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                       <div className="flex items-center gap-3">
                         {React.createElement(verificationLayers[activeTab < 0 ? 0 : activeTab].icon, {
                           size: 28,
-                          className: "text-[#1D184C]"
+                          className: "text-[#1D184C]",
                         })}
                         <div>
                           <h4 className="text-xl font-playfair font-bold text-brand-charcoal">
@@ -563,7 +737,10 @@ export function TrustVerificationSection() {
                         </div>
                       </div>
 
-                      <span className={`text-xs px-3 py-1 rounded-full font-bold border ${verificationLayers[activeTab < 0 ? 0 : activeTab].badgeColor}`}>
+                      <span
+                        className={`text-xs px-3 py-1 rounded-full font-bold border ${verificationLayers[activeTab < 0 ? 0 : activeTab].badgeColor
+                          }`}
+                      >
                         {verificationLayers[activeTab < 0 ? 0 : activeTab].badge}
                       </span>
                     </div>
@@ -593,21 +770,17 @@ export function TrustVerificationSection() {
                       </span>
                       <span className="font-semibold text-[#1D184C]">100% Verified Assurance</span>
                     </div>
-
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
-
           </ScrollReveal>
         </div>
-
 
         {/* 100% AUTHENTICITY GUARANTEE & CALL BANNER */}
         <ScrollReveal variant="fade-up" className="mt-16">
           <div className="bg-gradient-to-r from-[#1D184C] via-[#2D2468] to-[#1D184C] border border-brand-gold/40 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              
               <div className="lg:col-span-8 space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">
                   <Award size={16} />
@@ -652,7 +825,6 @@ export function TrustVerificationSection() {
                   <span>Talk to Matchmaker Team</span>
                 </a>
               </div>
-
             </div>
           </div>
         </ScrollReveal>
@@ -697,7 +869,6 @@ export function TrustVerificationSection() {
             ))}
           </div>
         </ScrollReveal>
-
       </div>
     </section>
   );

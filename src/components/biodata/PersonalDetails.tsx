@@ -134,7 +134,7 @@ export function PersonalDetails({ register, setValue, watch, errors }: Props) {
           label="City / State" 
           {...register('city')} 
           error={errors.city?.message} 
-          placeholder="e.g. Bangalore, Karnataka" 
+          placeholder="e.g. Bengaluru, Karnataka" 
         />
       </div>
     </div>

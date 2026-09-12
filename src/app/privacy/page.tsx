@@ -24,14 +24,14 @@ const sections: Section[] = [
       <>
         <p>
           HumNikah is an Islamic matrimonial and matchmaking service operated from
-          Bangalore, India, serving Muslim individuals and families in India and,
+          Bengaluru, India, serving Muslim individuals and families in India and,
           where relevant, Non-Resident Indians and persons of Indian origin.
         </p>
         <p>
           Your personal data is handled in accordance with the laws of India,
           including the Digital Personal Data Protection Act, 2023. Any dispute
           relating to this Privacy Policy is subject to the exclusive jurisdiction
-          of the courts located in Bangalore, Karnataka.
+          of the courts located in Bengaluru, Karnataka.
         </p>
         <p>
           This Privacy Policy governs the data handling practices of HumNikah. It
@@ -328,7 +328,7 @@ const sections: Section[] = [
         </p>
         <p>
           <strong>Office:</strong> HumNikah, Splendid Plaza, No. 6, 2nd Floor,
-          Wheeler Road, Cox Town, Bangalore 560005, Karnataka, India.
+          Wheeler Road, Cox Town, Bengaluru 560005, Karnataka, India.
           <br />
           <strong>Telephone:</strong>{" "}
           <a href="tel:+919019082205">+91 90190 82205</a> /{" "}

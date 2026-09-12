@@ -33,7 +33,7 @@ export function PartnerPreferences({ register, errors }: Props) {
           label="Preferred Location" 
           {...register('prefLocation')} 
           error={errors.prefLocation?.message} 
-          placeholder="e.g. Bangalore / Karnataka / Any" 
+          placeholder="e.g. Bengaluru / Karnataka / Any" 
         />
         
         <Input 

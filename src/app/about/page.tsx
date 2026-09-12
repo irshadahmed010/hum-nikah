@@ -259,7 +259,7 @@ export default function AboutPage() {
                     <div className="text-3xl font-bold font-serif mb-4 text-brand-charcoal">IN</div>
                     <h3 className="text-xl font-bold text-brand-charcoal mb-4">Across India</h3>
                     <p className="text-brand-secondary text-sm leading-relaxed">
-                      Deep roots across South, North, West, and Northeast India — from Bangalore to every major Muslim community nationwide.
+                      Deep roots across South, North, West, and Northeast India — from Bengaluru to every major Muslim community nationwide.
                     </p>
                   </div>
 

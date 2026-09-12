@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Muslim matrimonial site",
     "Nikah matrimony",
     "Muslim marriage bureau",
-    "Muslim marriage bureau Bangalore",
+    "Muslim marriage bureau Bengaluru",
     "Sunni matrimony",
     "Muslim brides in India",
     "Muslim grooms in India",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
 
 const regions = [
   {
-    name: "Bangalore & Karnataka",
-    body: "Our head office in Cox Town, Bangalore serves Muslim families across Frazer Town, Shivaji Nagar, RT Nagar, Commercial Street, Tannery Road, Whitefield, Electronic City, Marathahalli, HSR Layout, Koramangala and beyond, as well as Mangaluru, Mysuru, Hubli-Dharwad, Bhatkal, Gulbarga and Bijapur.",
+    name: "Bengaluru & Karnataka",
+    body: "Our head office in Cox Town, Bengaluru serves Muslim families across Frazer Town, Shivaji Nagar, RT Nagar, Commercial Street, Tannery Road, Whitefield, Electronic City, Marathahalli, HSR Layout, Koramangala and beyond, as well as Mangaluru, Mysuru, Hubli-Dharwad, Bhatkal, Gulbarga and Bijapur.",
   },
   {
     name: "Kerala",
@@ -109,7 +109,7 @@ const whyChoose = [
   {
     icon: Building2,
     title: "Walk-In Offices",
-    body: "Meet our team in person for family consultations and verification support, starting from our Cox Town, Bangalore office.",
+    body: "Meet our team in person for family consultations and verification support, starting from our Cox Town, Bengaluru office.",
   },
   {
     icon: Users,
@@ -148,7 +148,7 @@ const faqs = [
   },
   {
     q: "Which cities in India does HumNikah cover?",
-    a: "We serve Muslim families across Karnataka (Bangalore, Mangaluru, Mysuru), Kerala, Tamil Nadu, Telangana (Hyderabad), Andhra Pradesh, Maharashtra (Mumbai, Pune), and coordinate verified matches nationwide across all states in India.",
+    a: "We serve Muslim families across Karnataka (Bengaluru, Mangaluru, Mysuru), Kerala, Tamil Nadu, Telangana (Hyderabad), Andhra Pradesh, Maharashtra (Mumbai, Pune), and coordinate verified matches nationwide across all states in India.",
   },
   {
     q: "Do you match within specific communities and schools of thought?",
@@ -193,7 +193,7 @@ const jsonLd = {
       address: {
         "@type": "PostalAddress",
         streetAddress: "Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town",
-        addressLocality: "Bangalore",
+        addressLocality: "Bengaluru",
         addressRegion: "Karnataka",
         postalCode: "560005",
         addressCountry: "IN",
@@ -397,7 +397,7 @@ export default function MuslimMatrimonyIndiaPage() {
               home visits so that families can proceed with confidence.
             </p>
             <p>
-              From Bangalore and Hyderabad to Kerala, Tamil Nadu, Andhra Pradesh,
+              From Bengaluru and Hyderabad to Kerala, Tamil Nadu, Andhra Pradesh,
               Maharashtra and all states across India — HumNikah helps thousands of
               families begin their journey to a blessed marriage.
             </p>
@@ -632,7 +632,7 @@ export default function MuslimMatrimonyIndiaPage() {
               compatible partner for Nikah.
             </p>
             <p>
-              From <strong>Karnataka</strong> (Bangalore, Mangalore, Mysore),{" "}
+              From <strong>Karnataka</strong> (Bengaluru, Mangalore, Mysore),{" "}
               <strong>Tamil Nadu</strong> (Chennai, Coimbatore),{" "}
               <strong>Telangana</strong> (Hyderabad),{" "}
               <strong>Andhra Pradesh</strong> (Vijayawada, Visakhapatnam),{" "}
@@ -785,14 +785,14 @@ export default function MuslimMatrimonyIndiaPage() {
             {/* NAP */}
             <div className="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/80 shadow-sm">
               <h2 className="text-lg font-playfair font-bold text-brand-charcoal mb-4">
-                Visit or Call Our Bangalore Office
+                Visit or Call Our Bengaluru Office
               </h2>
               <ul className="space-y-3.5 text-sm text-black">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
                   <span>
                     Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town,
-                    Bangalore 560005, Karnataka, India
+                    Bengaluru 560005, Karnataka, India
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
@@ -826,7 +826,7 @@ export default function MuslimMatrimonyIndiaPage() {
 
               <div className="mt-5 rounded-xl overflow-hidden border border-brand-border/80 h-[220px] bg-brand-beige">
                 <iframe
-                  title="HumNikah Bangalore Office Location"
+                  title="HumNikah Bengaluru Office Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6162142469752!2d77.61515297454692!3d12.99638121433557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17001f2e39cb%3A0x9f5280169fb12338!2sSplendid%20Plaza%20Cox%20Town!5e0!3m2!1sen!2sin!4v1786809446893!5m2!1sen!2sin"
                   width="100%"
                   height="100%"

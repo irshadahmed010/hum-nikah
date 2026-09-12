@@ -129,7 +129,7 @@ export default function ContactPage() {
                     <br />
                     Wheeler Road, Cox Town
                     <br />
-                    Bangalore 560005
+                    Bengaluru 560005
                   </p>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function ContactPage() {
               </h3>
             </div>
             <span className="text-xs text-brand-secondary bg-white border border-brand-border px-3 py-1 rounded-full font-medium hidden sm:inline-block">
-              Bangalore , India
+              Bengaluru, India
             </span>
           </div>
 
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   Wheeler Road
                 </p>
                 <p className="text-[11px] text-brand-secondary font-light">
-                  Cox Town, Bangalore
+                  Cox Town, Bengaluru
                 </p>
               </div>
             </div>

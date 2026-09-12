@@ -66,7 +66,7 @@ export function FamilyDetails({ register, setValue, watch, errors }: Props) {
             label="Family Location (City/Country)" 
             {...register('familyLocation')} 
             error={errors.familyLocation?.message} 
-            placeholder="e.g., Bangalore, India" 
+            placeholder="e.g., Bengaluru, India" 
           />
         </div>
       </div>

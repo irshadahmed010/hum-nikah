@@ -18,7 +18,7 @@ export const BUSINESS = {
   email: "connect@humnikah.com",
   streetAddress:
     "Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town",
-  locality: "Bangalore",
+  locality: "Bengaluru",
   region: "Karnataka",
   postalCode: "560005",
   country: "IN",

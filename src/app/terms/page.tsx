@@ -24,14 +24,14 @@ const sections: Section[] = [
       <>
         <p>
           HumNikah is an Islamic matrimonial and matchmaking service operated from
-          Bangalore, India, providing personalised, advisory-led matchmaking for
+          Bengaluru, India, providing personalised, advisory-led matchmaking for
           Muslim individuals and families in India and, where relevant, for
           Non-Resident Indians and persons of Indian origin.
         </p>
         <p>
           These Terms and your use of the services shall be governed by and
           construed in accordance with the laws of India. You irrevocably agree to
-          submit to the exclusive jurisdiction of the courts located in Bangalore,
+          submit to the exclusive jurisdiction of the courts located in Bengaluru,
           Karnataka, for the resolution of any dispute, claim, or cause of action
           arising out of or relating to the website or the services.
         </p>
@@ -422,7 +422,7 @@ const sections: Section[] = [
         </p>
         <p>
           <strong>Office:</strong> HumNikah, Splendid Plaza, No. 6, 2nd Floor,
-          Wheeler Road, Cox Town, Bangalore 560005, Karnataka, India.
+          Wheeler Road, Cox Town, Bengaluru 560005, Karnataka, India.
           <br />
           <strong>Telephone:</strong>{" "}
           <a href="tel:+919019082205">+91 90190 82205</a> /{" "}
