@@ -185,23 +185,23 @@ export function TrustVerificationSection() {
         {/* ==================================================================== */}
         {/* HERO BANNER SECTION (Laptop: home-visit-desktop.png | Mobile: home-visit-mobile.png) */}
         {/* ==================================================================== */}
-        <ScrollReveal variant="fade-up" className="mb-16 lg:relative lg:left-1/2 lg:right-1/2 lg:mx-[-50vw] lg:w-screen">
-          <div className="relative lg:rounded-none rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-200/80 bg-[#FAF8F5]">
+        <ScrollReveal variant="fade-up" className="mb-16">
+          <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-200/80 bg-[#FAF8F5]">
             
             {/* ------------------------------------------------------------------ */}
             {/* 1. LAPTOP / DESKTOP VIEW (hidden on mobile, visible on lg+) */}
             {/* ------------------------------------------------------------------ */}
-            <div className="hidden lg:block relative w-full lg:aspect-[1868/816]">
+            <div className="hidden lg:block relative w-full lg:aspect-[16/9]">
               {/* Background Desktop Image */}
               <div className="absolute inset-0 z-0">
                 <Image
                   src="/images/trust/home-visit-desktop.png"
                   alt="Home Visit Verification Desktop Background"
                   fill
-                  className="object-cover object-center brightness-[0.98]"
+                  className="object-cover object-[72%_center] brightness-[0.98]"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/80 from-0% via-white/40 via-12% to-transparent to-24% pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/70 via-20% to-transparent to-38% pointer-events-none" />
               </div>
 
               {/* Desktop Overlay Content */}
@@ -220,7 +220,7 @@ export function TrustVerificationSection() {
                     <span className="text-[#C27803] font-serif italic font-bold">Before</span> Matches Begin
                   </h3>
 
-                  <p className="text-black text-base leading-relaxed max-w-xl font-sans font-semibold">
+                  <p className="text-black text-base leading-relaxed max-w-xl font-sans font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.15)]">
                     To ensure complete safety for both families, our verification representative visits the candidates residence in-person. We verify family details, address, living environment, and character references—eliminating fake profiles completely.
                   </p>
 
@@ -277,7 +277,7 @@ export function TrustVerificationSection() {
 
                 {/* Right Floating Certificate Card */}
                 <div className="col-span-5 flex justify-end">
-                  <div className="w-full max-w-md bg-white text-[#1E293B] rounded-[28px] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-100 relative overflow-hidden">
+                  <div className="w-full max-w-md bg-white/60 backdrop-blur-md text-[#1E293B] rounded-[28px] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-100 relative overflow-hidden">
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-11 h-11 rounded-xl bg-[#008767] text-white flex items-center justify-center shadow-sm shrink-0">
