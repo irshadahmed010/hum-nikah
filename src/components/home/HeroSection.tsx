@@ -107,40 +107,16 @@ export function HeroSection() {
               variants={itemVariants}
               className="flex items-center justify-center lg:justify-start"
             >
-              <div className="inline-flex max-w-full items-center justify-center gap-2 sm:gap-3 px-4.5 py-2 sm:px-6 sm:py-2.5 lg:px-7 rounded-xl bg-[#FCFBF9] border border-brand-gold/40 shadow-sm hover:border-brand-gold transition-all duration-300">
+              <div className="inline-flex max-w-full items-center justify-center gap-2 sm:gap-3 px-5 py-3 sm:px-7 sm:py-3.5 lg:px-8 lg:py-4 rounded-xl bg-[#FCFBF9] border border-brand-gold/40 shadow-sm hover:border-brand-gold transition-all duration-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#651514] animate-pulse shrink-0 hidden xs:inline-block" />
-                <svg
-                  viewBox="0 0 650 96"
-                  className="w-full min-w-[185px] max-w-[225px] sm:max-w-[275px] md:max-w-[310px] h-auto"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <p
+                  dir="rtl"
+                  lang="ar"
                   aria-label="Bismillahir Rahmanir Raheem"
+                  className="font-aref-ruqaa-ink font-bold select-none leading-none bg-gradient-to-br from-[#1D184C] via-[#651514] to-[#8F6B38] bg-clip-text text-transparent text-[22px] sm:text-[27px] md:text-[30px] tracking-normal"
                 >
-                  <defs>
-                    <linearGradient id="heroBismillahGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#1D184C" />
-                      <stop offset="35%" stopColor="#651514" />
-                      <stop offset="70%" stopColor="#C58D5F" />
-                      <stop offset="100%" stopColor="#8F6B38" />
-                    </linearGradient>
-                  </defs>
-                  <text
-                    x="50%"
-                    y="58%"
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="font-bold select-none"
-                    fill="url(#heroBismillahGradient)"
-                    style={{
-                      fontSize: "52px",
-                      fontFamily: "var(--font-amiri), 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif",
-                      direction: "rtl",
-                      letterSpacing: "0.5px",
-                    }}
-                  >
-                    بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-                  </text>
-                </svg>
+                  بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+                </p>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#8F6B38] animate-pulse shrink-0 hidden xs:inline-block" />
               </div>
             </motion.div>

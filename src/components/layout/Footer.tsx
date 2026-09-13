@@ -40,7 +40,7 @@ export function Footer() {
                 <div className="flex items-center gap-1 sm:gap-1.5 mt-1 sm:mt-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
                   <span className="text-[11px] sm:text-[11.5px] font-bold font-outfit text-brand-gold uppercase tracking-[0.2em] leading-none transition-colors">
-                    Love with Barakah
+                    Bringing Hearts Together
                   </span>
                 </div>
               </div>

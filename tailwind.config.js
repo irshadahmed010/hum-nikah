@@ -34,6 +34,8 @@ module.exports = {
         outfit: ['var(--font-outfit)', '"Outfit"', 'sans-serif'],
         cinzel: ['var(--font-cinzel)', '"Cinzel"', 'serif'],
         amiri: ['var(--font-amiri)', '"Amiri"', '"Traditional Arabic"', 'serif'],
+        'aref-ruqaa': ['var(--font-aref-ruqaa)', '"Aref Ruqaa"', '"Amiri"', 'serif'],
+        'aref-ruqaa-ink': ['var(--font-aref-ruqaa-ink)', '"Aref Ruqaa Ink"', '"Amiri"', 'serif'],
       },
       maxWidth: {
         wrap: "1350px",

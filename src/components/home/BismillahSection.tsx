@@ -45,7 +45,7 @@ export function BismillahSection() {
               dir="rtl"
               lang="ar"
               aria-label="Bismillahir Rahmanir Raheem"
-              className="font-amiri font-bold leading-[1.9] sm:leading-[1.7] bg-gradient-to-br from-[#1D184C] via-[#651514] to-[#8F6B38] bg-clip-text text-transparent text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-normal"
+              className="font-aref-ruqaa-ink font-bold leading-[1.9] sm:leading-[1.7] bg-gradient-to-br from-[#1D184C] via-[#651514] to-[#8F6B38] bg-clip-text text-transparent text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-normal"
             >
               بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat, Outfit, Cinzel, Amiri } from "next/font/google";
+import { Playfair_Display, Montserrat, Outfit, Cinzel, Amiri, Aref_Ruqaa, Aref_Ruqaa_Ink } from "next/font/google";
 import "./globals.css";
 import { HeaderFooterWrapper } from "@/components/layout/HeaderFooterWrapper";
 import {
@@ -35,6 +35,18 @@ const cinzel = Cinzel({
 
 const amiri = Amiri({
   variable: "--font-amiri",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+});
+
+const arefRuqaa = Aref_Ruqaa({
+  variable: "--font-aref-ruqaa",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+});
+
+const arefRuqaaInk = Aref_Ruqaa_Ink({
+  variable: "--font-aref-ruqaa-ink",
   subsets: ["arabic", "latin"],
   weight: ["400", "700"],
 });
@@ -123,7 +135,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${montserrat.variable} ${outfit.variable} ${cinzel.variable} ${amiri.variable} h-full antialiased`}
+      className={`${playfair.variable} ${montserrat.variable} ${outfit.variable} ${cinzel.variable} ${amiri.variable} ${arefRuqaa.variable} ${arefRuqaaInk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-montserrat text-brand-charcoal bg-brand-cream">
         <script
