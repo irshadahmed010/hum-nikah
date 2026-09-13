@@ -210,37 +210,35 @@ export function BiodataForm() {
             )}
           </div>
 
-          {/* Gender Selector: Male (Blue) / Female (Pink) */}
+          {/* Gender Selector */}
           <div>
             <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">
               Gender <span className="text-red-500">*</span>
             </label>
             <div className="grid grid-cols-2 gap-3">
-              {/* Male Option (Blue Theme) */}
               <button
                 type="button"
                 onClick={() => handleGenderSelect("Male")}
                 className={`py-3 px-4 rounded-2xl font-bold text-sm transition-all border flex items-center justify-center gap-2 cursor-pointer ${
                   selectedGender === "Male"
-                    ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600 ring-2 ring-blue-400 shadow-md shadow-blue-500/25 scale-[1.02]"
-                    : "bg-blue-50/70 text-blue-900 border-blue-200 hover:border-blue-400 hover:bg-blue-100/60"
+                    ? "bg-brand-deep-green hover:bg-brand-emerald-hover text-white border-brand-deep-green ring-2 ring-brand-emerald/30 shadow-md shadow-brand-emerald/25 scale-[1.02]"
+                    : "bg-slate-50 text-slate-700 border-slate-200 hover:border-brand-emerald/40 hover:bg-slate-100"
                 }`}
               >
-                <span>Male</span>
+                <span>Groom</span>
                 {selectedGender === "Male" && <CheckCircle2 size={16} className="text-white" />}
               </button>
 
-              {/* Female Option (Pink Theme) */}
               <button
                 type="button"
                 onClick={() => handleGenderSelect("Female")}
                 className={`py-3 px-4 rounded-2xl font-bold text-sm transition-all border flex items-center justify-center gap-2 cursor-pointer ${
                   selectedGender === "Female"
-                    ? "bg-pink-600 hover:bg-pink-700 text-white border-pink-600 ring-2 ring-pink-400 shadow-md shadow-pink-500/25 scale-[1.02]"
-                    : "bg-pink-50/70 text-pink-900 border-pink-200 hover:border-pink-400 hover:bg-pink-100/60"
+                    ? "bg-brand-deep-green hover:bg-brand-emerald-hover text-white border-brand-deep-green ring-2 ring-brand-emerald/30 shadow-md shadow-brand-emerald/25 scale-[1.02]"
+                    : "bg-slate-50 text-slate-700 border-slate-200 hover:border-brand-emerald/40 hover:bg-slate-100"
                 }`}
               >
-                <span>Female</span>
+                <span>Bride</span>
                 {selectedGender === "Female" && <CheckCircle2 size={16} className="text-white" />}
               </button>
             </div>
@@ -269,6 +267,8 @@ export function BiodataForm() {
                 <option value="Daughter">Daughter</option>
                 <option value="Brother">Brother</option>
                 <option value="Sister">Sister</option>
+                <option value="Niece">Niece</option>
+                <option value="Nephew">Nephew</option>
                 <option value="Others (Specify)">Others (Specify)</option>
               </select>
             </div>
@@ -353,7 +353,6 @@ export function BiodataForm() {
               <Phone size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
               <input
                 type="tel"
-                placeholder="e.g. +91 9876543210"
                 className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
                 {...register("phone")}
               />
@@ -385,7 +384,6 @@ export function BiodataForm() {
               </div>
               <input
                 type="tel"
-                placeholder="e.g. +91 9876543210"
                 className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
                 {...register("whatsapp")}
               />
@@ -404,7 +402,6 @@ export function BiodataForm() {
               <Mail size={18} className="absolute left-3.5 text-brand-gold pointer-events-none" />
               <input
                 type="email"
-                placeholder="name@example.com"
                 className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-brand-charcoal text-sm outline-none transition-all shadow-xs"
                 {...register("email")}
               />

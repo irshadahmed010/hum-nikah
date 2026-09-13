@@ -14,7 +14,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 sm:gap-4 group inline-flex">
               <div className="flex-shrink-0 relative">
                 <img
-                  src="/images/hum-nikah-logo.png"
+                  src="/images/hum-nikah-new-logo.png"
                   alt="HumNikah Logo"
                   className="w-[68px] h-[68px] sm:w-[84px] sm:h-[84px] object-contain"
                 />

@@ -221,7 +221,7 @@ export function MatchAndFilterSection() {
                     </div>
                   </div>
 
-                  {/* Field 4: Gender (Male -> Blue, Female -> Pink) */}
+                  {/* Field 4: Gender */}
                   <div>
                     <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2 text-left">
                       Gender
@@ -232,11 +232,11 @@ export function MatchAndFilterSection() {
                         onClick={() => setFormData({ ...formData, gender: "Male" })}
                         className={`rounded-2xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
                           formData.gender === "Male"
-                            ? "bg-blue-600 text-white border-blue-600 ring-2 ring-blue-400 shadow-md shadow-blue-500/20"
-                            : "bg-blue-50/70 text-blue-900 border-blue-200 hover:border-blue-400 hover:bg-blue-100/60"
+                            ? "bg-brand-deep-green text-white border-brand-deep-green ring-2 ring-brand-emerald/30 shadow-md shadow-brand-emerald/20"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:border-brand-emerald/40 hover:bg-slate-100"
                         }`}
                       >
-                        <span>Male </span>
+                        <span>Groom</span>
                         {formData.gender === "Male" && <CheckCircle size={14} className="text-white" />}
                       </button>
                       <button
@@ -244,11 +244,11 @@ export function MatchAndFilterSection() {
                         onClick={() => setFormData({ ...formData, gender: "Female" })}
                         className={`rounded-2xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
                           formData.gender === "Female"
-                            ? "bg-pink-600 text-white border-pink-600 ring-2 ring-pink-400 shadow-md shadow-pink-500/20"
-                            : "bg-pink-50/70 text-pink-900 border-pink-200 hover:border-pink-400 hover:bg-pink-100/60"
+                            ? "bg-brand-deep-green text-white border-brand-deep-green ring-2 ring-brand-emerald/30 shadow-md shadow-brand-emerald/20"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:border-brand-emerald/40 hover:bg-slate-100"
                         }`}
                       >
-                        <span>Female</span>
+                        <span>Bride</span>
                         {formData.gender === "Female" && <CheckCircle size={14} className="text-white" />}
                       </button>
                     </div>

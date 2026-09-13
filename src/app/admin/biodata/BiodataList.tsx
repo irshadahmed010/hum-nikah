@@ -220,12 +220,8 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
                         <h3 className="font-playfair font-bold text-brand-charcoal text-base sm:text-lg truncate max-w-[150px] sm:max-w-[200px]">{biodata.fullName}</h3>
                         <div className="flex items-center gap-1.5 mt-0.5">
                           {biodata.age ? <span className="text-xs text-slate-500 font-medium">{biodata.age} yrs •</span> : null}
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
-                            biodata.gender === 'Male'
-                              ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                              : 'bg-pink-50 text-pink-700 border border-pink-200'
-                          }`}>
-                            {biodata.gender === 'Male' ? 'Male (Islamic)' : biodata.gender}
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">
+                            {biodata.gender === 'Male' ? 'Groom' : 'Bride'}
                           </span>
                         </div>
                       </div>
@@ -374,17 +370,13 @@ export default function BiodataList({ initialBiodatas }: { initialBiodatas: Biod
               {/* Overview Blocks */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
                 {hasValue(selectedBiodata.gender) && (
-                  <div className={`rounded-xl sm:rounded-2xl p-3 sm:p-4 border shadow-sm ${
-                    selectedBiodata.gender === 'Male'
-                      ? 'bg-blue-50/80 border-blue-200 text-blue-950'
-                      : 'bg-pink-50/80 border-pink-200 text-pink-950'
-                  }`}>
-                    <span className={`block text-[9px] sm:text-[10px] uppercase tracking-wider font-bold mb-1 ${
-                      selectedBiodata.gender === 'Male' ? 'text-blue-600' : 'text-pink-600'
-                    }`}>
+                  <div className="rounded-xl sm:rounded-2xl p-3 sm:p-4 border shadow-sm bg-slate-50 border-slate-200 text-brand-charcoal">
+                    <span className="block text-[9px] sm:text-[10px] uppercase tracking-wider font-bold mb-1 text-slate-500">
                       Gender
                     </span>
-                    <span className="block text-xs sm:text-sm font-bold">{selectedBiodata.gender}</span>
+                    <span className="block text-xs sm:text-sm font-bold">
+                      {selectedBiodata.gender === 'Male' ? 'Groom' : 'Bride'}
+                    </span>
                   </div>
                 )}
                 {hasValue(selectedBiodata.age) && (

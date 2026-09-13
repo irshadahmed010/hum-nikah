@@ -77,7 +77,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer select-none">
               <div className="flex-shrink-0 relative">
                 <img
-                  src="/images/hum-nikah-logo.png"
+                  src="/images/hum-nikah-new-logo.png"
                   alt="HumNikah Logo"
                   className="w-14 h-14 sm:w-[60px] sm:h-[60px] lg:w-[68px] lg:h-[68px] object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
                 />
@@ -103,7 +103,7 @@ export function Navbar() {
                 <div className="flex items-center gap-1 sm:gap-1.5 mt-1 sm:mt-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
                   <span className="text-[11px] sm:text-[12px] lg:text-[12.5px] font-bold text-brand-emerald/90 uppercase tracking-[0.2em] leading-none transition-colors group-hover:text-brand-gold">
-                    Love with Barakah
+                    Bringing Hearts Together
                   </span>
                 </div>
               </div>

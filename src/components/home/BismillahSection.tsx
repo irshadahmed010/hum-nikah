@@ -39,48 +39,16 @@ export function BismillahSection() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative inline-block my-1.5 sm:my-2.5 w-full"
         >
-          {/* Detailed Modern Vector Calligraphy for Bismillah */}
-          <div className="py-2.5 px-4 sm:px-8 rounded-3xl bg-white/80 backdrop-blur-xs border border-brand-gold/25 shadow-sm hover:shadow-md transition-shadow max-w-2xl mx-auto">
-            {/* Arabic Calligraphy SVG */}
-            <svg
-              viewBox="0 0 720 130"
-              className="w-full max-w-[310px] sm:max-w-[460px] md:max-w-[550px] lg:max-w-[620px] h-auto mx-auto filter drop-shadow-xs"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          {/* Bismillah in real Arabic calligraphy text (HTML, not SVG, so glyphs/diacritics shape correctly on every device) */}
+          <div className="py-4 sm:py-6 px-4 sm:px-8 rounded-3xl bg-white/80 backdrop-blur-xs border border-brand-gold/25 shadow-sm hover:shadow-md transition-shadow max-w-2xl mx-auto">
+            <p
+              dir="rtl"
+              lang="ar"
               aria-label="Bismillahir Rahmanir Raheem"
+              className="font-amiri font-bold leading-[1.9] sm:leading-[1.7] bg-gradient-to-br from-[#1D184C] via-[#651514] to-[#8F6B38] bg-clip-text text-transparent text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-normal"
             >
-              <defs>
-                <linearGradient id="goldGradientCalligraphy" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#1D184C" />
-                  <stop offset="35%" stopColor="#651514" />
-                  <stop offset="70%" stopColor="#C58D5F" />
-                  <stop offset="100%" stopColor="#8F6B38" />
-                </linearGradient>
-                <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#C58D5F" />
-                  <stop offset="50%" stopColor="#E5B887" />
-                  <stop offset="100%" stopColor="#C58D5F" />
-                </linearGradient>
-              </defs>
-
-              {/* Central Arabic Calligraphy Path Rendered with high precision */}
-              <text
-                x="50%"
-                y="63%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                className="font-serif font-bold"
-                fill="url(#goldGradientCalligraphy)"
-                style={{
-                  fontSize: "58px",
-                  fontFamily: "'Traditional Arabic', 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', serif",
-                  direction: "rtl",
-                  letterSpacing: "1.2px",
-                }}
-              >
-                بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-              </text>
-            </svg>
+              بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+            </p>
           </div>
         </motion.div>
 

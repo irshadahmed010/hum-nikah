@@ -100,7 +100,7 @@ export function HeroSection() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-6 space-y-6 text-center lg:text-left"
+            className="order-2 lg:order-1 lg:col-span-6 space-y-6 text-center lg:text-left"
           >
             {/* Bismillah Calligraphy Artwork */}
             <motion.div
@@ -251,7 +251,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-6 relative flex justify-center"
+            className="order-1 lg:order-2 lg:col-span-6 relative flex justify-center"
           >
             <div className="relative w-full max-w-lg lg:max-w-none">
               
