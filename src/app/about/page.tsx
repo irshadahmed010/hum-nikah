@@ -428,6 +428,66 @@ export default function AboutPage() {
       </section>
 
       {/* ---------------------------------------------------- */}
+      {/* 3.5 MEET OUR FOUNDER                                 */}
+      {/* ---------------------------------------------------- */}
+      <section className="py-12 sm:py-16 bg-white relative overflow-hidden border-t border-brand-border/60">
+        <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+            {/* Founder Photo */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-sm">
+                <div className="relative rounded-[28px] overflow-hidden border-4 border-white shadow-2xl bg-brand-beige aspect-square">
+                  <Image
+                    src="/images/about/founderimg.png"
+                    alt="Reshma Syed - Founder, HumNikah"
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 40vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="absolute -bottom-5 -right-4 sm:-right-6 bg-white rounded-2xl shadow-xl border border-brand-border/60 px-5 py-3.5 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0">
+                    <HeartHandshake size={20} />
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold font-playfair text-brand-charcoal leading-none">15+ Years</div>
+                    <div className="text-[11px] text-brand-secondary font-medium">Of Trusted Matchmaking</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Founder Story */}
+            <div className="lg:col-span-7 text-center lg:text-left space-y-5">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold text-xs font-bold uppercase tracking-widest shadow-xs">
+                <Sparkles size={14} className="text-brand-gold" />
+                <span>Meet Our Founder</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-brand-charcoal leading-tight">
+                Reshma Syed
+              </h2>
+              <p className="text-brand-emerald font-semibold text-base sm:text-lg -mt-3">
+                Founder, HumNikah Muslim Matrimonial Services
+              </p>
+
+              <p className="text-brand-secondary text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                For over 15 years, Reshma Syed has been personally matchmaking Muslim families the traditional, offline way — sitting with parents, understanding their values, and finding matches rooted in trust and sincerity. HumNikah was born from that same offline legacy, bringing her decades of hands-on experience and community trust onto a modern, verified platform.
+              </p>
+
+              <div className="bg-brand-light-cream border-l-4 border-brand-emerald p-5 sm:p-6 rounded-r-2xl max-w-2xl mx-auto lg:mx-0 shadow-sm">
+                <p className="text-brand-charcoal italic text-base sm:text-lg font-medium font-playfair">
+                  &quot;Every match I make carries the same care and responsibility as if it were for my own family.&quot;
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------- */}
       {/* 4. CHARITY & DIFFERENCE ABLED SOCIAL INITIATIVE     */}
       {/* ---------------------------------------------------- */}
       <SocialInitiativeSection />
