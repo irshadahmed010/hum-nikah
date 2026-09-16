@@ -91,8 +91,7 @@ export default function ContactPage() {
                     </a>
                   </div>
                   <p className="text-[11px] text-brand-secondary/70 mt-1 flex items-center gap-1 font-light">
-                    <Clock size={12} className="text-brand-gold" /> Mon-Sat from
-                    9am to 6pm IST
+                    <Clock size={12} className="text-brand-gold" /> Mon - Sun : 10:00 AM - 10:00 PM IST
                   </p>
                 </div>
               </div>

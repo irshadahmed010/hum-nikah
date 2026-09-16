@@ -37,18 +37,41 @@ export function BismillahSection() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative inline-block my-1.5 sm:my-2.5 w-full"
+          className="relative inline-flex items-center justify-center my-2 sm:my-3.5 w-full"
         >
-          {/* Bismillah in real Arabic calligraphy text (HTML, not SVG, so glyphs/diacritics shape correctly on every device) */}
-          <div className="py-4 sm:py-6 px-4 sm:px-8 rounded-3xl bg-white/80 backdrop-blur-xs border border-brand-gold/25 shadow-sm hover:shadow-md transition-shadow max-w-2xl mx-auto">
-            <p
-              dir="rtl"
-              lang="ar"
+          <div className="inline-flex max-w-full items-center justify-center px-5 sm:px-12 py-4 sm:py-6 md:py-7 rounded-[10px] bg-white/90 backdrop-blur-sm border border-brand-gold/30 shadow-sm hover:border-brand-gold hover:shadow-md transition-all duration-300">
+            <svg
+              viewBox="0 0 600 95"
+              className="w-full min-w-[260px] max-w-[340px] xs:max-w-[440px] sm:max-w-[580px] md:max-w-[700px] lg:max-w-[800px] h-auto"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               aria-label="Bismillahir Rahmanir Raheem"
-              className="font-aref-ruqaa-ink font-bold leading-[1.9] sm:leading-[1.7] bg-gradient-to-br from-[#1D184C] via-[#651514] to-[#8F6B38] bg-clip-text text-transparent text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-normal"
             >
-              بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-            </p>
+              <defs>
+                <linearGradient id="blessedBismillahGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#1D184C" />
+                  <stop offset="35%" stopColor="#651514" />
+                  <stop offset="70%" stopColor="#C58D5F" />
+                  <stop offset="100%" stopColor="#8F6B38" />
+                </linearGradient>
+              </defs>
+              <text
+                x="50%"
+                y="56%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="font-bold select-none"
+                fill="url(#blessedBismillahGradient)"
+                style={{
+                  fontSize: "66px",
+                  fontFamily: "var(--font-amiri), 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif",
+                  direction: "rtl",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+              </text>
+            </svg>
           </div>
         </motion.div>
 

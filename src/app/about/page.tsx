@@ -459,25 +459,36 @@ export default function AboutPage() {
             </div>
 
             {/* Founder Story */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-5">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold text-xs font-bold uppercase tracking-widest shadow-xs">
+            <div className="lg:col-span-7 text-center lg:text-left space-y-3.5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold text-xs font-bold uppercase tracking-widest shadow-xs">
                 <Sparkles size={14} className="text-brand-gold" />
                 <span>Meet Our Founder</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-brand-charcoal leading-tight">
-                Reshma Syed
-              </h2>
-              <p className="text-brand-emerald font-semibold text-base sm:text-lg -mt-3">
-                Founder, HumNikah Muslim Matrimonial Services
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-brand-charcoal leading-tight">
+                  Reshma Syed
+                </h2>
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+                  <p className="text-brand-emerald font-semibold text-base sm:text-lg">
+                    Founder, HumNikah
+                  </p>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-brand-gold/15 text-brand-emerald text-xs font-bold border border-brand-gold/30">
+                    M.A., B.Ed.
+                  </span>
+                </div>
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-light-cream border border-brand-border text-xs sm:text-sm font-medium text-brand-charcoal">
+                <span>Former School Teacher &amp; Lecturer (M.A., B.Ed.)</span>
+              </div>
+
+              <p className="text-brand-secondary text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                &ldquo;I was a school teacher and lecturer (M.A., B.Ed.).&rdquo; For over 15 years, Reshma Syed has been personally matchmaking Muslim families the traditional, offline way — sitting with parents, understanding their values, and finding matches rooted in trust and sincerity. HumNikah was born from that same offline legacy, bringing her decades of hands-on experience and community trust onto a modern, verified platform.
               </p>
 
-              <p className="text-brand-secondary text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                For over 15 years, Reshma Syed has been personally matchmaking Muslim families the traditional, offline way — sitting with parents, understanding their values, and finding matches rooted in trust and sincerity. HumNikah was born from that same offline legacy, bringing her decades of hands-on experience and community trust onto a modern, verified platform.
-              </p>
-
-              <div className="bg-brand-light-cream border-l-4 border-brand-emerald p-5 sm:p-6 rounded-r-2xl max-w-2xl mx-auto lg:mx-0 shadow-sm">
-                <p className="text-brand-charcoal italic text-base sm:text-lg font-medium font-playfair">
+              <div className="bg-brand-light-cream border-l-4 border-brand-emerald p-3.5 sm:p-4 rounded-r-xl max-w-2xl mx-auto lg:mx-0 shadow-xs">
+                <p className="text-brand-charcoal italic text-xs sm:text-sm font-medium font-playfair">
                   &quot;Every match I make carries the same care and responsibility as if it were for my own family.&quot;
                 </p>
               </div>

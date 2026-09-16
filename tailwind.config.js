@@ -37,6 +37,12 @@ module.exports = {
         'aref-ruqaa': ['var(--font-aref-ruqaa)', '"Aref Ruqaa"', '"Amiri"', 'serif'],
         'aref-ruqaa-ink': ['var(--font-aref-ruqaa-ink)', '"Aref Ruqaa Ink"', '"Amiri"', 'serif'],
       },
+      screens: {
+        xs: '420px',
+      },
+      spacing: {
+        '4.5': '1.125rem',
+      },
       maxWidth: {
         wrap: "1350px",
       },
