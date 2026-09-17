@@ -307,6 +307,17 @@ export function Navbar() {
               <span className="tracking-wide">+91 98443 21312</span>
             </a>
 
+            <a
+              href="tel:+919019082205"
+              className="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-xl bg-brand-cream/70 border border-brand-border text-brand-charcoal hover:bg-[#1D184C] hover:text-white font-semibold font-outfit text-sm transition-all shadow-2xs group"
+            >
+              <div className="w-7 h-7 rounded-full bg-brand-emerald text-white flex items-center justify-center group-hover:bg-brand-gold transition-colors">
+                <Phone size={14} />
+              </div>
+              <span className="tracking-wide">+91 90190 82205</span>
+            </a>
+
+
             <Link 
               href="/submit-biodata" 
               onClick={() => setIsMobileMenuOpen(false)}

@@ -241,13 +241,9 @@ const sections: Section[] = [
     title: "8. Fee Structure & Payment Policy",
     body: (
       <>
+        <h3>Transparent Pricing</h3>
         <p>
-          HumNikah matrimonial services follow a two-tier fee structure:
-          <strong> &ldquo;Half in advance&rdquo;</strong> upon registration and profile verification to initiate personalized matchmaking, and
-          <strong> &ldquo;Half after marriage&rdquo;</strong> upon the successful conclusion of the Nikah.
-        </p>
-        <p>
-          The initial advance fee covers immediate operational costs, background checks, relationship manager assignment, and active profile shortlisting. By making a payment, you confirm that you have read and accepted these terms.
+          We believe in complete transparency and clarity. We charge a registration fee initially upon signup, and when the marriage is successfully fixed, a mutually agreed predetermined fixed amount is charged as discussed with the family. There are no hidden fees or exorbitant percentage-based broker commissions.
         </p>
       </>
     ),

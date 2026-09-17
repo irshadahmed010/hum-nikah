@@ -297,6 +297,14 @@ const categories: Category[] = [
         ),
       },
       {
+        q: "Do you charge expensive commissions after Nikah?",
+        a: (
+          <>
+            <strong>Transparent Pricing:</strong> We believe in complete transparency and clarity. We charge a registration fee initially upon signup, and when the marriage is successfully fixed, a mutually agreed predetermined fixed amount is charged as discussed with the family. There are no hidden fees or exorbitant percentage-based broker commissions.
+          </>
+        ),
+      },
+      {
         q: "How are the matchmaking charges and payments structured?",
         a: (
           <>
