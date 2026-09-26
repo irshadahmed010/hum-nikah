@@ -5,6 +5,7 @@ import { deleteBlog } from "./actions";
 import { revalidatePath } from "next/cache";
 import DeleteButton from "./DeleteButton";
 import { BLOG_POSTS } from "@/data/blogsData";
+import type { BlogPost } from "@/data/blogsData";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +37,7 @@ export default async function AdminBlogsPage() {
         <div>
                     <h1 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-1 sm:mb-2">Blog Management</h1>
 
-          <p className="text-sm sm:text-base text-brand-secondary">Manage your website's blog posts, articles, and guidance.</p>
+          <p className="text-sm sm:text-base text-brand-secondary">Manage your website&apos;s blog posts, articles, and guidance.</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
@@ -51,7 +52,7 @@ export default async function AdminBlogsPage() {
 
       {displayBlogs && displayBlogs.length > 0 ? (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {displayBlogs.map((blog: any) => (
+          {displayBlogs.map((blog: BlogPost) => (
             <div key={blog.id} className="bg-white rounded-2xl shadow-sm border border-brand-border/60 overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
               <div className="relative h-24 sm:h-48 w-full bg-brand-beige overflow-hidden">
                 {blog.image ? (

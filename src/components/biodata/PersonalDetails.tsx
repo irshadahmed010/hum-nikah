@@ -112,7 +112,7 @@ export function PersonalDetails({ register, setValue, watch, errors }: Props) {
           icon={<HeartHandshake size={16} />}
           placeholder="Select Status"
           value={maritalStatusValue}
-          onChange={(val) => setValue('maritalStatus', val as any, { shouldValidate: true })}
+          onChange={(val) => setValue('maritalStatus', val as unknown as never, { shouldValidate: true })}
           error={errors.maritalStatus?.message}
           options={[
             { value: 'Never Married', label: 'Never Married' },

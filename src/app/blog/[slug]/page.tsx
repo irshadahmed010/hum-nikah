@@ -1,9 +1,13 @@
-import React from "react";
+import React, { cache } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, Tag, BookOpen, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { BLOG_POSTS } from "@/data/blogsData";
+import { SITE_URL } from "@/lib/site";
+import { buildMetadata } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{
@@ -11,54 +15,61 @@ interface PageProps {
   }>;
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  
-  const { data: post } = await supabase
-    .from("blogs")
-    .select("title, excerpt")
-    .eq("slug", slug)
-    .single();
+export const revalidate = 3600;
 
-  if (!post) {
-    const fallbackPost = BLOG_POSTS.find(p => p.slug === slug);
-    if (!fallbackPost) {
-      return {
-        title: "Article Not Found | HumNikah",
-      };
-    }
-    return {
-      title: `${fallbackPost.title} | HumNikah Blog`,
-      description: fallbackPost.excerpt,
-    };
-  }
-
-  return {
-    title: `${post.title} | HumNikah Blog`,
-    description: post.excerpt,
-  };
+export async function generateStaticParams() {
+  // Known static slugs are prebuilt; any newer DB slug renders on demand.
+  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
-export const dynamic = "force-dynamic";
-
-export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = await params;
-  
-  const { data: dbPost, error } = await supabase
+const getPost = cache(async (slug: string) => {
+  const { data } = await supabase
     .from("blogs")
     .select("*")
     .eq("slug", slug)
     .single();
 
-  let post = dbPost;
-  
-  if (error || !post) {
-    const fallbackPost = BLOG_POSTS.find((p) => p.slug === slug);
-    if (fallbackPost) {
-      post = fallbackPost;
-    } else {
-      notFound();
-    }
+  if (data) return data;
+  return BLOG_POSTS.find((p) => p.slug === slug) ?? null;
+});
+
+const toIso = (value?: string): string | undefined => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return { title: "Article Not Found" };
+  }
+
+  const description =
+    typeof post.excerpt === "string"
+      ? post.excerpt.slice(0, 160)
+      : undefined;
+
+  return buildMetadata({
+    title: post.title,
+    description: description ?? post.title,
+    path: `/blog/${slug}`,
+    image: post.image,
+    type: "article",
+    publishedTime: toIso(post.created_at ?? post.publishedAt),
+    modifiedTime: toIso(post.updated_at),
+  });
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
+
+  const post = await getPost(slug);
+
+  if (!post) {
+    notFound();
   }
 
   const { data: dbRelatedPosts } = await supabase
@@ -72,8 +83,45 @@ export default async function BlogPostPage({ params }: PageProps) {
     relatedPosts = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 3);
   }
 
+  const canonicalUrl = `${SITE_URL}/blog/${slug}`;
+  const datePublished = toIso(post.created_at ?? post.publishedAt);
+  const dateModified = toIso(post.updated_at);
+  const authorName: string | undefined = post.author?.name;
+  const authorImageAlt = post.author?.name || "HumNikah team";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        image: post.image ? [post.image] : undefined,
+        datePublished,
+        dateModified: dateModified ?? datePublished,
+        author: authorName
+          ? { "@type": "Person", name: authorName }
+          : { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        mainEntityOfPage: canonicalUrl,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-brand-cream pb-16 sm:pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Top Banner & Header */}
       <section className="bg-[#1D184C] text-white py-8 sm:py-12 border-b border-brand-gold/20 relative overflow-hidden">
         {/* Glow orb */}
@@ -108,11 +156,15 @@ export default async function BlogPostPage({ params }: PageProps) {
           {/* Author & Meta bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/10 text-xs text-slate-300">
             <div className="flex items-center gap-2.5">
-              <img
-                src={post.author?.avatar}
-                alt={post.author?.name}
-                className="w-8 h-8 rounded-full object-cover border border-brand-gold/40"
-              />
+              {post.author?.avatar && (
+                <Image
+                  src={post.author.avatar}
+                  alt={authorImageAlt}
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 rounded-full object-cover border border-brand-gold/40"
+                />
+              )}
               <div>
                 <p className="font-semibold text-white text-xs">{post.author?.name}</p>
                 <p className="text-[10px] text-slate-400">{post.author?.role}</p>
@@ -148,9 +200,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Compact & Responsive Featured Image */}
         <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-brand-border/80 mb-6 sm:mb-8 bg-brand-beige max-w-3xl lg:max-w-4xl mx-auto">
-          <img
+          <Image
             src={post.image}
             alt={post.title}
+            width={1600}
+            height={900}
             className="w-full h-auto max-h-[280px] sm:max-h-[380px] object-cover"
           />
         </div>
@@ -186,11 +240,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Author Box */}
           <div className="mt-6 bg-brand-cream/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-brand-border/80 flex items-center gap-3.5">
-            <img
-              src={post.author?.avatar}
-              alt={post.author?.name}
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-brand-gold flex-shrink-0"
-            />
+            {post.author?.avatar && (
+              <Image
+                src={post.author.avatar}
+                alt={authorImageAlt}
+                width={48}
+                height={48}
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-brand-gold flex-shrink-0"
+              />
+            )}
             <div>
               <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal">{post.author?.name}</h4>
               <p className="text-[11px] text-brand-gold font-semibold">{post.author?.role}</p>
@@ -227,10 +285,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <div>
                   {/* Image */}
                   <div className="h-44 sm:h-48 w-full overflow-hidden bg-brand-beige relative">
-                    <img
+                    <Image
                       src={related.image}
                       alt={related.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
                       <span className="px-2.5 py-1 rounded-md bg-[#1D184C]/90 backdrop-blur-md text-white text-[11px] font-semibold tracking-wide">
@@ -261,11 +321,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                 <div className="p-5 sm:p-6 pt-0 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <img
-                      src={related.author?.avatar}
-                      alt={related.author?.name}
-                      className="w-6 h-6 rounded-full object-cover border border-brand-gold/30"
-                    />
+                    {related.author?.avatar && (
+                      <Image
+                        src={related.author.avatar}
+                        alt={related.author?.name || "HumNikah team"}
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 rounded-full object-cover border border-brand-gold/30"
+                      />
+                    )}
                     <span className="text-[11px] font-semibold text-brand-charcoal truncate max-w-[100px]">
                       {related.author?.name}
                     </span>

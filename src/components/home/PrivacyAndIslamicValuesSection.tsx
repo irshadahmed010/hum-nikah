@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, Lock, Users, HeartHandshake, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
@@ -65,9 +66,12 @@ export function PrivacyAndIslamicValuesSection() {
           {/* Left Column: Image Card with Ambient Floating Badges */}
           <ScrollReveal variant="fade-right" className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-brand-gold/30 group">
-              <img
+              <Image
                 src="/images/hero/img_02.webp"
-                alt="Islamic Nikah Values"
+                alt="Islamic Nikah values"
+                width={900}
+                height={1200}
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="w-full h-[420px] sm:h-[500px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1D184C]/90 via-[#1D184C]/30 to-transparent" />

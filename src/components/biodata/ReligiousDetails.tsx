@@ -33,7 +33,7 @@ export function ReligiousDetails({ register, setValue, watch, errors }: Props) {
           icon={<BookOpen size={16} />}
           placeholder="Select Level"
           value={religiousPracticeValue}
-          onChange={(val) => setValue('religiousPractice', val as any, { shouldValidate: true })}
+          onChange={(val) => setValue('religiousPractice', val as unknown as never, { shouldValidate: true })}
           error={errors.religiousPractice?.message}
           options={[
             { value: 'Very Practicing', label: 'Very Practicing' },
@@ -47,7 +47,7 @@ export function ReligiousDetails({ register, setValue, watch, errors }: Props) {
           icon={<Sparkles size={16} />}
           placeholder="Select Prayer Practice"
           value={prayerPracticeValue}
-          onChange={(val) => setValue('prayerPractice', val as any, { shouldValidate: true })}
+          onChange={(val) => setValue('prayerPractice', val as unknown as never, { shouldValidate: true })}
           error={errors.prayerPractice?.message}
           options={[
             { value: 'Always Pray (5 Times Daily)', label: 'Always Pray (5 Times Daily)' },

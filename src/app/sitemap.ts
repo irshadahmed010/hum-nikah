@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { BLOG_POSTS } from "@/data/blogsData";
+import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 // Regenerate at most once an hour so newly published blog posts appear.
 export const revalidate = 3600;
@@ -25,7 +26,7 @@ const STATIC_ROUTES: StaticRoute[] = [
 ];
 
 async function getBlogEntries(): Promise<
-  { slug: string; lastModified: Date }[]
+  { slug: string; lastModified?: Date }[]
 > {
   // Prefer live posts from Supabase; fall back to the bundled static posts
   // (and never let a missing DB / env break sitemap generation).
@@ -48,26 +49,30 @@ async function getBlogEntries(): Promise<
 
     return data
       .filter((row: { slug?: string | null }) => Boolean(row.slug))
-      .map((row: { slug: string; created_at?: string; updated_at?: string }) => ({
-        slug: row.slug,
-        lastModified: new Date(row.updated_at ?? row.created_at ?? Date.now()),
-      }));
+      .map((row: { slug: string; created_at?: string; updated_at?: string }) => {
+        const stamp = row.updated_at || row.created_at;
+        return {
+          slug: row.slug,
+          lastModified: stamp ? new Date(stamp) : undefined,
+        };
+      });
   } catch {
-    return BLOG_POSTS.map((post) => ({
-      slug: post.slug,
-      lastModified: new Date(),
-    }));
+    // Static posts: omit lastModified rather than stamping every build with now().
+    return BLOG_POSTS.map((post) => ({ slug: post.slug }));
   }
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route.path}`,
-    lastModified: now,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
+  }));
+
+  const cityEntries: MetadataRoute.Sitemap = OFFICE_LOCATIONS.map((office) => ({
+    url: `${SITE_URL}/muslim-matrimony/${office.city.toLowerCase()}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = (await getBlogEntries()).map(
@@ -79,5 +84,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  return [...staticEntries, ...blogEntries];
+  return [...staticEntries, ...cityEntries, ...blogEntries];
 }

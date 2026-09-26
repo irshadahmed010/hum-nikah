@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat, Outfit, Cinzel, Amiri, Aref_Ruqaa, Aref_Ruqaa_Ink } from "next/font/google";
+import { Playfair_Display, Montserrat, Outfit, Amiri } from "next/font/google";
 import "./globals.css";
 import { HeaderFooterWrapper } from "@/components/layout/HeaderFooterWrapper";
 import {
@@ -9,46 +9,33 @@ import {
   BUSINESS,
   SOCIAL_LINKS,
 } from "@/lib/site";
+import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const amiri = Amiri({
   variable: "--font-amiri",
   subsets: ["arabic", "latin"],
   weight: ["400", "700"],
-});
-
-const arefRuqaa = Aref_Ruqaa({
-  variable: "--font-aref-ruqaa",
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-});
-
-const arefRuqaaInk = Aref_Ruqaa_Ink({
-  variable: "--font-aref-ruqaa-ink",
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -59,17 +46,6 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  alternates: { canonical: "/" },
-  keywords: [
-    "HumNikah",
-    "Hum Nikah",
-    "Muslim matrimony",
-    "Muslim matrimonial",
-    "Nikah matchmaking",
-    "Muslim marriage bureau",
-    "Shariah compliant matrimony",
-    "Muslim brides and grooms",
-  ],
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -99,8 +75,8 @@ const organizationJsonLd = {
       name: SITE_NAME,
       alternateName: "Hum Nikah",
       url: SITE_URL,
-      logo: `${SITE_URL}/icon.png`,
-      image: `${SITE_URL}/icon.png`,
+      logo: `${SITE_URL}/images/hum-nikah-new-logo.png`,
+      image: `${SITE_URL}/images/hum-nikah-new-logo.png`,
       description: SITE_DESCRIPTION,
       email: BUSINESS.email,
       telephone: `+${BUSINESS.phone[0].replace(/[^0-9]/g, "")}`,
@@ -114,7 +90,28 @@ const organizationJsonLd = {
       },
       areaServed: "IN",
       sameAs: SOCIAL_LINKS,
+      department: OFFICE_LOCATIONS.map((office) => ({
+        "@id": `${SITE_URL}/#office-${office.city.toLowerCase()}`,
+      })),
     },
+    ...OFFICE_LOCATIONS.map((office) => ({
+      "@type": "LocalBusiness",
+      "@id": `${SITE_URL}/#office-${office.city.toLowerCase()}`,
+      name: `HumNikah ${office.city}`,
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+      url: `${SITE_URL}/muslim-matrimony/${office.city.toLowerCase()}`,
+      telephone: office.phone
+        ? `+${office.phone.replace(/[^0-9]/g, "")}`
+        : undefined,
+      email: office.email ?? BUSINESS.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: office.address,
+        addressLocality: office.city,
+        addressRegion: office.state,
+        addressCountry: "IN",
+      },
+    })),
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
@@ -134,8 +131,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${playfair.variable} ${montserrat.variable} ${outfit.variable} ${cinzel.variable} ${amiri.variable} ${arefRuqaa.variable} ${arefRuqaaInk.variable} h-full antialiased`}
+      lang="en-IN"
+      className={`${playfair.variable} ${montserrat.variable} ${outfit.variable} ${amiri.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-montserrat text-brand-charcoal bg-brand-cream">
         <script

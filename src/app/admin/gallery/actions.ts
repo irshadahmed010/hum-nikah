@@ -58,6 +58,7 @@ export async function createGalleryItem(formData: FormData, imageUrl: string) {
     }
 
     revalidatePath("/gallery");
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/gallery");
     return { success: true, data };
   } catch (error) {
@@ -102,6 +103,7 @@ export async function updateGalleryItem(id: string, formData: FormData, imageUrl
     }
 
     revalidatePath("/gallery");
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/gallery");
     return { success: true, data };
   } catch (error) {
@@ -128,6 +130,7 @@ export async function deleteGalleryItem(id: string) {
     }
 
     revalidatePath("/gallery");
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/gallery");
     return { success: true };
   } catch (error) {

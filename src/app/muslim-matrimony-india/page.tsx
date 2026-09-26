@@ -18,13 +18,19 @@ import {
 } from "lucide-react";
 
 import { SITE_URL } from "@/lib/site";
+import { buildMetadata } from "@/lib/seo";
+import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
 
 export const metadata: Metadata = {
-  title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
-  description:
-    "HumNikah is a trusted Muslim matrimony service in India offering 100% verified, Shariah-compliant Nikah matchmaking across Karnataka, Kerala, Tamil Nadu, Telangana, Andhra Pradesh, Maharashtra and all over India.",
+  ...buildMetadata({
+    title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
+    absoluteTitle: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
+    description:
+      "HumNikah is a trusted Muslim matrimony service in India offering 100% verified, Shariah-compliant Nikah matchmaking across Karnataka, Kerala, Tamil Nadu, Telangana, Andhra Pradesh, Maharashtra and all over India.",
+    path: "/muslim-matrimony-india",
+  }),
   keywords: [
     "Muslim matrimony",
     "Muslim matrimony India",
@@ -40,22 +46,6 @@ export const metadata: Metadata = {
     "Muslim shaadi",
     "Muslim matrimony across India",
   ],
-  alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
-    description:
-      "Trusted, 100% verified and Shariah-compliant Muslim matchmaking across India.",
-    url: PAGE_URL,
-    siteName: "HumNikah",
-    type: "website",
-    locale: "en_IN",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Muslim Matrimony in India – HumNikah",
-    description:
-      "Trusted, verified and Shariah-compliant Muslim matchmaking across all over India.",
-  },
 };
 
 const regions = [
@@ -551,10 +541,26 @@ export default function MuslimMatrimonyIndiaPage() {
               </div>
             ))}
           </div>
+
+          {/* City landing pages */}
+          <div className="mt-8 text-center">
+            <p className="text-sm font-semibold text-brand-charcoal mb-3">
+              Muslim matrimony services by city
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              {OFFICE_LOCATIONS.map((office) => (
+                <Link
+                  key={office.id}
+                  href={`/muslim-matrimony/${office.city.toLowerCase()}`}
+                  className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
+                >
+                  Muslim Matrimony in {office.city}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* Communities & languages */}
       <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">

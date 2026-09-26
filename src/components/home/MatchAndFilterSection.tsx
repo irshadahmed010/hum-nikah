@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { 
@@ -284,9 +285,12 @@ export function MatchAndFilterSection() {
 
             {/* Image Section */}
             <div className="lg:col-span-5 xl:col-span-4 h-64 sm:h-80 lg:h-full order-1 lg:order-2 rounded-2xl overflow-hidden shadow-md">
-              <img 
-                src="/images/hero/img_05.webp" 
-                alt="Submit Biodata" 
+              <Image
+                src="/images/hero/img_05.webp"
+                alt="Muslim couple beginning their Nikah journey"
+                width={900}
+                height={1200}
+                sizes="(max-width: 1024px) 100vw, 33vw"
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               />
             </div>

@@ -53,7 +53,7 @@ export function FamilyDetails({ register, setValue, watch, errors }: Props) {
           icon={<Users size={16} />}
           placeholder="Select Family Type"
           value={familyTypeValue}
-          onChange={(val) => setValue('familyType', val as any, { shouldValidate: true })}
+          onChange={(val) => setValue('familyType', val as unknown as never, { shouldValidate: true })}
           error={errors.familyType?.message}
           options={[
             { value: 'Nuclear', label: 'Nuclear Family' },

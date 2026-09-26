@@ -34,9 +34,9 @@ export async function updateBiodataStatus(id: string, newStatus: 'PENDING' | 'AP
     
     revalidatePath('/admin/biodata');
     return { success: true };
-  } catch (err: any) {
+  } catch (err) {
     console.error(`Error updating biodata status to ${newStatus}:`, err);
-    return { success: false, error: err.message || "Failed to update status" };
+    return { success: false, error: err instanceof Error ? err.message : "Failed to update status" };
   }
 }
 
@@ -51,8 +51,8 @@ export async function deleteBiodata(id: string) {
     
     revalidatePath('/admin/biodata');
     return { success: true };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error deleting biodata:", err);
-    return { success: false, error: err.message || "Failed to delete biodata" };
+    return { success: false, error: err instanceof Error ? err.message : "Failed to delete biodata" };
   }
 }

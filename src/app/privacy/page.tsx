@@ -1,12 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Mail, Phone, ScrollText, Sparkles } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Privacy Policy | HumNikah",
+export const metadata: Metadata = buildMetadata({
+  title: "Privacy Policy",
   description:
     "How HumNikah collects, uses, stores, shares, and safeguards your personal information across its Islamic matrimonial and matchmaking services.",
-};
+  path: "/privacy",
+});
 
 const LAST_REVISED = "27 August 2026";
 

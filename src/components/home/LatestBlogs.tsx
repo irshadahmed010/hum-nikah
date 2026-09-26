@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blogsData";
 
@@ -16,11 +17,13 @@ export function LatestBlogs() {
               className="bg-white rounded-2xl border border-brand-border/60 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="h-48 w-full overflow-hidden bg-brand-beige">
-                  <img
+                <div className="relative h-48 w-full overflow-hidden bg-brand-beige">
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">

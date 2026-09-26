@@ -17,8 +17,9 @@ function hasValue(val?: string | number | null): boolean {
 }
 
 function extractLookingFor(biodata: BiodataRow): string | null {
-  if ((biodata as any).lookingFor && typeof (biodata as any).lookingFor === 'string' && (biodata as any).lookingFor.trim()) {
-    return (biodata as any).lookingFor.trim();
+  const lookingFor = (biodata as { lookingFor?: unknown }).lookingFor;
+  if (typeof lookingFor === 'string' && lookingFor.trim()) {
+    return lookingFor.trim();
   }
   const intro = biodata.shortIntro || '';
   const match = intro.match(/Looking For:\s*([^\n\r]+)/i);

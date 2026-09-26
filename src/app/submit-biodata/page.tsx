@@ -1,11 +1,15 @@
 import React from "react";
+import type { Metadata } from "next";
 import { BiodataForm } from "@/components/biodata/BiodataForm";
 import { Sparkles, ShieldCheck, CheckCircle, Zap } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Submit Biodata | HumNikah",
-  description: "Take the first step towards a blessed union. Submit your matrimonial biodata securely on HumNikah.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Submit Your Muslim Marriage Biodata",
+  description:
+    "Submit your Muslim matrimonial biodata securely. Our team verifies every profile and shares curated Nikah proposals with you and your family.",
+  path: "/submit-biodata",
+});
 
 export default function SubmitBiodataPage() {
   return (

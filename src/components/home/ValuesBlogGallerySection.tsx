@@ -93,9 +93,11 @@ export function ValuesBlogGallerySection() {
                       href={`/blog/${post.slug}`}
                       className="flex items-center gap-3.5 p-2 rounded-xl hover:bg-brand-cream transition-colors group"
                     >
-                      <img
+                      <Image
                         src={post.image}
                         alt={post.title}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-lg object-cover object-top shrink-0 group-hover:scale-105 transition-transform duration-300"
                       />
                       <div>
@@ -145,10 +147,12 @@ export function ValuesBlogGallerySection() {
                       whileHover={{ scale: 1.03 }}
                       className="aspect-[1/1] sm:aspect-[4/5] rounded-xl overflow-hidden bg-brand-beige border border-brand-border/40 shadow-2xs cursor-pointer group"
                     >
-                      <img
+                      <Image
                         src={photo}
-                        alt={`Gallery thumbnail ${i + 1}`}
-                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                        alt={`HumNikah Nikah moments gallery thumbnail ${i + 1}`}
+                        fill
+                        sizes="(max-width: 1024px) 33vw, 15vw"
+                        className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
                       />
                     </motion.div>
                   ))}

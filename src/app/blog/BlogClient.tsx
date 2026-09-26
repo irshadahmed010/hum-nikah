@@ -2,11 +2,13 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Calendar, Clock, ArrowRight, Sparkles, Heart } from "lucide-react";
 import { BLOG_CATEGORIES } from "@/data/blogsData";
+import type { BlogPost } from "@/data/blogsData";
 
-export default function BlogClient({ blogs }: { blogs: any[] }) {
+export default function BlogClient({ blogs }: { blogs: BlogPost[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -21,7 +23,7 @@ export default function BlogClient({ blogs }: { blogs: any[] }) {
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [blogs, selectedCategory, searchQuery]);
 
   return (
     <main className="min-h-screen bg-brand-cream pb-20">
@@ -48,7 +50,7 @@ export default function BlogClient({ blogs }: { blogs: any[] }) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-2xl sm:text-4xl lg:text-5xl font-playfair font-bold text-white tracking-tight leading-tight"
           >
-            Faith &amp; Love in <span className="text-[#F3B979] italic">Nikah</span>
+            Nikah &amp; Islamic Marriage <span className="text-[#F3B979] italic">Guidance</span>
           </motion.h1>
 
           <motion.p
@@ -147,10 +149,12 @@ export default function BlogClient({ blogs }: { blogs: any[] }) {
                       <div>
                         {/* Image Container */}
                         <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-brand-beige">
-                          <img
+                          <Image
                             src={post.image}
                             alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute top-3 left-3">
                             <span className="px-2.5 py-1 rounded-md bg-[#1D184C]/90 backdrop-blur-md text-white text-[11px] font-semibold tracking-wide">
@@ -186,11 +190,15 @@ export default function BlogClient({ blogs }: { blogs: any[] }) {
                       {/* Footer */}
                       <div className="p-5 sm:p-6 pt-0 mt-auto flex items-center justify-between border-t border-brand-border/40 pt-4">
                         <div className="flex items-center gap-2">
-                          <img
-                            src={post.author.avatar}
-                            alt={post.author.name}
-                            className="w-7 h-7 rounded-full object-cover border border-brand-gold/30"
-                          />
+                          {post.author?.avatar && (
+                            <Image
+                              src={post.author.avatar}
+                              alt={post.author.name || "HumNikah team"}
+                              width={28}
+                              height={28}
+                              className="w-7 h-7 rounded-full object-cover border border-brand-gold/30"
+                            />
+                          )}
                           <span className="text-[11px] font-semibold text-brand-charcoal truncate max-w-[110px]">
                             {post.author.name}
                           </span>

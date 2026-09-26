@@ -1,4 +1,5 @@
 import React from "react";
+import { buildMetadata } from "@/lib/seo";
 import { HeroSection } from "@/components/home/HeroSection";
 import { BismillahSection } from "@/components/home/BismillahSection";
 import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection";
@@ -13,6 +14,14 @@ import { SuccessStoriesAndProfilesSection } from "@/components/home/SuccessStori
 import { ValuesBlogGallerySection } from "@/components/home/ValuesBlogGallerySection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
+
+export const metadata = buildMetadata({
+  title: "HumNikah – Verified Muslim Matrimony & Nikah Matchmaking",
+  absoluteTitle: "HumNikah – Verified Muslim Matrimony & Nikah Matchmaking",
+  description:
+    "Find verified Muslim brides and grooms with HumNikah. Personal matchmaking, home verification, family involvement and complete privacy across India.",
+  path: "/",
+});
 
 export default function Home() {
   return (

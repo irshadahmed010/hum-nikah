@@ -58,7 +58,7 @@ export function ContactDetails({ register, setValue, watch, errors, onImageSelec
           icon={<Phone size={16} />}
           placeholder="Select Method"
           value={contactMethodValue}
-          onChange={(val) => setValue('contactMethod', val as any, { shouldValidate: true })}
+          onChange={(val) => setValue('contactMethod', val as unknown as never, { shouldValidate: true })}
           error={errors.contactMethod?.message}
           options={[
             { value: 'WhatsApp', label: 'WhatsApp' },

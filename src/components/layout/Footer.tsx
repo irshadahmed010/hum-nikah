@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
@@ -13,9 +14,11 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 sm:gap-4 group inline-flex">
               <div className="flex-shrink-0 relative">
-                <img
+                <Image
                   src="/images/hum-nikah-new-logo.png"
-                  alt="HumNikah Logo"
+                  alt="HumNikah logo"
+                  width={84}
+                  height={84}
                   className="w-[68px] h-[68px] sm:w-[84px] sm:h-[84px] object-contain"
                 />
                 {/* Islamic Crescent & Star Element */}

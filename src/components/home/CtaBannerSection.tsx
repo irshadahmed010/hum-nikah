@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
@@ -23,10 +24,12 @@ export function CtaBannerSection() {
 
             {/* Right Image Overlay with smooth fade gradient */}
             <div className="absolute right-0 top-0 bottom-0 w-full sm:w-2/3 md:w-3/5 lg:w-1/2 h-full pointer-events-none">
-              <img
-                src="/images/cta_banner_couple.jpg"
-                alt="Muslim Couple Nikah Journey"
-                className="w-full h-full object-cover object-[75%_20%] sm:object-[center_20%] opacity-65 sm:opacity-80 lg:opacity-90"
+              <Image
+                src="/images/cta_banner_couple.webp"
+                alt="Muslim couple beginning their Nikah journey"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-[75%_20%] sm:object-[center_20%] opacity-65 sm:opacity-80 lg:opacity-90"
               />
               {/* Dark gradient fade over the image so text on left is 100% crisp & readable */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#1D184C] via-[#1D184C]/95 sm:via-[#1D184C]/80 lg:via-[#1D184C]/60 to-transparent" />
@@ -98,6 +101,14 @@ export function CtaBannerSection() {
                       <ArrowRight size={18} />
                     </Link>
                   </div>
+                  <p className="mt-4 text-sm">
+                    <Link
+                      href="/muslim-matrimony-india"
+                      className="text-brand-gold font-semibold hover:underline inline-flex items-center gap-1"
+                    >
+                      Explore Muslim Matrimony in India <ArrowRight size={14} />
+                    </Link>
+                  </p>
                 </div>
               </motion.div>
             </div>

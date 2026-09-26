@@ -72,9 +72,9 @@ export function BiodataUploadDropzone({
       } else {
         throw new Error(data.error || "Upload failed");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error("Biodata file upload error:", err);
-      setErrorMessage(err.message || "Failed to upload file. Please try again.");
+      setErrorMessage(err instanceof Error ? err.message : "Failed to upload file. Please try again.");
     } finally {
       setIsUploading(false);
     }

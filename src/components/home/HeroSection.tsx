@@ -2,18 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Heart, ShieldCheck, CheckCircle2, Lock, Headphones, Sparkles } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const HERO_SLIDER_IMAGES = [
-  "/images/hero/hero_image.png",
+  "/images/hero/hero_image.webp",
   "/images/hero/img_01.webp",
   "/images/hero/img_02.webp",
   "/images/hero/img_03.webp",
   "/images/hero/img_04.webp",
   "/images/hero/img_05.webp",
   "/images/hero/img_06.webp",
-  "/images/about/about_hero_couple.jpg",
+  "/images/about/about_hero_couple.webp",
 ];
 
 export function HeroSection() {
@@ -28,7 +29,7 @@ export function HeroSection() {
   }, []);
 
   const containerVariants: Variants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
@@ -39,7 +40,7 @@ export function HeroSection() {
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 1, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
@@ -259,7 +260,9 @@ export function HeroSection() {
                   <motion.img
                     key={HERO_SLIDER_IMAGES[currentImageIndex]}
                     src={HERO_SLIDER_IMAGES[currentImageIndex]}
-                    alt="Muslim couple nikah proposals"
+                    alt="Muslim couple celebrating their Nikah"
+                    fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
+                    loading={currentImageIndex === 0 ? "eager" : "lazy"}
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
@@ -299,15 +302,19 @@ export function HeroSection() {
                 className="absolute bottom-4 sm:-bottom-6 left-0 right-0 mx-auto w-[90%] sm:w-auto min-w-[250px] max-w-[330px] bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl shadow-xl border border-brand-gold/40 flex items-center justify-center gap-3.5 cursor-pointer z-10"
               >
                 <div className="flex -space-x-2.5 overflow-hidden shrink-0">
-                  <img
+                  <Image
+                    width={36}
+                    height={36}
                     className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
                     src="/images/profiles/3.png"
-                    alt="User avatar"
+                    alt="Verified HumNikah member profile"
                   />
-                  <img
+                  <Image
+                    width={36}
+                    height={36}
                     className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
                     src="/images/profiles/4.png"
-                    alt="User avatar"
+                    alt="Verified HumNikah member profile"
                   />
                 </div>
                 <div className="text-left">

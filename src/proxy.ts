@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
+// ponytail: dev fallback only — set AUTH_SECRET in production (see Phase 5 notes).
 const JWT_SECRET = process.env.AUTH_SECRET || "humnikah_secure_jwt_secret_2026_key_32_bytes";
 const key = new TextEncoder().encode(JWT_SECRET);
 
@@ -21,7 +22,7 @@ export async function proxy(request: NextRequest) {
           algorithms: ["HS256"],
         });
         isAuthenticated = true;
-      } catch (error) {
+      } catch {
         isAuthenticated = false;
       }
     }

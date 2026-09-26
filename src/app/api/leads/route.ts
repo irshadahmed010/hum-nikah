@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const payload: Record<string, any> = {
+    const payload: Record<string, unknown> = {
       name,
       phone,
       email: email || null,
@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     };
 
     // 1. Primary insert attempt with name, phone, email, gender
+    // eslint-disable-next-line prefer-const -- `data` is reassigned by the fallback insert below
     let { data, error } = await supabase
       .from('Lead')
       .insert(payload)
@@ -58,10 +59,10 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, data }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error submitting lead:', error);
     return NextResponse.json(
-      { success: false, error: error?.message || 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : 'Internal Server Error' },
       { status: 500 }
     );
   }
@@ -79,7 +80,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch {
     return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
   }
 }

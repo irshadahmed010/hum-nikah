@@ -81,14 +81,16 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, data: newBiodata }, { status: 201 });
     
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error submitting biodata:', error);
-    
-    if (error.name === 'ZodError') {
-      return NextResponse.json({ success: false, error: 'Validation failed', details: error.errors }, { status: 400 });
+
+    const err = error as { name?: string; message?: string; errors?: unknown };
+
+    if (err.name === 'ZodError') {
+      return NextResponse.json({ success: false, error: 'Validation failed', details: err.errors }, { status: 400 });
     }
-    
-    return NextResponse.json({ success: false, error: error.message || 'Internal Server Error' }, { status: 500 });
+
+    return NextResponse.json({ success: false, error: err.message || 'Internal Server Error' }, { status: 500 });
   }
 }
 

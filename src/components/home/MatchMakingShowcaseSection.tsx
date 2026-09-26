@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, CheckCircle2, Lock, Users, ShieldCheck, ArrowRight } from "lucide-react";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
@@ -24,7 +25,7 @@ const showcases = [
   {
     title: "Sacred Matrimony Values",
     subtitle: "Guidance and Sincere Support Throughout Your Journey",
-    image: "/images/about/about_mosque.jpg",
+    image: "/images/about/about_mosque.webp",
     badge: "Sunnah Centered",
     tagColor: "bg-amber-50 text-amber-800 border-amber-200",
   },
@@ -83,10 +84,12 @@ export function MatchMakingShowcaseSection() {
                 className="group relative rounded-3xl overflow-hidden shadow-xl border border-slate-100 hover:border-brand-gold/40 bg-slate-900 h-[380px] sm:h-[420px] flex flex-col justify-end p-6 cursor-pointer"
               >
                 {/* Background Image */}
-                <img
+                <Image
                   src={card.image}
                   alt={card.title}
-                  className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80"
                 />
 
                 {/* Dark Gradient Overlay */}

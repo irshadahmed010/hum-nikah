@@ -85,6 +85,8 @@ export async function createBlog(formData: FormData, imageUrl: string) {
     }
 
     revalidatePath("/blog");
+    revalidatePath(`/blog/${slug}`);
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/blogs");
     return { success: true, data };
   } catch (error) {
@@ -114,7 +116,7 @@ export async function updateBlog(id: string, formData: FormData, imageUrl?: stri
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" // Default
     };
 
-    const updateData: any = {
+    const updateData: Record<string, unknown> = {
       slug,
       title,
       excerpt,
@@ -151,6 +153,7 @@ export async function updateBlog(id: string, formData: FormData, imageUrl?: stri
 
     revalidatePath("/blog");
     revalidatePath(`/blog/${slug}`);
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/blogs");
     return { success: true, data };
   } catch (error) {
@@ -167,6 +170,12 @@ export async function deleteBlog(id: string) {
       return { success: true };
     }
 
+    const { data: existing } = await supabase
+      .from("blogs")
+      .select("slug")
+      .eq("id", id)
+      .single();
+
     const { error } = await supabase
       .from("blogs")
       .delete()
@@ -177,6 +186,8 @@ export async function deleteBlog(id: string) {
     }
 
     revalidatePath("/blog");
+    if (existing?.slug) revalidatePath(`/blog/${existing.slug}`);
+    revalidatePath("/sitemap.xml");
     revalidatePath("/admin/blogs");
     return { success: true };
   } catch (error) {

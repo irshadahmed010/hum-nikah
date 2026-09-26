@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
@@ -76,9 +77,12 @@ export function Navbar() {
           <div className="flex items-center shrink-0">
             <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer select-none">
               <div className="flex-shrink-0 relative">
-                <img
+                <Image
                   src="/images/hum-nikah-new-logo.png"
-                  alt="HumNikah Logo"
+                  alt="HumNikah logo"
+                  width={68}
+                  height={68}
+                  priority
                   className="w-14 h-14 sm:w-[60px] sm:h-[60px] lg:w-[68px] lg:h-[68px] object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
                 />
                 {/* Islamic Crescent & Star Element */}

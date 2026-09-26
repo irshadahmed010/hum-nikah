@@ -17,7 +17,7 @@ export async function updateMessageStatus(id: string, status: string) {
 
     revalidatePath("/admin/messages");
     return { success: true };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Exception in updateMessageStatus:", err);
     return { success: false, error: "Internal server error" };
   }
@@ -37,7 +37,7 @@ export async function deleteMessage(id: string) {
 
     revalidatePath("/admin/messages");
     return { success: true };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Exception in deleteMessage:", err);
     return { success: false, error: "Internal server error" };
   }

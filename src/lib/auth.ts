@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { jwtVerify, SignJWT } from "jose";
 
+// ponytail: dev fallback only — set AUTH_SECRET in production (see Phase 5 notes).
 const JWT_SECRET = process.env.AUTH_SECRET || "development_auth_secret_placeholder_replace_in_env";
 
 const key = new TextEncoder().encode(JWT_SECRET);
@@ -34,7 +35,7 @@ export async function verifySession() {
       algorithms: ["HS256"],
     });
     return payload as { adminId: string; email?: string; role?: string };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

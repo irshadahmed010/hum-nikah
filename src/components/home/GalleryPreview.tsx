@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const galleryPhotos = [
   { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600", title: "Nikah Ceremony" },
@@ -16,10 +17,12 @@ export function GalleryPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {galleryPhotos.map((item, idx) => (
             <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-md bg-brand-cream aspect-[4/3]">
-              <img
+              <Image
                 src={item.src}
                 alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-deep-green/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                 <span className="text-white font-playfair font-semibold text-lg">{item.title}</span>

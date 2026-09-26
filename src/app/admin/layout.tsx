@@ -5,6 +5,10 @@ import { verifySession } from "@/lib/auth";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { AdminSidebar } from "@/components/admin/AdminNavigation";
 
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 export default async function AdminLayout({
   children,
 }: {

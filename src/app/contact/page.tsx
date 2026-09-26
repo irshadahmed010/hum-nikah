@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
 import {
   Phone,
@@ -10,12 +11,15 @@ import {
   HelpCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
+import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
-export const metadata = {
-  title: "Contact Us | HumNikah",
+export const metadata: Metadata = buildMetadata({
+  title: "Contact Us – Walk-In Matrimony Offices",
   description:
-    "Get in touch with the HumNikah team for inquiries, support, and matrimony assistance.",
-};
+    "Call, email or visit a HumNikah walk-in office in Bengaluru, Hyderabad, Chennai, Mumbai, Kochi or Vijayawada for personal Muslim matchmaking.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -131,6 +135,27 @@ export default function ContactPage() {
                     Bengaluru 560005
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* City Landing Pages */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-brand-border/70 hover:shadow-md hover:border-brand-gold/50 transition-all">
+              <h3 className="text-sm sm:text-base font-bold font-playfair text-brand-charcoal mb-1">
+                Find Us City by City
+              </h3>
+              <p className="text-[11px] text-brand-secondary font-light mb-3">
+                Explore verified Muslim matchmaking for your city.
+              </p>
+              <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                {OFFICE_LOCATIONS.map((office) => (
+                  <Link
+                    key={office.id}
+                    href={`/muslim-matrimony/${office.city.toLowerCase()}`}
+                    className="text-xs font-semibold text-brand-emerald hover:text-brand-gold transition-colors"
+                  >
+                    {office.city}
+                  </Link>
+                ))}
               </div>
             </div>
 

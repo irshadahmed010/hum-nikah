@@ -16,7 +16,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Exception in GET /api/messages:", err);
     return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
   }

@@ -21,7 +21,7 @@ const features: FeatureCard[] = [
     title: "Physical Home Visits",
     description:
       "In-person representative visit to candidate's home to verify family background and residence.",
-    image: "/images/why-choose/home-visit.png",
+    image: "/images/why-choose/home-visit.webp",
     fallbackGradient: "from-emerald-800/60 via-emerald-900/80 to-slate-900",
     icon: Home,
     badgeBg: "bg-[#E6F4F1]",
@@ -31,7 +31,7 @@ const features: FeatureCard[] = [
     title: "5-Layer Background Check",
     description:
       "CNIC, degree audit, employment check, and 2+ verified family references.",
-    image: "/images/why-choose/background-check.png",
+    image: "/images/why-choose/background-check.webp",
     fallbackGradient: "from-slate-700/60 via-indigo-950/80 to-slate-900",
     icon: ShieldCheck,
     badgeBg: "bg-[#EBEBF8]",
@@ -41,7 +41,7 @@ const features: FeatureCard[] = [
     title: "Privacy & Modesty First",
     description:
       "Wali-controlled profile access, blur options, and 100% data security.",
-    image: "/images/why-choose/privacy-first.png",
+    image: "/images/why-choose/privacy-first.webp",
     fallbackGradient: "from-amber-900/60 via-amber-950/80 to-slate-900",
     icon: Lock,
     badgeBg: "bg-[#FAF0E6]",
@@ -51,7 +51,7 @@ const features: FeatureCard[] = [
     title: "Dedicated Support",
     description:
       "Personalized matchmaker support helping families every step of the way.",
-    image: "/images/why-choose/dedicated-support.png",
+    image: "/images/why-choose/dedicated-support.webp",
     fallbackGradient: "from-rose-950/60 via-stone-900/80 to-slate-900",
     icon: Headphones,
     badgeBg: "bg-[#FCEAEE]",

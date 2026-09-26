@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Maximize2, X, MapPin, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY_ITEMS, GALLERY_CATEGORIES, GalleryItem } from "@/data/galleryData";
@@ -55,7 +56,7 @@ export default function GalleryClient({ initialItems }: { initialItems: GalleryI
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-2xl sm:text-4xl lg:text-5xl font-playfair font-bold text-white tracking-tight leading-tight"
           >
-            Moments of <span className="text-[#F3B979] italic">Love &amp; Togetherness</span>
+            Nikah Moments &amp; <span className="text-[#F3B979] italic">Success Stories</span>
           </motion.h1>
 
           <motion.p
@@ -120,10 +121,12 @@ export default function GalleryClient({ initialItems }: { initialItems: GalleryI
                 className="group relative bg-white rounded-xl sm:rounded-2xl border border-brand-border/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer aspect-[4/5] flex flex-col justify-end"
               >
                 {/* Image */}
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 
                 {/* Gradient Overlay */}
@@ -211,10 +214,13 @@ export default function GalleryClient({ initialItems }: { initialItems: GalleryI
                 </button>
 
                 {/* The Photo Itself */}
-                <img
+                <Image
                   key={activeModalItem.image}
                   src={activeModalItem.image}
                   alt={activeModalItem.title}
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 1024px) 100vw, 672px"
                   className="max-w-full max-h-[43vh] sm:max-h-[62vh] w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 border border-white/10"
                 />
               </div>

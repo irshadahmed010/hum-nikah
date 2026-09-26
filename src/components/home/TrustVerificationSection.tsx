@@ -195,7 +195,7 @@ export function TrustVerificationSection() {
               {/* Background Desktop Image */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/images/trust/home-visit-desktop.png"
+                  src="/images/trust/home-visit-desktop.webp"
                   alt="Home Visit Verification Desktop Background"
                   fill
                   className="object-cover object-[72%_center] brightness-[0.98]"
@@ -368,7 +368,7 @@ export function TrustVerificationSection() {
               {/* Photo Band (locked to the mobile photo's native 1024:1536 ratio so it's never stretched/over-zoomed) */}
               <div className="relative w-full aspect-[1024/1536] overflow-hidden">
                 <Image
-                  src="/images/trust/home-visit-mobile.png"
+                  src="/images/trust/home-visit-mobile.webp"
                   alt="Home Visit Verification Mobile Background"
                   fill
                   className="object-cover object-top brightness-[0.98]"

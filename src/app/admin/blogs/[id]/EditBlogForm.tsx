@@ -6,7 +6,21 @@ import Link from "next/link";
 import { ArrowLeft, Upload, Loader2, Save } from "lucide-react";
 import { uploadImage, updateBlog } from "../actions";
 
-export default function EditBlogForm({ blog }: { blog: any }) {
+type EditableBlog = {
+  id: string;
+  image?: string;
+  slug?: string;
+  title?: string;
+  excerpt?: string;
+  content?: string;
+  category?: string;
+  readTime?: string;
+  tags?: string[];
+  author?: { name?: string; role?: string };
+  featured?: boolean;
+};
+
+export default function EditBlogForm({ blog }: { blog: EditableBlog }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -68,8 +82,8 @@ export default function EditBlogForm({ blog }: { blog: any }) {
       } else {
         throw new Error(result.error);
       }
-    } catch (err: any) {
-      setError(err.message || "An error occurred");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
     }

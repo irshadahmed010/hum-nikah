@@ -41,6 +41,7 @@ export default function MessagesPage() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- initial data fetch on mount
     fetchMessages();
     setMounted(true);
   }, [fetchMessages]);
@@ -53,6 +54,7 @@ export default function MessagesPage() {
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset pagination when the filter changes
     setCurrentPage(1);
   }, [searchQuery, messages.length]);
 

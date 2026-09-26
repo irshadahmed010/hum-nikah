@@ -30,12 +30,8 @@ module.exports = {
       fontFamily: {
         playfair: ['var(--font-playfair-display)', '"Playfair Display"', 'serif'],
         montserrat: ['var(--font-montserrat)', '"Montserrat"', 'sans-serif'],
-        poppins: ['var(--font-montserrat)', '"Montserrat"', 'sans-serif'],
         outfit: ['var(--font-outfit)', '"Outfit"', 'sans-serif'],
-        cinzel: ['var(--font-cinzel)', '"Cinzel"', 'serif'],
         amiri: ['var(--font-amiri)', '"Amiri"', '"Traditional Arabic"', 'serif'],
-        'aref-ruqaa': ['var(--font-aref-ruqaa)', '"Aref Ruqaa"', '"Amiri"', 'serif'],
-        'aref-ruqaa-ink': ['var(--font-aref-ruqaa-ink)', '"Aref Ruqaa Ink"', '"Amiri"', 'serif'],
       },
       screens: {
         xs: '420px',

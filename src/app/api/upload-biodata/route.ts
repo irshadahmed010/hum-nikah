@@ -96,11 +96,11 @@ export async function POST(request: Request) {
       size: file.size,
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Upload biodata error:', error);
     return NextResponse.json({ 
       success: false, 
-      error: error?.message || 'Failed to upload document' 
+      error: error instanceof Error ? error.message : 'Failed to upload document' 
     }, { status: 500 });
   }
 }

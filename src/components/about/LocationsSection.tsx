@@ -105,10 +105,10 @@ export function LocationsSection() {
               {/* Action Link */}
               <div className="pt-4 mt-6 border-t border-slate-200/80 flex items-center justify-between text-xs">
                 <Link
-                  href="/submit-biodata"
+                  href={`/muslim-matrimony/${loc.city.toLowerCase()}`}
                   className="text-[#1D184C] font-bold hover:text-brand-gold transition-colors flex items-center gap-1"
                 >
-                  <span>Submit Biodata</span> &rarr;
+                  <span>Muslim Matrimony in {loc.city}</span> &rarr;
                 </Link>
               </div>
             </div>
