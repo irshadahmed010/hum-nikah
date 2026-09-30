@@ -26,5 +26,6 @@ export const BUSINESS = {
 
 // Only real, verifiable profiles belong here — they feed schema.org `sameAs`.
 export const SOCIAL_LINKS = [
-  "https://instagram.com/HUMNIKAHOFFICIAL",
+  "https://www.instagram.com/ammiabbaa",
+  "https://www.facebook.com/share/1CR6mNY6hA/",
 ];

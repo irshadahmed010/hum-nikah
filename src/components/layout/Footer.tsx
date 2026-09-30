@@ -83,7 +83,7 @@ export function Footer() {
 
                 {/* 3. Instagram */}
                 <a
-                  href="https://instagram.com/HUMNIKAHOFFICIAL"
+                  href="https://www.instagram.com/ammiabbaa"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -96,7 +96,7 @@ export function Footer() {
 
                 {/* 4. Facebook */}
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/share/1CR6mNY6hA/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
