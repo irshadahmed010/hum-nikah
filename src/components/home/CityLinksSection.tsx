@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { CITY_CONTENT } from "@/data/cityContent";
+import { cityAnchor } from "@/data/seo-meta";
 
 export function CityLinksSection() {
   return (
@@ -38,7 +39,7 @@ export function CityLinksSection() {
                 href={`/muslim-matrimony/${c.slug}`}
                 className="inline-block px-4 py-2 rounded-full border border-brand-border bg-brand-cream/60 text-sm font-medium text-brand-charcoal hover:border-brand-gold hover:text-brand-gold transition-colors"
               >
-                Muslim matrimony in {c.city}
+                {cityAnchor(c.slug, c.city)}
               </Link>
             </li>
           ))}

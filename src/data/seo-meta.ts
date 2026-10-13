@@ -13,6 +13,17 @@ export interface CityMeta {
   introHeading: string;
   /** Two sentences shown under the H1; must contain the primary keyword. */
   heroIntro: string;
+  /** Overrides "How Muslim Matchmaking Works in {City}". */
+  howItWorksHeading?: string;
+  /** Overrides "Muslim Matrimony in {City} — FAQs". */
+  faqHeading?: string;
+}
+
+/** Anchor text for links to a city page. Bangalore is searched as "Bangalore". */
+export function cityAnchor(slug: string, city: string): string {
+  return slug === "bengaluru"
+    ? "Muslim marriage bureau in Bangalore"
+    : `Muslim matrimony in ${city}`;
 }
 
 export const CITY_META: Record<string, CityMeta> = {
@@ -20,11 +31,13 @@ export const CITY_META: Record<string, CityMeta> = {
     primaryKeyword: "muslim marriage bureau in Bangalore",
     title: "Muslim Marriage Bureau in Bangalore | HumNikah",
     description:
-      "Muslim marriage bureau in Bangalore (Bengaluru): verified profiles, Wali-involved introductions, walk-in at Cox Town. Submit biodata free.",
-    h1: "Muslim Marriage Bureau & Matrimony in Bangalore",
+      "Muslim marriage bureau in Bangalore (Cox Town). Manual profile screening, Wali involved, private. Submit your biodata or chat on WhatsApp.",
+    h1: "Muslim Marriage Bureau in Bangalore",
     introHeading: "Muslim Matrimony and Matchmaking in Bangalore (Bengaluru)",
     heroIntro:
-      "HumNikah is a Muslim marriage bureau in Bangalore (Bengaluru) with a walk-in office in Cox Town. Families meet a personal matchmaker, and every introduction involves the Wali from the first conversation.",
+      "Our office is in Cox Town, Bengaluru, and families are welcome by appointment. Every introduction involves the Wali where the bride's family wishes.",
+    howItWorksHeading: "How Our Muslim Marriage Bureau in Bangalore Works",
+    faqHeading: "Muslim Marriage Bureau in Bangalore: FAQs",
   },
   chennai: {
     primaryKeyword: "Tamil Muslim matrimony Chennai",

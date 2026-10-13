@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { COMMUNITY_PAGES } from "@/data/communities";
+import { cityAnchor } from "@/data/seo-meta";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export function Footer() {
@@ -268,7 +269,7 @@ export function Footer() {
                     href={`/muslim-matrimony/${loc.city.toLowerCase()}`}
                     className="mt-1.5 inline-block text-brand-gold/95 hover:text-white hover:underline text-[11px] font-medium"
                   >
-                    Muslim matrimony in {loc.city}
+                    {cityAnchor(loc.city.toLowerCase(), loc.city)}
                   </Link>
                 </div>
                 {loc.phone && (

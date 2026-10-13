@@ -3,6 +3,8 @@ import { CITY_LOCAL, type AreaGroup } from "./cityLocal";
 export interface CityFaq {
   q: string;
   a: string;
+  /** Shown under the answer. Not part of the FAQ schema text. */
+  link?: { href: string; label: string };
 }
 
 export interface CityContent {
@@ -18,6 +20,7 @@ export interface CityContent {
   mapQuery: string;
   faqs: CityFaq[];
   areas: AreaGroup[];
+  extraSection?: import("./cityLocal").CityLocal["extraSection"];
 }
 
 type RawCity = Omit<CityContent, "areas">;
@@ -29,7 +32,7 @@ const RAW_CITIES: RawCity[] = [
     state: "Karnataka",
     tagline: "Walk-in matchmaking from our Cox Town head office",
     intro: [
-      "Bengaluru is where HumNikah began. Our head office in Cox Town is a working marriage bureau as much as it is a matrimonial service — families sit with our matchmakers, review profiles together, and let us handle verification in person.",
+      "HumNikah is a Muslim marriage bureau in Bangalore with its office in Cox Town, Bengaluru. We help Muslim families find a suitable rishta with privacy and respect. Every profile is manually screened, we check identity and address documents, and we involve the Wali where the bride's family wishes. Families from Cox Town, Frazer Town, Shivajinagar, RT Nagar and across Bangalore can submit a biodata or message us on WhatsApp to begin.",
       "For busy IT professionals and business families across the city, we translate those in-person relationships into a private, curated search: no public browsing, no open chatting, just hand-picked proposals discussed with you and your Wali.",
     ],
     communities: [
@@ -41,8 +44,8 @@ const RAW_CITIES: RawCity[] = [
     mapQuery: "Splendid Plaza, Wheeler Road, Cox Town, Bengaluru 560005",
     faqs: [
       {
-        q: "Can I visit the HumNikah office in Bengaluru in person?",
-        a: "Yes. Our head office at Splendid Plaza, Wheeler Road, Cox Town, Bengaluru 560005 is open for walk-in family consultations. We recommend calling ahead so a senior matchmaker is available to sit with you.",
+        q: "Is there a Muslim marriage bureau in Bangalore I can visit?",
+        a: "Yes. Our office is at Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru 560005. Please call or message us before visiting so a senior matchmaker can set aside time for your family.",
       },
       {
         q: "Does HumNikah hold home visits in Bengaluru?",
@@ -153,7 +156,7 @@ const RAW_CITIES: RawCity[] = [
     state: "Kerala",
     tagline: "Mappila and Malayali Muslim matchmaking with privacy first",
     intro: [
-      "In Kochi and across Kerala, HumNikah works with Mappila and Malayali Muslim families who expect discretion, clear communication, and a verified process. Privacy is not an add-on here — photos and contact details are shared only with your approval.",
+      "In Kochi (Ernakulam) and across Kerala, HumNikah works with Mappila and Malayali Muslim families who expect discretion, clear communication, and a verified process. Privacy is not an add-on here — photos and contact details are shared only with your approval.",
       "Our matchmakers understand Kerala's community and family networks, and help families navigate proposals across the state and with Malayali families settled in the Gulf.",
     ],
     communities: [
@@ -218,6 +221,7 @@ export const CITY_CONTENT: CityContent[] = RAW_CITIES.map((city) => {
     ...city,
     faqs: [...city.faqs, ...local.moreFaqs],
     areas: local.areas,
+    extraSection: local.extraSection,
   };
 });
 

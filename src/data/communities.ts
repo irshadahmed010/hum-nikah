@@ -24,6 +24,8 @@ export interface CommunityPage {
   places: { heading: string; body: string }[];
   /** City page slugs this page links to. */
   relatedCities: string[];
+  /** Blog guides this page links to (slug + anchor text). */
+  relatedGuides?: { slug: string; label: string }[];
   faqs: CommunityFaq[];
 }
 
@@ -204,6 +206,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["mumbai"],
+    relatedGuides: [
+      {
+        slug: "konkani-muslim-matrimony-mumbai-guide",
+        label: "Konkani Muslim Matrimony in Mumbai: A Family Guide",
+      },
+    ],
     faqs: [
       {
         q: "Can I ask for a Konkani Muslim match?",
@@ -272,7 +280,7 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         body: "Deccani families in Warangal and Nizamabad can use the same process, with verified profiles shared from Hyderabad and across India.",
       },
     ],
-    relatedCities: ["hyderabad"],
+    relatedCities: ["hyderabad", "bengaluru"],
     faqs: [
       {
         q: "Do you support Deccani families?",

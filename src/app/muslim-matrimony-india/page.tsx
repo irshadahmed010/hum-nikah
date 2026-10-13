@@ -21,6 +21,7 @@ import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { COMMUNITY_PAGES } from "@/data/communities";
 import { ALL_GUIDES } from "@/data/guides";
+import { cityAnchor } from "@/data/seo-meta";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
@@ -578,7 +579,7 @@ export default function MuslimMatrimonyIndiaPage() {
                   href={`/muslim-matrimony/${office.city.toLowerCase()}`}
                   className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
                 >
-                  Muslim Matrimony in {office.city}
+                  {cityAnchor(office.city.toLowerCase(), office.city)}
                 </Link>
               ))}
             </div>

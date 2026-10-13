@@ -4,6 +4,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 import { CITY_CONTENT } from "@/data/cityContent";
 import { COMMUNITY_PAGES, type CommunityPage } from "@/data/communities";
+import { cityAnchor } from "@/data/seo-meta";
 
 export function CommunityPageView({ page }: { page: CommunityPage }) {
   const pageUrl = `${SITE_URL}/muslim-matrimony/${page.slug}`;
@@ -131,11 +132,23 @@ export function CommunityPageView({ page }: { page: CommunityPage }) {
                   href={`/muslim-matrimony/${c.slug}`}
                   className="text-brand-gold font-semibold hover:underline"
                 >
-                  Muslim matrimony in {c.city}
+                  {cityAnchor(c.slug, c.city)}
                 </Link>
               </span>
             ))}
             {". "}
+            {page.relatedGuides?.map((g) => (
+              <span key={g.slug}>
+                Guide:{" "}
+                <Link
+                  href={`/blog/${g.slug}`}
+                  className="text-brand-gold font-semibold hover:underline"
+                >
+                  {g.label}
+                </Link>
+                {". "}
+              </span>
+            ))}
             <Link
               href="/muslim-matrimony-india"
               className="text-brand-gold font-semibold hover:underline"

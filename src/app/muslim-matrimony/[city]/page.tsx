@@ -124,14 +124,17 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
       {
         ...(hasOffice
           ? {
-              "@type": "LocalBusiness",
+              "@type": ["LocalBusiness", "ProfessionalService"],
               "@id": `${SITE_URL}/#office-${content.slug}`,
               name: `HumNikah ${content.city}`,
               url: pageUrl,
               parentOrganization: { "@id": `${SITE_URL}/#organization` },
-              telephone: office?.phone
-                ? `+${office.phone.replace(/[^0-9]/g, "")}`
-                : undefined,
+              // Primary call number; WhatsApp is +91 90190 82205.
+              telephone: office?.phone2
+                ? `+${office.phone2.replace(/[^0-9]/g, "")}`
+                : office?.phone
+                  ? `+${office.phone.replace(/[^0-9]/g, "")}`
+                  : undefined,
               email: office?.email ?? "connect@humnikah.com",
               address: {
                 "@type": "PostalAddress",
@@ -147,7 +150,12 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               url: pageUrl,
               provider: { "@id": `${SITE_URL}/#organization` },
             }),
-        areaServed: { "@type": "City", name: content.city },
+        areaServed: [
+          { "@type": "City", name: content.city },
+          ...content.areas.flatMap((group) =>
+            group.places.map((place) => ({ "@type": "Place", name: place })),
+          ),
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -324,7 +332,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               Simple &amp; Guided
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-brand-charcoal mt-2">
-              How Muslim Matchmaking Works in {content.city}
+              {meta.howItWorksHeading ?? `How Muslim Matchmaking Works in ${content.city}`}
             </h2>
           </div>
 
@@ -448,7 +456,14 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               {!hasOffice && (
                 <p className="text-sm text-black leading-relaxed mb-4">
                   Serving {content.city} families via phone &amp; WhatsApp.
-                  In-person meetings at our Bengaluru office.
+                  In-person meetings at our{" "}
+                  <Link
+                    href="/muslim-matrimony/bengaluru"
+                    className="text-brand-gold font-semibold hover:underline"
+                  >
+                    Bengaluru office
+                  </Link>
+                  .
                 </p>
               )}
               <ul className="space-y-3.5 text-sm text-black">
@@ -519,6 +534,25 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
         </div>
       </section>
 
+      {content.extraSection && (
+        <section className="py-12 sm:py-14 bg-white border-b border-brand-border/50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
+              {content.extraSection.heading}
+            </h2>
+            <p className="text-[15px] text-black leading-relaxed mb-3">
+              {content.extraSection.body}
+            </p>
+            <Link
+              href={content.extraSection.link.href}
+              className="text-brand-gold font-semibold hover:underline"
+            >
+              {content.extraSection.link.label}
+            </Link>
+          </div>
+        </section>
+      )}
+
       {guides.length > 0 && (
         <section className="py-10 bg-brand-cream border-b border-brand-border/50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -549,7 +583,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               Good to Know
             </span>
             <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-2">
-              Muslim Matrimony in {content.city} — FAQs
+              {meta.faqHeading ?? `Muslim Matrimony in ${content.city} — FAQs`}
             </h2>
           </div>
 
@@ -569,6 +603,15 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                   <p className="mt-3 text-[15px] text-black leading-relaxed">
                     {faq.a}
                   </p>
+                  {faq.link && (
+                    <a
+                      href={faq.link.href}
+                      rel="nofollow noopener"
+                      className="mt-2 inline-block text-[15px] text-brand-gold font-semibold hover:underline"
+                    >
+                      {faq.link.label}
+                    </a>
+                  )}
                 </div>
               </details>
             ))}
@@ -578,6 +621,10 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
             More questions?{" "}
             <Link href="/faq" className="text-brand-gold font-semibold hover:underline">
               Read our full FAQ
+            </Link>
+            ,{" "}
+            <Link href="/fees" className="text-brand-gold font-semibold hover:underline">
+              see our fees
             </Link>{" "}
             or{" "}
             <Link href="/contact" className="text-brand-gold font-semibold hover:underline">

@@ -11,7 +11,13 @@ export interface AreaGroup {
 
 export interface CityLocal {
   areas: AreaGroup[];
-  moreFaqs: { q: string; a: string }[];
+  moreFaqs: { q: string; a: string; link?: { href: string; label: string } }[];
+  /** Optional extra section rendered after the office block. */
+  extraSection?: {
+    heading: string;
+    body: string;
+    link: { href: string; label: string };
+  };
 }
 
 export const CITY_LOCAL: Record<string, CityLocal> = {
@@ -37,14 +43,31 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
         a: "Yes. Families in Frazer Town, Shivaji Nagar and RT Nagar are served from our Cox Town office, and can visit in person or work with us by phone and WhatsApp.",
       },
       {
-        q: "Do you match Beary and Bhatkali families?",
-        a: "Yes. Beary and Bhatkali community preferences are recorded in your biodata and respected when we shortlist profiles.",
+        q: "Which areas of Bangalore do you serve?",
+        a: "We serve families across Bangalore, including Cox Town, Frazer Town, Shivajinagar, RT Nagar and nearby areas, by phone, WhatsApp and in person at our office.",
       },
       {
-        q: "Can I find Urdu-speaking matches in Bangalore?",
-        a: "Yes. Language is treated as a genuine preference, so Urdu-speaking families are matched with Urdu-speaking proposals where your preferences allow.",
+        q: "How do you screen profiles?",
+        a: "Every profile is manually screened and we check identity and address documents. We do not run formal criminal-record checks, so we encourage families to make their own enquiries too.",
+      },
+      {
+        q: "Do you serve Urdu, Beary and Bhatkali families in Bangalore?",
+        a: "Yes. Tell us your community, language and family preferences and we take them into account when we shortlist profiles. Urdu-speaking, Beary and Bhatkali families are among those we work with.",
+      },
+      {
+        q: "Can I join a Bangalore Muslim matrimony WhatsApp group?",
+        a: "We do not run an open group, because groups expose phone numbers and biodatas. Chat with our team personally on WhatsApp instead. We will not add you to any group without your permission.",
+        link: { href: "/whatsapp?src=bengaluru-faq", label: "Chat with our team on WhatsApp" },
       },
     ],
+    extraSection: {
+      heading: "How to Choose a Muslim Marriage Bureau in Bangalore",
+      body: "When you compare marriage bureaus in Bangalore, ask five things: how profiles are screened and what is not verified, who will see your biodata, whether the bride's Wali is involved, what the fees are in writing, and who your contact person will be. A good bureau never promises a match or a date.",
+      link: {
+        href: "/blog/muslim-marriage-bureau-bangalore-guide",
+        label: "Read our full guide: How to Choose the Best Muslim Marriage Bureau in Bangalore",
+      },
+    },
   },
   chennai: {
     areas: [
@@ -102,8 +125,8 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
     areas: [
       {
         heading: "Kerala districts we serve",
-        places: ["Malappuram", "Kozhikode (Calicut)", "Kannur", "Thrissur", "Kochi", "Kollam", "Thiruvananthapuram"],
-        body: "We support Mappila Muslim families in Malappuram, Kozhikode (Calicut), Kannur and Thrissur, as well as Kochi, Kollam and Thiruvananthapuram. Families anywhere in Kerala can work with us by phone and WhatsApp.",
+        places: ["Malappuram", "Kozhikode (Calicut)", "Kannur", "Thrissur", "Kochi (Ernakulam)", "Kollam", "Thiruvananthapuram"],
+        body: "We support Mappila Muslim families in Malappuram, Kozhikode (Calicut), Kannur and Thrissur, as well as Kochi (Ernakulam), Kollam and Thiruvananthapuram. Families anywhere in Kerala can work with us by phone and WhatsApp.",
       },
     ],
     moreFaqs: [
