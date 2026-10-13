@@ -76,7 +76,7 @@ export function HeroSection() {
           <motion.img
             key={HERO_SLIDER_IMAGES[currentImageIndex]}
             src={HERO_SLIDER_IMAGES[currentImageIndex]}
-            alt=""
+            alt="HumNikah - Trusted Muslim Matrimony and Verified Nikah Matchmaking"
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 0.45, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
@@ -158,7 +158,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight"
             >
-              #1 Muslim Matrimony <br className="hidden sm:inline" />
+              HumNikah &ndash; #1 Verified Muslim Matrimony <br className="hidden sm:inline" />
               <span className="text-brand-gold italic relative inline-block">
                 Across India
                 <motion.span

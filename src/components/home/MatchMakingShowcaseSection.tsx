@@ -163,9 +163,9 @@ export function MatchMakingShowcaseSection() {
                         <Icon size={20} />
                       </div>
                       <div className="flex flex-col flex-1">
-                        <h4 className="text-sm sm:text-base font-bold text-white  font-playfair sm:min-h-[2.75rem] flex items-center">
+                        <p className="text-sm sm:text-base font-bold text-white font-playfair sm:min-h-[2.75rem] flex items-center">
                           {pillar.title}
-                        </h4>
+                        </p>
                         <p className="text-slate-300 text-xs font-light leading-relaxed flex-1">
                           {pillar.desc}
                         </p>

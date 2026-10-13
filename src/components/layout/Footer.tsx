@@ -112,9 +112,9 @@ export function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Quick Links
-            </h4>
+            </p>
             <ul className="space-y-2.5">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
@@ -151,9 +151,9 @@ export function Footer() {
 
           {/* Column 3: Legal (With FAQ redirect to Homepage) */}
           <div>
-            <h4 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Legal &amp; Support
-            </h4>
+            </p>
             <ul className="space-y-2.5">
               <li>
                 <Link href="/privacy" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
@@ -175,9 +175,9 @@ export function Footer() {
 
           {/* Column 4: Contact Info */}
           <div>
-            <h4 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Contact Support
-            </h4>
+            </p>
             <ul className="space-y-3.5">
               <li className="flex items-start gap-2.5">
                 <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
@@ -213,9 +213,9 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8 pb-4 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
             <div>
-              <h5 className="text-sm font-playfair font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
+              <p className="text-sm font-playfair font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
                 <MapPin size={16} /> Our Locations &amp; Regional Hubs
-              </h5>
+              </p>
               <p className="text-gray-300 text-xs font-light mt-0.5">
                 Karnataka, Kerala, Tamil Nadu, Andhra Pradesh, Telangana &amp; Maharashtra
               </p>

@@ -16,8 +16,8 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 
 export const metadata = buildMetadata({
-  title: "HumNikah – Verified Muslim Matrimony & Nikah Matchmaking",
-  absoluteTitle: "HumNikah – Verified Muslim Matrimony & Nikah Matchmaking",
+  title: "HumNikah – Verified Muslim Matrimony Across India",
+  absoluteTitle: "HumNikah – Verified Muslim Matrimony Across India",
   description:
     "Find verified Muslim brides and grooms with HumNikah. Personal matchmaking, home verification, family involvement and complete privacy across India.",
   path: "/",

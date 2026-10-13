@@ -101,9 +101,9 @@ export function ValuesBlogGallerySection() {
                         className="w-16 h-16 rounded-lg object-cover object-top shrink-0 group-hover:scale-105 transition-transform duration-300"
                       />
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal group-hover:text-brand-emerald line-clamp-2 leading-snug transition-colors">
+                        <p className="text-xs sm:text-sm font-bold text-brand-charcoal group-hover:text-brand-emerald line-clamp-2 leading-snug transition-colors">
                           {post.title}
-                        </h4>
+                        </p>
                         <p className="text-[11px] text-brand-secondary mt-1">
                           {post.publishedAt}
                         </p>

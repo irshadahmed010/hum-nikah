@@ -58,8 +58,13 @@ const testimonials = [
 ];
 
 export function SuccessStoriesAndProfilesSection() {
+  const [isMounted, setIsMounted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(testimonials.length);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleNext = () => {
     setTransitionEnabled(true);
@@ -104,6 +109,10 @@ export function SuccessStoriesAndProfilesSection() {
     ...testimonials,
   ];
 
+  // In SSR (server HTML for crawlers), render testimonials once to eliminate duplicate content penalties.
+  // After hydration on client, use extendedTestimonials for infinite carousel animation.
+  const displayTestimonials = isMounted ? extendedTestimonials : testimonials;
+
   return (
     <section className="py-12 bg-brand-cream/30 border-t border-[#651514] overflow-hidden">
       <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
@@ -126,13 +135,15 @@ export function SuccessStoriesAndProfilesSection() {
           <div
             onTransitionEnd={handleTransitionEnd}
             style={{
-              transform: `translateX(calc(-${currentIndex} * (100% + 16px) / var(--visible-cards)))`,
+              transform: isMounted
+                ? `translateX(calc(-${currentIndex} * (100% + 16px) / var(--visible-cards)))`
+                : "none",
             }}
             className={`flex gap-4 [--visible-cards:1] md:[--visible-cards:2] lg:[--visible-cards:4] ${
               transitionEnabled ? "transition-transform duration-500 ease-in-out" : "transition-none"
             }`}
           >
-            {extendedTestimonials.map((testimonial, idx) => (
+            {displayTestimonials.map((testimonial, idx) => (
               <div
                 key={idx}
                 className="flex-shrink-0 w-full md:w-[calc((100%-16px)/2)] lg:w-[calc((100%-48px)/4)] bg-brand-cream/80 border border-brand-border rounded-2xl p-6 relative shadow-xs hover:shadow-md hover:border-brand-gold/40 transition-all flex flex-col justify-between"
@@ -153,9 +164,9 @@ export function SuccessStoriesAndProfilesSection() {
                     {testimonial.name.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-brand-charcoal truncate">
+                    <p className="text-xs font-bold text-brand-charcoal truncate">
                       {testimonial.name}
-                    </h4>
+                    </p>
                     <p className="text-[11px] text-brand-secondary truncate">
                       {testimonial.location}
                     </p>
