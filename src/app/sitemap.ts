@@ -63,6 +63,20 @@ async function getBlogEntries(): Promise<
   }
 }
 
+async function getAllBlogEntries(): Promise<{ slug: string; lastModified?: Date }[]> {
+  const entries = await getBlogEntries();
+  const known = new Set(entries.map((e) => e.slug));
+  // Bundled posts that are not in the database yet still belong in the sitemap.
+  const extra = BLOG_POSTS.filter((p) => !known.has(p.slug)).map((p) => {
+    const date = new Date(p.publishedAt);
+    return {
+      slug: p.slug,
+      lastModified: Number.isNaN(date.getTime()) ? undefined : date,
+    };
+  });
+  return [...entries, ...extra];
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route.path}`,
@@ -76,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const blogEntries: MetadataRoute.Sitemap = (await getBlogEntries()).map(
+  const blogEntries: MetadataRoute.Sitemap = (await getAllBlogEntries()).map(
     ({ slug, lastModified }) => ({
       url: `${SITE_URL}/blog/${slug}`,
       lastModified,

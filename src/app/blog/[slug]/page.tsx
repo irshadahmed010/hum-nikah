@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, Tag, BookOpen, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
-import { BLOG_POSTS } from "@/data/blogsData";
+import { BLOG_POSTS, mergeWithBundledPosts } from "@/data/blogsData";
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 
@@ -49,20 +49,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const clamp = (text: string, max: number) =>
     text.length <= max ? text : `${text.slice(0, max - 1).trimEnd()}…`;
+  const rawDescription = post.seoDescription ?? post.excerpt;
   const description =
-    typeof post.excerpt === "string" ? clamp(post.excerpt, 155) : undefined;
-  // The root template appends " | HumNikah" (11 chars).
-  const title = clamp(post.title, 49);
+    typeof rawDescription === "string" ? clamp(rawDescription, 155) : undefined;
+  // The root template appends " | HumNikah" (11 chars); posts with a seoTitle
+  // supply the full title tag themselves.
+  const title = post.seoTitle ?? clamp(post.title, 49);
 
   return buildMetadata({
     title,
+    absoluteTitle: post.seoTitle,
     description: description ?? title,
     path: `/blog/${slug}`,
     // Hotlinked stock photos make poor share images; fall back to the brand image.
     image: post.image?.includes("images.unsplash.com") ? undefined : post.image,
     type: "article",
     publishedTime: toIso(post.created_at ?? post.publishedAt),
-    modifiedTime: toIso(post.updated_at),
+    modifiedTime: toIso(post.updated_at ?? post.created_at ?? post.publishedAt),
   });
 }
 
@@ -81,10 +84,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     .neq("id", post.id)
     .limit(3);
 
-  let relatedPosts = dbRelatedPosts;
-  if (!relatedPosts || relatedPosts.length === 0) {
-    relatedPosts = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 3);
-  }
+  const relatedPosts = mergeWithBundledPosts(dbRelatedPosts)
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
 
   const canonicalUrl = `${SITE_URL}/blog/${slug}`;
   const datePublished = toIso(post.created_at ?? post.publishedAt);
@@ -108,6 +110,18 @@ export default async function BlogPostPage({ params }: PageProps) {
         publisher: { "@id": `${SITE_URL}/#organization` },
         mainEntityOfPage: canonicalUrl,
       },
+      ...(Array.isArray(post.faqs) && post.faqs.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: post.faqs.map((faq: { q: string; a: string }) => ({
+                "@type": "Question",
+                name: faq.q,
+                acceptedAnswer: { "@type": "Answer", text: faq.a },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -205,7 +219,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-brand-border/80 mb-6 sm:mb-8 bg-brand-beige max-w-3xl lg:max-w-4xl mx-auto">
           <Image
             src={post.image}
-            alt={post.title}
+            alt={post.imageAlt ?? post.title}
             width={1600}
             height={900}
             className="w-full h-auto max-h-[280px] sm:max-h-[380px] object-cover"
@@ -215,7 +229,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Article Body */}
         <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-brand-border/60">
           <div
-            className="prose prose-emerald sm:prose-lg max-w-none 
+            className="blog-body prose prose-emerald sm:prose-lg max-w-none 
               prose-headings:font-playfair prose-headings:font-bold prose-headings:text-brand-charcoal 
               prose-h2:text-xl prose-h2:sm:text-2xl lg:prose-h2:text-3xl prose-h2:mt-7 prose-h2:mb-3.5 prose-h2:border-b prose-h2:border-brand-border/40 prose-h2:pb-2
               prose-h3:text-lg prose-h3:sm:text-xl prose-h3:mt-6 prose-h3:mb-2.5

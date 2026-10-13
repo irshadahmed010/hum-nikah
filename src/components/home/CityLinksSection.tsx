@@ -16,6 +16,21 @@ export function CityLinksSection() {
           </Link>{" "}
           guide, or find verified matchmaking for your city.
         </p>
+        <p className="mt-4 text-sm text-brand-secondary max-w-xl mx-auto">
+          Muslim rishta chahiye? Apna biodata{" "}
+          <Link href="/submit-biodata" className="text-brand-gold font-semibold hover:underline">
+            free submit karein
+          </Link>{" "}
+          ya{" "}
+          <a
+            href="/whatsapp?src=home-hinglish"
+            rel="nofollow noopener"
+            className="text-brand-gold font-semibold hover:underline"
+          >
+            WhatsApp par baat karein
+          </a>
+          .
+        </p>
         <ul className="mt-6 flex flex-wrap justify-center gap-3">
           {CITY_CONTENT.map((c) => (
             <li key={c.slug}>

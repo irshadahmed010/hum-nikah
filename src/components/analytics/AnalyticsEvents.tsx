@@ -11,10 +11,22 @@ export function AnalyticsEvents() {
     const onClick = (e: MouseEvent) => {
       const link = (e.target as Element | null)?.closest?.("a[href]");
       const href = link?.getAttribute("href") ?? "";
-      if (href.startsWith("tel:")) {
+      if (href.startsWith("/downloads/")) {
+        const name = href.split("/").pop() ?? "";
+        trackEvent("biodata_download", {
+          gender: name.includes("-boy.") ? "boy" : "girl",
+          format: name.split(".").pop(),
+          page_path: window.location.pathname,
+        });
+      } else if (href.startsWith("tel:")) {
         trackEvent("tel_click", { link_url: href, page_path: window.location.pathname });
-      } else if (href.includes("wa.me/") || href.includes("api.whatsapp.com")) {
-        trackEvent("whatsapp_click", { link_url: href, page_path: window.location.pathname });
+      } else if (
+        href.includes("wa.me/") ||
+        href.includes("api.whatsapp.com") ||
+        href.startsWith("/whatsapp")
+      ) {
+        const src = new URL(href, window.location.origin).searchParams.get("src") ?? undefined;
+        trackEvent("whatsapp_click", { link_url: href, src, page_path: window.location.pathname });
       }
     };
 

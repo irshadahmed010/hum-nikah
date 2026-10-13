@@ -150,6 +150,16 @@ export function Footer() {
                 </li>
               ))}
               <li>
+                <Link href="/blog/muslim-biodata-format-for-marriage" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                  Free Biodata Format
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/how-to-verify-a-muslim-rishta" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                  How to Verify a Rishta
+                </Link>
+              </li>
+              <li>
                 <Link href="/fees" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
                   Fees &amp; Payment
                 </Link>

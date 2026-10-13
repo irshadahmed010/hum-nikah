@@ -12,18 +12,42 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, BUSINESS } from "@/lib/site";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact HumNikah – Muslim Matchmaking Bureau",
+  title: "Muslim Rishta Contact Number | Contact HumNikah",
+  absoluteTitle: "Muslim Rishta Contact Number | Contact HumNikah",
   description:
-    "Call, WhatsApp, email or visit the HumNikah office in Cox Town, Bengaluru for personal Muslim matchmaking. We serve families across India.",
+    "Call or WhatsApp HumNikah for Muslim rishta help. Bengaluru office address, phone numbers and a personal WhatsApp chat. Submit biodata free.",
   path: "/contact",
 });
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  telephone: ["+919019082205", "+919844321312"],
+  email: BUSINESS.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: BUSINESS.streetAddress,
+    addressLocality: BUSINESS.locality,
+    addressRegion: BUSINESS.region,
+    postalCode: BUSINESS.postalCode,
+    addressCountry: BUSINESS.country,
+  },
+};
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-brand-cream pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       {/* Compact Modern Hero Section (Matches Blog & Gallery page size) */}
       <section className="relative bg-[#1D184C] text-white py-8 sm:py-12 overflow-hidden border-b border-brand-gold/20">
         {/* Glow Effects */}
@@ -37,8 +61,8 @@ export default function ContactPage() {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-playfair font-bold text-white tracking-tight leading-tight">
-            We&apos;d Love to{" "}
-            <span className="text-[#F3B979] italic">Hear From You</span>
+            Contact HumNikah for{" "}
+            <span className="text-[#F3B979] italic">Muslim Rishta Help</span>
           </h1>
 
           <p className="mt-2 text-slate-300 text-xs sm:text-sm lg:text-base font-light max-w-lg mx-auto leading-relaxed">
@@ -86,9 +110,8 @@ export default function ContactPage() {
                     </a>
                     <span className="text-slate-300">/</span>
                     <a 
-                      href="https://wa.me/919019082205" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                      href="/whatsapp?src=contact"
+                      rel="nofollow noopener"
                       className="text-emerald-700 hover:text-emerald-800 hover:underline font-semibold transition-colors"
                     >
                       WA: +91 90190 82205

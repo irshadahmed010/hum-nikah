@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import BlogClient from "./BlogClient";
-import { BLOG_POSTS } from "@/data/blogsData";
+import { mergeWithBundledPosts } from "@/data/blogsData";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 
@@ -23,8 +23,8 @@ export default async function BlogPage() {
     console.error("Error fetching blogs:", error);
   }
 
-  // Fallback to static data if table doesn't exist or is empty
-  const displayBlogs = blogs && blogs.length > 0 ? blogs : BLOG_POSTS;
+  // Database posts plus any bundled posts not yet in the database
+  const displayBlogs = mergeWithBundledPosts(blogs);
 
   return <BlogClient blogs={displayBlogs} />;
 }

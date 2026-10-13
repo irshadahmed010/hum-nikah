@@ -1,3 +1,5 @@
+import { SEO_BLOG_POSTS } from "./blogPostsSeo";
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -15,6 +17,15 @@ export interface BlogPost {
   image: string;
   featured?: boolean;
   tags: string[];
+  /** Alt text for the featured image (falls back to the title). */
+  imageAlt?: string;
+  /** Title tag, used verbatim (<= 60 chars) instead of title + brand suffix. */
+  seoTitle?: string;
+  /** Meta description (<= 155 chars); falls back to the excerpt. */
+  seoDescription?: string;
+  primaryKeyword?: string;
+  /** Shown in the post body and emitted as FAQPage schema. */
+  faqs?: { q: string; a: string }[];
 }
 
 export const BLOG_CATEGORIES = [
@@ -212,7 +223,25 @@ const RAW_POSTS: BlogPost[] = [
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = RAW_POSTS.map((post) => ({
+// Newest first: the keyword-targeted guides lead, then the earlier posts.
+export const BLOG_POSTS: BlogPost[] = [...SEO_BLOG_POSTS, ...RAW_POSTS].map((post) => ({
   ...post,
   readTime: estimateReadTime(post.content),
 }));
+
+/**
+ * Merges database posts with the bundled posts (database wins on slug) so
+ * new bundled posts are not hidden once the `blogs` table has rows.
+ */
+export function mergeWithBundledPosts<T extends { slug: string }>(dbPosts: T[] | null | undefined): (T | BlogPost)[] {
+  const db = dbPosts ?? [];
+  const dbSlugs = new Set(db.map((p) => p.slug));
+  const extra = BLOG_POSTS.filter((p) => !dbSlugs.has(p.slug));
+  const stamp = (p: { created_at?: string; publishedAt?: string }) =>
+    Date.parse(p.created_at ?? p.publishedAt ?? "") || 0;
+  return [...db, ...extra].sort(
+    (a, b) =>
+      stamp(b as { created_at?: string; publishedAt?: string }) -
+      stamp(a as { created_at?: string; publishedAt?: string }),
+  );
+}

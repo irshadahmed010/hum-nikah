@@ -357,6 +357,214 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
   },
+
+  {
+    slug: "beary-bhatkali",
+    primaryKeyword: "Beary Muslim matrimony",
+    title: "Beary & Bhatkali Muslim Matrimony | HumNikah",
+    description:
+      "Beary and Bhatkali Muslim matrimony for families in Bangalore, Mangaluru and Bhatkal. Verified profiles, Wali involved. Submit biodata free.",
+    h1: "Beary & Bhatkali Muslim Matrimony",
+    navLabel: "Beary & Bhatkali",
+    intro: [
+      "HumNikah offers Beary Muslim matrimony and Bhatkali matchmaking for families who want their community, language and traditions respected from the first conversation. Your preferences are recorded in the biodata and used by your relationship manager when shortlisting profiles.",
+      "Every biodata is manually screened. Introductions are arranged between families with the Wali involved, and nothing is shared publicly.",
+    ],
+    sections: [
+      {
+        heading: "Beary matrimony",
+        body: [
+          "Families who prefer a Beary match can state this clearly in their biodata. Your relationship manager combines it with education, profession, language and family expectations, so the proposals you receive are aligned with what you asked for rather than being a generic list.",
+        ],
+      },
+      {
+        heading: "Bhatkali matrimony",
+        body: [
+          "Bhatkali families can register in the same way. We discuss each shortlisted profile with you and your family before any introduction is made, and we never bypass the Wali.",
+        ],
+      },
+      {
+        heading: "Bangalore and coastal Karnataka families",
+        body: [
+          "Our office is in Cox Town, Bangalore (Bengaluru), where families can walk in for a consultation. Families in Mangaluru and Bhatkal can work with us by phone and WhatsApp, and be matched with families in Bangalore, across Karnataka and in the Gulf.",
+        ],
+      },
+      {
+        heading: "Verification and privacy",
+        body: [
+          "Identity, education or profession, marital status and residence are verified before a profile is shared. Photographs, contact details and documents are shared only with matches that you and your family approve. We do not run formal criminal-record checks, so families should still do their own due diligence.",
+        ],
+      },
+    ],
+    placesHeading: "Where we serve Beary and Bhatkali families",
+    places: [
+      {
+        heading: "Bangalore (Bengaluru)",
+        body: "Walk-in consultations at our Cox Town office, with families also served from Frazer Town, Shivaji Nagar, RT Nagar and the wider city.",
+      },
+      {
+        heading: "Mangaluru and Bhatkal",
+        body: "Families in Mangaluru and Bhatkal are served by phone and WhatsApp, with in-person meetings at our Bangalore office when a family wishes to meet.",
+      },
+    ],
+    relatedCities: ["bengaluru"],
+    faqs: [
+      {
+        q: "Do you match Beary and Bhatkali families?",
+        a: "Yes. Beary and Bhatkali community preferences are recorded in your biodata and respected when we shortlist profiles.",
+      },
+      {
+        q: "Can I visit your office in Bangalore?",
+        a: "Yes. Our office at Splendid Plaza, Wheeler Road, Cox Town, Bengaluru 560005 is open for walk-in family consultations. We recommend calling ahead.",
+      },
+      {
+        q: "Do you serve families in Mangaluru and Bhatkal?",
+        a: "Yes. We serve families in Mangaluru and Bhatkal, as well as Mysuru, Hubli-Dharwad, Gulbarga and Bijapur, mostly by phone and WhatsApp.",
+      },
+      {
+        q: "Is the Wali involved?",
+        a: "Yes. We encourage Wali involvement from the first conversation, and introductions are made between families, never directly between strangers.",
+      },
+    ],
+  },
+  {
+    slug: "nri-gulf",
+    primaryKeyword: "NRI Muslim rishta",
+    title: "NRI & Gulf Muslim Rishta | HumNikah",
+    description:
+      "NRI and Gulf-based Muslim rishta and matrimony. Cross-border introductions, verified profiles, Wali involved, privacy first. Submit biodata free.",
+    h1: "NRI & Gulf-Based Muslim Rishta and Matrimony",
+    navLabel: "NRI & Gulf Families",
+    intro: [
+      "HumNikah helps NRI and Gulf-based families find a Muslim rishta in India through a verified, family-led process. A relationship manager understands your brief, shortlists aligned profiles and coordinates introductions around your time zone and travel plans.",
+      "Photographs, contact details and documents are shared only with matches that you and your family approve, and the Wali is involved throughout.",
+    ],
+    sections: [
+      {
+        heading: "How NRI matchmaking works",
+        body: [
+          "You submit your biodata online, wherever you are. A relationship manager contacts you by phone or WhatsApp, verifies your details, and shares hand-picked profiles from families in India. Family meetings and introductions are scheduled around your availability.",
+        ],
+      },
+      {
+        heading: "Gulf families",
+        body: [
+          "We regularly coordinate matches between families in India and members working in the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman. Many of our Kerala, Hyderabad and Maharashtra members have relatives in the Gulf.",
+        ],
+      },
+      {
+        heading: "UK, North America and Southeast Asia",
+        body: [
+          "We also help families with members in the UK and North America, and Tamil-speaking families in Singapore and Malaysia, connect with verified profiles in India.",
+        ],
+      },
+      {
+        heading: "Verification from abroad",
+        body: [
+          "Identity, education or profession, marital status and residence are verified before a profile is shared, using government ID and phone verification. Where possible our representatives visit the family in India. We do not run formal criminal-record checks, so families should still do their own due diligence.",
+        ],
+      },
+    ],
+    placesHeading: "Where your family can be matched",
+    places: [
+      {
+        heading: "Bangalore, Chennai and Hyderabad",
+        body: "Bangalore (Bengaluru), Chennai and Hyderabad families are a large part of our network, including Deccani, Tamil Muslim and Kannada-speaking communities.",
+      },
+      {
+        heading: "Kerala, Maharashtra and Andhra Pradesh",
+        body: "We also serve Mappila families in Kerala, Konkani and Urdu-speaking families in Maharashtra, and Muslim families across Andhra Pradesh.",
+      },
+    ],
+    relatedCities: ["bengaluru", "hyderabad", "kochi", "mumbai"],
+    faqs: [
+      {
+        q: "Can Gulf-based families register?",
+        a: "Yes. You can submit your biodata online and work with a relationship manager by phone and WhatsApp.",
+      },
+      {
+        q: "Do you work around time zones?",
+        a: "Yes. Calls and family meetings are scheduled around your time zone and travel plans.",
+      },
+      {
+        q: "Which countries do you coordinate with?",
+        a: "We regularly coordinate with the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman, and also with the UK, North America, Singapore and Malaysia.",
+      },
+      {
+        q: "Is the Wali involved?",
+        a: "Yes. We encourage Wali involvement, and introductions are made between families.",
+      },
+    ],
+  },
+  {
+    slug: "professionals",
+    primaryKeyword: "Muslim doctor engineer matrimony",
+    title: "Muslim Doctor & Engineer Matrimony | HumNikah",
+    description:
+      "Muslim matrimony for doctors, engineers, IT professionals, CAs and business owners. A matchmaker does the shortlisting. Submit biodata free.",
+    h1: "Muslim Matrimony for Doctors, Engineers & Professionals",
+    navLabel: "Doctors, Engineers & Professionals",
+    intro: [
+      "HumNikah offers Muslim doctor and engineer matrimony for busy professionals who want a considered process without hours of browsing. A dedicated relationship manager does the screening and shortlisting, and shares only curated, aligned profiles.",
+      "Introductions are discreet and Wali-involved, and your photographs and contact details stay private until you approve.",
+    ],
+    sections: [
+      {
+        heading: "Doctors and engineers",
+        body: [
+          "Education and profession are recorded in your biodata and verified before a profile is shared. You can state what you are looking for, such as a similar profession, or a partner with different but compatible goals, and your relationship manager uses it when shortlisting.",
+        ],
+      },
+      {
+        heading: "IT professionals, CAs, teachers and business owners",
+        body: [
+          "We also work with IT professionals, chartered accountants, teachers and business-owning families. Because your time is limited, we handle the screening, and you spend it on genuine conversations with your family.",
+        ],
+      },
+      {
+        heading: "Working in the Gulf or overseas",
+        body: [
+          "Many professionals work in the Gulf or abroad. We schedule calls and family introductions around your time zone and travel plans.",
+        ],
+      },
+      {
+        heading: "Verification and privacy",
+        body: [
+          "Identity, education or profession, marital status and residence are verified before sharing. We do not run formal criminal-record checks, so families should still do their own due diligence before deciding.",
+        ],
+      },
+    ],
+    placesHeading: "Where professionals can find matches",
+    places: [
+      {
+        heading: "Bangalore and Hyderabad",
+        body: "Bangalore (Bengaluru) professionals in the IT corridors of Whitefield, Electronic City, Marathahalli, HSR Layout and Koramangala, and Hyderabad professionals around HITEC City and Banjara Hills, are served by phone, WhatsApp and our Cox Town office.",
+      },
+      {
+        heading: "Across India",
+        body: "We also serve professionals in Chennai, Kochi, Mumbai, Vijayawada and other cities, matching them with verified profiles across India.",
+      },
+    ],
+    relatedCities: ["bengaluru", "hyderabad", "chennai", "mumbai"],
+    faqs: [
+      {
+        q: "Can I ask for a doctor or engineer match?",
+        a: "Yes. State your preferences for education and profession in the biodata form, and your relationship manager will use them when shortlisting.",
+      },
+      {
+        q: "I have very little time. Can you manage the search?",
+        a: "Yes. A relationship manager does the screening and shortlisting and shares only curated, aligned profiles.",
+      },
+      {
+        q: "Is my profile kept private?",
+        a: "Yes. Photographs, contact details and documents are never publicly searchable and are shared only with matches that you and your family approve.",
+      },
+      {
+        q: "Do you verify education and profession?",
+        a: "Yes. Education or profession is verified before a profile is shared, along with identity, marital status and residence.",
+      },
+    ],
+  },
 ];
 
 export function getCommunityPage(slug: string): CommunityPage | undefined {
@@ -365,12 +573,12 @@ export function getCommunityPage(slug: string): CommunityPage | undefined {
 
 /** Community pages relevant to each city page (for cross-links). */
 export const CITY_COMMUNITY_LINKS: Record<string, string[]> = {
-  bengaluru: ["divorcee-widow-remarriage"],
-  chennai: ["labbai-rowther-marakkayar", "divorcee-widow-remarriage"],
-  hyderabad: ["deccani", "divorcee-widow-remarriage"],
-  kochi: ["mappila", "divorcee-widow-remarriage"],
-  mumbai: ["konkani", "divorcee-widow-remarriage"],
-  vijayawada: ["divorcee-widow-remarriage"],
+  bengaluru: ["beary-bhatkali", "professionals", "nri-gulf", "divorcee-widow-remarriage"],
+  chennai: ["labbai-rowther-marakkayar", "professionals", "nri-gulf", "divorcee-widow-remarriage"],
+  hyderabad: ["deccani", "professionals", "nri-gulf", "divorcee-widow-remarriage"],
+  kochi: ["mappila", "nri-gulf", "divorcee-widow-remarriage"],
+  mumbai: ["konkani", "professionals", "nri-gulf", "divorcee-widow-remarriage"],
+  vijayawada: ["nri-gulf", "divorcee-widow-remarriage"],
 };
 
 function validateCommunities(pages: CommunityPage[]) {

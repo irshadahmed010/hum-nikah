@@ -20,6 +20,8 @@ import {
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { COMMUNITY_PAGES } from "@/data/communities";
+import { BLOG_POSTS } from "@/data/blogsData";
+import { ALL_GUIDE_SLUGS } from "@/data/guides";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
@@ -347,6 +349,43 @@ export default function MuslimMatrimonyIndiaPage() {
         </div>
       </section>
 
+      {/* Hinglish lead section */}
+      <section className="py-10 sm:py-12 bg-brand-cream border-b border-brand-border/50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
+            Muslim Rishta Chahiye? Apna Biodata Free Submit Karein
+          </h2>
+          <p className="text-[15px] text-black leading-relaxed">
+            Muslim rishta chahiye? HumNikah ek muslim rishtey bureau hai jo manually
+            screened profiles, Wali ki involvement aur privacy ke saath rishta
+            dhundhne me families ki madad karta hai. Aap Bengaluru, Hyderabad,
+            Chennai, Kochi, Mumbai aur Vijayawada ke families ke liye apna biodata
+            free submit kar sakte hain, ya seedha WhatsApp par baat kar sakte hain.
+            Biodata kaise banayein, ye jaanne ke liye hamara{" "}
+            <Link href="/blog/muslim-biodata-format-for-marriage" className="text-brand-gold font-semibold hover:underline">
+              free Muslim biodata format
+            </Link>{" "}
+            dekhein. Rishta safe tareeke se verify karne ke liye{" "}
+            <Link href="/blog/how-to-verify-a-muslim-rishta" className="text-brand-gold font-semibold hover:underline">
+              verification checklist
+            </Link>{" "}
+            padhein.
+          </p>
+          <p className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold">
+            <Link href="/submit-biodata" className="text-brand-emerald hover:text-brand-gold">
+              Biodata submit karein
+            </Link>
+            <a
+              href="/whatsapp?src=india-hinglish"
+              rel="nofollow noopener"
+              className="text-brand-emerald hover:text-brand-gold"
+            >
+              WhatsApp par baat karein
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* Intro / About the service */}
       <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
@@ -541,6 +580,24 @@ export default function MuslimMatrimonyIndiaPage() {
                   className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
                 >
                   Muslim Matrimony in {office.city}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Guides */}
+          <div className="mt-6 text-center">
+            <p className="text-sm font-semibold text-brand-charcoal mb-3">
+              Guides for choosing a marriage bureau
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              {BLOG_POSTS.filter((p) => ALL_GUIDE_SLUGS.includes(p.slug)).map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
+                >
+                  {p.title}
                 </Link>
               ))}
             </div>

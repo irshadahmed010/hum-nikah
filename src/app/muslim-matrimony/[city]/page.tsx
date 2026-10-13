@@ -22,6 +22,7 @@ import { buildMetadata } from "@/lib/seo";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 import { CITY_CONTENT, getCityContent } from "@/data/cityContent";
 import { CITY_META } from "@/data/seo-meta";
+import { getGuidesForCity } from "@/data/guides";
 import { CITY_COMMUNITY_LINKS, getCommunityPage } from "@/data/communities";
 
 interface PageProps {
@@ -113,6 +114,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
     .filter((slug) => slug !== "divorcee-widow-remarriage")
     .map((slug) => getCommunityPage(slug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const guides = getGuidesForCity(content.slug);
   const hasOffice = office?.hasOffice ?? false;
   const pageUrl = `${SITE_URL}/muslim-matrimony/${content.slug}`;
 
@@ -516,6 +518,28 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {guides.length > 0 && (
+        <section className="py-10 bg-brand-cream border-b border-brand-border/50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal mb-3">
+              Related guides
+            </h2>
+            <ul className="space-y-2">
+              {guides.map((g) => (
+                <li key={g.slug}>
+                  <Link
+                    href={`/blog/${g.slug}`}
+                    className="text-brand-gold font-semibold hover:underline"
+                  >
+                    {g.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
