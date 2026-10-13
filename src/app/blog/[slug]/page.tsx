@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, Tag, BookOpen, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, ChevronRight, Sparkles } from "lucide-react";
 import { getBlogBySlug, getBlogIndex, getRelatedBlogs } from "@/lib/blogs";
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
+import { BlogCard } from "@/components/blog/BlogCard";
 
 interface PageProps {
   params: Promise<{
@@ -201,14 +202,17 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
         </div>
 
-        {/* Compact & Responsive Featured Image */}
-        <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-brand-border/80 mb-6 sm:mb-8 bg-brand-beige max-w-3xl lg:max-w-4xl mx-auto">
+        {/* Featured image: full article width, and never cropped — the heroes
+            are 16:9, so h-auto shows the whole frame. */}
+        <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-brand-border/80 mb-6 sm:mb-8 bg-brand-beige">
           <Image
             src={post.image}
             alt={post.imageAlt ?? post.title}
             width={1600}
             height={900}
-            className="w-full h-auto max-h-[280px] sm:max-h-[380px] object-cover"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            priority
+            className="w-full h-auto"
           />
         </div>
 
@@ -284,89 +288,33 @@ export default async function BlogPostPage({ params }: PageProps) {
       </article>
 
       {/* Related Nikah Articles Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 pt-10 border-t border-brand-border/60">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <BookOpen size={20} className="text-brand-gold" />
-            <h2 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal">
+      {relatedPosts.length > 0 && (
+        <section className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 pt-12 border-t border-brand-border/60">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold text-brand-gold uppercase tracking-widest">
+              Keep Reading
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-brand-charcoal mt-2">
               Related Nikah Articles
             </h2>
           </div>
-          <Link
-            href="/blog"
-            className="text-xs font-semibold text-brand-emerald hover:text-brand-gold flex items-center gap-1 transition-colors"
-          >
-            View All <ChevronRight size={14} />
-          </Link>
-        </div>
 
-        {/* Responsive Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {relatedPosts && relatedPosts.map((related) => (
-            <Link key={related.id} href={`/blog/${related.slug}`} className="group block h-full">
-              <div className="bg-white rounded-2xl border border-brand-border/80 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between">
-                <div>
-                  {/* Image */}
-                  <div className="h-44 sm:h-48 w-full overflow-hidden bg-brand-beige relative">
-                    <Image
-                      src={related.image}
-                      alt={related.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-md bg-[#1D184C]/90 backdrop-blur-md text-white text-[11px] font-semibold tracking-wide">
-                        {related.category}
-                      </span>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {relatedPosts.map((related) => (
+              <BlogCard key={related.id} post={related} />
+            ))}
+          </div>
 
-                  {/* Content */}
-                  <div className="p-5 sm:p-6 pb-2">
-                    <div className="flex items-center gap-3 text-[11px] text-brand-secondary mb-2.5">
-                      <span className="flex items-center gap-1">
-                        <Calendar size={12} className="text-brand-gold" />
-                        {related.publishedAt}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Clock size={12} className="text-brand-gold" />
-                        {related.readTime}
-                      </span>
-                    </div>
-
-                    <h3 className="text-base font-playfair font-bold text-brand-charcoal group-hover:text-brand-gold transition-colors leading-snug mb-2 line-clamp-2">
-                      {related.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="p-5 sm:p-6 pt-0 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {related.author?.avatar && (
-                      <Image
-                        src={related.author.avatar}
-                        alt={related.author?.name || "HumNikah team"}
-                        width={24}
-                        height={24}
-                        className="w-6 h-6 rounded-full object-cover border border-brand-gold/30"
-                      />
-                    )}
-                    <span className="text-[11px] font-semibold text-brand-charcoal truncate max-w-[100px]">
-                      {related.author?.name}
-                    </span>
-                  </div>
-
-                  <span className="text-xs font-semibold text-brand-emerald group-hover:underline flex items-center gap-1">
-                    Read <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-border bg-white text-sm font-semibold text-brand-charcoal hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              View all articles <ChevronRight size={16} />
             </Link>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

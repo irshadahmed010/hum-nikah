@@ -150,7 +150,9 @@ export function ValuesBlogGallerySection({
                     <motion.div
                       key={i}
                       whileHover={{ scale: 1.03 }}
-                      className="aspect-[1/1] sm:aspect-[4/5] rounded-xl overflow-hidden bg-brand-beige border border-brand-border/40 shadow-2xs cursor-pointer group"
+                      // `relative` is required: the Image below uses `fill`, which
+                      // is absolutely positioned and needs this cell as its anchor.
+                      className="relative aspect-[1/1] sm:aspect-[4/5] rounded-xl overflow-hidden bg-brand-beige border border-brand-border/40 shadow-2xs cursor-pointer group"
                     >
                       <Image
                         src={photo}

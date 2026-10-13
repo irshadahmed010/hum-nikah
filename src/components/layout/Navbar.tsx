@@ -129,16 +129,16 @@ export function Navbar() {
               </div>
               <div className="flex flex-col justify-center">
                 <div className="flex items-baseline tracking-tight leading-none font-outfit">
-                  <span className="text-[27px] sm:text-[33px] lg:text-[2.45rem] font-black text-brand-charcoal tracking-tight transition-colors group-hover:text-brand-emerald">
+                  <span className="text-[27px] sm:text-[33px] lg:text-[2.45rem] xl:text-[2.2rem] font-black text-brand-charcoal tracking-tight transition-colors group-hover:text-brand-emerald">
                     Hum
                   </span>
-                  <span className="text-[27px] sm:text-[33px] lg:text-[2.45rem] font-black bg-gradient-to-r from-brand-gold via-[#D89F6F] to-brand-gold bg-clip-text text-transparent tracking-tight transition-all duration-300 group-hover:brightness-110">
+                  <span className="text-[27px] sm:text-[33px] lg:text-[2.45rem] xl:text-[2.2rem] font-black bg-gradient-to-r from-brand-gold via-[#D89F6F] to-brand-gold bg-clip-text text-transparent tracking-tight transition-all duration-300 group-hover:brightness-110">
                     Nikah
                   </span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-1.5 mt-1 sm:mt-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
-                  <span className="text-[11px] sm:text-[12px] lg:text-[12.5px] font-bold text-brand-emerald/90 uppercase tracking-[0.2em] leading-none transition-colors group-hover:text-brand-gold">
+                  <span className="text-[11px] sm:text-[12px] lg:text-[12.5px] xl:text-[10px] font-bold text-brand-emerald/90 uppercase tracking-[0.2em] xl:tracking-[0.12em] leading-none transition-colors group-hover:text-brand-gold">
                     Bringing Hearts Together
                   </span>
                 </div>
@@ -147,7 +147,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation - Modern Glass Pill Menu */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#FAF6F0]/90 backdrop-blur-md p-1.5 rounded-full border border-brand-border/80 shadow-[0_2px_10px_rgba(29,24,76,0.03)]">
+          <nav className="hidden xl:flex flex-nowrap items-center gap-0.5 xl:gap-1 bg-[#FAF6F0]/90 backdrop-blur-md p-1 xl:p-1.5 rounded-full border border-brand-border/80 shadow-[0_2px_10px_rgba(29,24,76,0.03)]">
             {mainNavLinks.map((link) => {
               if (link.hasDropdown) {
                 const isAboutActive = pathname.startsWith(activePrefix[link.name] ?? link.href);
@@ -161,7 +161,7 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setOpenDropdown(null)}
-                      className={`text-[14.5px] xl:text-[15.5px] font-semibold font-outfit px-3.5 xl:px-4.5 py-2 rounded-full transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+                      className={`text-[14px] font-semibold font-outfit whitespace-nowrap px-3 py-2 rounded-full transition-all duration-200 flex items-center gap-1 cursor-pointer ${
                         isAboutActive
                           ? "bg-gradient-to-r from-brand-emerald to-[#2A2365] text-white shadow-md shadow-brand-emerald/25"
                           : "text-brand-charcoal hover:text-brand-emerald hover:bg-white/90"
@@ -169,8 +169,8 @@ export function Navbar() {
                     >
                       <span>{link.name}</span>
                       <ChevronDown
-                        size={15}
-                        className={`transition-transform duration-200 ${
+                        size={14}
+                        className={`shrink-0 transition-transform duration-200 ${
                           openDropdown === link.name ? "rotate-180 text-brand-gold" : ""
                         }`}
                       />
@@ -218,7 +218,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-[14.5px] xl:text-[15.5px] font-semibold font-outfit px-3.5 xl:px-4.5 py-2 rounded-full transition-all duration-200 relative flex items-center gap-1.5 ${
+                  className={`text-[14px] font-semibold font-outfit whitespace-nowrap px-3 py-2 rounded-full transition-all duration-200 relative flex items-center gap-1.5 ${
                     isActive
                       ? "bg-gradient-to-r from-brand-emerald to-[#2A2365] text-white shadow-md shadow-brand-emerald/25"
                       : "text-brand-charcoal hover:text-brand-emerald hover:bg-white/90"
@@ -234,7 +234,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link 
               href="/submit-biodata" 
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-emerald via-[#2A2365] to-brand-emerald hover:from-[#2A2365] hover:via-[#3B3280] hover:to-[#1D184C] text-white border border-brand-gold/30 hover:border-brand-gold/60 shadow-sm hover:shadow-md hover:shadow-brand-emerald/25 transition-all duration-300 active:scale-95 text-[14.5px] xl:text-[15.5px] font-semibold font-outfit px-5 xl:px-6 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
+              className="flex items-center gap-2 shrink-0 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-emerald via-[#2A2365] to-brand-emerald hover:from-[#2A2365] hover:via-[#3B3280] hover:to-[#1D184C] text-white border border-brand-gold/30 hover:border-brand-gold/60 shadow-sm hover:shadow-md hover:shadow-brand-emerald/25 transition-all duration-300 active:scale-95 text-[14px] font-semibold font-outfit px-4 xl:px-5 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
             >
               <User size={17} className="text-brand-gold" />
               <span>Submit Biodata</span>
@@ -242,7 +242,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="xl:hidden flex items-center gap-2">
             <button
               onClick={toggleMobileMenu}
               className="text-brand-charcoal hover:text-brand-emerald p-2 rounded-xl bg-white border border-brand-border shadow-xs focus:outline-none transition-all active:scale-95"
@@ -256,7 +256,7 @@ export function Navbar() {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-brand-border/80 shadow-2xl px-4 sm:px-6 py-5 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-4 duration-200 z-50">
+        <div className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-brand-border/80 shadow-2xl px-4 sm:px-6 py-5 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-4 duration-200 z-50">
           {mainNavLinks.map((link) => {
             if (link.hasDropdown) {
               const isAboutActive = pathname.startsWith(activePrefix[link.name] ?? link.href);

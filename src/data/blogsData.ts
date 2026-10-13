@@ -53,7 +53,13 @@ export function estimateReadTime(html: string): string {
   return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} min read`;
 }
 
-const RAW_POSTS: BlogPost[] = [
+/**
+ * ARCHIVED — the six original posts, retired from the site in October 2026.
+ * They are no longer seeded or published; the live copies were removed from the
+ * `blogs` table and backed up to content/blog/legacy-blogs-backup.json.
+ * Kept here only as a record. Do not add them back to BLOG_POSTS.
+ */
+const ARCHIVED_POSTS: BlogPost[] = [
   {
     id: "1",
     slug: "understanding-sunnah-of-nikah-spiritual-practical-foundations",
@@ -224,7 +230,10 @@ const RAW_POSTS: BlogPost[] = [
 ];
 
 // Newest first: the keyword-targeted guides lead, then the earlier posts.
-export const BLOG_POSTS: BlogPost[] = [...SEO_BLOG_POSTS, ...RAW_POSTS].map((post) => ({
+// Seed source for scripts/seed-blogs-to-db.py. Archived posts are excluded so
+// re-seeding cannot resurrect them.
+void ARCHIVED_POSTS;
+export const BLOG_POSTS: BlogPost[] = [...SEO_BLOG_POSTS].map((post) => ({
   ...post,
   readTime: estimateReadTime(post.content),
 }));
