@@ -31,8 +31,8 @@ export function buildMetadata({
   publishedTime,
   modifiedTime,
 }: SeoInput): Metadata {
-  const canonical = path === "/" ? "/" : path;
-  const url = `${SITE_URL}${path === "/" ? "" : path}`;
+  const canonical = `${SITE_URL}${path === "/" ? "/" : path}`;
+  const url = canonical;
   const ogTitle = absoluteTitle ?? `${title} | ${SITE_NAME}`;
   // Default to the generated brand share image so every page has og:image.
   // (A child `openGraph` object overrides the file-based opengraph-image.)

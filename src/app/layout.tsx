@@ -40,6 +40,9 @@ const amiri = Amiri({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: `${SITE_URL}/`,
+  },
   title: {
     default: "HumNikah | Meaningful Matches, Begin Your Nikah",
     template: "%s | HumNikah",

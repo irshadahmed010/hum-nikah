@@ -4,7 +4,7 @@
  * environment (no trailing slash).
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://humnikah.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.humnikah.com"
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "HumNikah";
