@@ -4,7 +4,6 @@ import { Plus, Edit, ExternalLink, Download } from "lucide-react";
 import { deleteBlog } from "./actions";
 import { revalidatePath } from "next/cache";
 import DeleteButton from "./DeleteButton";
-import { BLOG_POSTS } from "@/data/blogsData";
 import type { BlogPost } from "@/data/blogsData";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +18,7 @@ export default async function AdminBlogsPage() {
     console.error("Error fetching blogs:", error);
   }
 
-  const displayBlogs = blogs && blogs.length > 0 ? blogs : BLOG_POSTS;
+  const displayBlogs = blogs ?? [];
 
   // Delete Action handler
   async function handleDelete(formData: FormData) {

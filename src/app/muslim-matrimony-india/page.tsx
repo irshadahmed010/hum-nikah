@@ -20,8 +20,7 @@ import {
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { COMMUNITY_PAGES } from "@/data/communities";
-import { BLOG_POSTS } from "@/data/blogsData";
-import { ALL_GUIDE_SLUGS } from "@/data/guides";
+import { ALL_GUIDES } from "@/data/guides";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
@@ -591,13 +590,13 @@ export default function MuslimMatrimonyIndiaPage() {
               Guides for choosing a marriage bureau
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-              {BLOG_POSTS.filter((p) => ALL_GUIDE_SLUGS.includes(p.slug)).map((p) => (
+              {ALL_GUIDES.map((p) => (
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
                   className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
                 >
-                  {p.title}
+                  {p.label}
                 </Link>
               ))}
             </div>

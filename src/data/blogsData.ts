@@ -229,19 +229,4 @@ export const BLOG_POSTS: BlogPost[] = [...SEO_BLOG_POSTS, ...RAW_POSTS].map((pos
   readTime: estimateReadTime(post.content),
 }));
 
-/**
- * Merges database posts with the bundled posts (database wins on slug) so
- * new bundled posts are not hidden once the `blogs` table has rows.
- */
-export function mergeWithBundledPosts<T extends { slug: string }>(dbPosts: T[] | null | undefined): (T | BlogPost)[] {
-  const db = dbPosts ?? [];
-  const dbSlugs = new Set(db.map((p) => p.slug));
-  const extra = BLOG_POSTS.filter((p) => !dbSlugs.has(p.slug));
-  const stamp = (p: { created_at?: string; publishedAt?: string }) =>
-    Date.parse(p.created_at ?? p.publishedAt ?? "") || 0;
-  return [...db, ...extra].sort(
-    (a, b) =>
-      stamp(b as { created_at?: string; publishedAt?: string }) -
-      stamp(a as { created_at?: string; publishedAt?: string }),
-  );
-}
+

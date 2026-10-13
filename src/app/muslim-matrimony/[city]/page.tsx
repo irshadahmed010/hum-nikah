@@ -532,7 +532,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                     href={`/blog/${g.slug}`}
                     className="text-brand-gold font-semibold hover:underline"
                   >
-                    {g.title}
+                    {g.label}
                   </Link>
                 </li>
               ))}

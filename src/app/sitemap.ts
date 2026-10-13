@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { BLOG_POSTS } from "@/data/blogsData";
+import { getBlogIndex } from "@/lib/blogs";
 import { COMMUNITY_PAGES } from "@/data/communities";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
@@ -26,56 +26,6 @@ const STATIC_ROUTES: StaticRoute[] = [
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
-async function getBlogEntries(): Promise<
-  { slug: string; lastModified?: Date }[]
-> {
-  // Prefer live posts from Supabase; fall back to the bundled static posts
-  // (and never let a missing DB / env break sitemap generation).
-  try {
-    if (
-      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-      !process.env.SUPABASE_SERVICE_ROLE_KEY
-    ) {
-      throw new Error("supabase env not configured");
-    }
-    const { supabase } = await import("@/lib/supabase");
-    const { data, error } = await supabase
-      .from("blogs")
-      .select("slug, created_at, updated_at")
-      .order("created_at", { ascending: false });
-
-    if (error || !data || data.length === 0) {
-      throw error ?? new Error("no blog rows");
-    }
-
-    return data
-      .filter((row: { slug?: string | null }) => Boolean(row.slug))
-      .map((row: { slug: string; created_at?: string; updated_at?: string }) => {
-        const stamp = row.updated_at || row.created_at;
-        return {
-          slug: row.slug,
-          lastModified: stamp ? new Date(stamp) : undefined,
-        };
-      });
-  } catch {
-    // Static posts: omit lastModified rather than stamping every build with now().
-    return BLOG_POSTS.map((post) => ({ slug: post.slug }));
-  }
-}
-
-async function getAllBlogEntries(): Promise<{ slug: string; lastModified?: Date }[]> {
-  const entries = await getBlogEntries();
-  const known = new Set(entries.map((e) => e.slug));
-  // Bundled posts that are not in the database yet still belong in the sitemap.
-  const extra = BLOG_POSTS.filter((p) => !known.has(p.slug)).map((p) => {
-    const date = new Date(p.publishedAt);
-    return {
-      slug: p.slug,
-      lastModified: Number.isNaN(date.getTime()) ? undefined : date,
-    };
-  });
-  return [...entries, ...extra];
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
@@ -90,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const blogEntries: MetadataRoute.Sitemap = (await getAllBlogEntries()).map(
+  const blogEntries: MetadataRoute.Sitemap = (await getBlogIndex()).map(
     ({ slug, lastModified }) => ({
       url: `${SITE_URL}/blog/${slug}`,
       lastModified,

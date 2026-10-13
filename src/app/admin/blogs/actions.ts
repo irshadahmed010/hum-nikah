@@ -3,7 +3,16 @@
 import { supabase } from "@/lib/supabase";
 import cloudinary from "@/lib/cloudinary";
 import { revalidatePath } from "next/cache";
-import { BLOG_POSTS } from "@/data/blogsData";
+import { estimateReadTime } from "@/data/blogsData";
+
+/** Optional text field: blank means "fall back to title/excerpt". */
+function optionalText(formData: FormData, key: string): string | null {
+  const value = formData.get(key);
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
 
 // Upload image to Cloudinary
 export async function uploadImage(formData: FormData) {
@@ -51,10 +60,11 @@ export async function createBlog(formData: FormData, imageUrl: string) {
     const tagsString = formData.get("tags") as string;
     const tags = tagsString ? tagsString.split(",").map(t => t.trim()) : [];
 
+    // No stock avatar: an unverifiable author photo was flagged in the SEO audit.
     const author = {
-      name: authorName,
-      role: authorRole,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" // Default or we could upload it too
+      name: authorName || "HumNikah Editorial Team",
+      role: authorRole || "Nikah & family guidance",
+      avatar: ""
     };
 
     const publishedAt = new Date().toLocaleDateString("en-US", {
@@ -72,11 +82,14 @@ export async function createBlog(formData: FormData, imageUrl: string) {
         content,
         category,
         publishedAt,
-        readTime,
+        readTime: readTime?.trim() || estimateReadTime(content),
         author,
         image: imageUrl,
         featured,
-        tags
+        tags,
+        seoTitle: optionalText(formData, "seoTitle"),
+        seoDescription: optionalText(formData, "seoDescription"),
+        imageAlt: optionalText(formData, "imageAlt")
       })
       .select();
 
@@ -111,9 +124,9 @@ export async function updateBlog(id: string, formData: FormData, imageUrl?: stri
     const tags = tagsString ? tagsString.split(",").map(t => t.trim()) : [];
 
     const author = {
-      name: authorName,
-      role: authorRole,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" // Default
+      name: authorName || "HumNikah Editorial Team",
+      role: authorRole || "Nikah & family guidance",
+      avatar: ""
     };
 
     const updateData: Record<string, unknown> = {
@@ -122,10 +135,15 @@ export async function updateBlog(id: string, formData: FormData, imageUrl?: stri
       excerpt,
       content,
       category,
-      readTime,
+      readTime: readTime?.trim() || estimateReadTime(content),
       author,
       featured,
-      tags
+      tags,
+      seoTitle: optionalText(formData, "seoTitle"),
+      seoDescription: optionalText(formData, "seoDescription"),
+      imageAlt: optionalText(formData, "imageAlt"),
+      // Feeds Article dateModified and the sitemap's lastmod.
+      updated_at: new Date().toISOString()
     };
 
     if (imageUrl) {

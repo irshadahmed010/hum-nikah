@@ -1,5 +1,6 @@
 import React from "react";
 import { buildMetadata } from "@/lib/seo";
+import { getBlogs } from "@/lib/blogs";
 import { HeroSection } from "@/components/home/HeroSection";
 import { BismillahSection } from "@/components/home/BismillahSection";
 import { WhyChooseUsSection } from "@/components/home/WhyChooseUsSection";
@@ -24,7 +25,12 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-export default function Home() {
+// Blog previews come from the database, so this page revalidates.
+export const revalidate = 300;
+
+export default async function Home() {
+  const latestBlogs = (await getBlogs()).slice(0, 3);
+
   return (
     <main className="min-h-screen bg-brand-cream overflow-hidden">
       <HeroSection />
@@ -38,7 +44,7 @@ export default function Home() {
       <MatchMakingShowcaseSection />
       <StatsSection />
       <SuccessStoriesAndProfilesSection />
-      <ValuesBlogGallerySection />
+      <ValuesBlogGallerySection latestBlogs={latestBlogs} />
       <FaqSection />
       <CityLinksSection />
       <CtaBannerSection />

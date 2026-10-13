@@ -1,7 +1,6 @@
 import React from "react";
 import { Users, FileText, Newspaper, Image as ImageIcon } from "lucide-react";
 import { supabase } from "@/lib/supabase";
-import { BLOG_POSTS } from "@/data/blogsData";
 import { GALLERY_ITEMS } from "@/data/galleryData";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +23,7 @@ export default async function AdminDashboardPage() {
     supabase.from("Lead").select("*").order("createdAt", { ascending: false }).limit(5)
   ]);
 
-  const finalBlogsCount = blogsCount && blogsCount > 0 ? blogsCount : BLOG_POSTS.length;
+  const finalBlogsCount = blogsCount ?? 0;
   const finalGalleryCount = galleryCount && galleryCount > 0 ? galleryCount : GALLERY_ITEMS.length;
 
   return (

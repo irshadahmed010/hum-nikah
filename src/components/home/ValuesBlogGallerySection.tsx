@@ -7,7 +7,7 @@ import { Check, ArrowRight } from "lucide-react";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
 
-import { BLOG_POSTS } from "@/data/blogsData";
+import type { BlogRecord } from "@/lib/blogs";
 
 const galleryPhotos = [
   "/images/hero/img_01.webp",
@@ -18,8 +18,13 @@ const galleryPhotos = [
   "/images/hero/img_06.webp",
 ];
 
-export function ValuesBlogGallerySection() {
-  const latestBlogs = BLOG_POSTS.slice(0, 3);
+/** `latestBlogs` is fetched from the database by the page and passed in,
+ *  because this is a client component and Supabase runs server-side only. */
+export function ValuesBlogGallerySection({
+  latestBlogs = [],
+}: {
+  latestBlogs?: BlogRecord[];
+}) {
 
   return (
     <section className="py-16 bg-brand-cream border-t border-[#651514] overflow-hidden">

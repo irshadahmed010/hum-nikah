@@ -1,11 +1,10 @@
-import React, { cache } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, Tag, BookOpen, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
-import { supabase } from "@/lib/supabase";
-import { BLOG_POSTS, mergeWithBundledPosts } from "@/data/blogsData";
+import { getBlogBySlug, getBlogIndex, getRelatedBlogs } from "@/lib/blogs";
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 
@@ -15,23 +14,18 @@ interface PageProps {
   }>;
 }
 
-export const revalidate = 3600;
+// Direct database writes (seeding scripts) are picked up within this window;
+// admin create/edit/delete call revalidatePath and appear immediately.
+export const revalidate = 300;
 
 export async function generateStaticParams() {
-  // Known static slugs are prebuilt; any newer DB slug renders on demand.
-  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  // Prebuild whatever the database holds at build time; anything added later
+  // renders on demand (dynamicParams defaults to true).
+  const entries = await getBlogIndex();
+  return entries.map(({ slug }) => ({ slug }));
 }
 
-const getPost = cache(async (slug: string) => {
-  const { data } = await supabase
-    .from("blogs")
-    .select("*")
-    .eq("slug", slug)
-    .single();
-
-  if (data) return data;
-  return BLOG_POSTS.find((p) => p.slug === slug) ?? null;
-});
+const getPost = getBlogBySlug;
 
 const toIso = (value?: string): string | undefined => {
   if (!value) return undefined;
@@ -58,14 +52,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return buildMetadata({
     title,
-    absoluteTitle: post.seoTitle,
+    absoluteTitle: post.seoTitle ?? undefined,
     description: description ?? title,
     path: `/blog/${slug}`,
     // Hotlinked stock photos make poor share images; fall back to the brand image.
     image: post.image?.includes("images.unsplash.com") ? undefined : post.image,
     type: "article",
-    publishedTime: toIso(post.created_at ?? post.publishedAt),
-    modifiedTime: toIso(post.updated_at ?? post.created_at ?? post.publishedAt),
+    publishedTime: toIso(post.created_at ?? post.publishedAt ?? undefined),
+    modifiedTime: toIso(post.updated_at ?? post.created_at ?? post.publishedAt ?? undefined),
   });
 }
 
@@ -78,19 +72,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const { data: dbRelatedPosts } = await supabase
-    .from("blogs")
-    .select("*")
-    .neq("id", post.id)
-    .limit(3);
-
-  const relatedPosts = mergeWithBundledPosts(dbRelatedPosts)
-    .filter((p) => p.slug !== slug)
-    .slice(0, 3);
+  const relatedPosts = await getRelatedBlogs(slug, 3);
 
   const canonicalUrl = `${SITE_URL}/blog/${slug}`;
-  const datePublished = toIso(post.created_at ?? post.publishedAt);
-  const dateModified = toIso(post.updated_at);
+  const datePublished = toIso(post.created_at ?? post.publishedAt ?? undefined);
+  const dateModified = toIso(post.updated_at ?? undefined);
   const authorName: string | undefined = post.author?.name;
   const authorImageAlt = post.author?.name || "HumNikah team";
 

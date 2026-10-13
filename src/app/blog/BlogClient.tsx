@@ -6,9 +6,9 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Calendar, Clock, ArrowRight, Sparkles, Heart } from "lucide-react";
 import { BLOG_CATEGORIES } from "@/data/blogsData";
-import type { BlogPost } from "@/data/blogsData";
+import type { BlogRecord } from "@/lib/blogs";
 
-export default function BlogClient({ blogs }: { blogs: BlogPost[] }) {
+export default function BlogClient({ blogs }: { blogs: BlogRecord[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -200,7 +200,7 @@ export default function BlogClient({ blogs }: { blogs: BlogPost[] }) {
                             />
                           )}
                           <span className="text-[11px] font-semibold text-brand-charcoal truncate max-w-[110px]">
-                            {post.author.name}
+                            {post.author?.name ?? "HumNikah Editorial Team"}
                           </span>
                         </div>
 

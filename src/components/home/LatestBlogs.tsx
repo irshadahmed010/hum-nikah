@@ -2,10 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { BLOG_POSTS } from "@/data/blogsData";
+import type { BlogRecord } from "@/lib/blogs";
 
-export function LatestBlogs() {
-  const posts = BLOG_POSTS.slice(0, 3);
+export function LatestBlogs({ posts = [] }: { posts?: BlogRecord[] }) {
 
   return (
     <section className="py-12 bg-brand-cream">

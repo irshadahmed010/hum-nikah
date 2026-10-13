@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Upload, Loader2, Save } from "lucide-react";
 import { uploadImage, updateBlog } from "../actions";
+import { RichTextEditor } from "@/components/admin/RichTextEditor";
 
 type EditableBlog = {
   id: string;
@@ -18,6 +19,9 @@ type EditableBlog = {
   tags?: string[];
   author?: { name?: string; role?: string };
   featured?: boolean;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  imageAlt?: string | null;
 };
 
 export default function EditBlogForm({ blog }: { blog: EditableBlog }) {
@@ -155,15 +159,7 @@ export default function EditBlogForm({ blog }: { blog: EditableBlog }) {
               </div>
 
               <div>
-                <textarea
-                  id="content"
-                  name="content"
-                  defaultValue={blog.content}
-                  required
-                  rows={15}
-                  className="w-full px-3 py-3 rounded-lg border border-brand-border focus:ring-1 focus:ring-brand-gold focus:border-brand-gold outline-none transition-all text-sm font-mono resize-y"
-                  placeholder="<h2>Subheading</h2><p>Your full HTML content here...</p>"
-                ></textarea>
+                <RichTextEditor defaultValue={blog.content ?? ""} />
               </div>
             </div>
           </div>
@@ -222,6 +218,61 @@ export default function EditBlogForm({ blog }: { blog: EditableBlog }) {
             </div>
           </div>
 
+
+          {/* SEO overrides */}
+          <div className="bg-white rounded-xl shadow-sm border border-brand-border/60 p-4 space-y-3">
+            <h3 className="text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-1">
+              Search Engine (optional)
+            </h3>
+            <p className="text-[10px] text-slate-500 leading-relaxed">
+              Leave blank to reuse the title and excerpt. Google shows about 60
+              characters of the title and 155 of the description.
+            </p>
+
+            <div className="space-y-1">
+              <label htmlFor="seoTitle" className="text-[10px] font-semibold text-brand-secondary uppercase">
+                SEO Title (max 60)
+              </label>
+              <input
+                type="text"
+                id="seoTitle"
+                name="seoTitle"
+                maxLength={60}
+                defaultValue={blog.seoTitle ?? ""}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-brand-border focus:ring-1 focus:ring-brand-gold outline-none text-xs"
+                placeholder="Shown as the blue link in Google"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label htmlFor="seoDescription" className="text-[10px] font-semibold text-brand-secondary uppercase">
+                Meta Description (max 155)
+              </label>
+              <textarea
+                id="seoDescription"
+                name="seoDescription"
+                rows={3}
+                maxLength={155}
+                defaultValue={blog.seoDescription ?? ""}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-brand-border focus:ring-1 focus:ring-brand-gold outline-none text-xs resize-none"
+                placeholder="One or two sentences shown under the link"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label htmlFor="imageAlt" className="text-[10px] font-semibold text-brand-secondary uppercase">
+                Image Alt Text
+              </label>
+              <input
+                type="text"
+                id="imageAlt"
+                name="imageAlt"
+                defaultValue={blog.imageAlt ?? ""}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-brand-border focus:ring-1 focus:ring-brand-gold outline-none text-xs"
+                placeholder="Describes the photo for screen readers"
+              />
+            </div>
+          </div>
           {/* Settings Grid */}
           <div className="bg-white rounded-xl shadow-sm border border-brand-border/60 p-4 space-y-3">
             <h3 className="text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-1">Post Details</h3>
@@ -253,7 +304,7 @@ export default function EditBlogForm({ blog }: { blog: EditableBlog }) {
                   defaultValue={blog.readTime}
                   required
                   className="w-full px-2.5 py-1.5 rounded-lg border border-brand-border focus:ring-1 focus:ring-brand-gold outline-none text-xs"
-                  placeholder="e.g. 5 min read"
+                  placeholder="Auto from word count"
                 />
               </div>
             </div>
