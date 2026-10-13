@@ -1,3 +1,5 @@
+import { CITY_LOCAL, type AreaGroup } from "./cityLocal";
+
 export interface CityFaq {
   q: string;
   a: string;
@@ -10,13 +12,17 @@ export interface CityContent {
   tagline: string;
   intro: string[];
   communities: string[];
-  areasServed: string;
-  localNote: string;
+  /** Only set when verified real content is available. */
+  areasServed?: string;
+  localNote?: string;
   mapQuery: string;
   faqs: CityFaq[];
+  areas: AreaGroup[];
 }
 
-export const CITY_CONTENT: CityContent[] = [
+type RawCity = Omit<CityContent, "areas">;
+
+const RAW_CITIES: RawCity[] = [
   {
     slug: "bengaluru",
     city: "Bengaluru",
@@ -32,10 +38,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Beary and Bhatkali communities",
       "Professionals working in the Gulf and overseas",
     ],
-    areasServed:
-      "TODO(owner): list the Bengaluru localities and neighbourhoods HumNikah actively serves (for example the existing copy references Cox Town, Frazer Town, Shivaji Nagar, RT Nagar, Whitefield and others — confirm and trim).",
-    localNote:
-      "TODO(owner): add any Bengaluru-specific context — walk-in office timings for this branch, local community events HumNikah attends, or a local success story the family has agreed to share.",
     mapQuery: "Splendid Plaza, Wheeler Road, Cox Town, Bengaluru 560005",
     faqs: [
       {
@@ -67,10 +69,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Rowther community",
       "Marakkayar families",
     ],
-    areasServed:
-      "TODO(owner): confirm the Chennai neighbourhoods and nearby towns HumNikah serves, and the districts beyond the city that the team covers for Tamil Nadu families.",
-    localNote:
-      "TODO(owner): add Chennai-specific detail — a local coordinator, regular visit days, or community functions the HumNikah team attends in Tamil Nadu.",
     mapQuery: "Chennai, Tamil Nadu 600001",
     faqs: [
       {
@@ -102,10 +100,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Hyderabadi families settled in the Gulf",
       "Professionals across HITEC City and Banjara Hills",
     ],
-    areasServed:
-      "TODO(owner): list the Hyderabad and Secunderabad localities and the surrounding districts HumNikah actively covers for Telangana families.",
-    localNote:
-      "TODO(owner): add Hyderabad-specific detail — local consultation availability, community events, or a verified local success story.",
     mapQuery: "Hyderabad, Telangana 500001",
     faqs: [
       {
@@ -137,10 +131,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Business and agricultural families",
       "Professionals working in Hyderabad and the Gulf",
     ],
-    areasServed:
-      "TODO(owner): confirm the Vijayawada localities and Andhra Pradesh districts HumNikah serves, including Guntur, Visakhapatnam, Kurnool, Nellore and others as applicable.",
-    localNote:
-      "TODO(owner): add Andhra Pradesh-specific detail such as local representative coverage or community gatherings the team attends.",
     mapQuery: "Vijayawada, Andhra Pradesh 520001",
     faqs: [
       {
@@ -172,10 +162,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Families in the Gulf with Kerala roots",
       "Professionals in Kochi and neighbouring districts",
     ],
-    areasServed:
-      "TODO(owner): list the Kochi and central Kerala localities and districts HumNikah covers, such as Malappuram, Kozhikode, Thrissur, Kollam and Thiruvananthapuram if applicable.",
-    localNote:
-      "TODO(owner): add Kerala-specific detail — local coordinator presence, visit days, or a verified success story from the region.",
     mapQuery: "Kochi, Kerala 682001",
     faqs: [
       {
@@ -207,10 +193,6 @@ export const CITY_CONTENT: CityContent[] = [
       "Urdu-speaking families",
       "Business and professional families in the city",
     ],
-    areasServed:
-      "TODO(owner): confirm the Mumbai neighbourhoods and Maharashtra districts HumNikah serves, such as Pune, Nagpur, Aurangabad, Malegaon and Bhiwandi if applicable.",
-    localNote:
-      "TODO(owner): add Mumbai-specific detail — local representative availability, community events, or a verified success story.",
     mapQuery: "Mumbai, Maharashtra 400001",
     faqs: [
       {
@@ -228,6 +210,35 @@ export const CITY_CONTENT: CityContent[] = [
     ],
   },
 ];
+
+export const CITY_CONTENT: CityContent[] = RAW_CITIES.map((city) => {
+  const local = CITY_LOCAL[city.slug];
+  if (!local) throw new Error(`City ${city.slug}: missing entry in cityLocal.ts`);
+  return {
+    ...city,
+    faqs: [...city.faqs, ...local.moreFaqs],
+    areas: local.areas,
+  };
+});
+
+/**
+ * Build-time guard: every city must carry unique, non-trivial content.
+ * (Localities / local FAQs beyond 3 are added once the owner supplies them.)
+ */
+function validateCities(cities: CityContent[]) {
+  const seen = new Set<string>();
+  for (const c of cities) {
+    const words = c.intro.join(" ").split(/\s+/).length;
+    if (c.faqs.length < 4) throw new Error(`City ${c.slug}: needs at least 4 FAQs`);
+    if (c.areas.length < 1) throw new Error(`City ${c.slug}: needs areas served`);
+    if (c.intro.length < 2 || words < 40) throw new Error(`City ${c.slug}: intro too thin`);
+    for (const p of c.intro) {
+      if (seen.has(p)) throw new Error(`City ${c.slug}: duplicated intro paragraph`);
+      seen.add(p);
+    }
+  }
+}
+validateCities(CITY_CONTENT);
 
 export function getCityContent(slug: string): CityContent | undefined {
   return CITY_CONTENT.find((city) => city.slug === slug);

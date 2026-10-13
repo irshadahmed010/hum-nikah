@@ -158,7 +158,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight"
             >
-              HumNikah &ndash; #1 Verified Muslim Matrimony <br className="hidden sm:inline" />
+              Trusted Muslim Matrimony <br className="hidden sm:inline" />
               <span className="text-brand-gold italic relative inline-block">
                 Across India
                 <motion.span
@@ -319,10 +319,10 @@ export function HeroSection() {
                 </div>
                 <div className="text-left">
                   <div className="text-base sm:text-lg font-bold text-brand-charcoal leading-none">
-                    Multiple
+                    Every Profile
                   </div>
                   <div className="text-xs text-brand-secondary font-medium mt-0.5">
-                    Successful Matches
+                    Manually Screened
                   </div>
                 </div>
               </motion.div>

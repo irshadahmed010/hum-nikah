@@ -4,7 +4,7 @@ import { SITE_NAME, SITE_URL } from "./site";
 type SeoInput = {
   /** Page title without the brand suffix — the root template adds " | HumNikah". */
   title: string;
-  /** Description, 140–160 characters. */
+  /** Description, at most 155 characters. */
   description: string;
   /** Route path starting with "/". Used for the canonical and Open Graph URL. */
   path: string;
@@ -31,8 +31,14 @@ export function buildMetadata({
   publishedTime,
   modifiedTime,
 }: SeoInput): Metadata {
-  const canonical = `${SITE_URL}${path === "/" ? "/" : path}`;
-  const url = canonical;
+  const canonical = path === "/" ? "/" : path;
+  const finalTitle = absoluteTitle ?? `${title} | ${SITE_NAME}`;
+  if (finalTitle.length > 60 || description.length > 155) {
+    throw new Error(
+      `Bad meta on ${path}: title ${finalTitle.length}/60, description ${description.length}/155`,
+    );
+  }
+  const url = `${SITE_URL}${path === "/" ? "" : path}`;
   const ogTitle = absoluteTitle ?? `${title} | ${SITE_NAME}`;
   // Default to the generated brand share image so every page has og:image.
   // (A child `openGraph` object overrides the file-based opengraph-image.)

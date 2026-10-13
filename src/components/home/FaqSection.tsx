@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -90,21 +90,13 @@ export function FaqSection() {
                     </motion.div>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 pb-5 pt-0 text-xs sm:text-sm text-brand-secondary leading-relaxed border-t border-brand-border/40">
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+<div className="overflow-hidden min-h-0" inert={!isOpen}>
+<div className="px-4 pb-5 pt-0 text-xs sm:text-sm text-brand-secondary leading-relaxed border-t border-brand-border/40">
                           <p className="mt-2">{faq.answer}</p>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+</div>
+</div>
                 </div>
               );
             })}
@@ -133,21 +125,13 @@ export function FaqSection() {
                     </motion.div>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 pb-5 pt-0 text-xs sm:text-sm text-brand-secondary leading-relaxed border-t border-brand-border/40">
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+<div className="overflow-hidden min-h-0" inert={!isOpen}>
+<div className="px-4 pb-5 pt-0 text-xs sm:text-sm text-brand-secondary leading-relaxed border-t border-brand-border/40">
                           <p className="mt-2">{faq.answer}</p>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+</div>
+</div>
                 </div>
               );
             })}

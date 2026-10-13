@@ -15,9 +15,9 @@ import { buildMetadata } from "@/lib/seo";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Us – Walk-In Matrimony Offices",
+  title: "Contact HumNikah – Muslim Matchmaking Bureau",
   description:
-    "Call, email or visit a HumNikah walk-in office in Bengaluru, Hyderabad, Chennai, Mumbai, Kochi or Vijayawada for personal Muslim matchmaking.",
+    "Call, WhatsApp, email or visit the HumNikah office in Cox Town, Bengaluru for personal Muslim matchmaking. We serve families across India.",
   path: "/contact",
 });
 

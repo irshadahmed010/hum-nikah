@@ -88,7 +88,7 @@ export function CtaBannerSection() {
                 </h2>
 
                 <p className="mt-3 sm:mt-4 text-slate-200 text-sm sm:text-base lg:text-lg font-light leading-relaxed max-w-lg">
-                  Join thousands of Muslims finding trusted matches built on faith, respect &amp; sincere intentions.
+                  Join Muslim families finding trusted matches built on faith, respect &amp; sincere intentions.
                 </p>
 
                 <div className="mt-6 sm:mt-8">

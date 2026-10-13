@@ -19,33 +19,19 @@ import {
 
 import { SITE_URL } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
+import { COMMUNITY_PAGES } from "@/data/communities";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 const PAGE_URL = `${SITE_URL}/muslim-matrimony-india`;
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
-    absoluteTitle: "Muslim Matrimony in India | Verified Nikah Matches – HumNikah",
+    title: "Muslim Matrimony in India | Verified Nikah | HumNikah",
+    absoluteTitle: "Muslim Matrimony in India | Verified Nikah | HumNikah",
     description:
-      "HumNikah is a trusted Muslim matrimony service in India offering 100% verified, Shariah-compliant Nikah matchmaking across Karnataka, Kerala, Tamil Nadu, Telangana, Andhra Pradesh, Maharashtra and all over India.",
+      "Trusted Muslim matrimony and marriage bureau in India. Manually verified profiles, Shariah-compliant process, dedicated matchmakers. Submit biodata free.",
     path: "/muslim-matrimony-india",
   }),
-  keywords: [
-    "Muslim matrimony",
-    "Muslim matrimony India",
-    "Muslim matrimonial site",
-    "Nikah matrimony",
-    "Muslim marriage bureau",
-    "Muslim marriage bureau Bengaluru",
-    "Sunni matrimony",
-    "Muslim brides in India",
-    "Muslim grooms in India",
-    "trusted muslim matchmaking",
-    "Shariah compliant matrimony",
-    "Muslim shaadi",
-    "Muslim matrimony across India",
-  ],
 };
 
 const regions = [
@@ -78,7 +64,7 @@ const regions = [
 const whyChoose = [
   {
     icon: ShieldCheck,
-    title: "100% Verified Profiles",
+    title: "Manually Screened Profiles",
     body: "Every biodata is manually screened with government ID and phone verification, and our field representatives conduct respectful home visits before a profile is activated.",
   },
   {
@@ -308,7 +294,7 @@ export default function MuslimMatrimonyIndiaPage() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-semibold tracking-wider uppercase mb-4">
               <Sparkles size={14} className="animate-pulse text-brand-gold" />
-              <span>100% Verified Muslim Matrimony</span>
+              <span>Manually Verified Muslim Matrimony</span>
             </div>
 
             <h1 className="font-playfair font-bold text-white leading-[1.15]">
@@ -388,7 +374,7 @@ export default function MuslimMatrimonyIndiaPage() {
             </p>
             <p>
               From Bengaluru and Hyderabad to Kerala, Tamil Nadu, Andhra Pradesh,
-              Maharashtra and all states across India — HumNikah helps thousands of
+              Maharashtra and all states across India — HumNikah helps
               families begin their journey to a blessed marriage.
             </p>
           </div>
@@ -472,7 +458,7 @@ export default function MuslimMatrimonyIndiaPage() {
               Guided by Islamic Values
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-white mt-2">
-              100% Verified, Shariah-Compliant Muslim Matrimony
+              Manually Verified, Shariah-Compliant Muslim Matrimony
             </h2>
           </div>
           <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed text-center mb-8">
@@ -559,9 +545,27 @@ export default function MuslimMatrimonyIndiaPage() {
               ))}
             </div>
           </div>
+
+          {/* Community landing pages */}
+          <div className="mt-6 text-center">
+            <p className="text-sm font-semibold text-brand-charcoal mb-3">
+              Muslim matrimony by community
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              {COMMUNITY_PAGES.map((page) => (
+                <Link
+                  key={page.slug}
+                  href={`/muslim-matrimony/${page.slug}`}
+                  className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
+                >
+                  {page.navLabel}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-      <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
+      <section id="communities" className="scroll-mt-24 py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-brand-gold uppercase tracking-widest">

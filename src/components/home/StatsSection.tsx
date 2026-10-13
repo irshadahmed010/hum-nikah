@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import {  Heart, ShieldCheck, Star } from "lucide-react";
+import { Heart, ShieldCheck, Lock } from "lucide-react";
 import { ScrollReveal, ScrollRevealItem } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
 
@@ -9,18 +9,18 @@ const stats = [
 
   {
     icon: Heart,
-    value: "Multiple",
-    label: "Successful Marriages",
+    value: "Wali",
+    label: "Involved Introductions",
   },
   {
     icon: ShieldCheck,
-    value: "100%",
-    label: "Verified Profiles",
+    value: "Manual",
+    label: "Profile Screening",
   },
   {
-    icon: Star,
-    value: "5/5",
-    label: "User Satisfaction",
+    icon: Lock,
+    value: "Private",
+    label: "By Design",
   },
 ];
 

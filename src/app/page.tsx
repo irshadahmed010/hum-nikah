@@ -13,13 +13,14 @@ import { StatsSection } from "@/components/home/StatsSection";
 import { SuccessStoriesAndProfilesSection } from "@/components/home/SuccessStoriesAndProfilesSection";
 import { ValuesBlogGallerySection } from "@/components/home/ValuesBlogGallerySection";
 import { FaqSection } from "@/components/home/FaqSection";
+import { CityLinksSection } from "@/components/home/CityLinksSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 
 export const metadata = buildMetadata({
   title: "HumNikah – Verified Muslim Matrimony Across India",
   absoluteTitle: "HumNikah – Verified Muslim Matrimony Across India",
   description:
-    "Find verified Muslim brides and grooms with HumNikah. Personal matchmaking, home verification, family involvement and complete privacy across India.",
+    "Verified Muslim matrimony across India. Personal matchmaking, home verification, Wali involvement and complete privacy. Submit your biodata free.",
   path: "/",
 });
 
@@ -39,6 +40,7 @@ export default function Home() {
       <SuccessStoriesAndProfilesSection />
       <ValuesBlogGallerySection />
       <FaqSection />
+      <CityLinksSection />
       <CtaBannerSection />
     </main>
   );

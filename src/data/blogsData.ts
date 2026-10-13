@@ -27,7 +27,22 @@ export const BLOG_CATEGORIES = [
   "Post-Nikah",
 ] as const;
 
-export const BLOG_POSTS: BlogPost[] = [
+/** Posts are published by the editorial team until real, verifiable author bios exist. */
+const EDITORIAL_TEAM = {
+  name: "HumNikah Editorial Team",
+  role: "Nikah & family guidance",
+  avatar: "",
+};
+
+const WORDS_PER_MINUTE = 200;
+
+/** Reading time from the real word count of the HTML body. */
+export function estimateReadTime(html: string): string {
+  const words = html.replace(/<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} min read`;
+}
+
+const RAW_POSTS: BlogPost[] = [
   {
     id: "1",
     slug: "understanding-sunnah-of-nikah-spiritual-practical-foundations",
@@ -37,11 +52,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "August 12, 2024",
     readTime: "6 min read",
     featured: true,
-    author: {
-      name: "Ustadh Imran Farooqui",
-      role: "Islamic Family Counselor",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200",
     tags: ["Nikah", "Sunnah", "Barakah", "Islamic Advice"],
     content: `
@@ -75,11 +86,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "August 05, 2024",
     readTime: "5 min read",
     featured: false,
-    author: {
-      name: "Dr. Aishah Siddiqui",
-      role: "Relationship & Deen Advisor",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200",
     tags: ["Matchmaking", "Spouse Selection", "Character", "Deen"],
     content: `
@@ -108,11 +115,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "July 28, 2024",
     readTime: "7 min read",
     featured: false,
-    author: {
-      name: "Mufti Bilal Ahmad",
-      role: "Islamic Jurisprudence Scholar",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=1200",
     tags: ["Mahr", "Islamic Law", "Nikah Rights", "Financial Clarity"],
     content: `
@@ -139,11 +142,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "July 18, 2024",
     readTime: "5 min read",
     featured: false,
-    author: {
-      name: "Ustadh Imran Farooqui",
-      role: "Islamic Family Counselor",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1200",
     tags: ["Wali", "Family Values", "Nikah Ethics", "Respect"],
     content: `
@@ -170,11 +169,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "July 10, 2024",
     readTime: "8 min read",
     featured: false,
-    author: {
-      name: "Dr. Aishah Siddiqui",
-      role: "Relationship & Deen Advisor",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=1200",
     tags: ["Pre-Marriage", "Communication", "Compatibility", "Checklist"],
     content: `
@@ -200,11 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "June 30, 2024",
     readTime: "6 min read",
     featured: false,
-    author: {
-      name: "Mufti Bilal Ahmad",
-      role: "Islamic Jurisprudence Scholar",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
-    },
+    author: EDITORIAL_TEAM,
     image: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&q=80&w=1200",
     tags: ["Post-Nikah", "Harmony", "Love & Kindness", "Spousal Rights"],
     content: `
@@ -220,3 +211,8 @@ export const BLOG_POSTS: BlogPost[] = [
     `,
   },
 ];
+
+export const BLOG_POSTS: BlogPost[] = RAW_POSTS.map((post) => ({
+  ...post,
+  readTime: estimateReadTime(post.content),
+}));

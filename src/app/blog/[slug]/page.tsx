@@ -47,16 +47,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Article Not Found" };
   }
 
+  const clamp = (text: string, max: number) =>
+    text.length <= max ? text : `${text.slice(0, max - 1).trimEnd()}…`;
   const description =
-    typeof post.excerpt === "string"
-      ? post.excerpt.slice(0, 160)
-      : undefined;
+    typeof post.excerpt === "string" ? clamp(post.excerpt, 155) : undefined;
+  // The root template appends " | HumNikah" (11 chars).
+  const title = clamp(post.title, 49);
 
   return buildMetadata({
-    title: post.title,
-    description: description ?? post.title,
+    title,
+    description: description ?? title,
     path: `/blog/${slug}`,
-    image: post.image,
+    // Hotlinked stock photos make poor share images; fall back to the brand image.
+    image: post.image?.includes("images.unsplash.com") ? undefined : post.image,
     type: "article",
     publishedTime: toIso(post.created_at ?? post.publishedAt),
     modifiedTime: toIso(post.updated_at),
@@ -99,7 +102,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         image: post.image ? [post.image] : undefined,
         datePublished,
         dateModified: dateModified ?? datePublished,
-        author: authorName
+        author: authorName && authorName !== "HumNikah Editorial Team"
           ? { "@type": "Person", name: authorName }
           : { "@id": `${SITE_URL}/#organization` },
         publisher: { "@id": `${SITE_URL}/#organization` },
@@ -223,6 +226,26 @@ export default async function BlogPostPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
+          {/* Next steps */}
+          <aside className="mt-8 rounded-xl border border-brand-border/70 bg-brand-cream/70 p-5 text-sm text-brand-charcoal">
+            <p className="font-semibold mb-2">Ready to begin your search?</p>
+            <p className="text-brand-secondary leading-relaxed">
+              Explore{" "}
+              <Link href="/muslim-matrimony-india" className="text-brand-gold font-semibold hover:underline">
+                Muslim matrimony in India
+              </Link>{" "}
+              or{" "}
+              <Link href="/muslim-matrimony/bengaluru" className="text-brand-gold font-semibold hover:underline">
+                Muslim matrimony in Bengaluru
+              </Link>
+              , then{" "}
+              <Link href="/submit-biodata" className="text-brand-gold font-semibold hover:underline">
+                submit your biodata
+              </Link>{" "}
+              and a matchmaker will contact you.
+            </p>
+          </aside>
+
           {/* Tags */}
           <div className="mt-8 pt-5 border-t border-brand-border/50 flex flex-wrap items-center gap-1.5">
             <span className="text-xs font-semibold text-brand-secondary flex items-center gap-1 mr-1">
@@ -250,7 +273,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               />
             )}
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-brand-charcoal">{post.author?.name}</h4>
+              <p className="text-xs sm:text-sm font-bold text-brand-charcoal">{post.author?.name}</p>
               <p className="text-[11px] text-brand-gold font-semibold">{post.author?.role}</p>
               <p className="text-[11px] text-brand-secondary font-light mt-0.5 line-clamp-2">
                 Providing authentic Islamic guidance for single Muslims, parents, and newlyweds embarking on Nikah.
@@ -265,9 +288,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <BookOpen size={20} className="text-brand-gold" />
-            <h3 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal">
+            <h2 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal">
               Related Nikah Articles
-            </h3>
+            </h2>
           </div>
           <Link
             href="/blog"
@@ -313,9 +336,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                       </span>
                     </div>
 
-                    <h4 className="text-base font-playfair font-bold text-brand-charcoal group-hover:text-brand-gold transition-colors leading-snug mb-2 line-clamp-2">
+                    <h3 className="text-base font-playfair font-bold text-brand-charcoal group-hover:text-brand-gold transition-colors leading-snug mb-2 line-clamp-2">
                       {related.title}
-                    </h4>
+                    </h3>
                   </div>
                 </div>
 

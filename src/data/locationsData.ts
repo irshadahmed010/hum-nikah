@@ -9,6 +9,8 @@ export interface OfficeLocation {
   email?: string;
   timing?: string;
   isHeadquarters?: boolean;
+  /** True only for a real, staffed office with a verified street address. */
+  hasOffice: boolean;
 }
 
 export const OFFICE_LOCATIONS: OfficeLocation[] = [
@@ -24,12 +26,14 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     email: "connect@humnikah.com",
     timing: "Mon - Sun :10:00 AM - 10:00 PM",
     isHeadquarters: true,
+    hasOffice: true,
   },
   {
     id: "loc-tamilnadu",
     state: "Tamil Nadu",
     city: "Chennai",
-    address: "Chennai, Tamil Nadu – 600001",
+    address: "",
+    hasOffice: false,
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
@@ -40,7 +44,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     id: "loc-telangana",
     state: "Telangana",
     city: "Hyderabad",
-    address: "Hyderabad, Telangana – 500001",
+    address: "",
+    hasOffice: false,
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
@@ -51,7 +56,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     id: "loc-andhra",
     state: "Andhra Pradesh",
     city: "Vijayawada",
-    address: "Vijayawada, Andhra Pradesh – 520001",
+    address: "",
+    hasOffice: false,
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
@@ -62,7 +68,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     id: "loc-kerala",
     state: "Kerala",
     city: "Kochi",
-    address: "Kochi, Kerala – 682001",
+    address: "",
+    hasOffice: false,
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
@@ -73,7 +80,8 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     id: "loc-maharashtra",
     state: "Maharashtra",
     city: "Mumbai",
-    address: "Mumbai, Maharashtra – 400001",
+    address: "",
+    hasOffice: false,
     phone: "+91 9019082205",
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],

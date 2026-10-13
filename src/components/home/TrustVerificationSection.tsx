@@ -24,6 +24,7 @@ import {
   PhoneCall,
   ArrowRight,
 } from "lucide-react";
+import { CLAIMS } from "@/lib/claims";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
 
@@ -41,7 +42,7 @@ const verificationLayers = [
       "Physical address & neighborhood check",
       "Direct interaction with parents / guardians",
       "Verification of family background & authenticity",
-      "Ensures 0% fake or misleading profiles",
+      "Helps screen out fake or misleading profiles",
     ],
     highlightBg: "from-emerald-950/5 via-emerald-500/5 to-transparent",
   },
@@ -51,14 +52,14 @@ const verificationLayers = [
     badge: "Identity Standard",
     badgeColor: "bg-blue-500/10 text-blue-700 border-blue-500/20",
     title: "2. Government ID Screening",
-    subtitle: "Legal Identity & CNIC Verification",
+    subtitle: "Legal Identity & Government ID Verification",
     description:
-      "Every user must provide official government-issued identity documents (CNIC / Passport). Our compliance team manually audits each document to confirm identity & age.",
+      "Every user must provide official government-issued identity documents (Aadhaar / PAN / Passport). Our compliance team manually audits each document to confirm identity & age.",
     points: [
-      "Official CNIC / Passport identity cross-matching",
+      "Government ID (Aadhaar / PAN / Passport) cross-matching",
       "Age and marital status confirmation",
       "Strict data protection (IDs stored in encrypted vault)",
-      "Zero anonymous or fake names allowed",
+      "Anonymous profiles are not accepted",
     ],
     highlightBg: "from-blue-950/5 via-blue-500/5 to-transparent",
   },
@@ -158,7 +159,7 @@ const processSteps = [
   {
     step: "02",
     title: "Document & Reference Audit",
-    desc: "Our team cross-checks CNIC, educational credentials, and conducts preliminary phone audits.",
+    desc: "Our team cross-checks government ID, educational credentials, and conducts preliminary phone audits.",
   },
   {
     step: "03",
@@ -197,10 +198,10 @@ export function TrustVerificationSection() {
               <div className="absolute inset-0 z-0">
                 <Image
                   src="/images/trust/home-visit-desktop.webp"
-                  alt="Home Visit Verification Desktop Background"
+                  alt=""
                   fill
                   className="object-cover object-[72%_center] brightness-[0.98]"
-                  priority
+                  sizes="(min-width: 1280px) 1200px, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/70 via-20% to-transparent to-38% pointer-events-none" />
               </div>
@@ -222,7 +223,7 @@ export function TrustVerificationSection() {
                   </h2>
 
                   <p className="text-black text-base leading-relaxed max-w-xl font-sans font-semibold [text-shadow:0_1px_2px_rgba(0,0,0,0.15)]">
-                    To ensure complete safety for both families, our verification representative visits the candidates residence in-person. We verify family details, address, living environment, and character references—eliminating fake profiles completely.
+                    Our certified field verification team physically visits candidate homes before matchmaking begins. We verify family background, address details, and living environment with utmost modesty and confidentiality.
                   </p>
 
                   {/* 4 Feature Cards Grid */}
@@ -232,7 +233,7 @@ export function TrustVerificationSection() {
                         <Home size={20} />
                       </div>
                       <div>
-                        <p className="text-base font-bold text-[#1E293B]">Residence Audit</p>
+                        <h3 className="text-base font-bold text-[#1E293B]">Residence Audit</h3>
                         <p className="text-sm font-semibold text-slate-600">Physical address &amp; family home check</p>
                       </div>
                     </div>
@@ -242,7 +243,7 @@ export function TrustVerificationSection() {
                         <Users size={20} />
                       </div>
                       <div>
-                        <p className="text-base font-bold text-[#1E293B]">Guardian Meeting</p>
+                        <h3 className="text-base font-bold text-[#1E293B]">Guardian Meeting</h3>
                         <p className="text-sm font-semibold text-slate-600">Direct dialogue with parents / Wali</p>
                       </div>
                     </div>
@@ -252,7 +253,7 @@ export function TrustVerificationSection() {
                         <ShieldCheck size={20} />
                       </div>
                       <div>
-                        <p className="text-base font-bold text-[#1E293B]">Home Verified Badge</p>
+                        <h3 className="text-base font-bold text-[#1E293B]">Home Verified Badge</h3>
                         <p className="text-sm font-semibold text-slate-600">Golden seal assigned after visit</p>
                       </div>
                     </div>
@@ -262,8 +263,8 @@ export function TrustVerificationSection() {
                         <Shield size={20} />
                       </div>
                       <div>
-                        <p className="text-base font-bold text-[#1E293B]">Zero Fake Profiles</p>
-                        <p className="text-sm font-semibold text-slate-600">100% peace of mind for families</p>
+                        <h3 className="text-base font-bold text-[#1E293B]">Every Profile Manually Screened</h3>
+                        <p className="text-sm font-semibold text-slate-600">Peace of mind for families</p>
                       </div>
                     </div>
                   </div>
@@ -285,9 +286,9 @@ export function TrustVerificationSection() {
                           <Award size={24} />
                         </div>
                         <div>
-                          <p className="font-playfair font-bold text-lg text-[#1E293B]">
+                          <h3 className="font-playfair font-bold text-lg text-[#1E293B]">
                             Home Verification Certificate
-                          </p>
+                          </h3>
                           <p className="text-sm text-slate-500 font-semibold">
                             HumNikah Field Audit Protocol
                           </p>
@@ -299,9 +300,9 @@ export function TrustVerificationSection() {
                     </div>
 
                     <div className="space-y-2.5 mb-4">
-                      <div className="text-sm font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                      <h4 className="text-sm font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                         <Sparkles size={13} className="text-[#C27803]" /> PHYSICAL INSPECTION CHECKLIST:
-                      </div>
+                      </h4>
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center justify-between p-2 rounded-xl bg-[#F0FBF7] border border-[#D2F3E8]">
                           <div className="flex items-center gap-2.5">
@@ -324,7 +325,7 @@ export function TrustVerificationSection() {
                         <div className="flex items-center justify-between p-2 rounded-xl bg-[#FAF5FF] border border-[#F3E8FF]">
                           <div className="flex items-center gap-2.5">
                             <CheckCircle2 size={16} className="text-[#9333EA] shrink-0" />
-                            <span className="font-semibold text-slate-800">3. CNIC &amp; Degree Document Check</span>
+                            <span className="font-semibold text-slate-800">3. Government ID &amp; Degree Document Check</span>
                           </div>
                           <span className="text-xs font-bold text-[#6B21A8] bg-[#F3E8FF] px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                             AUDITED
@@ -344,16 +345,16 @@ export function TrustVerificationSection() {
 
                     <div className="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
                       <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                        <div className="text-lg font-bold text-[#1E293B]">1,500+</div>
-                        <div className="text-xs text-slate-600 font-semibold">Homes Visited</div>
+                        <div className="text-lg font-bold text-[#1E293B]">Manual</div>
+                        <div className="text-xs text-slate-600 font-semibold">Profile Screening</div>
                       </div>
                       <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                        <div className="text-lg font-bold text-[#008767]">100%</div>
-                        <div className="text-xs text-slate-600 font-semibold">Address Proof</div>
+                        <div className="text-lg font-bold text-[#008767]">Address</div>
+                        <div className="text-xs text-slate-600 font-semibold">Address Verified</div>
                       </div>
                       <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                        <div className="text-lg font-bold text-[#C25E00]">0%</div>
-                        <div className="text-xs text-slate-600 font-semibold">Fake Profiles</div>
+                        <div className="text-lg font-bold text-[#C25E00]">Wali</div>
+                        <div className="text-xs text-slate-600 font-semibold">Involved</div>
                       </div>
                     </div>
                   </div>
@@ -370,10 +371,10 @@ export function TrustVerificationSection() {
               <div className="relative w-full aspect-[1024/1536] overflow-hidden">
                 <Image
                   src="/images/trust/home-visit-mobile.webp"
-                  alt="Home Visit Verification Mobile Background"
+                  alt=""
                   fill
                   className="object-cover object-top brightness-[0.98]"
-                  priority
+                  sizes="100vw"
                 />
                 {/* Gradient overlay: top ~70% stays fully clear, fade starts after that */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent from-0% via-transparent via-70% to-white/85 to-90% pointer-events-none" />
@@ -390,15 +391,11 @@ export function TrustVerificationSection() {
                   </div>
 
                   {/* Main Heading */}
-                  <div
-                    className="text-3xl sm:text-4xl font-playfair font-bold text-[#1E293B] leading-[1.2] max-w-[85%] sm:max-w-none"
-                    role="heading"
-                    aria-level={2}
-                  >
+                  <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-[#1E293B] leading-[1.2] max-w-[85%] sm:max-w-none">
                     We Visit Candidate Homes{" "}
                     <span className="text-[#C27803] font-serif italic font-bold">Before</span>{" "}
                     Matches Begin
-                  </div>
+                  </h2>
 
                   {/* Subtitle Paragraph */}
                   <p className="text-black text-sm sm:text-base leading-relaxed font-sans font-semibold max-w-[80%] sm:max-w-[320px]">
@@ -416,7 +413,7 @@ export function TrustVerificationSection() {
                       <Home size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-[#1E293B] leading-tight">Residence Audit</p>
+                      <h3 className="text-sm font-bold text-[#1E293B] leading-tight">Residence Audit</h3>
                       <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Physical address &amp; family home check</p>
                     </div>
                   </div>
@@ -426,7 +423,7 @@ export function TrustVerificationSection() {
                       <Users size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-[#1E293B] leading-tight">Guardian Meeting</p>
+                      <h3 className="text-sm font-bold text-[#1E293B] leading-tight">Guardian Meeting</h3>
                       <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Direct dialogue with parents / Wali</p>
                     </div>
                   </div>
@@ -436,7 +433,7 @@ export function TrustVerificationSection() {
                       <ShieldCheck size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-[#1E293B] leading-tight">Home Verified Badge</p>
+                      <h3 className="text-sm font-bold text-[#1E293B] leading-tight">Home Verified Badge</h3>
                       <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Golden seal assigned after visit</p>
                     </div>
                   </div>
@@ -446,8 +443,8 @@ export function TrustVerificationSection() {
                       <Shield size={18} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-[#1E293B] leading-tight">Zero Fake Profiles</p>
-                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">100% peace of mind for families</p>
+                      <h3 className="text-sm font-bold text-[#1E293B] leading-tight">Every Profile Manually Screened</h3>
+                      <p className="text-xs font-semibold text-slate-700 mt-0.5 leading-tight">Peace of mind for families</p>
                     </div>
                   </div>
                 </div>
@@ -460,9 +457,9 @@ export function TrustVerificationSection() {
                         <Award size={20} />
                       </div>
                       <div>
-                        <p className="font-playfair font-bold text-base text-[#1E293B]">
+                        <h3 className="font-playfair font-bold text-base text-[#1E293B]">
                           Home Verification Certificate
-                        </p>
+                        </h3>
                         <p className="text-xs text-slate-500 font-semibold">
                           HumNikah Field Audit Protocol
                         </p>
@@ -474,9 +471,9 @@ export function TrustVerificationSection() {
                   </div>
 
                   <div className="space-y-2 mb-4">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
                       <Sparkles size={12} className="text-[#C27803]" /> PHYSICAL INSPECTION CHECKLIST:
-                    </div>
+                    </h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#F0FBF7] border border-[#D2F3E8]">
                         <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
@@ -499,7 +496,7 @@ export function TrustVerificationSection() {
                       <div className="flex items-center flex-wrap gap-y-1.5 justify-between p-2 rounded-xl bg-[#FAF5FF] border border-[#F3E8FF]">
                         <div className="flex items-center gap-2 min-w-0 flex-1 pr-2">
                           <CheckCircle2 size={14} className="text-[#9333EA] shrink-0" />
-                          <span className="font-semibold text-slate-800">3. CNIC &amp; Degree Document Check</span>
+                          <span className="font-semibold text-slate-800">3. Government ID &amp; Degree Document Check</span>
                         </div>
                           <span className="text-[11px] font-bold text-[#6B21A8] bg-[#F3E8FF] px-2 py-0.5 rounded-md uppercase shrink-0">
                           AUDITED
@@ -520,16 +517,16 @@ export function TrustVerificationSection() {
                   {/* 3 Stats Row for Mobile */}
                   <div className="pt-3 border-t border-slate-100 grid grid-cols-3 gap-2 text-center">
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-[#1E293B]">1,500+</div>
-                      <div className="text-xs text-slate-600 font-semibold">Homes Visited</div>
+                      <div className="text-base font-bold text-[#1E293B]">Manual</div>
+                      <div className="text-xs text-slate-600 font-semibold">Profile Screening</div>
                     </div>
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-[#008767]">100%</div>
-                      <div className="text-xs text-slate-600 font-semibold">Address Proof</div>
+                      <div className="text-base font-bold text-[#008767]">Address</div>
+                      <div className="text-xs text-slate-600 font-semibold">Address Verified</div>
                     </div>
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <div className="text-base font-bold text-[#C25E00]">0%</div>
-                      <div className="text-xs text-slate-600 font-semibold">Fake Profiles</div>
+                      <div className="text-base font-bold text-[#C25E00]">Wali</div>
+                      <div className="text-xs text-slate-600 font-semibold">Involved</div>
                     </div>
                   </div>
                 </div>
@@ -553,9 +550,9 @@ export function TrustVerificationSection() {
             <span className="text-xs font-semibold text-brand-gold uppercase tracking-widest">
               OUR MULTI-LAYER SAFETY SHIELD
             </span>
-            <h3 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-1">
+            <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-1">
               7-Step Comprehensive Verification Pipeline
-            </h3>
+            </h2>
             <p className="text-slate-700 text-xs sm:text-sm font-normal sm:font-light mt-2">
               Select any layer below to explore how HumNikah protects your family&apos;s matrimonial search.
             </p>
@@ -588,12 +585,12 @@ export function TrustVerificationSection() {
                         <Icon size={18} />
                       </div>
                       <div>
-                        <span
-                          className={`text-sm font-playfair font-bold block ${isOpen ? "text-[#1D184C]" : "text-slate-800"
+                        <h3
+                          className={`text-sm font-playfair font-bold ${isOpen ? "text-[#1D184C]" : "text-slate-800"
                             }`}
                         >
                           {layer.title}
-                        </span>
+                        </h3>
                         <p className="text-xs text-slate-600 sm:text-slate-500 font-normal sm:font-light truncate max-w-[180px] xs:max-w-none">
                           {layer.subtitle}
                         </p>
@@ -626,9 +623,9 @@ export function TrustVerificationSection() {
                         </p>
 
                         <div className="space-y-2 bg-brand-cream/60 p-4 rounded-xl border border-brand-border/40 mb-3">
-                          <div className="text-[11px] font-bold text-[#1D184C] uppercase tracking-wider flex items-center gap-1.5">
+                          <h4 className="text-[11px] font-bold text-[#1D184C] uppercase tracking-wider flex items-center gap-1.5">
                             <Sparkles size={13} className="text-brand-gold" /> Key Checks Conducted:
-                          </div>
+                          </h4>
                           <div className="space-y-1.5">
                             {layer.points.map((pt, pIdx) => (
                               <div
@@ -682,12 +679,12 @@ export function TrustVerificationSection() {
                         <Icon size={20} />
                       </div>
                       <div>
-                        <span
-                          className={`text-sm font-playfair font-bold block transition-colors ${isActive ? "text-[#1D184C]" : "text-slate-800 group-hover:text-[#1D184C]"
+                        <h3
+                          className={`text-sm font-playfair font-bold transition-colors ${isActive ? "text-[#1D184C]" : "text-slate-800 group-hover:text-[#1D184C]"
                             }`}
                         >
                           {layer.title}
-                        </span>
+                        </h3>
                         <p className="text-xs text-slate-500 font-light truncate max-w-[200px] sm:max-w-none">
                           {layer.subtitle}
                         </p>
@@ -733,9 +730,9 @@ export function TrustVerificationSection() {
                           className: "text-[#1D184C]",
                         })}
                         <div>
-                          <h4 className="text-xl font-playfair font-bold text-brand-charcoal">
+                          <h3 className="text-xl font-playfair font-bold text-brand-charcoal">
                             {verificationLayers[activeTab < 0 ? 0 : activeTab].title}
-                          </h4>
+                          </h3>
                           <p className="text-xs text-brand-gold font-semibold uppercase tracking-wider">
                             {verificationLayers[activeTab < 0 ? 0 : activeTab].subtitle}
                           </p>
@@ -756,9 +753,9 @@ export function TrustVerificationSection() {
 
                     {/* Bullet Points */}
                     <div className="space-y-3 bg-brand-cream/50 p-5 rounded-2xl border border-brand-border/40">
-                      <div className="text-xs font-bold text-[#1D184C] uppercase tracking-wider flex items-center gap-1.5">
+                      <h4 className="text-xs font-bold text-[#1D184C] uppercase tracking-wider flex items-center gap-1.5">
                         <Sparkles size={14} className="text-brand-gold" /> Key Verification Checks Conducted:
-                      </div>
+                      </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {verificationLayers[activeTab < 0 ? 0 : activeTab].points.map((pt, idx) => (
                           <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
@@ -789,7 +786,7 @@ export function TrustVerificationSection() {
               <div className="lg:col-span-8 space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">
                   <Award size={16} />
-                  <span>Our 100% Truth &amp; Authenticity Promise</span>
+                  <span>Our Truth &amp; Authenticity Promise</span>
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-playfair font-bold">
@@ -797,7 +794,7 @@ export function TrustVerificationSection() {
                 </h3>
 
                 <p className="text-slate-200 text-xs sm:text-sm font-normal sm:font-light leading-relaxed">
-                  Join hundreds of verified families. Our senior matchmaker and verification team will coordinate a convenient physical visit to give your profile maximum authenticity and respect.
+                  Join our verified families. Our senior matchmaker and verification team will coordinate a convenient physical visit to give your profile maximum authenticity and respect.
                 </p>
 
                 <div className="pt-2 flex flex-wrap items-center gap-5 text-xs font-semibold text-slate-200">
@@ -808,9 +805,12 @@ export function TrustVerificationSection() {
                     <Check size={16} className="text-emerald-400" /> Direct Wali Dialogue
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Check size={16} className="text-emerald-400" /> 100% Confidential
+                    <Check size={16} className="text-emerald-400" /> Strictly Confidential
                   </span>
                 </div>
+                <p className="text-[11px] text-slate-300/80 font-light leading-relaxed pt-1">
+                  {CLAIMS.disclaimer}
+                </p>
               </div>
 
               <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
@@ -840,9 +840,9 @@ export function TrustVerificationSection() {
             <span className="text-xs font-semibold text-brand-gold uppercase tracking-widest">
               HOW VERIFICATION WORKS
             </span>
-            <h3 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-1">
+            <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-1">
               4 Steps to a Home Visit Verified Profile
-            </h3>
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -859,9 +859,9 @@ export function TrustVerificationSection() {
                   <div className="w-10 h-10 rounded-xl bg-[#1D184C]/10 text-[#1D184C] flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-[#1D184C] group-hover:text-white transition-all">
                     {item.step}
                   </div>
-                  <p className="font-playfair font-bold text-base text-brand-charcoal mb-2">
+                  <h3 className="font-playfair font-bold text-base text-brand-charcoal mb-2">
                     {item.title}
-                  </p>
+                  </h3>
                   <p className="text-xs text-slate-700 sm:text-slate-600 font-normal sm:font-light leading-relaxed">
                     {item.desc}
                   </p>

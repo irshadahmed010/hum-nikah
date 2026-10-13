@@ -12,7 +12,7 @@ const showcases = [
     title: "Verified Educated Grooms",
     subtitle: "Engineers, Doctors, IT Professionals & Businessmen",
     image: "/images/hero/img_01.webp",
-    badge: "100% Verified Profiles",
+    badge: "Manually Screened Profiles",
     tagColor: "bg-blue-50 text-blue-700 border-blue-200",
   },
   {
@@ -44,8 +44,8 @@ const pillars = [
   },
   {
     icon: ShieldCheck,
-    title: "Zero Fake Profiles",
-    desc: "Strict human verification process ensures authentic, sincere proposals only.",
+    title: "Every Profile Manually Screened",
+    desc: "A manual, human verification process helps keep proposals authentic and sincere.",
   },
 ];
 

@@ -95,7 +95,7 @@ export function PrivacyAndIslamicValuesSection() {
               className="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-brand-gold/30 text-xs font-bold text-brand-charcoal"
             >
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>100% Verified Profiles</span>
+              <span>Manually Screened Profiles</span>
             </motion.div>
           </ScrollReveal>
 

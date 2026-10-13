@@ -19,18 +19,18 @@ export function LocationsSection() {
         <ScrollReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1D184C]/10 border border-[#1D184C]/20 text-[#1D184C] text-xs font-bold uppercase tracking-widest shadow-xs">
             <Building2 size={16} className="text-brand-gold" />
-            <span>MULTIPLE LOCATIONS</span>
+            <span>OFFICE &amp; REGIONS SERVED</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-brand-charcoal leading-tight">
-            Our Regional Locations <br className="hidden sm:block" />
+            Our Office &amp; Regions Served <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1D184C] via-[#651514] to-brand-gold">
-              Across Multiple States
+              Across South &amp; West India
             </span>
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base font-normal sm:font-light max-w-2xl mx-auto leading-relaxed">
-            Our relationship managers and regional representatives are available across multiple states to assist families with personal care, privacy, and matchmaking.
+            Our Bengaluru office welcomes walk-in families. Families in other cities are served by phone and WhatsApp with the same care and privacy.
           </p>
         </ScrollReveal>
 
@@ -57,7 +57,11 @@ export function LocationsSection() {
                 <div className="space-y-3 text-xs text-slate-700 font-medium">
                   <div className="flex items-start gap-2.5">
                     <MapPin size={16} className="text-brand-gold shrink-0 mt-0.5" />
-                    <span className="leading-relaxed text-slate-600 font-normal">{loc.address}</span>
+                    <span className="leading-relaxed text-slate-600 font-normal">
+                      {loc.hasOffice
+                        ? loc.address
+                        : `Serving families in ${loc.city} via phone & WhatsApp. In-person meetings at our Bengaluru office.`}
+                    </span>
                   </div>
 
                   {loc.phone && (

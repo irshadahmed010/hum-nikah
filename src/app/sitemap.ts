@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { BLOG_POSTS } from "@/data/blogsData";
+import { COMMUNITY_PAGES } from "@/data/communities";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 // Regenerate at most once an hour so newly published blog posts appear.
@@ -17,8 +18,8 @@ const STATIC_ROUTES: StaticRoute[] = [
   { path: "/muslim-matrimony-india", priority: 0.9, changeFrequency: "monthly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/submit-biodata", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/gallery", priority: 0.6, changeFrequency: "weekly" },
   { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/fees", priority: 0.5, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.5, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
@@ -84,5 +85,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  return [...staticEntries, ...cityEntries, ...blogEntries];
+  const communityEntries: MetadataRoute.Sitemap = COMMUNITY_PAGES.map((page) => ({
+    url: `${SITE_URL}/muslim-matrimony/${page.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...cityEntries, ...communityEntries, ...blogEntries];
 }

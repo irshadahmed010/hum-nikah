@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { COMMUNITY_PAGES } from "@/data/communities";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export function Footer() {
@@ -112,9 +113,9 @@ export function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <h3 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Quick Links
-            </p>
+            </h3>
             <ul className="space-y-2.5">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
@@ -141,6 +142,18 @@ export function Footer() {
                   Nikah Blog
                 </Link>
               </li>
+              {COMMUNITY_PAGES.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/muslim-matrimony/${p.slug}`} className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                    {p.navLabel}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/fees" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                  Fees &amp; Payment
+                </Link>
+              </li>
               <li>
                 <Link href="/submit-biodata" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
                   Submit Biodata
@@ -151,9 +164,9 @@ export function Footer() {
 
           {/* Column 3: Legal (With FAQ redirect to Homepage) */}
           <div>
-            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <h3 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Legal &amp; Support
-            </p>
+            </h3>
             <ul className="space-y-2.5">
               <li>
                 <Link href="/privacy" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
@@ -175,9 +188,9 @@ export function Footer() {
 
           {/* Column 4: Contact Info */}
           <div>
-            <p className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+            <h3 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
               Contact Support
-            </p>
+            </h3>
             <ul className="space-y-3.5">
               <li className="flex items-start gap-2.5">
                 <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
@@ -213,11 +226,11 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8 pb-4 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
             <div>
-              <p className="text-sm font-playfair font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
+              <h4 className="text-sm font-playfair font-bold text-brand-gold uppercase tracking-wider flex items-center gap-2">
                 <MapPin size={16} /> Our Locations &amp; Regional Hubs
-              </p>
+              </h4>
               <p className="text-gray-300 text-xs font-light mt-0.5">
-                Karnataka, Kerala, Tamil Nadu, Andhra Pradesh, Telangana &amp; Maharashtra
+                Office in Bengaluru. Serving families across South &amp; West India
               </p>
             </div>
           </div>
@@ -237,8 +250,16 @@ export function Footer() {
                     )}
                   </div>
                   <div className="text-gray-300 font-light text-[11px] leading-relaxed">
-                    {loc.address}
+                    {loc.hasOffice
+                      ? loc.address
+                      : `Serving families in ${loc.city} via phone & WhatsApp`}
                   </div>
+                  <Link
+                    href={`/muslim-matrimony/${loc.city.toLowerCase()}`}
+                    className="mt-1.5 inline-block text-brand-gold/95 hover:text-white hover:underline text-[11px] font-medium"
+                  >
+                    Muslim matrimony in {loc.city}
+                  </Link>
                 </div>
                 {loc.phone && (
                   <div className="mt-3 pt-2.5 border-t border-white/10 flex flex-col gap-1.5 text-[11px]">

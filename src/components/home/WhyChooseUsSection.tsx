@@ -28,9 +28,9 @@ const features: FeatureCard[] = [
     badgeTextColor: "text-[#1E7A6E]",
   },
   {
-    title: "5-Layer Background Check",
+    title: "7-Step Verification Process",
     description:
-      "CNIC, degree audit, employment check, and 2+ verified family references.",
+      "Government ID, degree audit, employment check, and 2+ family references.",
     image: "/images/why-choose/background-check.webp",
     fallbackGradient: "from-slate-700/60 via-indigo-950/80 to-slate-900",
     icon: ShieldCheck,
@@ -113,7 +113,7 @@ export function WhyChooseUsSection() {
                         height={600}
                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                         onError={() => handleImageError(idx)}
-                        priority={idx === 0}
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
                       />
                     )}
                   </div>

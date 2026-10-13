@@ -15,7 +15,8 @@ import {
   MapPin,
   ArrowRight,
 } from "lucide-react";
-import { Button } from "../ui/Button";
+import { CITY_CONTENT } from "@/data/cityContent";
+import { COMMUNITY_PAGES } from "@/data/communities";
 
 const aboutSubLinks = [
   {
@@ -35,9 +36,40 @@ const aboutSubLinks = [
   },
 ];
 
+type NavSubLink = { name: string; href: string; icon: typeof MapPin };
+
+const navDropdowns: Record<string, { overview: string; links: NavSubLink[] }> = {
+  "About Us": { overview: "About Us Overview", links: aboutSubLinks },
+  "Muslim Matrimony": {
+    overview: "Muslim Matrimony in India",
+    links: CITY_CONTENT.map((c) => ({
+      name: `Muslim Matrimony in ${c.city}`,
+      href: `/muslim-matrimony/${c.slug}`,
+      icon: MapPin,
+    })),
+  },
+};
+
+navDropdowns["Communities"] = {
+  overview: "All Communities",
+  links: COMMUNITY_PAGES.map((p) => ({
+    name: p.navLabel,
+    href: `/muslim-matrimony/${p.slug}`,
+    icon: MapPin,
+  })),
+};
+
+const activePrefix: Record<string, string> = {
+  "About Us": "/about",
+  "Muslim Matrimony": "/muslim-matrimony-india",
+  Communities: "#",
+};
+
 const mainNavLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about", hasDropdown: true },
+  { name: "Muslim Matrimony", href: "/muslim-matrimony-india", hasDropdown: true },
+  { name: "Communities", href: "/muslim-matrimony-india#communities", hasDropdown: true },
   { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
@@ -45,19 +77,19 @@ const mainNavLinks = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isMobileAboutExpanded, setIsMobileAboutExpanded] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (name: string) => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    setIsAboutDropdownOpen(true);
+    setOpenDropdown(name);
   };
 
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setIsAboutDropdownOpen(false);
+      setOpenDropdown(null);
     }, 150);
   };
 
@@ -118,17 +150,17 @@ export function Navbar() {
           <nav className="hidden lg:flex items-center gap-1 bg-[#FAF6F0]/90 backdrop-blur-md p-1.5 rounded-full border border-brand-border/80 shadow-[0_2px_10px_rgba(29,24,76,0.03)]">
             {mainNavLinks.map((link) => {
               if (link.hasDropdown) {
-                const isAboutActive = pathname.startsWith("/about");
+                const isAboutActive = pathname.startsWith(activePrefix[link.name] ?? link.href);
                 return (
                   <div
                     key={link.name}
                     className="relative"
-                    onMouseEnter={handleMouseEnter}
+                    onMouseEnter={() => handleMouseEnter(link.name)}
                     onMouseLeave={handleMouseLeave}
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setIsAboutDropdownOpen(false)}
+                      onClick={() => setOpenDropdown(null)}
                       className={`text-[14.5px] xl:text-[15.5px] font-semibold font-outfit px-3.5 xl:px-4.5 py-2 rounded-full transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                         isAboutActive
                           ? "bg-gradient-to-r from-brand-emerald to-[#2A2365] text-white shadow-md shadow-brand-emerald/25"
@@ -139,26 +171,26 @@ export function Navbar() {
                       <ChevronDown
                         size={15}
                         className={`transition-transform duration-200 ${
-                          isAboutDropdownOpen ? "rotate-180 text-brand-gold" : ""
+                          openDropdown === link.name ? "rotate-180 text-brand-gold" : ""
                         }`}
                       />
                     </Link>
 
                     {/* Modern Luxury Dropdown Menu (Clean Icon + Title) */}
-                    {isAboutDropdownOpen && (
+                    {openDropdown === link.name && (
                       <div className="absolute top-full left-0 pt-2 z-50 w-64 sm:w-72 animate-in fade-in zoom-in-95 duration-200">
                         <div className="relative bg-gradient-to-b from-[#1D184C] via-[#1A1544] to-[#120E33] backdrop-blur-2xl rounded-2xl p-2 shadow-[0_20px_50px_rgba(20,16,56,0.35)] border border-brand-gold/40 ring-1 ring-white/10 overflow-hidden">
                           {/* Subtle top golden luxury sheen line */}
                           <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent pointer-events-none" />
 
                           <div className="py-1 space-y-1">
-                            {aboutSubLinks.map((sub) => {
+                            {navDropdowns[link.name].links.map((sub) => {
                               const IconComponent = sub.icon;
                               return (
                                 <Link
                                   key={sub.name}
                                   href={sub.href}
-                                  onClick={() => setIsAboutDropdownOpen(false)}
+                                  onClick={() => setOpenDropdown(null)}
                                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/10 text-white/90 hover:text-white transition-all group cursor-pointer"
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold group-hover:bg-brand-gold group-hover:text-[#1D184C] flex items-center justify-center shrink-0 transition-all duration-200 shadow-2xs">
@@ -227,11 +259,11 @@ export function Navbar() {
         <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-brand-border/80 shadow-2xl px-4 sm:px-6 py-5 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-4 duration-200 z-50">
           {mainNavLinks.map((link) => {
             if (link.hasDropdown) {
-              const isAboutActive = pathname.startsWith("/about");
+              const isAboutActive = pathname.startsWith(activePrefix[link.name] ?? link.href);
               return (
                 <div key={link.name} className="flex flex-col">
                   <div
-                    onClick={() => setIsMobileAboutExpanded(!isMobileAboutExpanded)}
+                    onClick={() => setMobileExpanded(mobileExpanded === link.name ? null : link.name)}
                     className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold font-outfit transition-all cursor-pointer ${
                       isAboutActive
                         ? "bg-gradient-to-r from-brand-emerald to-[#2A2365] text-white shadow-sm"
@@ -242,22 +274,22 @@ export function Navbar() {
                     <ChevronDown
                       size={18}
                       className={`transition-transform duration-200 ${
-                        isMobileAboutExpanded ? "rotate-180 text-brand-gold" : ""
+                        mobileExpanded === link.name ? "rotate-180 text-brand-gold" : ""
                       }`}
                     />
                   </div>
 
                   {/* Mobile Sub-Links */}
-                  {isMobileAboutExpanded && (
+                  {mobileExpanded === link.name && (
                     <div className="my-2 bg-gradient-to-b from-[#1D184C] to-[#141038] text-white rounded-2xl p-2.5 border border-brand-gold/35 shadow-lg space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
                       <Link
-                        href="/about"
+                        href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-3 py-2 text-xs font-bold font-outfit text-brand-gold uppercase tracking-wider hover:underline"
                       >
-                        About Us Overview &rarr;
+                        {navDropdowns[link.name].overview} &rarr;
                       </Link>
-                      {aboutSubLinks.map((sub) => {
+                      {navDropdowns[link.name].links.map((sub) => {
                         const IconComponent = sub.icon;
                         return (
                           <Link

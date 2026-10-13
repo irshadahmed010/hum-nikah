@@ -21,6 +21,8 @@ import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 import { CITY_CONTENT, getCityContent } from "@/data/cityContent";
+import { CITY_META } from "@/data/seo-meta";
+import { CITY_COMMUNITY_LINKS, getCommunityPage } from "@/data/communities";
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -38,9 +40,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Muslim Matrimony – City Not Found" };
   }
 
+  const meta = CITY_META[content.slug];
+
   return buildMetadata({
-    title: `Muslim Matrimony in ${content.city} – Verified Nikah Matches`,
-    description: `${content.tagline}. HumNikah offers verified, Shariah-compliant Muslim matchmaking for families in ${content.city}, ${content.state}, with dedicated relationship managers and complete privacy.`,
+    title: meta.title,
+    absoluteTitle: meta.title,
+    description: meta.description,
     path: `/muslim-matrimony/${content.slug}`,
   });
 }
@@ -48,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const whyChoose = [
   {
     icon: ShieldCheck,
-    title: "100% Verified Profiles",
+    title: "Manually Screened Profiles",
     body: "Every biodata is manually screened using government ID and phone verification, with respectful home visits by our field representatives before activation.",
   },
   {
@@ -103,28 +108,43 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
     (location) => location.city.toLowerCase() === content.slug
   );
 
+  const meta = CITY_META[content.slug];
+  const communityLinks = (CITY_COMMUNITY_LINKS[content.slug] ?? [])
+    .filter((slug) => slug !== "divorcee-widow-remarriage")
+    .map((slug) => getCommunityPage(slug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const hasOffice = office?.hasOffice ?? false;
   const pageUrl = `${SITE_URL}/muslim-matrimony/${content.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        "@id": `${SITE_URL}/#office-${content.slug}`,
-        name: `HumNikah ${content.city}`,
-        url: pageUrl,
-        parentOrganization: { "@id": `${SITE_URL}/#organization` },
-        telephone: office?.phone
-          ? `+${office.phone.replace(/[^0-9]/g, "")}`
-          : undefined,
-        email: office?.email ?? "connect@humnikah.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: office?.address,
-          addressLocality: content.city,
-          addressRegion: content.state,
-          addressCountry: "IN",
-        },
+        ...(hasOffice
+          ? {
+              "@type": "LocalBusiness",
+              "@id": `${SITE_URL}/#office-${content.slug}`,
+              name: `HumNikah ${content.city}`,
+              url: pageUrl,
+              parentOrganization: { "@id": `${SITE_URL}/#organization` },
+              telephone: office?.phone
+                ? `+${office.phone.replace(/[^0-9]/g, "")}`
+                : undefined,
+              email: office?.email ?? "connect@humnikah.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: office?.address,
+                addressLocality: content.city,
+                addressRegion: content.state,
+                addressCountry: "IN",
+              },
+            }
+          : {
+              "@type": "Service",
+              name: `Muslim matrimony in ${content.city}`,
+              url: pageUrl,
+              provider: { "@id": `${SITE_URL}/#organization` },
+            }),
         areaServed: { "@type": "City", name: content.city },
       },
       {
@@ -193,19 +213,15 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               <span>{content.state}</span>
             </div>
 
-            <h1 className="font-playfair font-bold text-white leading-[1.15]">
-              <span className="block text-[28px] sm:text-4xl lg:text-5xl">
-                Muslim Matrimony in {content.city}
-              </span>
-              <span className="block text-[#F3B979] italic text-lg sm:text-2xl lg:text-[26px] mt-3 leading-snug">
-                {content.tagline}
-              </span>
+            <h1 className="font-playfair font-bold text-white leading-[1.15] text-[28px] sm:text-4xl lg:text-5xl">
+              {meta.h1}
             </h1>
+            <p className="mt-3 text-[#F3B979] italic text-lg sm:text-2xl lg:text-[26px] leading-snug font-playfair">
+              {content.tagline}
+            </p>
 
             <p className="mt-6 text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
-              HumNikah helps {content.city} families find verified, Shariah-compliant
-              Nikah matches with dedicated relationship managers, walk-in support at
-              our head office, and complete privacy.
+              {meta.heroIntro}
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -232,7 +248,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-5">
-              Trusted Muslim Matrimony for {content.city} Families
+              {meta.introHeading}
             </h2>
             <div className="space-y-4 text-[15px] sm:text-base text-black leading-relaxed">
               {content.intro.map((paragraph) => (
@@ -257,10 +273,12 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               </ul>
             </div>
 
-            <div className="mt-8 space-y-4 text-[15px] text-black leading-relaxed">
-              <p>{content.areasServed}</p>
-              <p>{content.localNote}</p>
-            </div>
+            {(content.areasServed || content.localNote) && (
+              <div className="mt-8 space-y-4 text-[15px] text-black leading-relaxed">
+                {content.areasServed && <p>{content.areasServed}</p>}
+                {content.localNote && <p>{content.localNote}</p>}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -304,7 +322,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               Simple &amp; Guided
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-brand-charcoal mt-2">
-              How Muslim Matchmaking Works
+              How Muslim Matchmaking Works in {content.city}
             </h2>
           </div>
 
@@ -327,19 +345,117 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Areas and towns served */}
+      <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-6">
+            Areas and Towns We Serve near {content.city}
+          </h2>
+          <div className="space-y-6">
+            {content.areas.map((group) => (
+              <div key={group.heading}>
+                <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
+                  {group.heading}
+                </h3>
+                <p className="text-[15px] text-black leading-relaxed">{group.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Intent block */}
+      <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-6">
+            Remarriage, Professionals and Overseas Families in {content.city}
+          </h2>
+          <div className="space-y-5 text-[15px] text-black leading-relaxed">
+            <div>
+              <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-1">
+                Second marriage in {content.city}
+              </h3>
+              <p>
+                Divorced and widowed members are welcome to register. Marital
+                status is verified like every other detail, and introductions
+                follow the same private, Wali-involved process. Read more about{" "}
+                <Link
+                  href="/muslim-matrimony/divorcee-widow-remarriage"
+                  className="text-brand-gold font-semibold hover:underline"
+                >
+                  Muslim divorcee and widow remarriage
+                </Link>
+                .
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-1">
+                Working professionals
+              </h3>
+              <p>
+                Doctors, engineers, IT professionals, CAs, teachers and business
+                owners can leave the shortlisting to a relationship manager and
+                spend their time on genuine conversations.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-1">
+                NRI and Gulf-based families
+              </h3>
+              <p>
+                We coordinate introductions for Gulf-based and overseas families
+                with {content.city} families, around time zones and travel plans.
+              </p>
+            </div>
+            {communityLinks.length > 0 && (
+              <p>
+                Community pages:{" "}
+                {communityLinks.map((p, i) => (
+                  <span key={p.slug}>
+                    {i > 0 && ", "}
+                    <Link
+                      href={`/muslim-matrimony/${p.slug}`}
+                      className="text-brand-gold font-semibold hover:underline"
+                    >
+                      {p.navLabel}
+                    </Link>
+                  </span>
+                ))}
+                .
+              </p>
+            )}
+            <p className="text-sm text-brand-secondary">
+              School-of-thought preferences such as Sunni Hanafi, Shafi&apos;i and
+              Ahle Hadees are recorded in your biodata and respected when we
+              shortlist.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Office + map */}
       <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/80 shadow-sm">
               <h2 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal mb-4">
-                HumNikah {content.city} Office
+                {hasOffice
+                  ? `HumNikah ${content.city} Office`
+                  : `Serving ${content.city} Families`}
               </h2>
+              {!hasOffice && (
+                <p className="text-sm text-black leading-relaxed mb-4">
+                  Serving {content.city} families via phone &amp; WhatsApp.
+                  In-person meetings at our Bengaluru office.
+                </p>
+              )}
               <ul className="space-y-3.5 text-sm text-black">
-                <li className="flex items-start gap-3">
-                  <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
-                  <span>{office?.address ?? `${content.city}, ${content.state}`}</span>
-                </li>
+                {hasOffice && (
+                  <li className="flex items-start gap-3">
+                    <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
+                    <span>{office?.address}</span>
+                  </li>
+                )}
                 {office?.phone && (
                   <li className="flex items-center gap-3">
                     <Phone size={18} className="text-brand-gold shrink-0" />
@@ -368,31 +484,35 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                 )}
               </ul>
 
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  content.mapQuery
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-emerald hover:text-brand-gold transition-colors"
-              >
-                View on Google Maps <ArrowRight size={15} />
-              </a>
+              {hasOffice && (
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    content.mapQuery
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-emerald hover:text-brand-gold transition-colors"
+                >
+                  View on Google Maps <ArrowRight size={15} />
+                </a>
+              )}
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-brand-border/80 shadow-sm h-[300px] lg:h-auto bg-brand-beige">
-              <iframe
-                title={`HumNikah ${content.city} office location`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(
-                  content.mapQuery
-                )}&output=embed`}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            </div>
+            {hasOffice && (
+              <div className="rounded-2xl overflow-hidden border border-brand-border/80 shadow-sm h-[300px] lg:h-auto bg-brand-beige">
+                <iframe
+                  title={`HumNikah ${content.city} office location`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(
+                    content.mapQuery
+                  )}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -474,8 +594,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
           <p className="mt-8 text-center text-xs text-brand-secondary">
             {SITE_NAME} serves Muslim families across India.{" "}
             {CITY_CONTENT.filter((city) => city.slug !== content.slug)
-              .slice(0, 3)
-              .map((city) => (
+                            .map((city) => (
                 <span key={city.slug}>
                   <Link
                     href={`/muslim-matrimony/${city.slug}`}

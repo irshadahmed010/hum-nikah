@@ -368,7 +368,7 @@ export default function AboutClient() {
                 <div className="w-14 h-14 rounded-2xl bg-brand-light-cream text-brand-emerald flex items-center justify-center mb-5 group-hover:bg-brand-emerald group-hover:text-white transition-colors">
                   <ShieldCheck size={28} />
                 </div>
-                <h3 className="text-xl font-playfair font-bold text-brand-charcoal mb-2">100% Verified Profiles</h3>
+                <h3 className="text-xl font-playfair font-bold text-brand-charcoal mb-2">Manually Screened Profiles</h3>
                 <p className="text-xs sm:text-sm text-brand-secondary leading-relaxed">
                   Every biodata undergoes mandatory government ID and phone screening before profile activation to eliminate fake profiles.
                 </p>
@@ -566,7 +566,7 @@ export default function AboutClient() {
               </h2>
 
               <p className="mt-3 sm:mt-4 text-slate-200 text-sm sm:text-base lg:text-lg font-light leading-relaxed max-w-lg mx-auto sm:mx-0">
-                Join thousands of Muslims finding their perfect match.
+                Join Muslim families finding their perfect match.
               </p>
 
               <div className="mt-6 sm:mt-8">

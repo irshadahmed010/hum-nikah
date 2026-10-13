@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { biodataSchema, BiodataFormValues } from "@/lib/validations";
+import { getAttribution } from "@/lib/analytics";
 import { BiodataUploadDropzone } from "./BiodataUploadDropzone";
 import { 
   User, 
@@ -84,6 +85,10 @@ export function BiodataForm() {
         biodataDocUrl: uploadedDocUrl || undefined,
         biodataDocName: uploadedDocName || undefined,
         profileImageUrl: uploadedDocUrl || undefined,
+        utmSource: getAttribution().utm_source,
+        utmMedium: getAttribution().utm_medium,
+        utmCampaign: getAttribution().utm_campaign,
+        landingPage: getAttribution().landing_page,
       };
 
       const res = await fetch("/api/biodata", {
@@ -93,6 +98,7 @@ export function BiodataForm() {
       });
 
       if (res.ok) {
+        window.location.assign("/thank-you");
         setIsSuccess(true);
       } else {
         const errorData = await res.json().catch(() => null);

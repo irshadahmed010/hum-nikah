@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown, Mail, Phone, ScrollText, Sparkles } from "lucide-react";
 
 const LAST_REVISED = "27 August 2026";
@@ -366,21 +366,13 @@ function AccordionItem({
         </motion.div>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="overflow-hidden"
-          >
-            <div className="legal-prose px-4 pb-5 pt-0 border-t border-brand-border/40">
+      <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+<div className="overflow-hidden min-h-0" inert={!isOpen}>
+<div className="legal-prose px-4 pb-5 pt-0 border-t border-brand-border/40">
               <p className="mt-3 text-[15px] text-black leading-relaxed">{qa.a}</p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+</div>
+</div>
     </div>
   );
 }

@@ -1,6 +1,12 @@
 import * as z from "zod";
 
 export const biodataSchema = z.object({
+  // Marketing attribution (captured client-side)
+  utmSource: z.string().max(200).optional(),
+  utmMedium: z.string().max(200).optional(),
+  utmCampaign: z.string().max(200).optional(),
+  landingPage: z.string().max(500).optional(),
+
   // Essential Personal Information
   fullName: z.string().min(2, "Full name is required").max(100),
   gender: z.enum(["Male", "Female"], { required_error: "Gender is required" }),

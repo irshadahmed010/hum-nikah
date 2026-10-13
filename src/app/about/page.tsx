@@ -5,7 +5,7 @@ import AboutClient from "./AboutClient";
 export const metadata: Metadata = buildMetadata({
   title: "About Us – Trusted Muslim Marriage Bureau",
   description:
-    "Meet the team behind HumNikah, a Muslim marriage bureau with walk-in offices across India helping families find halal, verified Nikah matches.",
+    "Meet the team behind HumNikah, a Muslim marriage bureau in Bengaluru helping families across India find halal, verified Nikah matches.",
   path: "/about",
 });
 

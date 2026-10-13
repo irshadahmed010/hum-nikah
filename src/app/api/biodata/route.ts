@@ -31,6 +31,17 @@ export async function POST(request: Request) {
       finalIntro = finalIntro ? `${finalIntro}\n\n${docBadge}` : docBadge;
     }
 
+    const attribution = [
+      validatedData.utmSource && `utm_source=${validatedData.utmSource}`,
+      validatedData.utmMedium && `utm_medium=${validatedData.utmMedium}`,
+      validatedData.utmCampaign && `utm_campaign=${validatedData.utmCampaign}`,
+      validatedData.landingPage && `landing=${validatedData.landingPage}`,
+    ].filter(Boolean).join('|');
+    if (attribution) {
+      const tag = `[ATTRIBUTION:${attribution}]`;
+      finalIntro = finalIntro ? `${finalIntro}\n\n${tag}` : tag;
+    }
+
     // Document or profile picture URL
     const fileUrl = validatedData.biodataDocUrl || validatedData.profileImageUrl || '';
 

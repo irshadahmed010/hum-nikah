@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, HelpCircle, ChevronRight, Sparkles, PhoneCall, ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
@@ -17,7 +16,7 @@ const verificationFaqs = [
   },
   {
     q: "What credentials are verified during the background check?",
-    a: "We audit government-issued CNIC/Passport, university degrees/employment proof, 2 family character references, local neighborhood reputation, and legal marital status documentation."
+    a: "We audit government-issued ID (Aadhaar / PAN / Passport), university degrees/employment proof, 2 family character references, local neighborhood reputation, and legal marital status documentation."
   },
   {
     q: "Can parents / Guardians (Wali) directly talk with the verification team?",
@@ -84,19 +83,11 @@ export function VerificationFaqSection() {
                   />
                 </button>
 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="px-5 pb-5 pt-2 text-slate-200 text-xs sm:text-sm font-normal sm:font-light leading-relaxed border-t border-white/10 bg-black/20"
-                    >
-                      {faq.a}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+<div className="overflow-hidden min-h-0" inert={!isOpen}>
+<div className="px-5 pb-5 pt-2 text-slate-200 text-xs sm:text-sm font-normal sm:font-light leading-relaxed border-t border-white/10 bg-black/20">{faq.a}</div>
+</div>
+</div>
               </div>
             );
           })}
