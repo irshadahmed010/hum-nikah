@@ -24,6 +24,11 @@ import { CITY_CONTENT, getCityContent } from "@/data/cityContent";
 import { CITY_META } from "@/data/seo-meta";
 import { getGuidesForCity } from "@/data/guides";
 import { CITY_COMMUNITY_LINKS, getCommunityPage } from "@/data/communities";
+import {
+  bengaluruAreas,
+  BENGALURU_TIER_B_TEXT,
+  BENGALURU_TIER_C_TEXT,
+} from "@/data/bengaluru-areas";
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -125,22 +130,31 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
         ...(hasOffice
           ? {
               "@type": ["LocalBusiness", "ProfessionalService"],
-              "@id": `${SITE_URL}/#office-${content.slug}`,
-              name: `HumNikah ${content.city}`,
+              "@id":
+                content.slug === "bengaluru"
+                  ? `${SITE_URL}/#bengaluru-office`
+                  : `${SITE_URL}/#office-${content.slug}`,
+              name: content.slug === "bengaluru" ? "HumNikah" : `HumNikah ${content.city}`,
               url: pageUrl,
               parentOrganization: { "@id": `${SITE_URL}/#organization` },
-              // Primary call number; WhatsApp is +91 90190 82205.
-              telephone: office?.phone2
-                ? `+${office.phone2.replace(/[^0-9]/g, "")}`
-                : office?.phone
-                  ? `+${office.phone.replace(/[^0-9]/g, "")}`
-                  : undefined,
+              telephone:
+                content.slug === "bengaluru"
+                  ? "+919844321312"
+                  : office?.phone2
+                    ? `+${office.phone2.replace(/[^0-9]/g, "")}`
+                    : office?.phone
+                      ? `+${office.phone.replace(/[^0-9]/g, "")}`
+                      : undefined,
               email: office?.email ?? "connect@humnikah.com",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: office?.address,
+                streetAddress:
+                  content.slug === "bengaluru"
+                    ? "Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town"
+                    : office?.address,
                 addressLocality: content.city,
                 addressRegion: content.state,
+                postalCode: content.slug === "bengaluru" ? "560005" : undefined,
                 addressCountry: "IN",
               },
             }
@@ -152,9 +166,11 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
             }),
         areaServed: [
           { "@type": "City", name: content.city },
-          ...content.areas.flatMap((group) =>
-            group.places.map((place) => ({ "@type": "Place", name: place })),
-          ),
+          ...(content.slug === "bengaluru"
+            ? bengaluruAreas.map((area) => ({ "@type": "Place", name: area.name }))
+            : content.areas.flatMap((group) =>
+                group.places.map((place) => ({ "@type": "Place", name: place }))
+              )),
         ],
       },
       {
@@ -356,23 +372,103 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
       </section>
 
       {/* Areas and towns served */}
-      <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-6">
-            Areas and Towns We Serve near {content.city}
-          </h2>
-          <div className="space-y-6">
-            {content.areas.map((group) => (
-              <div key={group.heading}>
-                <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
-                  {group.heading}
-                </h3>
-                <p className="text-[15px] text-black leading-relaxed">{group.body}</p>
+      {content.slug === "bengaluru" ? (
+        <>
+          <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-3xl mb-8">
+                <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-3">
+                  Muslim Areas of Bangalore We Serve
+                </h2>
+                <p className="text-[15px] text-black leading-relaxed">
+                  HumNikah serves families across Bangalore from our central office in Cox Town. We manually screen every profile, verify documents, and respect family preferences across all neighbourhoods.
+                </p>
               </div>
-            ))}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                {bengaluruAreas.map((area) => (
+                  <div
+                    key={area.slug}
+                    id={area.slug}
+                    className="bg-white rounded-2xl p-6 border border-brand-border/80 shadow-sm hover:border-brand-gold/40 transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
+                        {area.dedicatedPage ? (
+                          <Link
+                            href={`/muslim-matrimony/bengaluru/${area.slug}`}
+                            className="hover:text-brand-gold transition-colors"
+                          >
+                            Muslim Matrimony in {area.name}
+                          </Link>
+                        ) : (
+                          `Muslim Matrimony in ${area.name}`
+                        )}
+                        {area.alsoKnownAs && (
+                          <span className="text-xs font-normal text-brand-secondary block sm:inline sm:ml-1.5">
+                            ({area.alsoKnownAs})
+                          </span>
+                        )}
+                      </h3>
+                      <p className="text-sm text-black leading-relaxed mb-4">
+                        {area.blurb}
+                      </p>
+                    </div>
+                    <div>
+                      <a
+                        href={`/whatsapp?src=bengaluru-${area.slug}`}
+                        rel="nofollow noopener"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-emerald hover:text-brand-gold transition-colors"
+                      >
+                        Message us from {area.name} <ArrowRight size={14} />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-brand-border/60">
+                <p className="text-[15px] text-black leading-relaxed">
+                  {BENGALURU_TIER_B_TEXT}
+                </p>
+                <p className="mt-2 text-sm text-brand-secondary">
+                  Nearby regions served: {BENGALURU_TIER_C_TEXT}
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
+                Karnataka Towns We Serve
+              </h2>
+              <p className="text-[15px] text-black leading-relaxed">
+                {content.areas.find((g) => g.heading.toLowerCase().includes("karnataka"))?.body ??
+                  "Beyond the city, we support families in Mangaluru, Mysuru, Hubli-Dharwad, Bhatkal, Gulbarga and Bijapur, so a family outside Bangalore can use the same verified, Wali-involved process without relocating."}
+              </p>
+            </div>
+          </section>
+        </>
+      ) : (
+        <section className="py-12 sm:py-16 bg-brand-cream border-b border-brand-border/50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-6">
+              Areas and Towns We Serve near {content.city}
+            </h2>
+            <div className="space-y-6">
+              {content.areas.map((group) => (
+                <div key={group.heading}>
+                  <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
+                    {group.heading}
+                  </h3>
+                  <p className="text-[15px] text-black leading-relaxed">{group.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Intent block */}
       <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
@@ -449,7 +545,9 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/80 shadow-sm">
               <h2 className="text-xl sm:text-2xl font-playfair font-bold text-brand-charcoal mb-4">
-                {hasOffice
+                {content.slug === "bengaluru"
+                  ? "HumNikah Bengaluru Office — Cox Town"
+                  : hasOffice
                   ? `HumNikah ${content.city} Office`
                   : `Serving ${content.city} Families`}
               </h2>
@@ -467,37 +565,76 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                 </p>
               )}
               <ul className="space-y-3.5 text-sm text-black">
-                {hasOffice && (
-                  <li className="flex items-start gap-3">
-                    <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
-                    <span>{office?.address}</span>
-                  </li>
-                )}
-                {office?.phone && (
-                  <li className="flex items-center gap-3">
-                    <Phone size={18} className="text-brand-gold shrink-0" />
-                    <a
-                      href={`tel:${office.phone.replace(/\s/g, "")}`}
-                      className="hover:text-brand-gold transition-colors"
-                    >
-                      {office.phone}
-                    </a>
-                  </li>
-                )}
-                <li className="flex items-center gap-3">
-                  <Mail size={18} className="text-brand-gold shrink-0" />
-                  <a
-                    href={`mailto:${office?.email ?? "connect@humnikah.com"}`}
-                    className="hover:text-brand-gold transition-colors"
-                  >
-                    {office?.email ?? "connect@humnikah.com"}
-                  </a>
-                </li>
-                {office?.timing && (
-                  <li className="flex items-center gap-3">
-                    <Clock size={18} className="text-brand-gold shrink-0" />
-                    <span>{office.timing}</span>
-                  </li>
+                {content.slug === "bengaluru" ? (
+                  <>
+                    <li className="flex items-start gap-3">
+                      <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
+                      <span>Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru 560005</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Phone size={18} className="text-brand-gold shrink-0" />
+                      <a
+                        href="tel:+919844321312"
+                        className="hover:text-brand-gold transition-colors font-medium"
+                      >
+                        +91 98443 21312
+                      </a>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Sparkles size={18} className="text-brand-gold shrink-0" />
+                      <a
+                        href="/whatsapp?src=bengaluru-office"
+                        rel="nofollow noopener"
+                        className="hover:text-brand-gold transition-colors font-medium"
+                      >
+                        WhatsApp: +91 90190 82205
+                      </a>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Mail size={18} className="text-brand-gold shrink-0" />
+                      <a
+                        href="mailto:connect@humnikah.com"
+                        className="hover:text-brand-gold transition-colors"
+                      >
+                        connect@humnikah.com
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    {hasOffice && (
+                      <li className="flex items-start gap-3">
+                        <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
+                        <span>{office?.address}</span>
+                      </li>
+                    )}
+                    {office?.phone && (
+                      <li className="flex items-center gap-3">
+                        <Phone size={18} className="text-brand-gold shrink-0" />
+                        <a
+                          href={`tel:${office.phone.replace(/\s/g, "")}`}
+                          className="hover:text-brand-gold transition-colors"
+                        >
+                          {office.phone}
+                        </a>
+                      </li>
+                    )}
+                    <li className="flex items-center gap-3">
+                      <Mail size={18} className="text-brand-gold shrink-0" />
+                      <a
+                        href={`mailto:${office?.email ?? "connect@humnikah.com"}`}
+                        className="hover:text-brand-gold transition-colors"
+                      >
+                        {office?.email ?? "connect@humnikah.com"}
+                      </a>
+                    </li>
+                    {office?.timing && (
+                      <li className="flex items-center gap-3">
+                        <Clock size={18} className="text-brand-gold shrink-0" />
+                        <span>{office.timing}</span>
+                      </li>
+                    )}
+                  </>
                 )}
               </ul>
 
@@ -518,7 +655,11 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
             {hasOffice && (
               <div className="rounded-2xl overflow-hidden border border-brand-border/80 shadow-sm h-[300px] lg:h-auto bg-brand-beige">
                 <iframe
-                  title={`HumNikah ${content.city} office location`}
+                  title={
+                    content.slug === "bengaluru"
+                      ? "HumNikah Cox Town Bengaluru office location"
+                      : `HumNikah ${content.city} office location`
+                  }
                   src={`https://www.google.com/maps?q=${encodeURIComponent(
                     content.mapQuery
                   )}&output=embed`}

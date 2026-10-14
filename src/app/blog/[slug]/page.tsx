@@ -120,6 +120,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     ],
   };
 
+  const cleanedContent = post.content ? post.content.replace(/^---[\s\S]*?---\s*/, "") : "";
+
   return (
     <main className="min-h-screen bg-brand-cream pb-16 sm:pb-24">
       <script
@@ -227,7 +229,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               prose-blockquote:border-l-4 prose-blockquote:border-brand-gold prose-blockquote:bg-brand-cream/80 prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:font-playfair prose-blockquote:italic prose-blockquote:text-brand-charcoal prose-blockquote:text-sm prose-blockquote:sm:text-base
               prose-ul:list-disc prose-ul:pl-5 prose-ul:space-y-2 prose-ul:text-sm prose-ul:sm:text-base prose-ul:text-brand-secondary
               prose-strong:text-brand-charcoal prose-strong:font-semibold"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: cleanedContent }}
           />
 
           {/* Next steps */}

@@ -43,10 +43,11 @@ downloads:
 - Muslim biodata format for a girl
 - Download the free templates: Word and PDF
 - Sample Muslim biodata for marriage
-- How to make a biodata in 5 steps
+- How to make a biodata for marriage in 5 steps
 - Tips for the person and for parents
 - Common biodata mistakes to avoid
 - Biodata for a divorcee or widow
+- Biodata ready? What next
 - FAQs
 
 A biodata is the first thing another family reads about you, so a clear, simple and respectful one makes a real difference. Many families search for a free Muslim biodata format for marriage in Word or PDF, so we have made simple templates for you. Copy the text below, or download the files, fill them in and keep them ready. When you are ready to start your search, you can [submit your biodata to HumNikah free](/submit-biodata).

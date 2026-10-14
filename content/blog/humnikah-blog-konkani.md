@@ -37,10 +37,11 @@ related: ["how-to-verify-a-muslim-rishta", "muslim-marriage-bureau-bangalore-gui
 - Are Konkani Muslims Sunni?
 - Konkani Muslim wedding: what to agree on early
 - How we work with Konkani families in Mumbai
-- Looking for a WhatsApp group link? Start with a personal chat
+- Looking for a Konkani Muslim matrimony WhatsApp group link?
+- How to start
 - FAQs
 
-Finding a spouse within the Konkani Muslim community often starts with family, relatives and the local jamaat. Today many families also use online searches and marriage bureaus, especially in a large city like Mumbai where relatives may not know every suitable family. This guide explains who Konkani Muslims are, how families search, what to ask a bureau and how to start without joining an open WhatsApp group. For an overview of our service, see [Muslim matrimony in Mumbai](/muslim-matrimony/mumbai).
+Finding a spouse within the Konkani Muslim community often starts with family, relatives and the local jamaat. Today many families also use online searches and marriage bureaus, especially in a large city like Mumbai where relatives may not know every suitable family. This guide explains who Konkani Muslims are, how families search, what to ask a bureau and how to start without joining an open WhatsApp group. For an overview of our service, see [Muslim matrimony in Mumbai](/muslim-matrimony/mumbai) and explore our dedicated page for [Konkani Muslim matrimony](/muslim-matrimony/konkani).
 
 ## Who are Konkani Muslims?
 

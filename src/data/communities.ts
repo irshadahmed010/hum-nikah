@@ -62,6 +62,24 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
       {
+        heading: "Who we serve across Tamil Nadu",
+        body: [
+          "We assist Tamil Muslim families across Chennai, Coimbatore, Madurai, Tiruchirappalli, Vaniyambadi, Ambur and Nagore, including merchants, doctors, software professionals and business families. Whether your family adheres to Labbai traditions, Rowther trade legacies or coastal Marakkayar customs, your specific preferences are noted and prioritized.",
+        ],
+      },
+      {
+        heading: "How matching works for Tamil Muslim families",
+        body: [
+          "Rather than placing your biodata in open groups or searchable internet directories, a dedicated matchmaker reviews each proposal personally. We verify basic identity and residence credentials, discuss expectations directly with parents and elders, and coordinate introductions only with explicit consent from the bride's Wali.",
+        ],
+      },
+      {
+        heading: "What families usually ask",
+        body: [
+          "Families frequently ask whether conversations can be conducted in Tamil or Urdu, how ancestral town ties are honored, and how proposals involving Gulf-employed members are coordinated. Our team communicates fluently in Tamil, English and Urdu, respecting local cultural nuances from the first call.",
+        ],
+      },
+      {
         heading: "How verification works",
         body: [
           "Before a profile is shared, we verify identity through government ID, along with phone number, marital status, education or profession and residence. We do not run formal criminal-record checks, so families should still do their own due diligence before deciding.",
@@ -80,6 +98,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["chennai"],
+    relatedGuides: [
+      {
+        slug: "how-to-verify-a-muslim-rishta",
+        label: "Checklist to Verify a Muslim Rishta",
+      },
+    ],
     faqs: [
       {
         q: "Can I ask for a Labbai, Rowther or Marakkayar match specifically?",
@@ -125,6 +149,18 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
       {
+        heading: "Who we serve across Malabar and Kerala",
+        body: [
+          "We work with Mappila and Malayali Muslim families throughout Malappuram, Kozhikode, Kannur, Thrissur, Kochi, Kollam and Thiruvananthapuram. This includes established business families, agricultural households, healthcare professionals, academics and overseas professionals across the Gulf.",
+        ],
+      },
+      {
+        heading: "What families usually ask about Mappila rishtas",
+        body: [
+          "Families frequently enquire about Shafi'i madhhab practices, local mahalls, Gulf travel schedules for meetings, and mahr agreements. We ensure that both sides have complete clarity on family background, residence plans and expectations before facilitating meetings between elders.",
+        ],
+      },
+      {
         heading: "Verification and privacy",
         body: [
           "Identity, education or profession, marital status and residence are verified before a profile is shared, using government ID and phone verification, with respectful home visits by our representatives where possible. We do not run formal criminal-record checks, so families should still do their own due diligence.",
@@ -143,6 +179,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["kochi"],
+    relatedGuides: [
+      {
+        slug: "how-to-verify-a-muslim-rishta",
+        label: "Checklist to Verify a Muslim Rishta",
+      },
+    ],
     faqs: [
       {
         q: "Does HumNikah serve Mappila families?",
@@ -179,6 +221,18 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         heading: "Konkani matchmaking, handled for you",
         body: [
           "For busy professionals and business families, a dedicated relationship manager does the screening and shortlisting. You receive a short list of verified, aligned profiles and discuss each one with your family, rather than spending evenings scrolling.",
+        ],
+      },
+      {
+        heading: "Who we serve in Mumbai and the Konkan belt",
+        body: [
+          "We assist Konkani Muslim families residing across Mumbai, Navi Mumbai, Thane, Pune and coastal districts including Raigad, Ratnagiri and Sindhudurg. Members include maritime executives, corporate professionals, entrepreneurs and families with members working abroad.",
+        ],
+      },
+      {
+        heading: "What families usually ask about Konkani rishtas",
+        body: [
+          "Konkani families often ask how dialect preferences (Konkani, Marathi, Urdu) are accommodated, how family lineage and ancestral villages are respected, and how introductions are kept confidential in tight-knit community circles. Every step is handled privately through family elders without public exposure.",
         ],
       },
       {
@@ -281,6 +335,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["hyderabad", "bengaluru"],
+    relatedGuides: [
+      {
+        slug: "muslim-marriage-bureau-hyderabad-guide",
+        label: "How to Choose a Muslim Marriage Bureau in Hyderabad",
+      },
+    ],
     faqs: [
       {
         q: "Do you support Deccani families?",
@@ -346,6 +406,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["bengaluru", "chennai", "hyderabad", "kochi", "mumbai", "vijayawada"],
+    relatedGuides: [
+      {
+        slug: "muslim-biodata-format-for-marriage",
+        label: "Free Muslim Biodata Format for Marriage",
+      },
+    ],
     faqs: [
       {
         q: "Do you help Muslim divorcees and widows?",
@@ -398,6 +464,18 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
       {
+        heading: "Who we serve in Bangalore and coastal Karnataka",
+        body: [
+          "We assist Beary-speaking families originating from Dakshina Kannada (Mangaluru, Bantwal, Puttur) and Bhatkali families from Uttara Kannada, both those living in their home districts and those settled in Bengaluru or the Gulf. Our team works with IT professionals, merchants, entrepreneurs and religious scholars.",
+        ],
+      },
+      {
+        heading: "What families usually ask",
+        body: [
+          "Families commonly ask how distinctive Beary and Nawayath traditions are respected, how language at home is considered, and whether elders can meet our team at the Bengaluru office. We welcome families to our Cox Town office to discuss community preferences and matrimonial expectations in person.",
+        ],
+      },
+      {
         heading: "Verification and privacy",
         body: [
           "Identity, education or profession, marital status and residence are verified before a profile is shared. Photographs, contact details and documents are shared only with matches that you and your family approve. We do not run formal criminal-record checks, so families should still do their own due diligence.",
@@ -416,6 +494,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["bengaluru"],
+    relatedGuides: [
+      {
+        slug: "muslim-marriage-bureau-bangalore-guide",
+        label: "How to Choose a Muslim Marriage Bureau in Bangalore",
+      },
+    ],
     faqs: [
       {
         q: "Do you match Beary and Bhatkali families?",
@@ -485,6 +569,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["bengaluru", "hyderabad", "kochi", "mumbai"],
+    relatedGuides: [
+      {
+        slug: "how-to-verify-a-muslim-rishta",
+        label: "Checklist to Verify a Muslim Rishta",
+      },
+    ],
     faqs: [
       {
         q: "Can Gulf-based families register?",
@@ -554,6 +644,12 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
     ],
     relatedCities: ["bengaluru", "hyderabad", "chennai", "mumbai"],
+    relatedGuides: [
+      {
+        slug: "muslim-biodata-format-for-marriage",
+        label: "Free Muslim Biodata Format for Marriage",
+      },
+    ],
     faqs: [
       {
         q: "Can I ask for a doctor or engineer match?",

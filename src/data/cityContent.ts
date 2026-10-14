@@ -63,7 +63,7 @@ const RAW_CITIES: RawCity[] = [
     state: "Tamil Nadu",
     tagline: "Tamil Muslim matchmaking with community-aware shortlisting",
     intro: [
-      "HumNikah works closely with Tamil Muslim families in Chennai who want a respectful, verified process rather than an open matrimonial website. Language, community, and family expectations are treated as first-class preferences, not afterthoughts.",
+      "HumNikah is a Muslim marriage bureau in Chennai serving Tamil Muslim families who want a respectful, verified process rather than an open matrimonial website. Language, community, and family expectations are treated as first-class preferences, not afterthoughts.",
       "Every Chennai biodata is screened by a relationship manager who understands Tamil Muslim social conventions, and introductions are arranged between families with the wali involved from the first conversation.",
     ],
     communities: [
@@ -80,7 +80,7 @@ const RAW_CITIES: RawCity[] = [
       },
       {
         q: "Is there a HumNikah presence in Chennai or only in Bengaluru?",
-        a: "Our relationship managers serve Chennai families directly and coordinate with our Bengaluru head office for verification and meetings. You do not need to travel to Bengaluru to begin your search.",
+        a: "Our team serves Chennai families by phone and WhatsApp; the office is in Bengaluru. In-person meetings are at our Bengaluru office. You do not need to travel to Bengaluru to begin your search.",
       },
       {
         q: "Can Tamil Nadu families match with proposals elsewhere in India?",

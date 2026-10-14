@@ -51,18 +51,23 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
         a: "Every profile is manually screened and we check identity and address documents. We do not run formal criminal-record checks, so we encourage families to make their own enquiries too.",
       },
       {
-        q: "Do you serve Urdu, Beary and Bhatkali families in Bangalore?",
-        a: "Yes. Tell us your community, language and family preferences and we take them into account when we shortlist profiles. Urdu-speaking, Beary and Bhatkali families are among those we work with.",
+        q: "Do you serve Urdu, Beary, Bhatkali and Deccani families in Bangalore?",
+        a: "Yes, tell us your community, language and family preferences and we take them into account when we shortlist profiles. Urdu-speaking, Beary, Bhatkali and Deccani families are among those we work with.",
+      },
+      {
+        q: "What are your fees?",
+        a: "Submitting your biodata is free. We discuss our success-aligned fee structure with your family before registration. Read full details on our fees page.",
+        link: { href: "/fees", label: "View our fees and payment structure" },
       },
       {
         q: "Can I join a Bangalore Muslim matrimony WhatsApp group?",
-        a: "We do not run an open group, because groups expose phone numbers and biodatas. Chat with our team personally on WhatsApp instead. We will not add you to any group without your permission.",
+        a: "We do not run an open group, because groups expose phone numbers and biodatas. Chat with our team personally on WhatsApp instead: link /whatsapp?src=bengaluru-faq. We will not add you to any group without your permission.",
         link: { href: "/whatsapp?src=bengaluru-faq", label: "Chat with our team on WhatsApp" },
       },
     ],
     extraSection: {
       heading: "How to Choose a Muslim Marriage Bureau in Bangalore",
-      body: "When you compare marriage bureaus in Bangalore, ask five things: how profiles are screened and what is not verified, who will see your biodata, whether the bride's Wali is involved, what the fees are in writing, and who your contact person will be. A good bureau never promises a match or a date.",
+      body: "When you compare options to find the right Muslim marriage bureau in Bangalore, ask five things before sharing documents: how profiles are screened and what is not verified, who will see your biodata, whether the bride's Wali is involved from the start, what the fees are in writing, and who your dedicated contact person will be. A genuine bureau never promises a guaranteed match or sets unrealistic dates. Choosing a bureau that values modesty, privacy, and manual document checks protects your family from unvetted proposals and rushed decisions.",
       link: {
         href: "/blog/muslim-marriage-bureau-bangalore-guide",
         label: "Read our full guide: How to Choose the Best Muslim Marriage Bureau in Bangalore",
@@ -77,9 +82,9 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
         body: "We work with Tamil Muslim families in Chennai, Coimbatore, Madurai and Tiruchirappalli (Trichy). Preferences for community, language and family background are recorded in the biodata and used when we shortlist, not treated as generic filters.",
       },
       {
-        heading: "Vaniyambadi, Ambur and Nagore",
-        places: ["Vaniyambadi", "Ambur", "Nagore"],
-        body: "Families in Vaniyambadi, Ambur and Nagore are served by phone and WhatsApp, with in-person meetings at our Bengaluru office when needed.",
+        heading: "Tamil Nadu towns we serve",
+        places: ["Vaniyambadi", "Ambur", "Nagore", "Coimbatore", "Madurai", "Tiruchirappalli"],
+        body: "We serve Muslim families in Vaniyambadi, Ambur, Nagore, Coimbatore, Madurai and Tiruchirappalli (Trichy) by phone and WhatsApp, with in-person meetings at our Bengaluru office when needed.",
       },
     ],
     moreFaqs: [
@@ -136,7 +141,7 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
       },
       {
         q: "Do you cover Malappuram, Kozhikode and Kannur?",
-        a: "Yes. We serve families in Malappuram, Kozhikode (Calicut), Kannur and Thrissur, as well as Kochi, Kollam and Thiruvananthapuram.",
+        a: "Yes. We serve families in Malappuram, Kozhikode (Calicut), Kannur and Thrissur, as well as Kochi (Ernakulam), Kollam and Thiruvananthapuram.",
       },
     ],
   },

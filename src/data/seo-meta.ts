@@ -20,10 +20,17 @@ export interface CityMeta {
 }
 
 /** Anchor text for links to a city page. Bangalore is searched as "Bangalore". */
-export function cityAnchor(slug: string, city: string): string {
-  return slug === "bengaluru"
-    ? "Muslim marriage bureau in Bangalore"
-    : `Muslim matrimony in ${city}`;
+export function cityAnchor(
+  slug: string,
+  city: string,
+  variant?: "bureau" | "matrimony"
+): string {
+  if (slug === "bengaluru") {
+    return variant === "matrimony"
+      ? "Muslim matrimony in Bangalore"
+      : "Muslim marriage bureau in Bangalore";
+  }
+  return `Muslim matrimony in ${city}`;
 }
 
 export const CITY_META: Record<string, CityMeta> = {
@@ -37,17 +44,18 @@ export const CITY_META: Record<string, CityMeta> = {
     heroIntro:
       "Our office is in Cox Town, Bengaluru, and families are welcome by appointment. Every introduction involves the Wali where the bride's family wishes.",
     howItWorksHeading: "How Our Muslim Marriage Bureau in Bangalore Works",
-    faqHeading: "Muslim Marriage Bureau in Bangalore: FAQs",
+    faqHeading: "Muslim Marriage Bureau in Bangalore — FAQs",
   },
   chennai: {
     primaryKeyword: "Tamil Muslim matrimony Chennai",
-    title: "Tamil Muslim Matrimony in Chennai | HumNikah",
+    title: "Muslim Marriage Bureau in Chennai | HumNikah",
     description:
-      "Muslim matrimony in Chennai for Labbai, Rowther, Marakkayar and Tamil Muslim families. Verified profiles, Wali involved. Submit biodata free.",
+      "Muslim matrimony in Chennai for Labbai, Rowther, Marakkayar and Tamil Muslim families. Screened profiles, Wali involved. Submit biodata free.",
     h1: "Tamil Muslim Matrimony in Chennai",
     introHeading: "Muslim Marriage Bureau Services for Chennai Families",
     heroIntro:
       "HumNikah offers Tamil Muslim matrimony in Chennai for Labbai, Rowther, Marakkayar and other Tamil Muslim families. Every biodata is manually screened, and introductions are arranged between families with the Wali involved.",
+    howItWorksHeading: "How Our Muslim Marriage Bureau in Chennai Works",
   },
   hyderabad: {
     primaryKeyword: "Muslim matrimony Hyderabad",

@@ -155,7 +155,7 @@ const jsonLd = {
       name: "HumNikah",
       url: SITE_URL,
       description:
-        "HumNikah is a trusted Muslim matrimony and Nikah matchmaking service in India, offering verified, Shariah-compliant matchmaking with dedicated relationship managers and walk-in offices.",
+        "HumNikah is a trusted Muslim matrimony and Nikah matchmaking service in India, offering verified, Shariah-compliant matchmaking with dedicated relationship managers and an in-person office in Bengaluru.",
       areaServed: [
         "India",
         "United Arab Emirates",
@@ -497,7 +497,7 @@ export default function MuslimMatrimonyIndiaPage() {
               Guided by Islamic Values
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold text-white mt-2">
-              Manually Verified, Shariah-Compliant Muslim Matrimony
+              Manually Screened, Privacy-First Muslim Matrimony
             </h2>
           </div>
           <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed text-center mb-8">
@@ -600,24 +600,82 @@ export default function MuslimMatrimonyIndiaPage() {
                   {p.label}
                 </Link>
               ))}
+              <Link
+                href="/blog/how-to-verify-a-muslim-rishta"
+                className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                How to verify a Muslim rishta
+              </Link>
+              <Link
+                href="/blog/muslim-biodata-format-for-marriage"
+                className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Muslim biodata format for marriage
+              </Link>
             </div>
           </div>
 
-          {/* Community landing pages */}
-          <div className="mt-6 text-center">
-            <p className="text-sm font-semibold text-brand-charcoal mb-3">
-              Muslim matrimony by community
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-              {COMMUNITY_PAGES.map((page) => (
-                <Link
-                  key={page.slug}
-                  href={`/muslim-matrimony/${page.slug}`}
-                  className="text-sm text-brand-secondary hover:text-brand-gold transition-colors"
-                >
-                  {page.navLabel}
-                </Link>
-              ))}
+          {/* Communities we serve */}
+          <div className="mt-8 text-center">
+            <h3 className="text-base sm:text-lg font-playfair font-bold text-brand-charcoal mb-4">
+              Communities we serve
+            </h3>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5 max-w-4xl mx-auto">
+              <Link
+                href="/muslim-matrimony/labbai-rowther-marakkayar"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Labbai, Rowther and Marakkayar matrimony
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/mappila"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Mappila matrimony
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/konkani"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Konkani Muslim matrimony
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/deccani"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Deccani Muslim matrimony
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/divorcee-widow-remarriage"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Muslim divorcee and widow remarriage
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/beary-bhatkali"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Beary and Bhatkali matrimony
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/nri-gulf"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                NRI and Gulf Muslim rishta
+              </Link>
+              <span className="text-brand-border">•</span>
+              <Link
+                href="/muslim-matrimony/professionals"
+                className="text-sm font-medium text-brand-secondary hover:text-brand-gold transition-colors"
+              >
+                Muslim doctors, engineers and professionals
+              </Link>
             </div>
           </div>
         </div>

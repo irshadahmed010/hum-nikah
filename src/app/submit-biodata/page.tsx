@@ -32,7 +32,7 @@ export default function SubmitBiodataPage() {
           </h1>
 
           <p className="mt-2 text-slate-300 text-xs sm:text-sm lg:text-base font-light max-w-lg mx-auto leading-relaxed">
-            Please fill out your details accurately. Your privacy is 100% protected and only shared with verified matches.
+            Please fill out your details accurately. Your privacy is protected and only shared with matches you and your family approve.
           </p>
         </div>
       </section>
@@ -57,10 +57,10 @@ export default function SubmitBiodataPage() {
           {/* Micro Trust Indicators */}
           <div className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-500 font-medium">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck size={16} className="text-brand-gold" /> 100% Privacy Guaranteed
+              <ShieldCheck size={16} className="text-brand-gold" /> Privacy &amp; Discretion First
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle size={16} className="text-brand-gold" /> Verified Profiles Only
+              <CheckCircle size={16} className="text-brand-gold" /> Manually Screened Profiles
             </span>
             <span className="flex items-center gap-1.5">
               <Zap size={16} className="text-brand-gold" /> Fast Match Alerts

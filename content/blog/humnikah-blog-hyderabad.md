@@ -30,10 +30,10 @@ related: ["muslim-marriage-bureau-bangalore-guide"]
 
 - What to expect from a Muslim marriage bureau in Hyderabad
 - Do you need a bureau with an office in Hyderabad?
-- Best and top bureaus: how to compare them fairly
+- Best and top Muslim marriage bureaus in Hyderabad: how to compare them fairly
 - Is a free Muslim marriage bureau in Hyderabad worth it?
 - Second marriage, divorcee and widow rishtas
-- Language, community and family expectations
+- Language, community and family expectations in Hyderabad
 - Before the first meeting: a family checklist
 - Old City, Tolichowki, Mehdipatnam and beyond
 - How to start with HumNikah from Hyderabad

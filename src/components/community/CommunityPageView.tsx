@@ -77,9 +77,8 @@ export function CommunityPageView({ page }: { page: CommunityPage }) {
                 Submit Your Biodata <ArrowRight size={18} />
               </Link>
               <a
-                href="https://wa.me/919019082205?text=Assalamu%20alaikum%2C%20I%20want%20to%20submit%20biodata"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/whatsapp?src=community-${page.slug}`}
+                rel="nofollow noopener"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors"
               >
                 WhatsApp a Matchmaker
@@ -132,7 +131,7 @@ export function CommunityPageView({ page }: { page: CommunityPage }) {
                   href={`/muslim-matrimony/${c.slug}`}
                   className="text-brand-gold font-semibold hover:underline"
                 >
-                  {cityAnchor(c.slug, c.city)}
+                  {cityAnchor(c.slug, c.city, "matrimony")}
                 </Link>
               </span>
             ))}

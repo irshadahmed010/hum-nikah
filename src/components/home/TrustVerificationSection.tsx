@@ -643,7 +643,7 @@ export function TrustVerificationSection() {
                           <span className="flex items-center gap-1 font-medium sm:font-normal">
                             <ShieldCheck size={13} className="text-emerald-600" /> Human Audited
                           </span>
-                          <span className="font-bold text-[#1D184C]">100% Verified</span>
+                          <span className="font-bold text-[#1D184C]">Manually Screened</span>
                         </div>
                       </motion.div>
                     )}
@@ -770,7 +770,7 @@ export function TrustVerificationSection() {
                       <span className="flex items-center gap-1">
                         <ShieldCheck size={14} className="text-emerald-600" /> Human Audited by Matchmaking Experts
                       </span>
-                      <span className="font-semibold text-[#1D184C]">100% Verified Assurance</span>
+                      <span className="font-semibold text-[#1D184C]">Manually Screened Profiles</span>
                     </div>
                   </div>
                 </motion.div>
