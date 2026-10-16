@@ -539,7 +539,7 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
       },
       {
         q: "Can I visit your office in Bangalore?",
-        a: "Yes. Our office at Splendid Plaza, Wheeler Road, Cox Town, Bengaluru 560005 is open for walk-in family consultations. We recommend calling ahead.",
+        a: "Yes. Our office is at Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru 560005. Please call or message us first so that we can set aside time for your family.",
       },
       {
         q: "Do you serve families in Mangaluru and Bhatkal?",

@@ -21,6 +21,13 @@ POSTS = [
     ("humnikah-blog-konkani.md", "seo-3", "Choosing Partner"),
     ("humnikah-blog-verify-rishta.md", "seo-4", "Pre-Marriage"),
     ("humnikah-blog-biodata-format.md", "seo-5", "Pre-Marriage"),
+    ("humnikah-blog-fees-bangalore.md", "seo-6", "Choosing Partner"),
+    ("humnikah-blog-questions-before-marriage.md", "seo-7", "Pre-Marriage"),
+    ("humnikah-blog-find-bride-groom-bangalore.md", "seo-8", "Choosing Partner"),
+    ("humnikah-blog-it-professionals.md", "seo-9", "Choosing Partner"),
+    ("humnikah-blog-first-meeting.md", "seo-10", "Pre-Marriage"),
+    ("humnikah-blog-rishta-kaise-dhundhe.md", "seo-11", "Choosing Partner"),
+    ("humnikah-blog-biodata-kaise-banayein.md", "seo-12", "Pre-Marriage"),
 ]
 # Hero images uploaded to Cloudinary (scripts/upload-blog-images.cjs).
 CLOUDINARY = json.loads((SRC / "cloudinary-images.json").read_text(encoding="utf-8")) if (SRC / "cloudinary-images.json").exists() else {}
@@ -60,7 +67,7 @@ def build(file: str, post_id: str, category: str) -> dict:
     # Split out FAQs.
     body, _, faq_block = body.partition("\n## FAQs\n")
     faqs = []
-    for q, a in re.findall(r"### (.+?)\n\n(.+?)(?=\n\n### |\Z)", faq_block.strip() + "\n", flags=re.S):
+    for q, a in re.findall(r"### (.+?)\n+(.+?)(?=\n+### |\Z)", faq_block.strip() + "\n", flags=re.S):
         faqs.append({"q": q.strip(), "a": a.strip()})
 
     # "In this guide" list -> TOC items.

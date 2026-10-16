@@ -11,8 +11,8 @@ secondaryKeywords:
   - "muslim matrimony bangalore whatsapp group link"
 city: bengaluru
 wave: 1
-publishedAt: "OWNER: set on the real publish date (YYYY-MM-DD)"
-updatedAt: "OWNER: same as publishedAt on first publish"
+publishedAt: "2026-10-13"
+updatedAt: "2026-10-13"
 author: "HumNikah Editorial Team"
 heroImage: "/images/blog/muslim-marriage-bureau-bangalore-guide.webp"
 heroAlt: "Family discussing a rishta with a matchmaker at a Muslim marriage bureau in Bangalore"

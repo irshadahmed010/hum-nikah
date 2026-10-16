@@ -2,7 +2,7 @@ import React from "react";
 import { Quote } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
-// OWNER_TODO: replace with real, consented stories. Until then, show at most
+// Note: Replace with real, consented stories as available. Until then, show at most
 // three, labelled generically (no names), and never add Review/AggregateRating schema.
 const testimonials = [
   {

@@ -15,8 +15,21 @@ const MESSAGES: Record<string, string> = {
     "Assalamu alaikum, I read your guide on verifying a Muslim rishta and have a question.",
   "blog-biodata":
     "Assalamu alaikum, I read your biodata guide and would like to submit a biodata.",
+  "blog-fees":
+    "Assalamu alaikum, I read your guide on Bangalore marriage bureau fees and would like to talk about a rishta.",
+  "blog-questions":
+    "Assalamu alaikum, I read your pre-marriage questions guide and would like to talk about a rishta.",
+  "blog-find":
+    "Assalamu alaikum, I read your guide on finding a bride or groom in Bangalore and would like to talk about a rishta.",
+  "blog-it":
+    "Assalamu alaikum, I read your guide for IT professionals and would like to talk about a rishta.",
+  "blog-meeting":
+    "Assalamu alaikum, I read your first meeting checklist and would like to talk about a rishta.",
+  "blog-kaise":
+    "Assalamu alaikum, maine aapka rishta guide padha aur mujhe rishtey ke baare mein baat karni hai.",
   "india-hinglish": "Assalamu alaikum, mujhe rishta ke liye baat karni hai.",
   "home-hinglish": "Assalamu alaikum, mujhe rishta ke liye baat karni hai.",
+  karnataka: "Assalamu alaikum, I would like to talk about a rishta in Karnataka.",
   contact: "Assalamu alaikum, I would like to talk about a rishta.",
 };
 

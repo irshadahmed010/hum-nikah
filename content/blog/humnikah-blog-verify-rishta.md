@@ -12,8 +12,8 @@ secondaryKeywords:
   - "how to check muslim marriage certificate"
 city: all
 wave: 1
-publishedAt: "OWNER: set on the real publish date (YYYY-MM-DD)"
-updatedAt: "OWNER: same as publishedAt on first publish"
+publishedAt: "2026-10-13"
+updatedAt: "2026-10-13"
 author: "HumNikah Editorial Team"
 heroImage: "/images/blog/how-to-verify-a-muslim-rishta.webp"
 heroAlt: "Parents checking documents and details for a Muslim rishta"

@@ -17,8 +17,8 @@ secondaryKeywords:
   - "how to make a biodata for marriage muslim"
 city: all
 wave: 1
-publishedAt: "OWNER: set on the real publish date (YYYY-MM-DD)"
-updatedAt: "OWNER: same as publishedAt on first publish"
+publishedAt: "2026-10-13"
+updatedAt: "2026-10-13"
 author: "HumNikah Editorial Team"
 heroImage: "/images/blog/muslim-biodata-format-for-marriage.webp"
 heroAlt: "Simple one-page Muslim marriage biodata template on a desk"

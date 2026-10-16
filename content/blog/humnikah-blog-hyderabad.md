@@ -14,8 +14,8 @@ secondaryKeywords:
   - "muslim second marriage bureau in hyderabad"
 city: hyderabad
 wave: 1
-publishedAt: "OWNER: set on the real publish date (YYYY-MM-DD)"
-updatedAt: "OWNER: same as publishedAt on first publish"
+publishedAt: "2026-10-13"
+updatedAt: "2026-10-13"
 author: "HumNikah Editorial Team"
 heroImage: "/images/blog/muslim-marriage-bureau-hyderabad-guide.webp"
 heroAlt: "Hyderabad Muslim family reviewing a rishta biodata with a matchmaker"

@@ -80,7 +80,7 @@ const RAW_CITIES: RawCity[] = [
       },
       {
         q: "Is there a HumNikah presence in Chennai or only in Bengaluru?",
-        a: "Our team serves Chennai families by phone and WhatsApp; the office is in Bengaluru. In-person meetings are at our Bengaluru office. You do not need to travel to Bengaluru to begin your search.",
+        a: "Our team serves Chennai families by phone and WhatsApp. Our office is in Bengaluru. In-person meetings are at our Bengaluru office. You do not need to travel to Bengaluru to begin your search.",
       },
       {
         q: "Can Tamil Nadu families match with proposals elsewhere in India?",

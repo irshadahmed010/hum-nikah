@@ -18,7 +18,13 @@ const BIODATA: GuideLink = {
 export const CITY_GUIDES: Record<string, GuideLink[]> = {
   bengaluru: [
     { slug: "muslim-marriage-bureau-bangalore-guide", label: "Choosing the Best Muslim Marriage Bureau in Bangalore" },
+    { slug: "muslim-marriage-bureau-fees-bangalore", label: "Muslim Marriage Bureau Fees in Bangalore: What to Expect" },
+    { slug: "how-to-find-a-muslim-bride-or-groom-in-bangalore", label: "How to Find a Muslim Bride or Groom in Bangalore" },
+    { slug: "muslim-matrimony-for-it-professionals-bangalore", label: "Muslim Matrimony for IT Professionals in Bangalore" },
+    { slug: "first-rishta-meeting-checklist-for-families", label: "First Rishta Meeting: A Simple Checklist for Families" },
+    { slug: "questions-to-ask-before-a-muslim-marriage", label: "Questions to Ask Before a Muslim Marriage: Family Checklist" },
     VERIFY,
+    BIODATA,
   ],
   hyderabad: [
     { slug: "muslim-marriage-bureau-hyderabad-guide", label: "Muslim Marriage Bureau in Hyderabad: Rishta Guide" },

@@ -16,8 +16,8 @@ secondaryKeywords:
   - "konkani muslim matrimony whatsapp group link"
 city: mumbai
 wave: 1
-publishedAt: "OWNER: set on the real publish date (YYYY-MM-DD)"
-updatedAt: "OWNER: same as publishedAt on first publish"
+publishedAt: "2026-10-13"
+updatedAt: "2026-10-13"
 author: "HumNikah Editorial Team"
 heroImage: "/images/blog/konkani-muslim-matrimony-mumbai-guide.webp"
 heroAlt: "Konkani Muslim family discussing a rishta with a matchmaker in Mumbai"
