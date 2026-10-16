@@ -175,7 +175,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-slate-200 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed"
             >
-              HumNikah helps Muslim families find their verified life partner across India with trust, respect and complete privacy.
+              HumNikah (Hum Nikah) helps Muslim families find their verified life partner across India with trust, respect and complete privacy.
             </motion.p>
 
             {/* Action Buttons */}

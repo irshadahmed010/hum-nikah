@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { getBlogIndex } from "@/lib/blogs";
 import { COMMUNITY_PAGES } from "@/data/communities";
+import { liveZones } from "@/data/bengaluru-zones";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 // Blog posts come from the database; admin edits call revalidatePath("/sitemap.xml").
@@ -34,6 +35,8 @@ const STATIC_ROUTES: StaticRoute[] = [
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/submit-biodata", priority: 0.8, changeFrequency: "monthly", lastModified: CONTENT_UPDATED.overhaul },
   { path: "/blog", priority: 0.7, changeFrequency: "weekly", lastModified: CONTENT_UPDATED.overhaul },
+  // Photos are managed in the admin dashboard, so no fixed lastmod.
+  { path: "/gallery", priority: 0.5, changeFrequency: "weekly" },
   { path: "/fees", priority: 0.5, changeFrequency: "monthly", lastModified: CONTENT_UPDATED.overhaul },
   { path: "/faq", priority: 0.5, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly", lastModified: CONTENT_UPDATED.overhaul },
@@ -65,6 +68,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  // Phase 2 zones are excluded until released (see data/bengaluru-zones.ts).
+  const zoneEntries: MetadataRoute.Sitemap = liveZones.map((zone) => ({
+    url: `${SITE_URL}/muslim-matrimony/bengaluru/${zone.slug}`,
+    lastModified: CONTENT_UPDATED.overhaul,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  const karnatakaEntry: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/muslim-matrimony/karnataka`,
+      lastModified: CONTENT_UPDATED.overhaul,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+  ];
+
   const blogEntries: MetadataRoute.Sitemap = (await getBlogIndex()).map(
     ({ slug, lastModified }) => ({
       url: `${SITE_URL}/blog/${slug}`,
@@ -74,5 +94,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  return [...staticEntries, ...cityEntries, ...communityEntries, ...blogEntries];
+  return [
+    ...staticEntries,
+    ...cityEntries,
+    ...zoneEntries,
+    ...karnatakaEntry,
+    ...communityEntries,
+    ...blogEntries,
+  ];
 }

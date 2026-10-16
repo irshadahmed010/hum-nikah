@@ -77,7 +77,7 @@ const organizationJsonLd = {
       "@type": ["Organization", "LocalBusiness"],
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      alternateName: "Hum Nikah",
+      alternateName: ["Hum Nikah", "HumNikah.com"],
       url: SITE_URL,
       logo: `${SITE_URL}/images/hum-nikah-new-logo.png`,
       image: `${SITE_URL}/images/hum-nikah-new-logo.png`,
@@ -96,14 +96,22 @@ const organizationJsonLd = {
       sameAs: SOCIAL_LINKS,
     },
     ...OFFICE_LOCATIONS.filter((office) => office.hasOffice).map((office) => ({
-      "@type": "LocalBusiness",
-      "@id": `${SITE_URL}/#office-${office.city.toLowerCase()}`,
-      name: `HumNikah ${office.city}`,
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      // Must match the Bengaluru page's own schema exactly (same @id, name and
+      // phone) so Google reads one business record, not two that disagree.
+      "@id":
+        office.city === "Bengaluru"
+          ? `${SITE_URL}/#bengaluru-office`
+          : `${SITE_URL}/#office-${office.city.toLowerCase()}`,
+      name: office.city === "Bengaluru" ? "HumNikah" : `HumNikah ${office.city}`,
       parentOrganization: { "@id": `${SITE_URL}/#organization` },
       url: `${SITE_URL}/muslim-matrimony/${office.city.toLowerCase()}`,
-      telephone: office.phone
-        ? `+${office.phone.replace(/[^0-9]/g, "")}`
-        : undefined,
+      telephone:
+        office.city === "Bengaluru"
+          ? "+919844321312"
+          : office.phone
+            ? `+${office.phone.replace(/[^0-9]/g, "")}`
+            : undefined,
       email: office.email ?? BUSINESS.email,
       address: {
         "@type": "PostalAddress",

@@ -24,7 +24,6 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
     isHeadquarters: true,
     hasOffice: true,
   },
@@ -38,7 +37,6 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
   },
   {
     id: "loc-telangana",
@@ -50,7 +48,6 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
   },
   {
     id: "loc-andhra",
@@ -62,7 +59,6 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
   },
   {
     id: "loc-kerala",
@@ -74,7 +70,6 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
   },
   {
     id: "loc-maharashtra",
@@ -86,6 +81,5 @@ export const OFFICE_LOCATIONS: OfficeLocation[] = [
     phone2: "+91 9844321312",
     phones: ["+91 9019082205", "+91 9844321312"],
     email: "connect@humnikah.com",
-    timing: "Mon - Sun :10:00 AM - 10:00 PM",
   },
 ];

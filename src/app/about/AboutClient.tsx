@@ -126,7 +126,7 @@ export default function AboutClient() {
 
               {/* Description */}
               <p className="text-brand-secondary text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                HumNikah is a trusted Muslim marriage platform that helps Muslims find their perfect life partner with trust, respect, and complete privacy.
+                HumNikah (Hum Nikah) is a trusted Muslim marriage platform that helps Muslims find their perfect life partner with trust, respect, and complete privacy.
               </p>
 
               {/* Action Buttons */}

@@ -82,7 +82,8 @@ def main() -> None:
                 cur.execute(
                     '''update public.blogs set title=%s, excerpt=%s, content=%s, category=%s,
                        "publishedAt"=%s, "readTime"=%s, author=%s, image=%s, featured=%s, tags=%s,
-                       "seoTitle"=%s, "seoDescription"=%s, "imageAlt"=%s, "primaryKeyword"=%s, faqs=%s
+                       "seoTitle"=%s, "seoDescription"=%s, "imageAlt"=%s, "primaryKeyword"=%s, faqs=%s,
+                       updated_at=now()
                        where slug=%s''',
                     (p["title"], p["excerpt"], content, p["category"], p["publishedAt"],
                      p["readTime"], Json(p["author"]), p["image"], bool(p.get("featured")),

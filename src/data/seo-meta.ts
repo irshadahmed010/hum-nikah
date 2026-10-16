@@ -38,7 +38,7 @@ export const CITY_META: Record<string, CityMeta> = {
     primaryKeyword: "muslim marriage bureau in Bangalore",
     title: "Muslim Marriage Bureau in Bangalore | HumNikah",
     description:
-      "Muslim marriage bureau in Bangalore (Cox Town). Manual profile screening, Wali involved, private. Submit your biodata or chat on WhatsApp.",
+      "Muslim marriage bureau in Bangalore (Cox Town). Free biodata submission, manual profile screening, Wali involved, private. Call or WhatsApp.",
     h1: "Muslim Marriage Bureau in Bangalore",
     introHeading: "Muslim Matrimony and Matchmaking in Bangalore (Bengaluru)",
     heroIntro:

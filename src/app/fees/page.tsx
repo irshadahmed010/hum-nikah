@@ -38,7 +38,7 @@ export default function FeesPage() {
             Fees &amp; Payment Structure
           </h1>
           <p className="mt-5 text-slate-300 text-sm sm:text-base font-light leading-relaxed">
-            Submitting your biodata is free. A fair, success-aligned model: you pay half to begin, and half only
+            Submitting your biodata to HumNikah is free. A fair, success-aligned model: you pay half to begin, and half only
             after your Nikah is fixed.
           </p>
         </div>

@@ -4,13 +4,14 @@ import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { COMMUNITY_PAGES } from "@/data/communities";
 import { cityAnchor } from "@/data/seo-meta";
+import { liveZones } from "@/data/bengaluru-zones";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export function Footer() {
   return (
     <footer className="bg-brand-deep-green text-white pt-16 pb-8 border-t-[6px] border-brand-gold">
       <div className="max-w-wrap mx-auto w-full px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8 mb-12">
           
           {/* Column 1: Brand & Logo (Header Matching Logo) */}
           <div className="lg:col-span-2 space-y-4">
@@ -192,6 +193,27 @@ export function Footer() {
               <li>
                 <Link href="/faq" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
                   FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Bangalore areas (live zone pages only) */}
+          <div>
+            <h3 className="text-base font-playfair font-semibold mb-5 text-brand-beige relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-10 after:h-[2px] after:bg-brand-gold">
+              Bangalore Areas
+            </h3>
+            <ul className="space-y-2.5">
+              {liveZones.map((z) => (
+                <li key={z.slug}>
+                  <Link href={`/muslim-matrimony/bengaluru/${z.slug}`} className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                    {z.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/muslim-matrimony/karnataka" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                  Karnataka
                 </Link>
               </li>
             </ul>

@@ -39,12 +39,13 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
     ],
     moreFaqs: [
       {
-        q: "Do you cover Frazer Town, Shivaji Nagar and RT Nagar?",
-        a: "Yes. Families in Frazer Town, Shivaji Nagar and RT Nagar are served from our Cox Town office, and can visit in person or work with us by phone and WhatsApp.",
+        q: "Is it free to submit my biodata?",
+        a: "Yes. Submitting your biodata to HumNikah is free. See our fees page for more.",
+        link: { href: "/fees", label: "See our fees page" },
       },
       {
         q: "Which areas of Bangalore do you serve?",
-        a: "We serve families across Bangalore, including Cox Town, Frazer Town, Shivajinagar, RT Nagar and nearby areas, by phone, WhatsApp and in person at our office.",
+        a: "We serve families across Bangalore, including Cox Town, Frazer Town, Shivajinagar, RT Nagar, Banaswadi, Hennur, Chamarajpet and nearby areas, by phone, WhatsApp and in person at our office.",
       },
       {
         q: "How do you screen profiles?",
@@ -52,22 +53,17 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
       },
       {
         q: "Do you serve Urdu, Beary, Bhatkali and Deccani families in Bangalore?",
-        a: "Yes, tell us your community, language and family preferences and we take them into account when we shortlist profiles. Urdu-speaking, Beary, Bhatkali and Deccani families are among those we work with.",
-      },
-      {
-        q: "What are your fees?",
-        a: "Submitting your biodata is free. We discuss our success-aligned fee structure with your family before registration. Read full details on our fees page.",
-        link: { href: "/fees", label: "View our fees and payment structure" },
+        a: "Yes. Tell us your community, language and family preferences and we take them into account when we shortlist profiles. We cannot promise a specific match or timeline.",
       },
       {
         q: "Can I join a Bangalore Muslim matrimony WhatsApp group?",
-        a: "We do not run an open group, because groups expose phone numbers and biodatas. Chat with our team personally on WhatsApp instead: link /whatsapp?src=bengaluru-faq. We will not add you to any group without your permission.",
+        a: "We do not run an open group, because groups show every member's phone number and can expose biodatas. Chat with our team personally on WhatsApp instead. We will not add you to any group without your permission.",
         link: { href: "/whatsapp?src=bengaluru-faq", label: "Chat with our team on WhatsApp" },
       },
     ],
     extraSection: {
       heading: "How to Choose a Muslim Marriage Bureau in Bangalore",
-      body: "When you compare options to find the right Muslim marriage bureau in Bangalore, ask five things before sharing documents: how profiles are screened and what is not verified, who will see your biodata, whether the bride's Wali is involved from the start, what the fees are in writing, and who your dedicated contact person will be. A genuine bureau never promises a guaranteed match or sets unrealistic dates. Choosing a bureau that values modesty, privacy, and manual document checks protects your family from unvetted proposals and rushed decisions.",
+      body: "When you compare marriage bureaus in Bangalore, ask five things: how profiles are screened and what is not verified, who will see your biodata, whether the bride's Wali is involved, what the fees are in writing, and who your contact person will be. A good bureau never promises a match or a date.",
       link: {
         href: "/blog/muslim-marriage-bureau-bangalore-guide",
         label: "Read our full guide: How to Choose the Best Muslim Marriage Bureau in Bangalore",
@@ -77,14 +73,9 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
   chennai: {
     areas: [
       {
-        heading: "Chennai and Tamil Nadu cities we serve",
-        places: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"],
-        body: "We work with Tamil Muslim families in Chennai, Coimbatore, Madurai and Tiruchirappalli (Trichy). Preferences for community, language and family background are recorded in the biodata and used when we shortlist, not treated as generic filters.",
-      },
-      {
-        heading: "Tamil Nadu towns we serve",
+        heading: "Tamil Nadu towns near Chennai",
         places: ["Vaniyambadi", "Ambur", "Nagore", "Coimbatore", "Madurai", "Tiruchirappalli"],
-        body: "We serve Muslim families in Vaniyambadi, Ambur, Nagore, Coimbatore, Madurai and Tiruchirappalli (Trichy) by phone and WhatsApp, with in-person meetings at our Bengaluru office when needed.",
+        body: "Families from Vaniyambadi, Ambur, Nagore, Coimbatore, Madurai and Tiruchirappalli (Trichy) can also reach us by phone and WhatsApp.",
       },
     ],
     moreFaqs: [
@@ -94,7 +85,7 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
       },
       {
         q: "Do you serve Vaniyambadi and Ambur?",
-        a: "Yes. We serve Muslim families in Vaniyambadi, Ambur and Nagore as well as Chennai, Coimbatore, Madurai and Tiruchirappalli.",
+        a: "Families from Vaniyambadi, Ambur and Nagore can reach us by phone and WhatsApp, as can families from Coimbatore, Madurai and Tiruchirappalli.",
       },
     ],
   },

@@ -20,6 +20,8 @@ export interface CommunityPage {
   navLabel: string;
   intro: string[];
   sections: { heading: string; body: string[] }[];
+  /** "How matching works" / "What families usually ask" style sections, rendered after `sections`. */
+  extraSections?: { heading: string; body: string[] }[];
   placesHeading: string;
   places: { heading: string; body: string }[];
   /** City page slugs this page links to. */
@@ -248,6 +250,14 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
     ],
+    extraSections: [
+      {
+        heading: "What Konkani families usually ask",
+        body: [
+          "Families often ask how private the process is. Your biodata is not posted publicly, and profiles are never open for browsing. Photographs and contact details go only to families you and your Wali have approved, and every introduction is arranged between families rather than between strangers.",
+        ],
+      },
+    ],
     placesHeading: "Maharashtra cities we serve",
     places: [
       {
@@ -323,6 +333,20 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
     ],
+    extraSections: [
+      {
+        heading: "How matching works for Deccani families",
+        body: [
+          "Matching starts with a conversation, not a search form. Your relationship manager asks about your khandaan, your expectations and your maslak, then reads your biodata alongside what you have told us. Profiles are shortlisted by hand and discussed with you and your Wali before any introduction is made, so you only meet families who fit what you asked for.",
+        ],
+      },
+      {
+        heading: "What Deccani families usually ask",
+        body: [
+          "Families usually want to know three things. First, whether their language will be respected: Urdu-speaking families can talk to us in Urdu, and Urdu-speaking proposals are shared where preferences allow. Second, whether a profile has been checked: identity, education or profession, marital status and residence are verified before it is shared. Third, who will see the biodata: only the families we introduce, and only with your approval.",
+        ],
+      },
+    ],
     placesHeading: "Telangana areas we serve",
     places: [
       {
@@ -395,6 +419,14 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         heading: "Wali and family involvement",
         body: [
           "We encourage Wali involvement and treat every introduction as a family matter. Parents or guardians can speak with our team, share preferences and take part in discussions.",
+        ],
+      },
+    ],
+    extraSections: [
+      {
+        heading: "What families usually ask about remarriage",
+        body: [
+          "Many members ask how marital status is recorded. The biodata form has a marital status field with options for never married, divorced, widowed, separated and annulled, so every profile starts from a clearly stated position. That status is then verified like every other detail. Introductions stay private: photographs and contact details go only to matches you approve.",
         ],
       },
     ],
@@ -557,6 +589,14 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         ],
       },
     ],
+    extraSections: [
+      {
+        heading: "What NRI and Gulf families usually ask",
+        body: [
+          "Families abroad often ask whether they must be in India to begin. You do not. Your biodata is submitted online and your relationship manager speaks with you by phone or WhatsApp. When both sides are interested, family meetings are planned around your travel dates, so a visit home can be used for the introduction rather than for the search.",
+        ],
+      },
+    ],
     placesHeading: "Where your family can be matched",
     places: [
       {
@@ -629,6 +669,14 @@ export const COMMUNITY_PAGES: CommunityPage[] = [
         heading: "Verification and privacy",
         body: [
           "Identity, education or profession, marital status and residence are verified before sharing. We do not run formal criminal-record checks, so families should still do their own due diligence before deciding.",
+        ],
+      },
+    ],
+    extraSections: [
+      {
+        heading: "What busy professionals usually ask",
+        body: [
+          "Professionals usually ask how much of their time the search will take. The screening and shortlisting are done by your relationship manager, so your part is to share your biodata and preferences once, review the profiles you are sent and talk them through with your family. Photographs and contact details stay private until you approve an introduction.",
         ],
       },
     ],

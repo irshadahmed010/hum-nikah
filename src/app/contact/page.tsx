@@ -12,33 +12,26 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
-import { SITE_URL, SITE_NAME, BUSINESS } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import { OFFICE_LOCATIONS } from "@/data/locationsData";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Muslim Rishta Contact Number | Contact HumNikah",
-  absoluteTitle: "Muslim Rishta Contact Number | Contact HumNikah",
+  title: "Contact HumNikah | Muslim Marriage Bureau Bangalore",
+  absoluteTitle: "Contact HumNikah | Muslim Marriage Bureau Bangalore",
   description:
-    "Call or WhatsApp HumNikah for Muslim rishta help. Bengaluru office address, phone numbers and a personal WhatsApp chat. Submit biodata free.",
+    "Contact HumNikah, a Muslim marriage bureau in Cox Town, Bangalore. Call, WhatsApp or visit by appointment. Free biodata submission.",
   path: "/contact",
 });
 
-const contactJsonLd = {
+const contactPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/#organization`,
-  name: SITE_NAME,
-  url: SITE_URL,
-  telephone: ["+919019082205", "+919844321312"],
-  email: BUSINESS.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: BUSINESS.streetAddress,
-    addressLocality: BUSINESS.locality,
-    addressRegion: BUSINESS.region,
-    postalCode: BUSINESS.postalCode,
-    addressCountry: BUSINESS.country,
-  },
+  "@type": "ContactPage",
+  "@id": `${SITE_URL}/contact#webpage`,
+  name: "Contact HumNikah",
+  url: `${SITE_URL}/contact`,
+  mainEntity: { "@id": `${SITE_URL}/#organization` },
+  // The Cox Town office is defined once, on the Bengaluru page and in the layout.
+  about: { "@id": `${SITE_URL}/#bengaluru-office` },
 };
 
 export default function ContactPage() {
@@ -46,7 +39,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-brand-cream pb-20">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
       />
       {/* Compact Modern Hero Section (Matches Blog & Gallery page size) */}
       <section className="relative bg-[#1D184C] text-white py-8 sm:py-12 overflow-hidden border-b border-brand-gold/20">
@@ -61,13 +54,12 @@ export default function ContactPage() {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-playfair font-bold text-white tracking-tight leading-tight">
-            Contact HumNikah for{" "}
-            <span className="text-[#F3B979] italic">Muslim Rishta Help</span>
+            Contact <span className="text-[#F3B979] italic">HumNikah</span>
           </h1>
 
-          <p className="mt-2 text-slate-300 text-xs sm:text-sm lg:text-base font-light max-w-lg mx-auto leading-relaxed">
-            Have questions about Nikah, profile submission, or privacy? Our
-            caring support team is here to help.
+          <p className="mt-2 text-slate-300 text-xs sm:text-sm lg:text-base font-light max-w-xl mx-auto leading-relaxed">
+            HumNikah is a Muslim marriage bureau in Cox Town, Bangalore. Call us,
+            message us on WhatsApp, or visit our office by appointment.
           </p>
         </div>
       </section>
@@ -117,9 +109,6 @@ export default function ContactPage() {
                       WA: +91 90190 82205
                     </a>
                   </div>
-                  <p className="text-[11px] text-brand-secondary/70 mt-1 flex items-center gap-1 font-light">
-                    <Clock size={12} className="text-brand-gold" /> Mon - Sun : 10:00 AM - 10:00 PM IST
-                  </p>
                 </div>
               </div>
 
@@ -151,23 +140,46 @@ export default function ContactPage() {
                     Main Office
                   </h3>
                   <p className="text-xs sm:text-sm text-brand-secondary font-light mt-0.5 leading-relaxed">
-                    Splendid Plaza, No. 6. 2nd, Floor
+                    Splendid Plaza, No. 6, 2nd Floor
                     <br />
                     Wheeler Road, Cox Town
                     <br />
                     Bengaluru 560005
                   </p>
+                  <p className="text-[11px] text-brand-secondary font-light mt-2 leading-relaxed">
+                    Please call or message before you visit so that we can set aside time for your family.
+                  </p>
                 </div>
               </div>
+            </div>
+
+            {/* Free biodata + contact number */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-brand-border/70">
+              <h2 className="text-sm sm:text-base font-bold font-playfair text-brand-charcoal mb-1">
+                Muslim marriage bureau contact number
+              </h2>
+              <p className="text-xs sm:text-sm text-brand-secondary font-light leading-relaxed">
+                If you are looking for a Muslim marriage bureau contact number in Bangalore,
+                call +91 98443 21312 or message us on WhatsApp.
+              </p>
+              <p className="mt-3 text-xs sm:text-sm text-brand-charcoal font-medium">
+                Submitting your biodata to HumNikah is free.
+              </p>
+              <Link
+                href="/submit-biodata"
+                className="mt-3 inline-flex items-center px-4 py-2 rounded-lg bg-[#1D184C] text-white text-xs font-bold hover:bg-brand-gold hover:text-brand-charcoal transition-colors"
+              >
+                Submit your biodata
+              </Link>
             </div>
 
             {/* City Landing Pages */}
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-brand-border/70 hover:shadow-md hover:border-brand-gold/50 transition-all">
               <h3 className="text-sm sm:text-base font-bold font-playfair text-brand-charcoal mb-1">
-                Find Us City by City
+                Muslim Matrimony by City
               </h3>
               <p className="text-[11px] text-brand-secondary font-light mb-3">
-                Explore verified Muslim matchmaking for your city.
+                Our office is in Bengaluru. Families in other cities are served by phone and WhatsApp.
               </p>
               <div className="flex flex-wrap gap-x-3 gap-y-1.5">
                 {OFFICE_LOCATIONS.map((office) => (

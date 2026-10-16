@@ -350,37 +350,34 @@ export default function MuslimMatrimonyIndiaPage() {
       </section>
 
       {/* Hinglish lead section */}
-      <section className="py-10 sm:py-12 bg-brand-cream border-b border-brand-border/50">
+      <section lang="hi-Latn" className="py-10 sm:py-12 bg-brand-cream border-b border-brand-border/50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
             Muslim Rishta Chahiye? Apna Biodata Free Submit Karein
           </h2>
           <p className="text-[15px] text-black leading-relaxed">
-            Muslim rishta chahiye? HumNikah ek muslim rishtey bureau hai jo manually
-            screened profiles, Wali ki involvement aur privacy ke saath rishta
-            dhundhne me families ki madad karta hai. Aap Bengaluru, Hyderabad,
-            Chennai, Kochi, Mumbai aur Vijayawada ke families ke liye apna biodata
-            free submit kar sakte hain, ya seedha WhatsApp par baat kar sakte hain.
-            Biodata kaise banayein, ye jaanne ke liye hamara{" "}
-            <Link href="/blog/muslim-biodata-format-for-marriage" className="text-brand-gold font-semibold hover:underline">
-              free Muslim biodata format
-            </Link>{" "}
-            dekhein. Rishta safe tareeke se verify karne ke liye{" "}
-            <Link href="/blog/how-to-verify-a-muslim-rishta" className="text-brand-gold font-semibold hover:underline">
-              verification checklist
-            </Link>{" "}
-            padhein.
+            HumNikah ek Muslim rishtey bureau hai. Hamara office Cox Town, Bangalore mein
+            hai, aur hum Bangalore, Chennai, Hyderabad, Vijayawada, Kochi aur Mumbai ke
+            families se phone aur WhatsApp par baat karte hain. Apna biodata free submit
+            karein. Hamari team har profile ko khud screen karti hai, aur zarurat ho to
+            ladki ke Wali ko shamil karti hai. Aapka biodata aapki ijazat ke bina kisi ko
+            nahi diya jaata.
           </p>
-          <p className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold">
+          <ul className="mt-4 list-disc pl-5 space-y-1 text-[15px] text-black">
+            <li>Biodata free submit karein</li>
+            <li>Hamari team aapke family se baat karegi</li>
+            <li>Screened profiles ke saath introduction</li>
+          </ul>
+          <p className="mt-5 flex flex-wrap gap-4 text-[15px] font-semibold">
             <Link href="/submit-biodata" className="text-brand-emerald hover:text-brand-gold">
-              Biodata submit karein
+              Biodata Submit Karein
             </Link>
             <a
               href="/whatsapp?src=india-hinglish"
               rel="nofollow noopener"
               className="text-brand-emerald hover:text-brand-gold"
             >
-              WhatsApp par baat karein
+              WhatsApp Par Baat Karein
             </a>
           </p>
         </div>
@@ -394,6 +391,9 @@ export default function MuslimMatrimonyIndiaPage() {
             A Trusted Muslim Matrimony Service in India
           </h2>
           <div className="space-y-4 text-[15px] sm:text-base text-black leading-relaxed">
+            <p className="font-semibold">
+              Submitting your biodata to HumNikah is free.
+            </p>
             <p>
               Finding the right partner for Nikah is one of the most important
               decisions a Muslim family makes. HumNikah exists to make that search

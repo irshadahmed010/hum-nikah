@@ -93,7 +93,7 @@ export function CommunityPageView({ page }: { page: CommunityPage }) {
           {page.intro.slice(1).map((p) => (
             <p key={p}>{p}</p>
           ))}
-          {page.sections.map((section) => (
+          {[...page.sections, ...(page.extraSections ?? [])].map((section) => (
             <div key={section.heading}>
               <h2 className="text-2xl font-playfair font-bold text-brand-charcoal mb-3">
                 {section.heading}

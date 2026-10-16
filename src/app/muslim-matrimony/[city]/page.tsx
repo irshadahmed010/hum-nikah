@@ -24,11 +24,7 @@ import { CITY_CONTENT, getCityContent } from "@/data/cityContent";
 import { CITY_META } from "@/data/seo-meta";
 import { getGuidesForCity } from "@/data/guides";
 import { CITY_COMMUNITY_LINKS, getCommunityPage } from "@/data/communities";
-import {
-  bengaluruAreas,
-  BENGALURU_TIER_B_TEXT,
-  BENGALURU_TIER_C_TEXT,
-} from "@/data/bengaluru-areas";
+import { liveZones, FREE_SENTENCE } from "@/data/bengaluru-zones";
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -167,7 +163,7 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
         areaServed: [
           { "@type": "City", name: content.city },
           ...(content.slug === "bengaluru"
-            ? bengaluruAreas.map((area) => ({ "@type": "Place", name: area.name }))
+            ? []
             : content.areas.flatMap((group) =>
                 group.places.map((place) => ({ "@type": "Place", name: place }))
               )),
@@ -381,71 +377,60 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                   Muslim Areas of Bangalore We Serve
                 </h2>
                 <p className="text-[15px] text-black leading-relaxed">
-                  HumNikah serves families across Bangalore from our central office in Cox Town. We manually screen every profile, verify documents, and respect family preferences across all neighbourhoods.
+                  We serve Muslim families across Bangalore. Choose your part of the city to see
+                  how we work with families nearby. Every area page has the same free biodata
+                  submission and the same private, manually screened process.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-                {bengaluruAreas.map((area) => (
-                  <div
-                    key={area.slug}
-                    id={area.slug}
-                    className="bg-white rounded-2xl p-6 border border-brand-border/80 shadow-sm hover:border-brand-gold/40 transition-all flex flex-col justify-between"
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                {liveZones.map((zone) => (
+                  <Link
+                    key={zone.slug}
+                    href={`/muslim-matrimony/bengaluru/${zone.slug}`}
+                    className="group bg-white rounded-2xl p-6 border border-brand-border/80 shadow-sm hover:border-brand-gold/40 hover:shadow-md transition-all flex flex-col justify-between"
                   >
                     <div>
-                      <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
-                        {area.dedicatedPage ? (
-                          <Link
-                            href={`/muslim-matrimony/bengaluru/${area.slug}`}
-                            className="hover:text-brand-gold transition-colors"
-                          >
-                            Muslim Matrimony in {area.name}
-                          </Link>
-                        ) : (
-                          `Muslim Matrimony in ${area.name}`
-                        )}
-                        {area.alsoKnownAs && (
-                          <span className="text-xs font-normal text-brand-secondary block sm:inline sm:ml-1.5">
-                            ({area.alsoKnownAs})
-                          </span>
-                        )}
+                      <h3 className="text-lg font-playfair font-bold text-brand-charcoal group-hover:text-brand-gold transition-colors mb-2">
+                        Muslim matrimony in {zone.name}
                       </h3>
                       <p className="text-sm text-black leading-relaxed mb-4">
-                        {area.blurb}
+                        {zone.areas.slice(0, 3).map((a) => a.name).join(", ")}
+                        {zone.areas.length > 3 ? " and more" : ""}
                       </p>
                     </div>
-                    <div>
-                      <a
-                        href={`/whatsapp?src=bengaluru-${area.slug}`}
-                        rel="nofollow noopener"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-emerald hover:text-brand-gold transition-colors"
-                      >
-                        Message us from {area.name} <ArrowRight size={14} />
-                      </a>
-                    </div>
-                  </div>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-emerald group-hover:text-brand-gold transition-colors">
+                      See {zone.name} <ArrowRight size={14} />
+                    </span>
+                  </Link>
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-brand-border/60">
-                <p className="text-[15px] text-black leading-relaxed">
-                  {BENGALURU_TIER_B_TEXT}
-                </p>
-                <p className="mt-2 text-sm text-brand-secondary">
-                  Nearby regions served: {BENGALURU_TIER_C_TEXT}
-                </p>
-              </div>
+              {content.areas[0] && (
+                <div className="mt-8 pt-6 border-t border-brand-border/60">
+                  <h3 className="text-lg font-playfair font-bold text-brand-charcoal mb-2">
+                    {content.areas[0].heading}
+                  </h3>
+                  <p className="text-[15px] text-black leading-relaxed">{content.areas[0].body}</p>
+                </div>
+              )}
             </div>
           </section>
 
           <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
-                Karnataka Towns We Serve
+                <Link href="/muslim-matrimony/karnataka" className="hover:text-brand-gold transition-colors">
+                  Karnataka Towns We Serve
+                </Link>
               </h2>
               <p className="text-[15px] text-black leading-relaxed">
                 {content.areas.find((g) => g.heading.toLowerCase().includes("karnataka"))?.body ??
-                  "Beyond the city, we support families in Mangaluru, Mysuru, Hubli-Dharwad, Bhatkal, Gulbarga and Bijapur, so a family outside Bangalore can use the same verified, Wali-involved process without relocating."}
+                  "Beyond the city, we support families in Mangaluru, Mysuru, Hubli-Dharwad, Bhatkal, Gulbarga and Bijapur, so a family outside Bangalore can use the same verified, Wali-involved process without relocating."}{" "}
+                <Link href="/muslim-matrimony/karnataka" className="text-brand-gold font-semibold hover:underline">
+                  Muslim matrimony in Karnataka
+                </Link>
+                .
               </p>
             </div>
           </section>
@@ -553,15 +538,17 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
               </h2>
               {!hasOffice && (
                 <p className="text-sm text-black leading-relaxed mb-4">
-                  Serving {content.city} families via phone &amp; WhatsApp.
-                  In-person meetings at our{" "}
+                  HumNikah does not have an office in {content.city}. We serve{" "}
+                  {content.city} families by phone and WhatsApp. In-person meetings are
+                  at our{" "}
                   <Link
                     href="/muslim-matrimony/bengaluru"
                     className="text-brand-gold font-semibold hover:underline"
                   >
-                    Bengaluru office
-                  </Link>
-                  .
+                    office in Cox Town, Bengaluru
+                  </Link>{" "}
+                  (Splendid Plaza, No. 6, 2nd Floor, Wheeler Road, Cox Town, Bengaluru
+                  560005). Please call or message us before visiting.
                 </p>
               )}
               <ul className="space-y-3.5 text-sm text-black">
@@ -628,12 +615,6 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                         {office?.email ?? "connect@humnikah.com"}
                       </a>
                     </li>
-                    {office?.timing && (
-                      <li className="flex items-center gap-3">
-                        <Clock size={18} className="text-brand-gold shrink-0" />
-                        <span>{office.timing}</span>
-                      </li>
-                    )}
                   </>
                 )}
               </ul>
