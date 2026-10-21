@@ -34,8 +34,9 @@ export type BlogRecord = {
 
 const SELECT = "*";
 
-/** All published posts, newest first. Falls back to static BLOG_POSTS if Supabase is offline or empty. */
+/** All published posts, newest first. Merges Supabase blogs with static bundled posts so all SEO articles are live. */
 export const getBlogs = cache(async (): Promise<BlogRecord[]> => {
+  let dbBlogs: BlogRecord[] = [];
   try {
     const { data, error } = await supabase
       .from("blogs")
@@ -43,15 +44,22 @@ export const getBlogs = cache(async (): Promise<BlogRecord[]> => {
       .order("created_at", { ascending: false });
 
     if (!error && data && data.length > 0) {
-      return data as BlogRecord[];
-    }
-    if (error) {
+      dbBlogs = data as BlogRecord[];
+    } else if (error) {
       console.warn("getBlogs DB query returned error, using bundled posts:", error.message);
     }
   } catch (err) {
     console.warn("getBlogs failed, using bundled posts:", err);
   }
-  return BLOG_POSTS as unknown as BlogRecord[];
+
+  // Combine: DB versions take precedence for posts edited via admin dashboard.
+  // Any static bundled posts that are not yet in the DB are appended so newly added SEO guides are never lost.
+  const dbSlugs = new Set(dbBlogs.map((b) => b.slug));
+  const missingBundled = (BLOG_POSTS as unknown as BlogRecord[]).filter(
+    (p) => !dbSlugs.has(p.slug)
+  );
+
+  return [...dbBlogs, ...missingBundled];
 });
 
 export const getBlogBySlug = cache(async (slug: string): Promise<BlogRecord | null> => {
@@ -75,29 +83,16 @@ export const getBlogBySlug = cache(async (slug: string): Promise<BlogRecord | nu
 /** Up to `limit` other posts, for the "Related articles" block. */
 export const getRelatedBlogs = cache(
   async (slug: string, limit = 3): Promise<BlogRecord[]> => {
-    try {
-      const { data, error } = await supabase
-        .from("blogs")
-        .select(SELECT)
-        .neq("slug", slug)
-        .order("created_at", { ascending: false })
-        .limit(limit);
-
-      if (!error && data && data.length > 0) {
-        return data as BlogRecord[];
-      }
-    } catch (err) {
-      console.warn("getRelatedBlogs DB query failed:", err);
-    }
-    return (
-      BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, limit) as unknown as BlogRecord[]
-    );
+    const all = await getBlogs();
+    return all.filter((p) => p.slug !== slug).slice(0, limit);
   },
 );
 
 /** Slugs + timestamps for the sitemap and generateStaticParams. */
 export const getBlogIndex = cache(
   async (): Promise<{ slug: string; lastModified?: Date }[]> => {
+    const slugsMap = new Map<string, Date | undefined>();
+
     try {
       const { data, error } = await supabase
         .from("blogs")
@@ -105,23 +100,31 @@ export const getBlogIndex = cache(
         .order("created_at", { ascending: false });
 
       if (!error && data && data.length > 0) {
-        return data
-          .filter((row: { slug?: string | null }) => Boolean(row.slug))
-          .map((row: { slug: string; created_at?: string; updated_at?: string }) => {
+        for (const row of data) {
+          if (row.slug) {
             const stamp = row.updated_at || row.created_at;
             const date = stamp ? new Date(stamp) : undefined;
-            return {
-              slug: row.slug,
-              lastModified: date && !Number.isNaN(date.getTime()) ? date : undefined,
-            };
-          });
+            slugsMap.set(
+              row.slug,
+              date && !Number.isNaN(date.getTime()) ? date : undefined
+            );
+          }
+        }
       }
     } catch (err) {
       console.warn("getBlogIndex DB query failed:", err);
     }
-    return BLOG_POSTS.map((p) => ({
-      slug: p.slug,
-      lastModified: new Date("2026-10-16"),
+
+    // Merge static bundled posts so all 12 articles are always present in sitemap.xml
+    for (const post of BLOG_POSTS) {
+      if (!slugsMap.has(post.slug)) {
+        slugsMap.set(post.slug, new Date("2026-10-16"));
+      }
+    }
+
+    return Array.from(slugsMap.entries()).map(([slug, lastModified]) => ({
+      slug,
+      lastModified,
     }));
   },
 );

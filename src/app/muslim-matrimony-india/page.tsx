@@ -878,6 +878,50 @@ export default function MuslimMatrimonyIndiaPage() {
         </div>
       </section>
 
+      {/* Hinglish Rishta Section */}
+      <section lang="hi-Latn" className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-xs font-bold text-brand-gold uppercase tracking-widest">
+            Aasan aur Izzatdar Rishta
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mt-2 mb-4">
+            Muslim Rishta Chahiye? Apna Biodata Free Submit Karein
+          </h2>
+          <p className="text-[15px] sm:text-base text-brand-secondary leading-relaxed mb-6 font-light">
+            HumNikah ek Muslim rishtey bureau hai. Hamara office Cox Town, Bangalore mein hai, aur hum Bangalore, Chennai, Hyderabad, Vijayawada, Kochi aur Mumbai ke families se phone aur WhatsApp par baat karte hain. Apna biodata free submit karein. Hamari team har profile ko khud screen karti hai, aur zarurat ho to ladki ke Wali ko shamil karti hai. Aapka biodata aapki ijazat ke bina kisi ko nahi diya jaata.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 text-left">
+            <div className="bg-brand-cream/60 border border-brand-border/60 rounded-xl p-3.5 flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-brand-gold shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-brand-charcoal">Biodata free submit karein</span>
+            </div>
+            <div className="bg-brand-cream/60 border border-brand-border/60 rounded-xl p-3.5 flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-brand-gold shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-brand-charcoal">Hamari team aapke family se baat karegi</span>
+            </div>
+            <div className="bg-brand-cream/60 border border-brand-border/60 rounded-xl p-3.5 flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-brand-gold shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-brand-charcoal">Screened profiles ke saath introduction</span>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/submit-biodata"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-emerald to-[#2A2365] text-white font-bold rounded-xl px-6 py-3 hover:brightness-110 transition-all text-sm shadow-md"
+            >
+              Biodata Submit Karein <ArrowRight size={16} />
+            </Link>
+            <a
+              href="/whatsapp?src=india-hinglish"
+              rel="nofollow noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold rounded-xl px-6 py-3 hover:bg-[#20ba5a] transition-all text-sm shadow-sm"
+            >
+              WhatsApp Par Baat Karein
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA + NAP */}
       <section className="py-12 sm:py-16 bg-brand-cream">
         <div className="max-w-wrap mx-auto px-4 sm:px-6 lg:px-8">

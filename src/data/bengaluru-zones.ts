@@ -98,7 +98,7 @@ export const bengaluruZones: Zone[] = [
   },
   {
     slug: "south-bangalore",
-    phase: 2,
+    phase: 1,
     name: "South Bangalore",
     title: "Muslim Matrimony in South Bangalore | HumNikah",
     metaDescription: "Muslim matrimony in South Bangalore: Wilson Garden, Madiwala, Bommanahalli and BTM Layout. Free biodata submission, manual profile screening.",
@@ -121,7 +121,7 @@ export const bengaluruZones: Zone[] = [
   },
   {
     slug: "south-east-bangalore",
-    phase: 2,
+    phase: 1,
     name: "South-East Bangalore",
     title: "Muslim Matrimony in Koramangala & HSR Layout | HumNikah",
     metaDescription: "Muslim matrimony in Koramangala, HSR Layout, Sarjapur Road and Bellandur, Bangalore. Free biodata submission, manual screening, private.",
@@ -144,7 +144,7 @@ export const bengaluruZones: Zone[] = [
   },
   {
     slug: "east-bangalore",
-    phase: 2,
+    phase: 1,
     name: "East Bangalore",
     title: "Muslim Matrimony in Whitefield & East Bangalore | HumNikah",
     metaDescription: "Muslim matrimony in Whitefield, Marathahalli and KR Puram, East Bangalore. Free biodata submission, manual profile screening, private chat on WhatsApp.",
