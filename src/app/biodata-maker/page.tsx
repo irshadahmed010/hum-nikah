@@ -285,7 +285,7 @@ export default function BiodataMakerPage() {
                 </p>
               </div>
               <Link
-                href="/blog/muslim-biodata-format-for-marriage#download-the-free-templates-word-and-pdf"
+                href="/blog/muslim-biodata-format-for-marriage#download-free-muslim-biodata-templates-in-word-and-pdf-boy-girl"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-deep-green hover:bg-brand-emerald text-white text-xs font-bold transition-all shrink-0 shadow-sm"
               >
                 <Download size={14} /> Download Word &amp; PDF Templates

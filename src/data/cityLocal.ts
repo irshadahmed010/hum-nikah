@@ -73,6 +73,11 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
   chennai: {
     areas: [
       {
+        heading: "Chennai neighbourhoods we serve",
+        places: ["Mannady", "George Town", "Triplicane", "Royapettah", "Thousand Lights", "T. Nagar", "Anna Nagar", "Perambur"],
+        body: "We assist Tamil Muslim families across Chennai, including historic community hubs like Mannady, George Town, Triplicane, and Royapettah, as well as Thousand Lights, T. Nagar, Anna Nagar, and Perambur. Introductions are handled discreetly with Wali involvement.",
+      },
+      {
         heading: "Tamil Nadu towns near Chennai",
         places: ["Vaniyambadi", "Ambur", "Nagore", "Coimbatore", "Madurai", "Tiruchirappalli"],
         body: "Families from Vaniyambadi, Ambur, Nagore, Coimbatore, Madurai and Tiruchirappalli (Trichy) can also reach us by phone and WhatsApp.",
@@ -153,6 +158,11 @@ export const CITY_LOCAL: Record<string, CityLocal> = {
   },
   vijayawada: {
     areas: [
+      {
+        heading: "Vijayawada areas we serve",
+        places: ["One Town", "Two Town", "Bhavanipuram", "Governorpet", "Vidyadharapuram", "Auto Nagar", "Moghalrajpuram"],
+        body: "We support Muslim families across Vijayawada, including prominent localities like One Town, Two Town, Bhavanipuram, Governorpet, Vidyadharapuram, Auto Nagar, and Moghalrajpuram. Our matchmakers work in Telugu and Urdu to find compatible, verified rishtas.",
+      },
       {
         heading: "Andhra Pradesh cities we serve",
         places: ["Vijayawada", "Visakhapatnam", "Guntur", "Kurnool", "Nellore", "Kadapa"],

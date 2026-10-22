@@ -68,6 +68,13 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+  alternates: {
+    canonical: "./",
+    languages: {
+      "en-IN": "./",
+      "x-default": "./",
+    },
+  },
 };
 
 const organizationJsonLd = {

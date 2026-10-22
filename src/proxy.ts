@@ -24,7 +24,16 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // 2. Protect all /admin routes
+  // 2. Legacy .html URLs -> 301 redirect to clean URLs (preserves SEO signal)
+  if (path.endsWith(".html")) {
+    const cleanPath = path.replace(/\.html$/, "");
+    const dest = cleanPath === "/index" ? "/" : cleanPath;
+    const url = request.nextUrl.clone();
+    url.pathname = dest;
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // 3. Protect all /admin routes
   if (path.startsWith("/admin")) {
     const isLoginPage = path === "/admin/login";
     const sessionCookie = request.cookies.get("admin_session")?.value;

@@ -48,7 +48,7 @@ export const CITY_META: Record<string, CityMeta> = {
   },
   chennai: {
     primaryKeyword: "Tamil Muslim matrimony Chennai",
-    title: "Muslim Marriage Bureau in Chennai | HumNikah",
+    title: "Muslim Matrimony in Chennai – Verified Profiles, Home Visit",
     description:
       "Muslim matrimony in Chennai for Labbai, Rowther, Marakkayar and Tamil Muslim families. Screened profiles, Wali involved. Submit biodata free.",
     h1: "Tamil Muslim Matrimony in Chennai",
@@ -89,7 +89,7 @@ export const CITY_META: Record<string, CityMeta> = {
   },
   vijayawada: {
     primaryKeyword: "Muslim matrimony Vijayawada",
-    title: "Muslim Matrimony in Vijayawada & Andhra Pradesh | HumNikah",
+    title: "Muslim Matrimony in Vijayawada – Verified Profiles, Rishta",
     description:
       "Muslim matrimony in Vijayawada, Visakhapatnam, Guntur, Kurnool, Nellore and Kadapa. Verified profiles, Wali involved. Submit biodata free.",
     h1: "Muslim Matrimony in Vijayawada & Andhra Pradesh",

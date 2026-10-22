@@ -210,14 +210,21 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Quick Link to Free Biodata Maker */}
-            <motion.div variants={itemVariants} className="pt-1 text-center lg:text-left">
+            {/* Quick Link to Free Biodata Format & Maker */}
+            <motion.div variants={itemVariants} className="pt-1 text-center lg:text-left flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1">
               <Link
-                href="/biodata-maker"
+                href="/blog/muslim-biodata-format-for-marriage"
                 className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-brand-gold hover:text-white font-medium transition-colors"
               >
                 <Sparkles size={14} className="text-brand-gold" />
-                <span>Need a biodata? Try our <strong className="underline decoration-brand-gold/60 underline-offset-2">Free Muslim Biodata Maker &rarr;</strong></span>
+                <span>Download <strong className="underline decoration-brand-gold/60 underline-offset-2">Free Muslim Biodata Format (Word &amp; PDF) &rarr;</strong></span>
+              </Link>
+              <span className="hidden sm:inline text-white/40">|</span>
+              <Link
+                href="/biodata-maker"
+                className="text-xs sm:text-sm text-slate-300 hover:text-brand-gold font-medium transition-colors"
+              >
+                Or use our <strong className="underline decoration-brand-gold/60 underline-offset-2">Online Biodata Maker</strong>
               </Link>
             </motion.div>
 

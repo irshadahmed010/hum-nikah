@@ -1096,22 +1096,36 @@ _Created for free on HumNikah: https://www.humnikah.com/biodata-maker_`;
             </div>
           </div>
 
-          {/* Direct CTA card under preview */}
-          <div className="bg-brand-cream/60 border border-brand-gold/40 rounded-2xl p-4 mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 print:hidden">
+          {/* Direct CTA card under preview - Lead Funnel */}
+          <div className="bg-gradient-to-r from-brand-cream via-brand-beige/60 to-brand-cream border-2 border-brand-gold/50 rounded-2xl p-4 sm:p-5 mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 print:hidden shadow-sm">
             <div>
-              <p className="text-xs font-bold text-brand-deep-green">
-                Ready to find a genuine, verified rishta?
-              </p>
-              <p className="text-[11px] text-brand-charcoal/80">
-                Submitting your biodata to HumNikah is free. Screened families only.
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold tracking-wide uppercase">
+                  Step 2 · Free Verification
+                </span>
+                <p className="text-xs sm:text-sm font-bold text-brand-deep-green">
+                  Download, Then Get It Verified
+                </p>
+              </div>
+              <p className="text-[11px] sm:text-xs text-brand-charcoal/85 leading-relaxed">
+                Submitting your biodata to HumNikah is free. Send your saved biodata to our verified matchmaking team on WhatsApp for free screening and confidential family introductions.
               </p>
             </div>
-            <Link
-              href="/submit-biodata"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-deep-green hover:bg-brand-emerald text-white text-xs font-bold transition-colors shrink-0 shadow-sm"
-            >
-              Submit to HumNikah Free <ArrowRight size={13} />
-            </Link>
+            <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+              <a
+                href="/whatsapp?src=biodata-maker-verify"
+                rel="nofollow noopener"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold transition-all shadow-sm"
+              >
+                Verify on WhatsApp &rarr;
+              </a>
+              <Link
+                href="/submit-biodata"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1 px-3.5 py-2.5 rounded-xl bg-[#1D184C] hover:bg-brand-gold hover:text-brand-charcoal text-white text-xs font-bold transition-colors shadow-sm"
+              >
+                Submit Online Free
+              </Link>
+            </div>
           </div>
         </div>
 

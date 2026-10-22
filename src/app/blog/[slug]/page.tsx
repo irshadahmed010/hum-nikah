@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "BlogPosting",
+        "@type": ["Article", "BlogPosting"],
         headline: post.title,
         description: post.excerpt,
         image: post.image ? [post.image] : undefined,

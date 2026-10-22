@@ -297,10 +297,18 @@ const categories: Category[] = [
         ),
       },
       {
+        q: "Is it free to submit my biodata to HumNikah?",
+        a: (
+          <>
+            <strong>100% Free Biodata Submission:</strong> Yes. Submitting your biodata to HumNikah is free. There is no fee to register or submit your profile on our website or through WhatsApp. Our team reviews your details and has an initial consultation with your family without any charge before any paid service is discussed.
+          </>
+        ),
+      },
+      {
         q: "Do you charge expensive commissions after Nikah?",
         a: (
           <>
-            <strong>Transparent Pricing:</strong> We believe in complete transparency and clarity. We charge a registration fee initially upon signup, and when the marriage is successfully fixed, a mutually agreed predetermined fixed amount is charged as discussed with the family. There are no hidden fees or exorbitant percentage-based broker commissions.
+            <strong>Transparent Pricing:</strong> Submitting your biodata to HumNikah is free. If your family chooses our personalized matchmaking service with a dedicated matchmaker, we follow complete transparency: an agreed advance upon enrollment for personalized matching and verification, and a predetermined fixed amount when the Nikah is successfully finalized. There are no hidden fees or percentage-based broker commissions.
           </>
         ),
       },
@@ -308,9 +316,9 @@ const categories: Category[] = [
         q: "How are the matchmaking charges and payments structured?",
         a: (
           <>
-            HumNikah follows a fair, transparent and success-aligned payment structure:
+            Submitting your biodata to HumNikah is free. If you choose our personalized matchmaking service with a dedicated relationship manager, HumNikah follows a fair, transparent and success-aligned payment structure:
             <span className="block mt-2 font-bold text-[#1D184C]">
-              &bull; &ldquo;Half in advance&rdquo; &mdash; upon registration and initiation of personalized matchmaking and verification.
+              &bull; &ldquo;Half in advance&rdquo; &mdash; upon enrollment to initiate personalized matchmaking, profiling and verification.
             </span>
             <span className="block font-bold text-[#1D184C] mt-1">
               &bull; &ldquo;Half after marriage&rdquo; &mdash; once your Nikah is successfully blessed and finalized.

@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = buildMetadata({
   title: "Muslim Wedding & Nikah Success Stories Gallery",
   description:
-    "Explore real Muslim Nikah photos, happy couples and successful rishta stories from families across India who found their life partner through HumNikah.",
+    "Real Muslim Nikah photos, happy couples and successful rishta stories from families across India who found their life partner. Submit your biodata free.",
   path: "/gallery",
 });
 

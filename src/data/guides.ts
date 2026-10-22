@@ -36,9 +36,23 @@ export const CITY_GUIDES: Record<string, GuideLink[]> = {
     VERIFY,
     BIODATA,
   ],
-  chennai: [VERIFY, BIODATA],
-  kochi: [VERIFY, BIODATA],
-  vijayawada: [VERIFY, BIODATA],
+  chennai: [
+    { slug: "muslim-marriage-bureau-bangalore-guide", label: "Choosing the Best Muslim Marriage Bureau in Bangalore" },
+    { slug: "muslim-marriage-bureau-hyderabad-guide", label: "Muslim Marriage Bureau in Hyderabad: Rishta Guide" },
+    VERIFY,
+    BIODATA,
+  ],
+  kochi: [
+    { slug: "muslim-marriage-bureau-bangalore-guide", label: "Choosing the Best Muslim Marriage Bureau in Bangalore" },
+    VERIFY,
+    BIODATA,
+  ],
+  vijayawada: [
+    { slug: "muslim-marriage-bureau-hyderabad-guide", label: "Muslim Marriage Bureau in Hyderabad: Rishta Guide" },
+    { slug: "muslim-marriage-bureau-bangalore-guide", label: "Choosing the Best Muslim Marriage Bureau in Bangalore" },
+    VERIFY,
+    BIODATA,
+  ],
 };
 
 /** Guides listed on the India page and in the footer. */

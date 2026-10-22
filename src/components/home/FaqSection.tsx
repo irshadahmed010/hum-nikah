@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    question: "How does the matchmaking payment structure work?",
-    answer: "HumNikah follows a transparent and fair payment model: \"Half in advance\" upon registration to initiate personalized matchmaking and verification, and \"Half after marriage\" once your Nikah is successfully finalized.",
+    question: "Is submitting my biodata free?",
+    answer: "Yes. Submitting your biodata to HumNikah is free. There is no fee to register or submit your profile. If your family chooses our personalized matchmaking service with a dedicated matchmaker, we follow a transparent success-aligned payment model: half in advance when personalized matching begins, and half after marriage once your Nikah is finalized.",
     col: "left",
   },
   {

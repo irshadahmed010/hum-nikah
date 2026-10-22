@@ -47,7 +47,13 @@ export function buildMetadata({
   return {
     title: absoluteTitle ? { absolute: absoluteTitle } : title,
     description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: {
+        "en-IN": canonical,
+        "x-default": canonical,
+      },
+    },
     openGraph: {
       type,
       title: ogTitle,

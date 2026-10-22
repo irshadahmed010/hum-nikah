@@ -109,12 +109,16 @@ export const FAQ_SCHEMA: FaqEntry[] = [
     a: "We accept UPI, bank transfers, and major credit and debit cards. For office visits, a cheque can also be accepted.",
   },
   {
+    q: "Is it free to submit my biodata to HumNikah?",
+    a: "Yes. Submitting your biodata to HumNikah is free. There is no fee to register or submit your profile. Our team reviews your details and has an initial consultation with your family without any charge.",
+  },
+  {
     q: "Do you charge expensive commissions after Nikah?",
-    a: "We believe in complete transparency and clarity. We charge a registration fee initially upon signup, and when the marriage is successfully fixed, a mutually agreed predetermined fixed amount is charged as discussed with the family. There are no hidden fees or exorbitant percentage-based broker commissions.",
+    a: "Submitting your biodata to HumNikah is free. If you choose our dedicated matchmaking service, we follow complete transparency: an agreed advance upon enrollment for personalized matching and verification, and a predetermined fixed amount when the Nikah is successfully finalized. There are no hidden fees or percentage-based broker commissions.",
   },
   {
     q: "How are the matchmaking charges and payments structured?",
-    a: "HumNikah follows a fair, transparent and success-aligned payment structure: half in advance upon registration and initiation of personalized matchmaking and verification, and half after marriage once your Nikah is successfully blessed and finalized. There are no hidden recurring monthly fees.",
+    a: "Submitting your biodata to HumNikah is free. If you choose our personalized matchmaking service with a dedicated relationship manager, we follow a success-aligned structure: half in advance upon initiation of personalized matching and verification, and half after your Nikah is successfully blessed and finalized. There are no hidden recurring monthly fees.",
   },
   {
     q: "Can I split my membership payment?",

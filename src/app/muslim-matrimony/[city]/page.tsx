@@ -261,6 +261,19 @@ export default async function CityMatrimonyPage({ params }: PageProps) {
                 Talk to a Matchmaker
               </Link>
             </div>
+
+            <div className="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-300">
+              <Sparkles size={14} className="text-brand-gold shrink-0" />
+              <span>
+                Need a biodata format?{" "}
+                <Link
+                  href="/blog/muslim-biodata-format-for-marriage"
+                  className="text-brand-gold hover:text-white underline decoration-brand-gold/50 underline-offset-2 transition-colors font-medium"
+                >
+                  Download Free Muslim Biodata Format (Word &amp; PDF) &rarr;
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
       </section>

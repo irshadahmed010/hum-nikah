@@ -18,7 +18,11 @@ export function CityLinksSection() {
           guide, or find verified matchmaking for your city.
         </p>
         <p className="mt-4 text-sm text-brand-secondary max-w-xl mx-auto">
-          Muslim rishta chahiye? Apna biodata{" "}
+          Need a biodata format? Download our{" "}
+          <Link href="/blog/muslim-biodata-format-for-marriage" className="text-brand-gold font-semibold hover:underline">
+            free Muslim biodata format (Word &amp; PDF)
+          </Link>
+          . Muslim rishta chahiye? Apna biodata{" "}
           <Link href="/submit-biodata" className="text-brand-gold font-semibold hover:underline">
             free submit karein
           </Link>{" "}
