@@ -1,7 +1,7 @@
 ---
 slug: muslim-biodata-format-for-marriage
-title: "Muslim Biodata Format for Marriage (Free Template)"
-description: "Free Muslim biodata format for marriage for boy and girl in Word and PDF. See what to include, what to leave out and a sample, then submit it."
+title: "Muslim Biodata Format for Marriage: Free Download"
+description: "Free download Muslim biodata format for marriage in Word and PDF for boy and girl. Includes Urdu biodata format, sample, and free online biodata maker."
 h1: "Muslim Biodata Format for Marriage: Free Templates for Boy and Girl (Word and PDF)"
 primaryKeyword: "muslim biodata format for marriage"
 secondaryKeywords:
@@ -34,6 +34,8 @@ downloads:
 
 **Short answer:** A good Muslim biodata for marriage is one page long and covers personal details, education, work, family background, religious practice and expectations. Leave out ID numbers, your full address and your personal phone number. Copy the format below, or download the free Word or PDF template for a boy or a girl.
 
+<p><strong>Want to create your biodata online in 2 minutes?</strong> Use our interactive <a href="/biodata-maker"><strong>Free Muslim Marriage Biodata Maker</strong></a> to select from elegant Islamic templates for boy or girl, preview live, and download a print-ready PDF or copy formatted WhatsApp text.</p>
+
 ## In this guide
 
 - What is a Muslim biodata for marriage?
@@ -41,6 +43,7 @@ downloads:
 - What to leave out
 - Muslim biodata format for a boy
 - Muslim biodata format for a girl
+- Muslim biodata format in Urdu
 - Download the free templates: Word and PDF
 - Sample Muslim biodata for marriage
 - How to make a biodata for marriage in 5 steps
@@ -161,6 +164,49 @@ Contact through:         [Wali / guardian / HumNikah]
 Photograph:              [Available on request]
 ```
 
+## Muslim biodata format in Urdu
+
+Many Urdu-speaking families in Bengaluru, Hyderabad, Chennai, Mumbai and across India prefer sharing biodatas in Urdu script or Roman Urdu. Copy and edit this text:
+
+```text
+بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+شادی کے لیے بائیو ڈیٹا
+
+ذاتی معلومات:
+نام:                     [پورا نام یا ابتدائی حروف]
+عمر / تاریخ پیدائش:     [عمر] / [تاریخ پیدائش]
+قد:                      [قد، مثلاً 5 فٹ 9 انچ]
+ازدواجی حیثیت:           [غیر شادی شدہ / طلاق یافتہ / بیوہ]
+مادری زبان:             [اردو]
+مسلک:                   [اہل سنت والجماعت - اختیاری]
+
+تعلیم اور ملازمت:
+تعلیم:                   [ڈگری، ادارہ]
+پیشہ / ملازمت:           [ملازمت / کاروبار]
+شہر:                     [شہر کا نام]
+
+دینی معلومات:
+نماز:                    [پنج وقتہ نماز / باجماعت]
+دین داری:                [سنت کے مطابق طرز زندگی / باحجاب]
+
+خاندانی تفصیلات:
+والد کا نام اور پیشہ:    [نام، پیشہ]
+والدہ کا نام اور پیشہ:   [نام، پیشہ]
+بھائی اور بہنیں:         [تعداد، شادی شدہ یا غیر شادی شدہ]
+آبائی وطن:               [شہر / ریاست]
+موجودہ رہائش:            [شہر کا نام]
+ولی (لڑکی کے لیے):        [نام اور رشتہ]
+
+امیدیں اور ترجیحات:
+عمر کی حد:               [ترجیح]
+تعلیم:                   [ترجیح]
+دیگر:                    [دین دار اور مہذب خاندان]
+
+رابطہ:
+رابطہ کا ذریعہ:           [والد / سرپرست / ہم نکاح]
+فون / واٹس ایپ:          [نمبر]
+```
+
 ## Download the free templates: Word and PDF
 
 These are plain, one-page templates. Use Word to edit and PDF to share.
@@ -196,7 +242,7 @@ Contact through:         Father or HumNikah
 
 ## How to make a biodata for marriage in 5 steps
 
-1. **Pick a template.** Use the boy or girl format above, in Word or PDF.
+1. **Pick a template or use the online maker.** Create it online in 2 minutes with our [Free Muslim Marriage Biodata Maker](/biodata-maker), or use the boy or girl format below in Word or PDF.
 2. **Fill in the facts.** Use accurate details. A small honest biodata is better than a long exaggerated one.
 3. **Keep it to one page.** Short and clear is easier to read.
 4. **Remove private details.** Delete ID numbers, your full address and personal phone numbers.

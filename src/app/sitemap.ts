@@ -34,6 +34,7 @@ const STATIC_ROUTES: StaticRoute[] = [
   { path: "/muslim-matrimony-india", priority: 0.9, changeFrequency: "monthly", lastModified: CONTENT_UPDATED.overhaul },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/submit-biodata", priority: 0.8, changeFrequency: "monthly", lastModified: CONTENT_UPDATED.overhaul },
+  { path: "/biodata-maker", priority: 0.9, changeFrequency: "weekly", lastModified: new Date("2026-10-22") },
   { path: "/blog", priority: 0.7, changeFrequency: "weekly", lastModified: CONTENT_UPDATED.overhaul },
   // Photos are managed in the admin dashboard, so no fixed lastmod.
   { path: "/gallery", priority: 0.5, changeFrequency: "weekly" },

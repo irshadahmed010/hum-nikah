@@ -7,9 +7,24 @@ const JWT_SECRET = process.env.AUTH_SECRET || "humnikah_secure_jwt_secret_2026_k
 const key = new TextEncoder().encode(JWT_SECRET);
 
 export async function proxy(request: NextRequest) {
+  const host = request.headers.get("host") || "";
+  const hostname = host.split(":")[0].toLowerCase();
   const path = request.nextUrl.pathname;
 
-  // Protect all /admin routes
+  // 1. Domain canonicalization: redirect apex `humnikah.com` and `.in` domains to `www.humnikah.com`
+  // Consolidates split PageRank and impressions in Google Search Console
+  const isApex = hostname === "humnikah.com";
+  const isInDomain = hostname === "humnikah.in" || hostname === "www.humnikah.in";
+
+  if (isApex || isInDomain) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https:";
+    url.host = "www.humnikah.com";
+    url.port = "";
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // 2. Protect all /admin routes
   if (path.startsWith("/admin")) {
     const isLoginPage = path === "/admin/login";
     const sessionCookie = request.cookies.get("admin_session")?.value;
@@ -43,5 +58,10 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [
+    /*
+     * Run on all routes except Next.js internals, static assets, and images
+     */
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };

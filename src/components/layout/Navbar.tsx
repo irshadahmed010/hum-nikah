@@ -70,6 +70,7 @@ const mainNavLinks = [
   { name: "About Us", href: "/about", hasDropdown: true },
   { name: "Muslim Matrimony", href: "/muslim-matrimony-india", hasDropdown: true },
   { name: "Communities", href: "/muslim-matrimony-india#communities", hasDropdown: true },
+  { name: "Biodata Maker", href: "/biodata-maker" },
   { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
@@ -230,8 +231,15 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTAs: Submit Biodata */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop CTAs: Biodata Maker + Submit Biodata */}
+          <div className="hidden md:flex items-center gap-2.5">
+            <Link
+              href="/biodata-maker"
+              className="hidden 2xl:flex items-center gap-1.5 shrink-0 whitespace-nowrap rounded-full border border-brand-emerald/40 hover:border-brand-emerald bg-brand-cream/60 hover:bg-brand-emerald hover:text-white text-brand-deep-green text-[13px] font-semibold font-outfit px-3.5 py-2 transition-all duration-200"
+            >
+              <Sparkles size={14} className="text-brand-gold" />
+              <span>Biodata Maker</span>
+            </Link>
             <Link 
               href="/submit-biodata" 
               className="flex items-center gap-2 shrink-0 whitespace-nowrap rounded-full bg-gradient-to-r from-brand-emerald via-[#2A2365] to-brand-emerald hover:from-[#2A2365] hover:via-[#3B3280] hover:to-[#1D184C] text-white border border-brand-gold/30 hover:border-brand-gold/60 shadow-sm hover:shadow-md hover:shadow-brand-emerald/25 transition-all duration-300 active:scale-95 text-[14px] font-semibold font-outfit px-4 xl:px-5 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"

@@ -12,7 +12,7 @@ const VERIFY: GuideLink = {
 
 const BIODATA: GuideLink = {
   slug: "muslim-biodata-format-for-marriage",
-  label: "Muslim Biodata Format for Marriage (Free Template)",
+  label: "Muslim Biodata Format for Marriage: Free Download & Maker",
 };
 
 export const CITY_GUIDES: Record<string, GuideLink[]> = {
@@ -29,14 +29,16 @@ export const CITY_GUIDES: Record<string, GuideLink[]> = {
   hyderabad: [
     { slug: "muslim-marriage-bureau-hyderabad-guide", label: "Muslim Marriage Bureau in Hyderabad: Rishta Guide" },
     VERIFY,
+    BIODATA,
   ],
   mumbai: [
     { slug: "konkani-muslim-matrimony-mumbai-guide", label: "Konkani Muslim Matrimony in Mumbai" },
     VERIFY,
+    BIODATA,
   ],
-  chennai: [VERIFY],
-  kochi: [VERIFY],
-  vijayawada: [VERIFY],
+  chennai: [VERIFY, BIODATA],
+  kochi: [VERIFY, BIODATA],
+  vijayawada: [VERIFY, BIODATA],
 };
 
 /** Guides listed on the India page and in the footer. */

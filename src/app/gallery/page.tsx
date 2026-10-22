@@ -7,9 +7,9 @@ import { buildMetadata } from "@/lib/seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = buildMetadata({
-  title: "Nikah Moments & Success Stories Gallery",
+  title: "Muslim Wedding & Nikah Success Stories Gallery",
   description:
-    "Moments from Nikah ceremonies, family meetings and HumNikah events celebrating couples who found their match through our matchmaking service.",
+    "Explore real Muslim Nikah photos, happy couples and successful rishta stories from families across India who found their life partner through HumNikah.",
   path: "/gallery",
 });
 

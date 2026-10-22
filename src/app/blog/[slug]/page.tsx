@@ -109,6 +109,51 @@ export default async function BlogPostPage({ params }: PageProps) {
             },
           ]
         : []),
+      ...(slug === "muslim-biodata-format-for-marriage"
+        ? [
+            {
+              "@type": "HowTo",
+              "@id": `${canonicalUrl}#howto`,
+              name: "How to Make a Biodata for Muslim Marriage in 5 Steps",
+              description:
+                "Step-by-step guide to creating a dignified, professional Muslim marriage biodata for boy or girl in Word, PDF, or using our free online generator.",
+              step: [
+                {
+                  "@type": "HowToStep",
+                  position: 1,
+                  name: "Pick a template or online maker",
+                  text: "Use the free online biodata maker at HumNikah or download the boy/girl Word or PDF template.",
+                  url: `${SITE_URL}/biodata-maker`,
+                },
+                {
+                  "@type": "HowToStep",
+                  position: 2,
+                  name: "Fill in personal, deen and education facts",
+                  text: "Enter accurate details on education, profession, prayer habits, and family background.",
+                },
+                {
+                  "@type": "HowToStep",
+                  position: 3,
+                  name: "Keep it to one page",
+                  text: "Ensure the biodata is concise, structured, and easy for families to review.",
+                },
+                {
+                  "@type": "HowToStep",
+                  position: 4,
+                  name: "Remove sensitive private details",
+                  text: "Omit Aadhaar, PAN, passport, full home address, and personal phone numbers for safety.",
+                },
+                {
+                  "@type": "HowToStep",
+                  position: 5,
+                  name: "Share carefully or submit to HumNikah",
+                  text: "Send directly to trusted families or submit to HumNikah for free screened matchmaking.",
+                  url: `${SITE_URL}/submit-biodata`,
+                },
+              ],
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [

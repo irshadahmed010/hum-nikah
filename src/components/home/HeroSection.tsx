@@ -210,6 +210,17 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
+            {/* Quick Link to Free Biodata Maker */}
+            <motion.div variants={itemVariants} className="pt-1 text-center lg:text-left">
+              <Link
+                href="/biodata-maker"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-brand-gold hover:text-white font-medium transition-colors"
+              >
+                <Sparkles size={14} className="text-brand-gold" />
+                <span>Need a biodata? Try our <strong className="underline decoration-brand-gold/60 underline-offset-2">Free Muslim Biodata Maker &rarr;</strong></span>
+              </Link>
+            </motion.div>
+
             {/* 4 Core Value Badges */}
             <motion.div
               variants={badgesVariants}

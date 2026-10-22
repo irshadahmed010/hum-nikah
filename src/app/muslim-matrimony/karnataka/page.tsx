@@ -7,9 +7,9 @@ import { buildMetadata } from "@/lib/seo";
 import { CITY_LOCAL } from "@/data/cityLocal";
 import { liveZones, FREE_SENTENCE } from "@/data/bengaluru-zones";
 
-const TITLE = "Muslim Matrimony in Karnataka | HumNikah";
+const TITLE = "Muslim Matrimony & Marriage Bureau in Karnataka | HumNikah";
 const DESCRIPTION =
-  "Muslim matrimony in Karnataka: Bengaluru and towns across the state. Free biodata submission, manual profile screening, private. Call or WhatsApp.";
+  "Muslim matrimony & marriage bureau in Karnataka: Bengaluru and towns across the state. Free biodata submission, manual screening. Call or WhatsApp.";
 
 export const metadata: Metadata = buildMetadata({
   title: TITLE,
@@ -44,6 +44,10 @@ const WHO_WE_HELP = [
 ];
 
 const FAQS = [
+  {
+    q: "Which is the best Muslim marriage bureau in Karnataka?",
+    a: "Families across Karnataka choose HumNikah for verified profiles, complete privacy, and respectful family introductions. Every profile is manually screened and identity documents are checked before any introduction is made. Submitting your biodata to HumNikah is free.",
+  },
   {
     q: "Do you have offices in other Karnataka towns?",
     a: "No. We serve families in other towns by phone and WhatsApp. Our office is in Cox Town, Bengaluru.",
@@ -124,6 +128,13 @@ export default function KarnatakaPage() {
 
       <section className="py-12 sm:py-16 bg-white border-b border-brand-border/50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
+            Best Muslim Marriage Bureau in Karnataka
+          </h2>
+          <p className="text-[15px] text-black leading-relaxed mb-6">
+            If you are looking for the best Muslim marriage bureau in Karnataka, families choose HumNikah for our privacy-first matchmaking, manual document verification, and respectful family introductions. Whether you are in Bengaluru, Mangaluru, Mysuru, Hubli-Dharwad, Belgaum, Gulbarga, or Bhatkal, our team works directly with families and involves the bride&apos;s Wali where her family wishes. Submitting your biodata to HumNikah is free.
+          </p>
+
           <h2 className="text-2xl sm:text-3xl font-playfair font-bold text-brand-charcoal mb-4">
             Muslim matrimony in Bengaluru
           </h2>

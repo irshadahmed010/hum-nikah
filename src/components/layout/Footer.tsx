@@ -152,6 +152,11 @@ export function Footer() {
                 </li>
               ))}
               <li>
+                <Link href="/biodata-maker" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
+                  Free Biodata Maker (Online)
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog/muslim-biodata-format-for-marriage" className="text-gray-300 hover:text-brand-gold transition-colors text-xs sm:text-sm font-light">
                   Free Biodata Format
                 </Link>

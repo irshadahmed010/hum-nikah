@@ -4,12 +4,18 @@ import type { Metadata } from "next";
 import { Mail, MapPin, Phone, ScrollText, Sparkles } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Terms & Conditions",
-  description:
-    "The Terms and Conditions governing the use of HumNikah's Islamic matrimonial and matchmaking services.",
-  path: "/terms",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: "Terms & Conditions",
+    description:
+      "The Terms and Conditions governing the use of HumNikah's Islamic matrimonial and matchmaking services.",
+    path: "/terms",
+  }),
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 const LAST_REVISED = "27 August 2026";
 
